@@ -5,10 +5,10 @@
 
 Starter projects for building fullstack applications using:
 
-- **JavaScript / TypeScript** (CommonJS, ESM)
-- **Angular 19** with PWA, SSR, SEO
-- **Java 21** with Spring, Spring Boot, Maven
-- **PostgreSQL / MySQL**
+- **JavaScript** / **TypeScript** — CommonJS, ESM
+- **Angular 19** — Multi-applications & Monorepo (Nx)
+- **Java 21** — Spring, Spring Boot, Maven
+- **PostgreSQL** / **MySQL**
 - Modular architecture with clean code, REST APIs and test coverage
 
 These examples serve as a base for learning, testing, and prototyping.
