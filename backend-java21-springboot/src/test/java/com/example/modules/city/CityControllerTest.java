@@ -1,4 +1,4 @@
-package com.example.modules.person;
+package com.example.modules.city;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +8,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(PersonController.class)
-public class PersonControllerTest {
+@WebMvcTest(CityController.class)
+public class CityControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void getAllPersons_returnsSuccessTrueAndJsonArrayWith7Persons() throws Exception {
+    void getAllCities_returnsSuccessTrueAndJsonArrayWith7Cities() throws Exception {
         // Arrange
-        String endpoint = "/persons";
+        String endpoint = "/cities";
 
         // Act & Assert
         mockMvc.perform(get(endpoint))
@@ -26,6 +26,6 @@ public class PersonControllerTest {
             .andExpect(jsonPath("$.success").value(true))
             .andExpect(jsonPath("$.data").isArray())
             .andExpect(jsonPath("$.data.length()").value(7))
-            .andExpect(jsonPath("$.data[0].name").value("Christopher Nolan"));
+            .andExpect(jsonPath("$.data[0].name").value("Paris"));
     }
 }
