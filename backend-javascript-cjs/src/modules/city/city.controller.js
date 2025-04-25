@@ -1,14 +1,24 @@
 'use strict';
 
-const items = require('./city.mock-data');
+const { createCitySchema } = require('./city.schema');
+const cityService = require('./city.service');
+const { z } = require('zod');
 
-function getItems(req, res) {
-  const result = {
-    success: true,
-    data: items,
-  };
+class CityController {
+  async getCities(req, res) {
+    const cities = cityService.findAll();
+    res.status(200).json({ success: true, data: cities });
+  }
 
-  res.json(result);
+  async createCity(req, res, next) {
+    try {
+      const validated = createCitySchema.parse(req.body);
+      const newCity = cityService.create(validated);
+      res.status(201).json({ success: true, data: newCity });
+    } catch (error) {
+      next(error); 
+    }
+  }
 }
 
-module.exports = getItems;
+module.exports = new CityController();
