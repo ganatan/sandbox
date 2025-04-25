@@ -16,8 +16,9 @@ public class GenerateProjectStructure {
 
 	private static void listFiles(File directory, int level) {
 		File[] files = directory.listFiles();
-		if (files == null)
+		if (files == null) {
 			return;
+		}
 
 		for (File file : files) {
 			System.out.println("  ".repeat(level) + "- " + file.getName());
