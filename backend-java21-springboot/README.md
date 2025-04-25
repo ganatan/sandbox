@@ -33,6 +33,16 @@ target/site/jacoco/index.html
 
 ---
 
+## Swagger
+
+
+```bash
+http://localhost:8080/swagger-ui.html
+http://localhost:8080/api-docs
+```
+---
+
+
 ## 🏗️ Build
 
 Compilation + tests + packaging + installation locale :
