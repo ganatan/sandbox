@@ -1,6 +1,6 @@
 # 🧪 Starters & Examples
 
-**👉 Si vous parlez français, la version française est ici** : [![Français](./ui/version-fr.png)](./README.md)
+**👉 Version française disponible ici** : [![Français](./ui/version-fr.png)](./README.md)
 ---
 
 Starter projects for building fullstack applications using:
