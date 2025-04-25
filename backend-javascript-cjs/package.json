@@ -27,18 +27,17 @@
     "helmet": "8.1.0",
     "nodemon": "3.1.10",
     "supertest": "7.1.0",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-jsdoc": "6.2.8",
+    "swagger-ui-express": "5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "9.25.1",
-    "eslint": "^9.25.1",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-prettier": "^5.2.6",
+    "eslint": "9.25.1",
+    "eslint-config-prettier": "10.1.2",
+    "eslint-plugin-prettier": "5.2.6",
     "globals": "16.0.0",
     "jest": "29.7.0",
-    "prettier": "^3.5.3",
-    "webpack": "5.99.6",
+    "webpack": "5.99.7",
     "webpack-cli": "6.0.1"
   }
 }
