@@ -21,7 +21,7 @@ Ces exemples servent de base pour l’apprentissage, les tests et les prototypes
 
 ### 🔷 Frontend
 
-- `frontend-angular-examples` – Exemples Angular 19 : PWA, SSR, SEO
+- `frontend-angular-examples` — Monorepo Angular 19 (Nx)
 - `frontend-java21` – Frontend Java sans framework
 
 ### 🟩 Backend – JavaScript
@@ -55,7 +55,7 @@ Ces exemples servent de base pour l’apprentissage, les tests et les prototypes
 
 ## 📦 Prérequis
 
-- Node.js 18+
+- Node.js 20+
 - Java 21
 - PostgreSQL
 - Git / VSCode
