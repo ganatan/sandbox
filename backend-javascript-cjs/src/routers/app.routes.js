@@ -1,10 +1,12 @@
 'use strict';
 
 const express = require('express');
-const getItems = require('../modules/person/person.controller.js');
+const getPersons = require('../modules/person/person.controller.js');
+const getCities = require('../modules/city/city.controller.js');
 
 const router = express.Router();
 
-router.use('/persons', getItems);
+router.use('/persons', getPersons);
+router.use('/cities', getCities);
 
 module.exports = router;
