@@ -1,10 +1,10 @@
 'use strict';
 
 const app = require('./app');
-const port = 3000;
+const config = require('./config/config');
 
-const server = app.listen(port, () => {
-  console.log(`API listening on http://localhost:${port}`);
+const server = app.listen(config.app.port, () => {
+  console.log(`API listening on http://localhost:${config.app.port}`);
 });
 
 module.exports = server;
