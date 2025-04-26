@@ -16,7 +16,9 @@
     "test:e2e": "jest __tests__/e2e",
     "build": "webpack",
     "serve": "node dist/bundle",
-    "generate-project-structure": "node tools/scripts/generate-project-structure.js"
+    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
+    "docker:build": "docker build -t mon-app .",
+    "docker:run": "docker run -p 3000:3000 mon-app"    
   },
   "keywords": [],
   "author": "",

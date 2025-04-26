@@ -1,7 +1,6 @@
 'use strict';
 
 function responseHandler(req, res, next) {
-  console.log('00000000002');
   if (res.headersSent) {
     return next();
   }
