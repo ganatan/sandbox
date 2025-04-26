@@ -27,8 +27,8 @@ app.use('/api-docs', swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);
 
-app.use(errorLogger);
 app.use(responseHandler);
 app.use(errorHandler);
+app.use(errorLogger);
 
 module.exports = app;
