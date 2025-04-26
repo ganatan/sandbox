@@ -1,21 +1,27 @@
 'use strict';
 
 function errorHandler(err, req, res, next) {
-  if (err.name === 'ZodError') {
-    return res.status(400).json({
-      success: false,
-      errors: err.errors.map((item) => ({
-        path: item.path.join('.'),
-        message: item.message,
-      })),
-    });
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+  const context = err.context || `${req.method} ${req.originalUrl}`;
+  const details = err.details || {
+    path: req.originalUrl,
+    errorCode: statusCode,
+    timestamp: new Date().toISOString(),
+  };
+
+  console.error(`[ERROR] ${statusCode}: ${message}`);
+  if (context) {
+    console.error(`[CONTEXT] ${context}`);
   }
 
-  console.error('Unhandled Error:', err);
-
-  return res.status(500).json({
+  res.status(statusCode).json({
     success: false,
-    message: 'Erreur interne du serveur',
+    error: {
+      message,
+      context,
+      details,
+    },
   });
 }
 

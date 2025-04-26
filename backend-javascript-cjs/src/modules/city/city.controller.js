@@ -1,24 +1,44 @@
 'use strict';
 
-const { createCitySchema } = require('./city.schema');
-const cityService = require('./city.service');
+const { validateItem } = require('./city.schema');
+const service = require('./city.service');
 
-class CityController {
-  async getCities(req, res) {
-    const cities = cityService.findAll();
-    res.status(200).json({ success: true, data: cities });
+class Controller {
+  async getItems(req, res, next) {
+    try {
+      const items = service.getItems();
+      res.locals = {
+        data: items,
+        statusCode: 200,
+      };
+
+      return next();
+    } catch (error) {
+      return next(error);
+    }
   }
 
-  async createCity(req, res, next) {
+  async createItem(req, res, next) {
     try {
-      const validated = createCitySchema.parse(req.body);
-      const newCity = cityService.create(validated);
+      validateItem(req.body);
+      const newItem = service.create(req.body);
+      res.locals = {
+        data: newItem,
+        statusCode: 201,
+      };
 
-      return res.status(201).json({ success: true, data: newCity });
+      return next();
     } catch (error) {
+      if (error.message === 'Item already exists') {
+        return next({ statusCode: 409, message: error.message });
+      }
+      if (error.name === 'ValidationError') {
+        return next({ statusCode: 400, message: error.message });
+      }
+
       return next(error);
     }
   }
 }
 
-module.exports = new CityController();
+module.exports = new Controller();

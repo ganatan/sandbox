@@ -2,18 +2,26 @@
 
 const { z: zod } = require('zod');
 
-const createCitySchema = zod.object({
-  name: zod.string().min(2, { message: 'Le nom de la ville doit faire au moins 2 caractères.' }),
+const schema = zod.object({
+  name: zod
+    .string({
+      required_error: 'Name is required',
+      invalid_type_error: 'Name must be a string',
+    })
+    .min(2, 'Name must be a string of at least 2 characters'),
 });
 
-module.exports = { createCitySchema };
+function validateItem(data) {
+  try {
+    schema.parse(data);
+  } catch (error) {
+    if (error.errors?.length > 0) {
+      const element = new Error(error.errors[0].message);
+      element.status = 400;
+      throw element;
+    }
+    throw error;
+  }
+}
 
-// 'use strict';
-
-// const { z } = require('zod');
-
-// const createCitySchema = z.object({
-//   name: z.string().min(2, { message: 'Le nom de la ville doit faire au moins 2 caractères.' }),
-// });
-
-// module.exports = { createCitySchema };
+module.exports = { validateItem };

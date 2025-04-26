@@ -1,11 +1,11 @@
 'use strict';
 
 const express = require('express');
-const cityController = require('./city.controller');
+const controller = require('./city.controller');
 
 const router = express.Router();
 
-router.get('/', cityController.getCities.bind(cityController));
-router.post('/', cityController.createCity.bind(cityController));
+router.get('/', controller.getItems.bind(controller));
+router.post('/', controller.createItem.bind(controller));
 
 module.exports = router;

@@ -1,18 +1,18 @@
 'use strict';
 
-const cities = require('./city.mock-data');
+const items = require('./city.mock-data');
 
-class CityService {
-  findAll() {
-    return cities;
+class Service {
+  getItems() {
+    return items;
   }
 
   create(cityData) {
-    const newCity = { id: cities.length + 1, ...cityData };
-    cities.push(newCity);
+    const newItem = { id: items.length + 1, ...cityData };
+    items.push(newItem);
 
-    return newCity;
+    return newItem;
   }
 }
 
-module.exports = new CityService();
+module.exports = new Service();
