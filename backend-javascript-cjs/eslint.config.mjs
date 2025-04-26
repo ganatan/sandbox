@@ -6,40 +6,34 @@ import prettier from 'eslint-config-prettier';
 
 export default defineConfig([
   {
-    ignores: [
-      'dist/**',
-      'eslint.config.mjs',
-      'webpack.config.js'
-    ],
+    ignores: ['dist/**', 'eslint.config.mjs', 'webpack.config.js'],
   },
   {
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       js,
-      prettier: eslintPluginPrettier
+      prettier: eslintPluginPrettier,
     },
     languageOptions: {
       globals: globals.node,
-      sourceType: 'commonjs'
+      sourceType: 'commonjs',
     },
     rules: {
       'prettier/prettier': 'error',
-
-      
-      "indent": "off",
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"],
-      "no-unused-vars": ["warn"],
-      "no-console": "off",
-      'eqeqeq': 'error',
-      'curly': 'error',
-      'no-unused-vars': ['error', { 'args': 'none', 'ignoreRestSiblings': true }],
+      indent: 'off',
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
+      'no-unused-vars': ['warn'],
+      'no-console': 'off',
+      eqeqeq: 'error',
+      curly: 'error',
+      'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
       'no-undef': 'error',
       'no-redeclare': 'error',
       'consistent-return': 'error',
       'no-shadow': 'error',
-      'quotes': ['error', 'single', { 'avoidEscape': true }],
-      'semi': ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
       'object-curly-spacing': ['error', 'always'],
       'callback-return': 'error',
@@ -49,7 +43,7 @@ export default defineConfig([
       'no-process-exit': 'off',
       'no-eval': 'error',
       'no-implied-eval': 'error',
-      'strict': 'error',
+      strict: 'error',
       'no-var': 'error',
       'prefer-const': 'error',
       'no-empty': 'error',
@@ -66,7 +60,7 @@ export default defineConfig([
       'import/prefer-default-export': 'off',
       'import/first': 'off',
       'no-template-curly-in-string': 'off',
-      'new-cap': ['error', { 'capIsNew': false }],
+      'new-cap': ['error', { capIsNew: false }],
       'array-callback-return': 'error',
       'object-shorthand': ['error', 'consistent'],
       'function-paren-newline': ['error', 'consistent'],
@@ -77,25 +71,20 @@ export default defineConfig([
       'newline-before-return': 'error',
       'space-before-blocks': 'error',
       'eol-last': ['error', 'always'],
-      'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1 }],
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
     },
-    extends: [
-      'js/recommended',
-      prettier
-    ]
+    extends: ['js/recommended', prettier],
   },
   {
     files: ['**/*.test.js'],
     languageOptions: {
       globals: {
         ...globals.node,
-        ...globals.jest
-      }
-    }
-  }
+        ...globals.jest,
+      },
+    },
+  },
 ]);
-
-
 
 // import js from "@eslint/js"
 // import globals from "globals"

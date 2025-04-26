@@ -10,6 +10,7 @@ class CityService {
   create(cityData) {
     const newCity = { id: cities.length + 1, ...cityData };
     cities.push(newCity);
+
     return newCity;
   }
 }

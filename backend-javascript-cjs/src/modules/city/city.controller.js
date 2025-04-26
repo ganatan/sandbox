@@ -2,7 +2,6 @@
 
 const { createCitySchema } = require('./city.schema');
 const cityService = require('./city.service');
-const { z } = require('zod');
 
 class CityController {
   async getCities(req, res) {
@@ -14,9 +13,10 @@ class CityController {
     try {
       const validated = createCitySchema.parse(req.body);
       const newCity = cityService.create(validated);
-      res.status(201).json({ success: true, data: newCity });
+
+      return res.status(201).json({ success: true, data: newCity });
     } catch (error) {
-      next(error); 
+      return next(error);
     }
   }
 }

@@ -3,6 +3,7 @@
 const express = require('express');
 
 const configureSecurity = require('./infrastructure/middleware/security/security.js');
+const errorHandler = require('./infrastructure/middleware/error/error-handler.js');
 
 const swaggerRoutes = require('./infrastructure/swagger/swagger.routes');
 
@@ -17,5 +18,7 @@ app.use('/api-docs', swaggerRoutes);
 
 app.use(appRoutes);
 app.use(rootRoutes);
+
+app.use(errorHandler);
 
 module.exports = app;

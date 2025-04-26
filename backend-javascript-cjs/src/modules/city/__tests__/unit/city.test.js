@@ -3,7 +3,6 @@
 const cityController = require('../../city.controller');
 
 describe('CityController', () => {
-
   describe('getCities', () => {
     it('should return an object with success and an array of cities', async () => {
       const req = {};
@@ -67,39 +66,4 @@ describe('CityController', () => {
       expect(error.name).toBe('ZodError');
     });
   });
-
 });
-
-
-// 'use strict';
-
-// const cityController = require('../../city.controller');
-
-// describe('CityController', () => {
-//   describe('getCities', () => {
-//     it('should return an object with success and an array of cities', async () => {
-//       // Arrange
-//       const req = {};
-//       const res = {
-//         status: jest.fn().mockReturnThis(),
-//         json: jest.fn(),
-//       };
-//       const next = jest.fn();
-
-//       // Act
-//       await cityController.getCities(req, res, next);
-
-//       // Assert
-//       expect(res.status).toHaveBeenCalledWith(200);
-//       expect(res.json).toHaveBeenCalledTimes(1);
-
-//       const [response] = res.json.mock.calls[0];
-
-//       expect(response).toHaveProperty('success', true);
-//       expect(Array.isArray(response.data)).toBe(true);
-//       expect(response.data.length).toBeGreaterThanOrEqual(1); // on teste qu'il y a au moins 1 ville
-//       expect(response.data[0]).toHaveProperty('name');
-//     });
-//   });
-// });
-
