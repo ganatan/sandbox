@@ -17,8 +17,8 @@
     "build": "webpack",
     "serve": "node dist/bundle",
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
-    "docker:build": "docker build -t mon-app .",
-    "docker:run": "docker run -p 3000:3000 mon-app"    
+    "docker:build": "docker build -t backend-javascript-cjs .",
+    "docker:run": "docker run -p 3000:3000 backend-javascript-cjs"    
   },
   "keywords": [],
   "author": "",
