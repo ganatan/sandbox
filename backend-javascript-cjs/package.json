@@ -24,15 +24,15 @@
   "type": "commonjs",
   "dependencies": {
     "cors": "2.8.5",
-    "dotenv": "^16.5.0",
+    "dotenv": "16.5.0",
     "express": "5.1.0",
-    "express-rate-limit": "^7.5.0",
+    "express-rate-limit": "7.5.0",
     "helmet": "8.1.0",
     "nodemon": "3.1.10",
     "supertest": "7.1.0",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.1",
-    "winston": "^3.17.0",
+    "winston": "3.17.0",
     "zod": "^3.24.3"
   },
   "devDependencies": {
