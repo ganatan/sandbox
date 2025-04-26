@@ -21,22 +21,26 @@ describe('errorHandler Middleware', () => {
     jest.clearAllMocks();
   });
 
+  const checkResponse = (expectedStatus, expectedError) => {
+    expect(res.status).toHaveBeenCalledWith(expectedStatus);
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      error: expect.objectContaining(expectedError),
+    });
+  };
+
   it('should handle generic error without statusCode', () => {
     const error = new Error('Something went wrong');
 
     errorHandler(error, req, res, next);
 
-    expect(res.status).toHaveBeenCalledWith(500);
-    expect(res.json).toHaveBeenCalledWith({
-      success: false,
-      error: {
-        message: 'Something went wrong',
-        context: 'GET /test-url',
-        details: expect.objectContaining({
-          path: '/test-url',
-          errorCode: 500,
-        }),
-      },
+    checkResponse(500, {
+      message: 'Something went wrong',
+      context: 'GET /test-url',
+      details: expect.objectContaining({
+        path: '/test-url',
+        errorCode: 500,
+      }),
     });
   });
 
@@ -48,17 +52,13 @@ describe('errorHandler Middleware', () => {
 
     errorHandler(error, req, res, next);
 
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      success: false,
-      error: {
-        message: 'Resource not found',
-        context: 'GET /test-url',
-        details: expect.objectContaining({
-          path: '/test-url',
-          errorCode: 404,
-        }),
-      },
+    checkResponse(404, {
+      message: 'Resource not found',
+      context: 'GET /test-url',
+      details: expect.objectContaining({
+        path: '/test-url',
+        errorCode: 404,
+      }),
     });
   });
 
