@@ -31,6 +31,7 @@
     "supertest": "7.1.0",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.1",
+    "winston": "^3.17.0",
     "zod": "^3.24.3"
   },
   "devDependencies": {
