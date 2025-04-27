@@ -3,7 +3,7 @@
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-const config = require('../../../config/config');
+const config = require('../../config/config');
 
 function configureSecurity(app) {
   app.use(cors({ origin: config.security.corsOrigin }));

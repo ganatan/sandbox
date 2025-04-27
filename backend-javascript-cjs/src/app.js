@@ -2,9 +2,9 @@
 
 const express = require('express');
 
-const configureSecurity = require('./infrastructure/middleware/security/security.js');
-const responseHandler = require('./infrastructure/middleware/response/response-handler.js');
-const errorHandler = require('./infrastructure/middleware/error/error-handler.js');
+const configureSecurity = require('./middlewares/security/security.js');
+const responseHandler = require('./middlewares/response/response-handler.js');
+const errorHandler = require('./middlewares/error/error-handler.js');
 
 const requestLogger = require('./infrastructure/logger/request-logger.js');
 const errorLogger = require('./infrastructure/logger/error-logger.js');

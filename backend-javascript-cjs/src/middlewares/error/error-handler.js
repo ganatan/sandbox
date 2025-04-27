@@ -1,6 +1,6 @@
 'use strict';
 
-const logger = require('../../logger/logger');
+const logger = require('../../infrastructure/logger/logger');
 
 function errorHandler(err, req, res, next) {
   const statusCode = err.statusCode || 500;

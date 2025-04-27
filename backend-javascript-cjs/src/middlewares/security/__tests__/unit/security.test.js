@@ -3,7 +3,7 @@
 const express = require('express');
 const request = require('supertest');
 const configureSecurity = require('../../security');
-const config = require('../../../../../config/config');
+const config = require('../../../../config/config');
 
 describe('Security Middleware', () => {
   let app;
