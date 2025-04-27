@@ -3,6 +3,7 @@
 const express = require('express');
 
 const configureSecurity = require('./middlewares/security/security.js');
+
 const responseHandler = require('./middlewares/response/response-handler.js');
 const errorHandler = require('./middlewares/error/error-handler.js');
 
