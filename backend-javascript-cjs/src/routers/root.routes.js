@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       version: '1.0.0',
       status: 'ok',
       app: 'backend-javascript-cjs',
+      env: process.env.NODE_ENV || 'development',
     },
   };
   res.send(result);

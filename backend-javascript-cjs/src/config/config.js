@@ -1,11 +1,19 @@
 'use strict';
 
-require('dotenv').config();
+const path = require('path');
+const dotenv = require('dotenv');
+
+const env = process.env.NODE_ENV || 'development';
+const envFile = env === 'production' ? '.env.production' : '.env.development';
+dotenv.config({ path: path.resolve(__dirname, '..', '..', envFile) });
+console.log('00000000001:' + env);
+console.log('00000000001:' + envFile);
+console.log('00000000001:' + process.env.PORT);
 
 const config = {
   app: {
     port: process.env.PORT || 3000,
-    env: process.env.NODE_ENV || 'development',
+    env: env,
   },
   security: {
     corsOrigin: process.env.CORS_ORIGIN || '*',
@@ -26,28 +34,3 @@ const config = {
 };
 
 module.exports = config;
-
-// 'use strict';
-
-// require('dotenv').config();
-
-// const config = {
-//   app: {
-//     port: process.env.PORT || 3000,
-//     env: process.env.NODE_ENV || 'development',
-//   },
-//   security: {
-//     corsOrigin: process.env.CORS_ORIGIN || '*',
-//     helmet: {
-//       contentSecurityPolicy: false,
-//     },
-//   },
-//   logger: {
-//     level: process.env.LOG_LEVEL || 'info',
-//   },
-//   monitoring: {
-//     metricsPath: '/metrics',
-//   },
-// };
-
-// module.exports = config;
