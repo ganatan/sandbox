@@ -1,6 +1,6 @@
 'use strict';
 
-const { validateItem } = require('../../city.schema');
+const { validateItem } = require('../../schema/city.schema');
 
 describe('City Schema - validateItem', () => {
   it('should validate correct data', () => {

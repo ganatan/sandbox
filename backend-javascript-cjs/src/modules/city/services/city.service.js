@@ -1,6 +1,6 @@
 'use strict';
 
-const items = require('./city.mock-data');
+const items = require('../mocks/city.mock-data');
 
 class Service {
   getItems() {

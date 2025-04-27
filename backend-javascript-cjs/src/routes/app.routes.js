@@ -1,8 +1,8 @@
 'use strict';
 
 const express = require('express');
-const cityRoutes = require('../modules/city/city.routes');
-const getPersons = require('../modules/person/person.controller.js');
+const cityRoutes = require('../modules/city/routes/city.routes');
+const getPersons = require('../modules/person/controllers/person.controller.js');
 
 const router = express.Router();
 

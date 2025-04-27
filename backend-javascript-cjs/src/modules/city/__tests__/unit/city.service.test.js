@@ -1,13 +1,13 @@
 'use strict';
 
-jest.mock('../../city.mock-data', () => []);
+jest.mock('../../mocks/city.mock-data', () => []);
 
-const service = require('../../city.service');
+const service = require('../../services/city.service');
 
 describe('City Service', () => {
   beforeEach(() => {
     // Remettre à zéro les items avant chaque test
-    const mockItems = require('../../city.mock-data');
+    const mockItems = require('../../mocks/city.mock-data');
     mockItems.length = 0;
   });
 

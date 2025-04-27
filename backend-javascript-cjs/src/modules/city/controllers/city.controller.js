@@ -1,7 +1,7 @@
 'use strict';
 
-const { validateItem } = require('./city.schema');
-const service = require('./city.service');
+const { validateItem } = require('../schema/city.schema');
+const service = require('../services/city.service');
 
 class Controller {
   async getItems(req, res, next) {

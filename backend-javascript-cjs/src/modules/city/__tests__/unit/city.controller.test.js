@@ -1,11 +1,11 @@
 'use strict';
 
-const cityController = require('../../city.controller');
-const service = require('../../city.service');
-const { validateItem } = require('../../city.schema');
+const cityController = require('../../controllers/city.controller');
+const service = require('../../services/city.service');
+const { validateItem } = require('../../schema/city.schema');
 
-jest.mock('../../city.service');
-jest.mock('../../city.schema');
+jest.mock('../../services/city.service');
+jest.mock('../../schema/city.schema');
 
 describe('CityController', () => {
   let req, res, next;
