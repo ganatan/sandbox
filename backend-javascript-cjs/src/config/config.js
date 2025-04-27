@@ -5,14 +5,11 @@ const dotenv = require('dotenv');
 
 const env = process.env.NODE_ENV || 'development';
 const envFile = env === 'production' ? '.env.production' : '.env.development';
-dotenv.config({ path: path.resolve(__dirname, '..', '..', envFile) });
-console.log('00000000001:' + env);
-console.log('00000000001:' + envFile);
-console.log('00000000001:' + process.env.PORT);
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 const config = {
   app: {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 7777,
     env: env,
   },
   security: {

@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -8,6 +9,7 @@ module.exports = (env, argv) => {
   return {
     mode: isProduction ? 'production' : 'development',
     target: 'node',
+    externals: [nodeExternals()],
     entry: './src/server.js',
     output: {
       filename: 'bundle.js',
@@ -20,10 +22,32 @@ module.exports = (env, argv) => {
   };
 };
 
+
+
+// const path = require('path');
+// const Dotenv = require('dotenv-webpack');
+
+// module.exports = {
+//   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+//   target: 'node',
+//   entry: './src/server.js',
+//   output: {
+//     filename: 'bundle.js',
+//     path: path.resolve(__dirname, 'dist'),
+//   },
+//   plugins: [
+//     new Dotenv({
+//       path: process.env.NODE_ENV === 'production' 
+//         ? '.env.production' 
+//         : '.env.development',
+//     }),
+//   ],
+// };
+
 // const path = require('path');
 
 // module.exports = {
-//   mode: 'development',
+//   mode: 'production',
 //   target: 'node',
 //   entry: './src/server.js',
 //   output: {
