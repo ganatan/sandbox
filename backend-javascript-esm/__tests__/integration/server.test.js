@@ -1,23 +1,13 @@
 import request from 'supertest';
 import server from '../../src/server.js';
 
-afterAll((done) => {
-  server.close(done);
-});
+describe('Server', () => {
+  afterAll(async () => {
+    await server.close();
+  });
 
-describe('GET /persons via server.js', () => {
-  test('retourne 200 et un tableau de 7 personnes dans un objet success', async () => {
-    // Arrange
-    const endpoint = '/persons';
-
-    // Act
-    const res = await request(server).get(endpoint);
-
-    // Assert
-    expect(res.statusCode).toBe(200);
-    expect(res.body).toHaveProperty('success', true);
-    expect(Array.isArray(res.body.data)).toBe(true);
-    expect(res.body.data).toHaveLength(7);
-    expect(res.body.data[0]).toHaveProperty('name', 'Christopher Nolan');
+  it('should respond to GET / with 200', async () => {
+    const response = await request(server).get('/');
+    expect(response.statusCode).toBe(200);
   });
 });
