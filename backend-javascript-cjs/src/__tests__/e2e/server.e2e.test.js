@@ -1,7 +1,7 @@
 'use strict';
 
 const http = require('http');
-const app = require('../../src/app');
+const app = require('../../app');
 
 let server;
 

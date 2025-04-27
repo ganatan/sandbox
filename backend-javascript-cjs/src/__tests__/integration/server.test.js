@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('supertest');
-const server = require('../../src/server');
+const server = require('../../server');
 
 afterAll((done) => {
   server.close(done);

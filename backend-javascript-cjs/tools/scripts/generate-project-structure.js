@@ -47,7 +47,7 @@ function generateStructureForRoot() {
   return structure;
 }
 
-const foldersToInspect = ['src', '__tests__', 'tools'];
+const foldersToInspect = ['src', 'tools'];
 const projectStructure = generateStructureForFolders(foldersToInspect);
 const rootStructure = generateStructureForRoot();
 

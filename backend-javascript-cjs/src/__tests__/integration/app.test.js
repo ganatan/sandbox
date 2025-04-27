@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('supertest');
-const app = require('../../src/app');
+const app = require('../../app');
 
 describe('API /persons', () => {
   test('GET /persons returns 200 and an array of 7 people', async () => {
