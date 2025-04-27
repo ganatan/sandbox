@@ -4,6 +4,7 @@ services:
   backend:
     build:
       context: .
+    image: backend-javascript-cjs
     container_name: backend-javascript-cjs-container
     ports:
       - "3000:3000"
