@@ -2,10 +2,10 @@
 
 const cityController = require('../../controllers/city.controller');
 const service = require('../../services/city.service');
-const { validateItem } = require('../../schema/city.schema');
+const { validateItem } = require('../../schemas/city.schema');
 
 jest.mock('../../services/city.service');
-jest.mock('../../schema/city.schema');
+jest.mock('../../schemas/city.schema');
 
 describe('CityController', () => {
   let req, res, next;

@@ -1,6 +1,6 @@
 'use strict';
 
-const { validateItem } = require('../schema/city.schema');
+const { validateItem } = require('../schemas/city.schema');
 const service = require('../services/city.service');
 
 class Controller {
