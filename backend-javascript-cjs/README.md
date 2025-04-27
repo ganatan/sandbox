@@ -28,6 +28,8 @@ Starter backend Node.js utilisant **CommonJS**, avec Express, Jest, ESLint et We
 - `npm run coverage` : rapport de couverture
 - `npm run build` : build avec Webpack
 - `npm run generate-project-structure` : affichage de la structure du projet
+- `npm run docker:build` : construction de l'image Docker backend-javascript-cjs
+- `npm run docker:run` : exécution du conteneur Docker sur le port 3000
 
 ## 🛠 Installation
 
