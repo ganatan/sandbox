@@ -11,8 +11,8 @@ const errorLogger = require('./infrastructure/logger/error-logger.js');
 
 const swaggerRoutes = require('./infrastructure/swagger/swagger.routes.js');
 
-const appRoutes = require('./routers/app.routes.js');
-const rootRoutes = require('./routers/root.routes.js');
+const appRoutes = require('./routes/app.routes.js');
+const rootRoutes = require('./routes/root.routes.js');
 
 const app = express();
 
