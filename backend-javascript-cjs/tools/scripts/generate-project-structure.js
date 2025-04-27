@@ -24,37 +24,19 @@ function getDirectoryStructure(dirPath, level = 0) {
   return structure;
 }
 
-function generateStructureForFolders(folders) {
-  let fullStructure = '';
-  for (const folder of folders) {
-    const folderPath = path.join(__dirname, '..', '..', folder);
-    if (fs.existsSync(folderPath)) {
-      fullStructure += `\nStructure of ${folder}:\n`;
-      fullStructure += getDirectoryStructure(folderPath);
-    } else {
-      fullStructure += `\n${folder} directory does not exist.\n`;
-    }
-  }
-
-  return fullStructure;
-}
-
-function generateStructureForRoot() {
+function generateProjectStructure() {
   const rootPath = path.join(__dirname, '..', '..');
-  let structure = '\nStructure of project root:\n';
-  structure += getDirectoryStructure(rootPath, 0);
+  let structure = 'Structure of project root:\n';
+  structure += getDirectoryStructure(rootPath);
 
   return structure;
 }
 
-const foldersToInspect = ['src', 'tools'];
-const projectStructure = generateStructureForFolders(foldersToInspect);
-const rootStructure = generateStructureForRoot();
+const projectStructure = generateProjectStructure();
 
-console.log(rootStructure + projectStructure);
+console.log(projectStructure);
 
 module.exports = {
   getDirectoryStructure,
-  generateStructureForFolders,
-  generateStructureForRoot,
+  generateProjectStructure,
 };
