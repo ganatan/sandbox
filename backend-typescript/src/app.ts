@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
 
 const app = express();
-const port = 3000;
 
 const persons = [
   { id: 1, name: 'Steven Spielberg' },
@@ -16,11 +15,5 @@ const persons = [
 app.get('/persons', (req: Request, res: Response) => {
   res.json(persons);
 });
-
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
-}
 
 export default app;
