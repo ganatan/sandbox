@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/server",
+    "dev": "nodemon src/server",
     "dev:prod": "cross-env NODE_ENV=production nodemon src/server",
-    "start": "cross-env NODE_ENV=development node src/server",
+    "start": "node src/server",
     "start:prod": "cross-env NODE_ENV=production node src/server",
     "lint": "eslint .",
     "prettier:check": "prettier --check .",
@@ -21,8 +21,7 @@
     "test:e2e": "jest src/__tests__/e2e",
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "serve": "cross-env NODE_ENV=production node dist/bundle.js",
-    "serve:dev": "cross-env NODE_ENV=development node dist/bundle.js",
+    "serve": "node dist/bundle.js",
     "docker:remove-all-containers": "FOR /f %i IN ('docker ps -a -q') DO docker rm -f %i",
     "docker:remove-all-images": "FOR /f %i IN ('docker images -q') DO docker rmi -f %i",
     "docker:list-images": "docker images",
@@ -49,7 +48,6 @@
   "dependencies": {
     "cors": "2.8.5",
     "dotenv": "16.5.0",
-    "dotenv-webpack": "^8.1.0",
     "express": "5.1.0",
     "express-rate-limit": "7.5.0",
     "helmet": "8.1.0",
@@ -57,13 +55,12 @@
     "supertest": "7.1.0",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.1",
-    "webpack-node-externals": "^3.0.0",
     "winston": "3.17.0",
-    "zod": "^3.24.3"
+    "zod": "3.24.3"
   },
   "devDependencies": {
     "@eslint/js": "9.25.1",
-    "cross-env": "^7.0.3",
+    "cross-env": "7.0.3",
     "eslint": "9.25.1",
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-prettier": "5.2.6",

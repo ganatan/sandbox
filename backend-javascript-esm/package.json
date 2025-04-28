@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
-    "dev": "cross-env NODE_ENV=development nodemon src/server",
+    "dev": "nodemon src/server",
     "dev:prod": "cross-env NODE_ENV=production nodemon src/server",
-    "start": "cross-env NODE_ENV=development node src/server",
+    "start": "node src/server",
     "start:prod": "cross-env NODE_ENV=production node src/server",
     "lint": "eslint .",
     "test": "jest",
@@ -17,8 +17,9 @@
     "test:unit": "jest src/modules/person/__tests__/unit",
     "test:integration": "jest __tests__/integration",
     "test:e2e": "jest __tests__/e2e",
-    "build": "webpack",
-    "serve": "node dist/bundle",
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "serve": "node dist/bundle.js",
     "docker:build": "docker build -t backend-javascript-esm .",
     "docker:run": "docker run -p 3000:3000 backend-javascript-esm"
   },
