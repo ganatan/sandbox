@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "coverage": "jest --coverage",
     "build": "webpack --config webpack.config.js",
     "start:prod": "node dist/bundle.js",
     "serve": "node dist/bundle.js",
