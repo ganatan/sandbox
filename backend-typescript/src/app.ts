@@ -17,7 +17,6 @@ app.get('/persons', (req: Request, res: Response) => {
   res.json(persons);
 });
 
-// Seulement démarrer si ce n'est pas en mode test
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

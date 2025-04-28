@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from './app'; // importation correcte de ton app.ts
+import app from '../../../src/app';
 
 describe('GET /persons', () => {
   it('should return a list of persons', async () => {
