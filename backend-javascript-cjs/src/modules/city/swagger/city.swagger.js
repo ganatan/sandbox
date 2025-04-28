@@ -2,12 +2,12 @@
  * @openapi
  * /cities:
  *   get:
- *     summary: Récupère la liste des villes
+ *     summary: Retrieves the list of cities
  *     tags:
  *       - Cities
  *     responses:
  *       200:
- *         description: Succès - Retourne la liste des villes
+ *         description: Success - Returns the list of cities
  *         content:
  *           application/json:
  *             schema:

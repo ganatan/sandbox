@@ -2,12 +2,12 @@
  * @openapi
  * /persons:
  *   get:
- *     summary: Récupère la liste des personnes
+ *     summary: Retrieves the list of persons
  *     tags:
  *       - Persons
  *     responses:
  *       200:
- *         description: Succès - Retourne la liste des personnes
+ *         description: Success - Returns the list of persons
  *         content:
  *           application/json:
  *             schema:

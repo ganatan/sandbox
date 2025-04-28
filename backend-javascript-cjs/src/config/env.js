@@ -15,10 +15,6 @@ if (nodeEnv === 'production') {
 
 dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
-console.log(`0000000001: ${process.env.NODE_ENV}`);
-console.log(`0000000002: ${nodeEnv}`);
-console.log(`0000000003: ${envFile}`);
-
 const env = {
   nodeEnv: nodeEnv,
   port: process.env.PORT || 7777,

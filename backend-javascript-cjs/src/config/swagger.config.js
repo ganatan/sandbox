@@ -1,5 +1,8 @@
 'use strict';
 
+const env = require('./env');
+const serverUrl = `http://localhost:${env.port}`;
+
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -10,7 +13,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:7777/api',
+        url: serverUrl,
         description: 'Serveur de développement',
       },
     ],
