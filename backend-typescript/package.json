@@ -6,9 +6,10 @@
   "scripts": {
     "start": "ts-node app.ts",
     "lint": "eslint \"./**/*.ts\"",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"    
+    "test:coverage": "jest --coverage",
+    "generate-project-structure": "ts-node tools/scripts/generate-project-structure.ts"
   },
   "keywords": [],
   "author": "",
