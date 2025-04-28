@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
     "dev": "cross-env NODE_ENV=development nodemon src/server",
     "dev:prod": "cross-env NODE_ENV=production nodemon src/server",
     "start": "cross-env NODE_ENV=development node src/server",
@@ -22,7 +23,6 @@
     "build:dev": "webpack --mode=development",
     "serve": "cross-env NODE_ENV=production node dist/bundle.js",
     "serve:dev": "cross-env NODE_ENV=development node dist/bundle.js",
-    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
     "docker:remove-all-containers": "FOR /f %i IN ('docker ps -a -q') DO docker rm -f %i",
     "docker:remove-all-images": "FOR /f %i IN ('docker images -q') DO docker rmi -f %i",
     "docker:list-images": "docker images",

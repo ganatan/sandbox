@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server",
+    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
     "dev": "nodemon src/server",
+    "start": "node src/server",
     "lint": "eslint .",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -16,7 +17,6 @@
     "test:e2e": "jest __tests__/e2e",
     "build": "webpack",
     "serve": "node dist/bundle",
-    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
     "docker:build": "docker build -t backend-javascript-esm .",
     "docker:run": "docker run -p 3000:3000 backend-javascript-esm"
   },

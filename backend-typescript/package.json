@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "generate-project-structure": "ts-node tools/scripts/generate-project-structure.ts",
     "dev": "ts-node-dev src/server.ts",
+    "start": "ts-node src/server.ts",
     "lint": "eslint \"./**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -16,8 +17,7 @@
     "test:e2e": "jest src/__tests__/e2e",
     "build": "webpack --config webpack.config.js",
     "start:prod": "node dist/bundle.js",
-    "serve": "node dist/bundle.js",
-    "generate-project-structure": "ts-node tools/scripts/generate-project-structure.ts"
+    "serve": "node dist/bundle.js"
   },
   "keywords": [],
   "author": "",
