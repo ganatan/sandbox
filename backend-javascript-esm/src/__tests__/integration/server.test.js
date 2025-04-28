@@ -1,5 +1,5 @@
 import request from 'supertest';
-import server from '../../src/server.js';
+import server from '../../server.js';
 
 describe('Server', () => {
   afterAll(async () => {

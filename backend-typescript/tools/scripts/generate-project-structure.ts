@@ -27,6 +27,7 @@ function generateProjectStructure(): string {
   const rootPath = process.cwd();
   let structure = 'Structure of project root:\n';
   structure += getDirectoryStructure(rootPath);
+
   return structure;
 }
 

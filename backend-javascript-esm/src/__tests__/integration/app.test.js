@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../src/app.js';
+import app from '../../app';
 
 describe('API /persons', () => {
   test('GET /persons retourne 200 et un tableau de 7 personnes', async () => {

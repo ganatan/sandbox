@@ -3,7 +3,7 @@ import http from 'http';
 let server;
 
 beforeAll(async () => {
-  const { default: srv } = await import('../../src/server.js');
+  const { default: srv } = await import('../../server.js');
   server = srv;
 });
 
