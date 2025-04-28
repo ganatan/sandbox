@@ -1,8 +1,9 @@
 import app from './app';
+import { appConfig } from './config/app.config';
+import { Server } from 'http';
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const server: Server = app.listen(appConfig.app.port, () => {
+  console.log(`API listening on http://localhost:${appConfig.app.port}`);
 });
 
+export default server;
