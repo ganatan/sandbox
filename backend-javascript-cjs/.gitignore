@@ -18,7 +18,7 @@ Thumbs.db
 .env.*
 !.env.development
 !.env.production
-!.env.example
+!.env.test
 
 # Tests & coverage
 coverage/
