@@ -1,4 +1,4 @@
-import getItems from '../../person.controller.js';
+import getItems from '../../controllers/person.controller.js';
 
 test('getItems returns an object with success and an array of 7 persons', () => {
   // Arrange
