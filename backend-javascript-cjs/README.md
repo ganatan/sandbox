@@ -1,4 +1,4 @@
-![Coverage Badge](https://img.shields.io/badge/Coverage-98%25-brightgreen)
+![Coverage Badge](https://img.shields.io/badge/Coverage-99%25-brightgreen)
 
 # backend-javascript-cjs
 
