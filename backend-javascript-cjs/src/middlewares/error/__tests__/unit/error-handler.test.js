@@ -1,15 +1,17 @@
 'use strict';
 
 const errorHandler = require('../../error-handler');
+const logger = require('../../../../infrastructure/logger/logger');
+
+jest.mock('../../../../infrastructure/logger/logger', () => ({
+  error: jest.fn(),
+}));
 
 describe('errorHandler Middleware', () => {
   let req, res, next;
 
   beforeEach(() => {
-    req = {
-      method: 'GET',
-      originalUrl: '/test-url',
-    };
+    req = { method: 'GET', originalUrl: '/test-url' };
     res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -29,11 +31,14 @@ describe('errorHandler Middleware', () => {
     });
   };
 
-  it('should handle generic error without statusCode', () => {
+  it('handles generic error without statusCode', () => {
+    // Arrange
     const error = new Error('Something went wrong');
 
+    // Act
     errorHandler(error, req, res, next);
 
+    // Assert
     checkResponse(500, {
       message: 'Something went wrong',
       context: 'GET /test-url',
@@ -42,16 +47,21 @@ describe('errorHandler Middleware', () => {
         errorCode: 500,
       }),
     });
+    expect(logger.error).toHaveBeenCalledWith('[ERROR] 500: Something went wrong');
+    expect(logger.error).toHaveBeenCalledWith('[CONTEXT] GET /test-url');
   });
 
-  it('should handle error with specific statusCode', () => {
+  it('handles error with specific statusCode', () => {
+    // Arrange
     const error = {
       statusCode: 404,
       message: 'Resource not found',
     };
 
+    // Act
     errorHandler(error, req, res, next);
 
+    // Assert
     checkResponse(404, {
       message: 'Resource not found',
       context: 'GET /test-url',
@@ -60,9 +70,12 @@ describe('errorHandler Middleware', () => {
         errorCode: 404,
       }),
     });
+    expect(logger.error).toHaveBeenCalledWith('[ERROR] 404: Resource not found');
+    expect(logger.error).toHaveBeenCalledWith('[CONTEXT] GET /test-url');
   });
 
-  it('should handle error with custom context and details', () => {
+  it('handles error with custom context and details', () => {
+    // Arrange
     const error = {
       statusCode: 400,
       message: 'Invalid input',
@@ -74,8 +87,10 @@ describe('errorHandler Middleware', () => {
       },
     };
 
+    // Act
     errorHandler(error, req, res, next);
 
+    // Assert
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith({
       success: false,
@@ -89,5 +104,32 @@ describe('errorHandler Middleware', () => {
         },
       },
     });
+    expect(logger.error).toHaveBeenCalledWith('[ERROR] 400: Invalid input');
+    expect(logger.error).toHaveBeenCalledWith('[CONTEXT] POST /custom-url');
   });
+
+  it('handles error with empty context to skip context logging', () => {
+    // Arrange
+    const error = new Error('No context');
+    req.method = null;
+    req.originalUrl = null;
+
+    // Act
+    errorHandler(error, req, res, next);
+
+    // Assert
+    expect(logger.error).toHaveBeenCalledWith('[ERROR] 500: No context');
+    expect(logger.error).not.toHaveBeenCalledWith('[CONTEXT] null null'); // ligne 16 non atteinte
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        success: false,
+        error: expect.objectContaining({
+          message: 'No context',
+          context: 'null null',
+        }),
+      })
+    );
+  });
+
 });
