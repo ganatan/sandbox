@@ -6,6 +6,7 @@ const configureSecurity = require('./middlewares/security/security.js');
 
 const responseHandler = require('./middlewares/response/response-handler.js');
 const errorHandler = require('./middlewares/error/error-handler.js');
+const notFoundHandler = require('./middlewares/error/not-found-handler.js');
 
 const requestLogger = require('./infrastructure/logger/request-logger.js');
 const errorLogger = require('./infrastructure/logger/error-logger.js');
@@ -28,6 +29,7 @@ app.use('/api-docs', swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);
 
+app.use(notFoundHandler);
 app.use(responseHandler);
 app.use(errorHandler);
 app.use(errorLogger);
