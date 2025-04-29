@@ -132,4 +132,3 @@ describe('errorHandler Middleware', () => {
     );
   });
 });
-

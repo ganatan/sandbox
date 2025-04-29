@@ -14,6 +14,6 @@ module.exports = {
     '!**/node_modules/**',
     '!**/vendor/**',
   ],
-  coverageDirectory: 'coverage', 
-  coverageReporters: ['text', 'lcov', 'json-summary'], 
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'json-summary'],
 };

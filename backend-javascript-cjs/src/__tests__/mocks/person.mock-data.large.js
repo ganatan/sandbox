@@ -10,7 +10,7 @@ const base = [
   { id: 7, name: 'Denis Villeneuve' },
 ];
 
-module.exports = Array.from({ length: 1000 }, (_, i) => ({
-  id: i + 1,
-  name: base[i % base.length].name + ' '.repeat(100),
+module.exports = Array.from({ length: 1000 }, (unused, index) => ({
+  id: index + 1,
+  name: base[index % base.length].name + ' '.repeat(100),
 }));

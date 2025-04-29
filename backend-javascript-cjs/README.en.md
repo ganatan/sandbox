@@ -1,3 +1,5 @@
+![Coverage Badge](https://img.shields.io/badge/Coverage-99%25-brightgreen)
+
 # backend-javascript-cjs
 
 **👉 Si vous ne parlez pas anglais, la version française est ici** : [![Français](../../ui/version-fr.png)](./README.md)

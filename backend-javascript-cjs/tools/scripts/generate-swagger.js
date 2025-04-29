@@ -10,6 +10,7 @@ function ensureDistDirectory() {
   if (!fs.existsSync(distPath)) {
     fs.mkdirSync(distPath, { recursive: true });
   }
+
   return distPath;
 }
 

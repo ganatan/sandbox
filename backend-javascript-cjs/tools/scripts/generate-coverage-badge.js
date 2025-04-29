@@ -13,20 +13,30 @@ function getCoveragePercent() {
   }
 
   const summary = JSON.parse(fs.readFileSync(coverageSummaryPath, 'utf-8'));
-  const total = summary.total;
+  const linesPct = summary.total.lines.pct;
 
-  const linesPct = total.lines.pct;
   return Math.round(linesPct);
 }
 
-function updateBadge(percentage) {
-  const color =
-    percentage >= 90 ? 'brightgreen' :
-    percentage >= 80 ? 'green' :
-    percentage >= 70 ? 'yellow' :
-    percentage >= 50 ? 'orange' :
-    'red';
+function getColor(percentage) {
+  if (percentage >= 90) {
+    return 'brightgreen';
+  }
+  if (percentage >= 80) {
+    return 'green';
+  }
+  if (percentage >= 70) {
+    return 'yellow';
+  }
+  if (percentage >= 50) {
+    return 'orange';
+  }
 
+  return 'red';
+}
+
+function updateBadge(percentage) {
+  const color = getColor(percentage);
   const badgeMarkdown = `![Coverage Badge](https://img.shields.io/badge/Coverage-${percentage}%25-${color})`;
 
   let readme = fs.readFileSync(badgePath, 'utf-8');

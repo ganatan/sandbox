@@ -17,7 +17,7 @@ try {
   });
 
   console.log('\n✅ Coverage thresholds validated successfully.');
-} catch (error) {
+} catch {
   console.error('\n❌ Coverage thresholds not met.');
   process.exit(1);
 }

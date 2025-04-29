@@ -77,9 +77,9 @@ describe('responseHandler Middleware', () => {
     // Arrange
     res.locals = {
       data: {
-        metadata: { total: 5 }
+        metadata: { total: 5 },
       },
-      statusCode: 200
+      statusCode: 200,
     };
 
     // Act
@@ -89,7 +89,7 @@ describe('responseHandler Middleware', () => {
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
       success: true,
-      data: { metadata: { total: 5 } }
+      data: { metadata: { total: 5 } },
     });
     expect(next).toHaveBeenCalled();
   });

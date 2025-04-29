@@ -84,5 +84,3 @@ describe('API / (fallback)', () => {
     expect(res.body.data).toHaveProperty('env', 'production');
   });
 });
-
-
