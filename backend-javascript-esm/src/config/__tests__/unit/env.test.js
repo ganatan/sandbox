@@ -17,7 +17,7 @@ describe('env config', () => {
     delete process.env.NODE_ENV;
 
     // Act
-    const env = await import('../../env.js');
+    const { env } = await import('../../env.js');
 
     // Assert
     expect(env.nodeEnv).toBe('development');
@@ -28,7 +28,7 @@ describe('env config', () => {
     process.env.NODE_ENV = 'production';
 
     // Act
-    const env = await import('../../env.js');
+    const { env } = await import('../../env.js');
 
     // Assert
     expect(env.nodeEnv).toBe('production');
@@ -39,7 +39,7 @@ describe('env config', () => {
     process.env.NODE_ENV = 'test';
 
     // Act
-    const env = await import('../../env.js');
+    const { env } = await import('../../env.js');
 
     // Assert
     expect(env.nodeEnv).toBe('test');
@@ -53,7 +53,7 @@ describe('env config', () => {
     jest.resetModules();
 
     // Act
-    const env = await import('../../env.js');
+    const { env } = await import('../../env.js');
 
     // Assert
     expect(env.port).toBe('8888');
