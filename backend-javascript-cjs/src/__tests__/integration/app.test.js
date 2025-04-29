@@ -21,8 +21,21 @@ describe('API /persons', () => {
 });
 
 describe('API / (fallback)', () => {
-  test('GET / returns API version info', async () => {
+  let originalEnv;
+
+  beforeEach(() => {
     // Arrange
+    originalEnv = process.env.NODE_ENV;
+  });
+
+  afterEach(() => {
+    // Cleanup
+    process.env.NODE_ENV = originalEnv;
+  });
+
+  test('GET / returns API version info when NODE_ENV is test', async () => {
+    // Arrange
+    process.env.NODE_ENV = 'test';
     const endpoint = '/';
 
     // Act
@@ -34,5 +47,42 @@ describe('API / (fallback)', () => {
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
     expect(res.body.data).toHaveProperty('version', '1.0.0');
     expect(res.body.data).toHaveProperty('status', 'ok');
+    expect(res.body.data).toHaveProperty('env', 'test');
+  });
+
+  test('GET / returns API version info when NODE_ENV is undefined', async () => {
+    // Arrange
+    delete process.env.NODE_ENV;
+    const endpoint = '/';
+
+    // Act
+    const res = await request(app).get(endpoint);
+
+    // Assert
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('success', true);
+    expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
+    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('status', 'ok');
+    expect(res.body.data).toHaveProperty('env', 'development');
+  });
+
+  test('GET / returns API version info when NODE_ENV is production', async () => {
+    // Arrange
+    process.env.NODE_ENV = 'production';
+    const endpoint = '/';
+
+    // Act
+    const res = await request(app).get(endpoint);
+
+    // Assert
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('success', true);
+    expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
+    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('status', 'ok');
+    expect(res.body.data).toHaveProperty('env', 'production');
   });
 });
+
+
