@@ -1,9 +1,7 @@
-'use strict';
-
-const express = require('express');
-const request = require('supertest');
-const configureSecurity = require('../../security');
-const appConfig = require('../../../../config/app.config');
+import express from 'express';
+import request from 'supertest';
+import configureSecurity from '../../security.js';
+import { appConfig } from '../../../../config/app.config.js';
 
 describe('Security Middleware', () => {
   let app;

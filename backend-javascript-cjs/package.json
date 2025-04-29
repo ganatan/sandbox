@@ -19,6 +19,7 @@
     "coverage:check": "node tools/scripts/coverage-check.js",
     "coverage:badge": "node tools/scripts/generate-coverage-badge.js",
     "coverage:full": "npm run test:coverage && npm run coverage:badge",
+    "test:security": "jest -- security.test.js",
     "test:env": "jest -- env.test.js",
     "test:app": "jest -- app.test.js",
     "test:server": "jest -- server.test.js",

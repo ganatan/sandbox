@@ -15,6 +15,7 @@
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "coverage": "cross-env NODE_ENV=test jest --coverage",
     "coverage:full": "npm run test:coverage && npm run coverage:badge",
+    "test:security": "jest -- security.test.js",
     "test:env": "jest -- env.test.js",
     "test:app": "jest -- app.test.js",
     "test:unit": "cross-env NODE_ENV=test jest src/modules --testPathPattern=__tests__/unit",
@@ -63,8 +64,10 @@
     "webpack-cli": "6.0.1"
   },
   "dependencies": {
+    "compression": "^1.8.0",
     "cors": "2.8.5",
     "dotenv": "16.5.0",
+    "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
     "mysql2": "3.14.0",
     "nodemon": "3.1.10",
