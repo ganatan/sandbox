@@ -1,5 +1,5 @@
 import http from 'http';
-import app from '../../app.js'; // extension .js obligatoire en ESM
+import app from '../../app.js';
 
 let server;
 

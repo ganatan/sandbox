@@ -7,9 +7,9 @@ const configureSecurity = require('./middlewares/security/security.js');
 
 const initLocals = require('./middlewares/core/init-locals.js');
 
+const notFoundHandler = require('./middlewares/error/not-found-handler.js');
 const responseHandler = require('./middlewares/response/response-handler.js');
 const errorHandler = require('./middlewares/error/error-handler.js');
-const notFoundHandler = require('./middlewares/error/not-found-handler.js');
 
 const requestLogger = require('./infrastructure/logger/request-logger.js');
 const errorLogger = require('./infrastructure/logger/error-logger.js');

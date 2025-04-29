@@ -6,7 +6,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'json'],
   clearMocks: true,
   verbose: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     'src/**/*.{js,jsx}',
     '!src/**/__tests__/**',

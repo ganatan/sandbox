@@ -22,30 +22,3 @@ export const appConfig = {
     metricsPath: '/metrics',
   },
 };
-
-
-
-// import { env } from './env.js';
-
-// export const appConfig = {
-//   app: {
-//     port: env.port,
-//     env: env.nodeEnv,
-//   },
-//   security: {
-//     corsOrigin: env.corsOrigin,
-//     helmet: {
-//       contentSecurityPolicy: false,
-//     },
-//     rateLimit: {
-//       windowMs: 15 * 60 * 1000,
-//       max: 100,
-//     },
-//   },
-//   logger: {
-//     level: env.logLevel,
-//   },
-//   monitoring: {
-//     metricsPath: '/metrics',
-//   },
-// };
