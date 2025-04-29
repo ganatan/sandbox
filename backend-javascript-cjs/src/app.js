@@ -4,6 +4,8 @@ const express = require('express');
 
 const configureSecurity = require('./middlewares/security/security.js');
 
+const initLocals = require('./middlewares/core/init-locals.js');
+
 const responseHandler = require('./middlewares/response/response-handler.js');
 const errorHandler = require('./middlewares/error/error-handler.js');
 const notFoundHandler = require('./middlewares/error/not-found-handler.js');
@@ -21,6 +23,12 @@ const app = express();
 configureSecurity(app);
 
 app.use(express.json());
+
+app.use(initLocals);
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 app.use(requestLogger);
 
