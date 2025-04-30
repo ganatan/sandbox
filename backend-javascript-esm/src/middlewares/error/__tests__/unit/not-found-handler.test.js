@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { notFoundHandler } from '../../not-found-handler.js';
+import notFoundHandler from '../../not-found-handler.js';
 
 describe('notFoundHandler Middleware', () => {
   let req, res, next;
