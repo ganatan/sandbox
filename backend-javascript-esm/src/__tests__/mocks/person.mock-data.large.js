@@ -1,11 +1,8 @@
 const base = [
-  { id: 1, name: 'Christopher Nolan' },
-  { id: 2, name: 'Quentin Tarantino' },
-  { id: 3, name: 'Steven Spielberg' },
-  { id: 4, name: 'Martin Scorsese' },
-  { id: 5, name: 'James Cameron' },
-  { id: 6, name: 'Ridley Scott' },
-  { id: 7, name: 'Denis Villeneuve' },
+  { id: 1, name: 'Steven Spielberg', city: 'Cincinnati' },
+  { id: 2, name: 'Ridley Scott', city: 'South Shields' },
+  { id: 3, name: 'Christopher Nolan', city: 'London' },
+  { id: 4, name: 'Denis Villeneuve', city: 'Bécancour' },
 ];
 
 const mockData = Array.from({ length: 1000 }, (unused, index) => ({

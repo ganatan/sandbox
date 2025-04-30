@@ -16,6 +16,6 @@ test('getItems returns an object with success and an array of 7 persons', () => 
 
   expect(jsonResponse).toHaveProperty('success', true);
   expect(Array.isArray(jsonResponse.data)).toBe(true);
-  expect(jsonResponse.data).toHaveLength(7);
-  expect(jsonResponse.data[0]).toHaveProperty('name', 'Christopher Nolan');
+  expect(jsonResponse.data).toHaveLength(4);
+  expect(jsonResponse.data[0]).toHaveProperty('name', 'Steven Spielberg');
 });

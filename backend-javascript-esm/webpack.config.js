@@ -10,7 +10,7 @@ export default (env, argv) => {
   return {
     entry: './src/server.js',
     output: {
-      filename: 'server.js',
+      filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist')
     },
     target: 'node',
@@ -21,6 +21,6 @@ export default (env, argv) => {
     },
     experiments: {
       outputModule: true
-    }
+    },
   }
 }
