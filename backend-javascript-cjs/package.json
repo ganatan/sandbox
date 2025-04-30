@@ -13,6 +13,7 @@
     "prettier:check": "prettier --check .",
     "prettier": "prettier --write .",
     "test": "cross-env NODE_ENV=test jest",
+    "test:failures": "cross-env NODE_ENV=test jest --onlyFailures",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "coverage": "cross-env NODE_ENV=test jest --coverage",

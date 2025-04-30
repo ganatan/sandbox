@@ -11,6 +11,7 @@
     "start:prod": "cross-env NODE_ENV=production node src/server",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest",
+    "test:failures": "cross-env NODE_ENV=test jest --onlyFailures",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "coverage": "cross-env NODE_ENV=test jest --coverage",

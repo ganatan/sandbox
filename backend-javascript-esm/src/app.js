@@ -14,6 +14,7 @@ import errorLogger from './infrastructure/logger/error-logger.js';
 
 import swaggerRoutes from './infrastructure/swagger/swagger.routes.js';
 
+import healthRoutes from './routes/health.routes.js';
 import appRoutes from './routes/app.routes.js';
 import rootRoutes from './routes/root.routes.js';
 
@@ -24,6 +25,8 @@ configureSecurity(app);
 app.use(compression());
 app.use(express.json());
 app.use(initLocals);
+
+app.use(healthRoutes);
 
 app.use(requestLogger);
 
