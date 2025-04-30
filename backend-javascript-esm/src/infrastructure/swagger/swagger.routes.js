@@ -1,11 +1,18 @@
-import { Router } from 'express';
+import express from 'express';
 import swaggerUi from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
-import { swaggerOptions } from '../../config/swagger.config.js';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerOptions from '../../config/swagger.config.js';
 
-const router = Router();
-const specs = swaggerJSDoc(swaggerOptions);
+const router = express.Router();
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+router.use(
+  '/',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    explorer: true,
+    customSiteTitle: 'Documentation API',
+  }),
+);
 
 export default router;
