@@ -30,7 +30,7 @@ describe('API / (fallback)', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-esm');
-    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('version', '1.1.1');
     expect(res.body.data).toHaveProperty('status', 'ok');
   });
 });

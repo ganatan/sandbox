@@ -18,8 +18,6 @@
     "coverage:full": "npm run test:coverage && npm run coverage:badge",
     "test:response-handler": "jest -- response-handler.test.js",
     "test:logger": "jest src/infrastructure/logger/__tests__/unit/logger.test.js",
-    "test:error-logger": "jest -- error-logger.test.js",
-    "test:request-logger": "jest -- request-logger.test.js",
     "test:security": "jest -- security.test.js",
     "test:env": "jest -- env.test.js",
     "test:app": "jest -- app.test.js",

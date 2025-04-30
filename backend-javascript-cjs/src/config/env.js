@@ -17,6 +17,8 @@ dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 const env = {
   nodeEnv: nodeEnv,
+  name: process.env.APP_NAME,
+  version: process.env.APP_VERSION,
   port: process.env.PORT || 7777,
   corsOrigin: process.env.CORS_ORIGIN || '*',
   logLevel: process.env.LOG_LEVEL || 'info',

@@ -1,4 +1,5 @@
 import express from 'express';
+import appConfig from '../config/app.config.js';
 
 const router = express.Router();
 
@@ -6,9 +7,10 @@ router.get('/', (req, res) => {
   const result = {
     success: true,
     data: {
-      version: '1.0.0',
+      version: appConfig.app.version,
       status: 'ok',
-      app: 'backend-javascript-esm',
+      app: appConfig.app.name,
+      env: process.env.NODE_ENV || 'development',
     },
   };
   res.json(result);

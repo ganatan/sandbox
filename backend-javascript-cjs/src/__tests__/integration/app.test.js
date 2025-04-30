@@ -45,7 +45,7 @@ describe('API / (fallback)', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
-    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('version', '1.1.1');
     expect(res.body.data).toHaveProperty('status', 'ok');
     expect(res.body.data).toHaveProperty('env', 'test');
   });
@@ -62,7 +62,7 @@ describe('API / (fallback)', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
-    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('version', '1.1.1');
     expect(res.body.data).toHaveProperty('status', 'ok');
     expect(res.body.data).toHaveProperty('env', 'development');
   });
@@ -79,7 +79,7 @@ describe('API / (fallback)', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-cjs');
-    expect(res.body.data).toHaveProperty('version', '1.0.0');
+    expect(res.body.data).toHaveProperty('version', '1.1.1');
     expect(res.body.data).toHaveProperty('status', 'ok');
     expect(res.body.data).toHaveProperty('env', 'production');
   });

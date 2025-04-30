@@ -1,9 +1,11 @@
 import { env } from './env.js';
 
-export const appConfig = {
+const appConfig = {
   app: {
     port: env.port,
     env: env.nodeEnv,
+    name: env.name,
+    version: env.version,
   },
   security: {
     corsOrigin: env.corsOrigin,
@@ -22,3 +24,5 @@ export const appConfig = {
     metricsPath: '/metrics',
   },
 };
+
+export default appConfig;

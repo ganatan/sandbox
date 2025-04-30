@@ -6,6 +6,8 @@ const appConfig = {
   app: {
     port: env.port,
     env: env.nodeEnv,
+    name: env.name,
+    version: env.version,
   },
   security: {
     corsOrigin: env.corsOrigin,

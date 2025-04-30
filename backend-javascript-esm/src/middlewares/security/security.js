@@ -1,7 +1,7 @@
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import { appConfig } from '../../config/app.config.js';
+import appConfig from '../../config/app.config.js';
 
 export default function configureSecurity(app) {
   app.use(cors({ origin: appConfig.security.corsOrigin }));
