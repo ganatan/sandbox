@@ -2,14 +2,14 @@ import request from 'supertest';
 import app from '../../app.js';
 
 describe('API /persons', () => {
-  test('GET /persons retourne 200 et un tableau de 7 personnes', async () => {
-    // Arrange
+  test('GET /persons should return status 200 and an array of 7 persons', async () => {
+    // Arrange: define the endpoint
     const endpoint = '/persons';
 
-    // Act
+    // Act: send the GET request
     const res = await request(app).get(endpoint);
 
-    // Assert
+    // Assert: validate response status and structure
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(Array.isArray(res.body.data)).toBe(true);
@@ -18,15 +18,15 @@ describe('API /persons', () => {
   });
 });
 
-describe('API / (fallback)', () => {
-  test('GET / retourne les infos de version de l\'API', async () => {
-    // Arrange
+describe('API / (fallback route)', () => {
+  test('GET / should return version and status information', async () => {
+    // Arrange: define the root endpoint
     const endpoint = '/';
 
-    // Act
+    // Act: send the GET request
     const res = await request(app).get(endpoint);
 
-    // Assert
+    // Assert: validate response status and payload
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('success', true);
     expect(res.body.data).toHaveProperty('app', 'backend-javascript-esm');

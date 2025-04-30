@@ -2,7 +2,6 @@ import { validateItem } from '../schemas/city.schema.js';
 import service from '../services/city.service.js';
 
 class Controller {
-
   async getItems(req, res, next) {
     try {
       const items = service.getItems();
