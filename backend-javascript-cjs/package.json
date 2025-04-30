@@ -30,7 +30,7 @@
     "generate-swagger": "node tools/scripts/generate-swagger.js",
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "serve": "node dist/bundle.js",
+    "serve": "node dist/server.js",
     "docker:remove-all-containers": "FOR /f %i IN ('docker ps -a -q') DO docker rm -f %i",
     "docker:remove-all-images": "FOR /f %i IN ('docker images -q') DO docker rmi -f %i",
     "docker:list-containers": "docker ps -a",

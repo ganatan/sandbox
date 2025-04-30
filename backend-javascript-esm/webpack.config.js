@@ -4,13 +4,13 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export default  (env, argv) => {
+export default (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
     entry: './src/server.js',
     output: {
-      filename: 'bundle.js',
+      filename: 'server.js',
       path: path.resolve(__dirname, 'dist')
     },
     target: 'node',
@@ -22,5 +22,5 @@ export default  (env, argv) => {
     experiments: {
       outputModule: true
     }
-}
+  }
 }

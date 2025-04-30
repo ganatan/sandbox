@@ -17,8 +17,9 @@
     "test:unit": "jest src/modules/**/__tests__/unit",
     "test:integration": "jest src/__tests__/integration",
     "test:e2e": "jest src/__tests__/e2e",
-    "build": "webpack --config webpack.config.js",
-    "serve": "node dist/bundle.js"
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "serve": "node dist/server.js"
   },
   "keywords": [
     "nodejs",

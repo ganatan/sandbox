@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     target: 'node',
     entry: './src/server.js',
     output: {
-      filename: 'bundle.js',
+      filename: 'server.js',
       path: path.resolve(__dirname, 'dist'),
     },
     devtool: isProduction ? false : 'source-map',
