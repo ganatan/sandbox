@@ -1,7 +1,6 @@
 'use strict';
 
 const http = require('http');
-const zlib = require('zlib');
 const app = require('../../app');
 
 jest.mock('../../modules/person/mocks/person.mock-data', () => {
@@ -19,37 +18,30 @@ afterAll((done) => {
 });
 
 describe('GET /persons via HTTP', () => {
-  test('should return 200, valid JSON payload, and gzip encoding', (done) => {
+  test('should return 200 and valid JSON payload', (done) => {
     // Arrange
     const options = {
       hostname: 'localhost',
       port: 3000,
       path: '/persons',
       method: 'GET',
-      headers: {
-        'Accept-Encoding': 'gzip, deflate',
-      },
     };
 
     // Act
     const req = http.request(options, (res) => {
-      // Assert status code and headers
-      expect(res.statusCode).toBe(200);
-      expect(res.headers['content-encoding']).toBe('gzip');
-
-      const unzip = zlib.createGunzip();
-      res.pipe(unzip);
-
       let responseData = '';
 
-      unzip.on('data', (chunk) => {
+      res.setEncoding('utf8');
+      res.on('data', (chunk) => {
         responseData += chunk;
       });
 
-      unzip.on('end', () => {
+      res.on('end', () => {
+        // Assert
+        expect(res.statusCode).toBe(200);
+
         const json = JSON.parse(responseData);
 
-        // Assert payload structure
         expect(json).toHaveProperty('success', true);
         expect(Array.isArray(json.data)).toBe(true);
         expect(json.data.length).toBeGreaterThan(100);

@@ -28,6 +28,16 @@ app.use(compression());
 app.use(express.json());
 app.use(initLocals);
 
+// app.get('/', (req, res) => {
+//     console.log('00000000001:' + JSON.stringify(req.headers));
+//     const payload = {
+//       status: 'ok',
+//     //   req.headers
+//     //         data: Array.from({ length: 1000 }, (_, i) => `Item ${i}`),
+//     };
+//     res.status(200).json({aaaa:1111});
+//   });
+
 app.use(healthRoutes);
 
 app.use(requestLogger);
