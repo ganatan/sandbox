@@ -1,7 +1,7 @@
 {
   "name": "backend-javascript-cjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js backend using CommonJS module system",
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
@@ -51,8 +51,12 @@
     "compose:restart": "docker-compose down && docker-compose up -d",
     "compose:rebuild-force": "docker-compose down && docker-compose up -d --build --force-recreate"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "commonjs",
+    "backend"
+  ],
+  "author": "Danny - Ganatan",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {

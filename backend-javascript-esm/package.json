@@ -1,7 +1,7 @@
 {
   "name": "backend-javascript-esm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js backend using ECMAScript modules",
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
@@ -44,8 +44,13 @@
     "compose:restart": "docker-compose down && docker-compose up -d",
     "compose:rebuild-force": "docker-compose down && docker-compose up -d --build --force-recreate"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "esm",
+    "ecmascript-modules",
+    "backend"
+  ],
+  "author": "Danny - Ganatan",  
   "license": "MIT",
   "type": "module",
   "devDependencies": {
@@ -64,7 +69,7 @@
     "webpack-cli": "6.0.1"
   },
   "dependencies": {
-    "compression": "^1.8.0",
+    "compression": "1.8.0",
     "cors": "2.8.5",
     "dotenv": "16.5.0",
     "express-rate-limit": "7.5.0",

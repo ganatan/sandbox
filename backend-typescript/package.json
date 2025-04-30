@@ -1,7 +1,7 @@
 {
   "name": "backend-typescript",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js backend using TypeScript",
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "ts-node tools/scripts/generate-project-structure.ts",
@@ -20,8 +20,12 @@
     "build": "webpack --config webpack.config.js",
     "serve": "node dist/bundle.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "backend"
+  ],
+  "author": "Danny - Ganatan",
   "license": "MIT",
   "dependencies": {
     "cross-env": "7.0.3",
