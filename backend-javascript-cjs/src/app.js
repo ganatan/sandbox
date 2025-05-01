@@ -15,6 +15,7 @@ const requestLogger = require('./infrastructure/logger/request-logger.js');
 const errorLogger = require('./infrastructure/logger/error-logger.js');
 
 const healthRoutes = require('./routes/health.routes.js');
+const versionRoutes = require('./routes/version.routes.js');
 const swaggerRoutes = require('./routes/swagger.routes.js');
 const appRoutes = require('./routes/app.routes.js');
 const rootRoutes = require('./routes/root.routes.js');
@@ -30,6 +31,7 @@ app.use(healthRoutes);
 
 app.use(requestLogger);
 
+app.use(versionRoutes);
 app.use(swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);

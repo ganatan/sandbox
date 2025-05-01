@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "node tools/scripts/generate-project-structure.js",
+    "generate:version": "node tools/scripts/generate-version.js",
     "dev": "nodemon src/server",
     "dev:prod": "cross-env NODE_ENV=production nodemon src/server",
     "start": "node src/server",
@@ -33,8 +34,8 @@
     "test:integration": "cross-env NODE_ENV=test jest src/__tests__/integration",
     "test:e2e": "cross-env NODE_ENV=test jest src/__tests__/e2e --testMatch '**/*.test.js'",
     "generate-swagger": "node tools/scripts/generate-swagger.js",
-    "build": "webpack --mode=production",
-    "build:dev": "webpack --mode=development",
+    "build": "npm run generate:version && webpack --mode=production",
+    "build:dev": "npm run generate:version && webpack --mode=development",
     "serve": "node dist/server.js",
     "docker:remove-all-containers": "FOR /f %i IN ('docker ps -a -q') DO docker rm -f %i",
     "docker:remove-all-images": "FOR /f %i IN ('docker images -q') DO docker rmi -f %i",
