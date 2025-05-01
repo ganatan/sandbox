@@ -13,7 +13,7 @@ let versionInfo = {
 
 if (env === 'production') {
   try {
-    const versionPath = resolve(process.cwd(), 'dist', 'config', 'version.json');
+    const versionPath = resolve(process.cwd(), 'dist', 'version.json');
     versionInfo = JSON.parse(readFileSync(versionPath, 'utf-8'));
   } catch {
     console.error('❌ version.json introuvable en production.');
