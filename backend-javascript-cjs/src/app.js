@@ -14,9 +14,8 @@ const errorHandler = require('./middlewares/error/error-handler.js');
 const requestLogger = require('./infrastructure/logger/request-logger.js');
 const errorLogger = require('./infrastructure/logger/error-logger.js');
 
-const swaggerRoutes = require('./infrastructure/swagger/swagger.routes.js');
-
 const healthRoutes = require('./routes/health.routes.js');
+const swaggerRoutes = require('./routes/swagger.routes.js');
 const appRoutes = require('./routes/app.routes.js');
 const rootRoutes = require('./routes/root.routes.js');
 
@@ -32,8 +31,7 @@ app.use(healthRoutes);
 
 app.use(requestLogger);
 
-app.use('/api-docs', swaggerRoutes);
-
+app.use(swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);
 

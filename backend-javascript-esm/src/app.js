@@ -12,9 +12,8 @@ import errorHandler from './middlewares/error/error-handler.js';
 import requestLogger from './infrastructure/logger/request-logger.js';
 import errorLogger from './infrastructure/logger/error-logger.js';
 
-import swaggerRoutes from './infrastructure/swagger/swagger.routes.js';
-
 import healthRoutes from './routes/health.routes.js';
+import swaggerRoutes from './routes/swagger.routes.js';
 import appRoutes from './routes/app.routes.js';
 import rootRoutes from './routes/root.routes.js';
 
@@ -30,8 +29,7 @@ app.use(healthRoutes);
 
 app.use(requestLogger);
 
-app.use('/api-docs', swaggerRoutes);
-
+app.use(swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);
 
