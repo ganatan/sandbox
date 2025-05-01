@@ -58,6 +58,8 @@
     "express": "5.1.0",
     "express-rate-limit": "7.5.0",
     "helmet": "8.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "ts-node-dev": "2.0.0",
     "winston": "3.17.0",
     "zod": "3.24.3"
@@ -70,6 +72,8 @@
     "@types/jest": "29.5.14",
     "@types/node": "22.15.3",
     "@types/supertest": "6.0.3",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "8.31.1",
     "eslint": "9.25.1",
