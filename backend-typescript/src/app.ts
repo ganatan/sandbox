@@ -1,19 +1,15 @@
-import express, { Request, Response } from 'express';
+import express, { Application } from 'express';
+import compression from 'compression';
 
-const app = express();
+import appRoutes from './routes/app.routes';
+import rootRoutes from './routes/root.routes';
 
-const persons = [
-  { id: 1, name: 'Steven Spielberg' },
-  { id: 2, name: 'Christopher Nolan' },
-  { id: 3, name: 'Quentin Tarantino' },
-  { id: 4, name: 'Martin Scorsese' },
-  { id: 5, name: 'Alfred Hitchcock' },
-  { id: 6, name: 'Stanley Kubrick' },
-  { id: 7, name: 'James Cameron' },
-];
+const app: Application = express();
 
-app.get('/persons', (req: Request, res: Response) => {
-  res.json(persons);
-});
+app.use(compression());
+app.use(express.json());
+
+app.use(appRoutes);
+app.use(rootRoutes);
 
 export default app;
