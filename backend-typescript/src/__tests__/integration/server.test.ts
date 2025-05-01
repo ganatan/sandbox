@@ -5,8 +5,11 @@ describe('Server', () => {
   afterAll(async () => {
     await new Promise((resolve, reject) => {
       server.close((err?: Error) => {
-        if (err) { reject(err); }
-        else { resolve(null); }
+        if (err) {
+          reject(err);
+        } else {
+          resolve(null);
+        }
       });
     });
   });

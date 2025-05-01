@@ -15,15 +15,10 @@ const responseHandler = (req: Request, res: Response, next: NextFunction): void 
 
   const response: { success: true; data?: unknown; metadata?: unknown } = { success: true };
 
-  if (
-    payload &&
-    typeof payload === 'object' &&
-    'metadata' in payload &&
-    'data' in payload
-  ) {
-    const p = payload as Payload;
-    response.metadata = p.metadata;
-    response.data = p.data;
+  if (payload && typeof payload === 'object' && 'metadata' in payload && 'data' in payload) {
+    const parsedPayload = payload as Payload;
+    response.metadata = parsedPayload.metadata;
+    response.data = parsedPayload.data;
   } else {
     response.data = payload;
   }

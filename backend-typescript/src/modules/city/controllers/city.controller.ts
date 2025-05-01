@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { validateItem } from '../schemas/city.schema';
-
 import service from '../services/city.service';
 
 class Controller {
@@ -13,7 +12,7 @@ class Controller {
       };
 
       return next();
-    } catch (error) {
+    } catch (error: unknown) {
       return next(error);
     }
   }
@@ -28,15 +27,19 @@ class Controller {
       };
 
       return next();
-    } catch (error: any) {
-      if (error.message === 'Item already exists') {
-        return next({ statusCode: 409, message: error.message });
-      }
-      if (error.name === 'ValidationError') {
-        return next({ statusCode: 400, message: error.message });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        if (error.message === 'Item already exists') {
+          return next({ statusCode: 409, message: error.message });
+        }
+        if (error.name === 'ValidationError') {
+          return next({ statusCode: 400, message: error.message });
+        }
+
+        return next(error);
       }
 
-      return next(error);
+      return next({ statusCode: 500, message: 'Unexpected error' });
     }
   }
 }
