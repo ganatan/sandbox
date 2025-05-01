@@ -1,10 +1,11 @@
 {
   "name": "backend-typescript",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Node.js backend using TypeScript",
   "main": "index.js",
   "scripts": {
     "generate-project-structure": "ts-node tools/scripts/generate-project-structure.ts",
+    "generate:version": "ts-node tools/scripts/generate-version.ts",
     "dev": "cross-env NODE_ENV=development ts-node-dev src/server.ts",
     "dev:prod": "cross-env NODE_ENV=production ts-node-dev src/server.ts",
     "start": "cross-env NODE_ENV=development ts-node src/server.ts",
@@ -20,8 +21,8 @@
     "test:unit": "jest src/modules/**/__tests__/unit",
     "test:integration": "jest src/__tests__/integration",
     "test:e2e": "jest src/__tests__/e2e",
-    "build": "webpack --mode=production",
-    "build:dev": "webpack --mode=development",
+    "build": "npm run generate:version && webpack --mode=production",
+    "build:dev": "npm run generate:version && webpack --mode=development",
     "serve": "node dist/server.js",
     "docker:remove-all-containers": "FOR /f %i IN ('docker ps -a -q') DO docker rm -f %i",
     "docker:remove-all-images": "FOR /f %i IN ('docker images -q') DO docker rmi -f %i",

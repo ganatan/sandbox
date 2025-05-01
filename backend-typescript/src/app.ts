@@ -13,28 +13,31 @@ import requestLogger from './infrastructure/logger/request-logger';
 import errorLogger from './infrastructure/logger/error-logger';
 
 import healthRoutes from './routes/health.routes';
+import versionRoutes from './routes/version.routes';
 import swaggerRoutes from './routes/swagger.routes';
 import appRoutes from './routes/app.routes';
 import rootRoutes from './routes/root.routes';
 
 const app = express();
 
-configureSecurity(app);
-
 app.use(compression());
 app.use(express.json());
 app.use(initLocals);
+configureSecurity(app);
 
 app.use(healthRoutes);
 
 app.use(requestLogger);
 
+app.use(versionRoutes);
 app.use(swaggerRoutes);
 app.use(appRoutes);
 app.use(rootRoutes);
 
 app.use(notFoundHandler);
+
 app.use(responseHandler);
+
 app.use(errorHandler);
 app.use(errorLogger);
 

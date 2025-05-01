@@ -19,11 +19,10 @@ import rootRoutes from './routes/root.routes.js';
 
 const app = express();
 
-configureSecurity(app);
-
 app.use(compression());
 app.use(express.json());
 app.use(initLocals);
+configureSecurity(app);
 
 app.use(healthRoutes);
 
@@ -34,7 +33,9 @@ app.use(appRoutes);
 app.use(rootRoutes);
 
 app.use(notFoundHandler);
+
 app.use(responseHandler);
+
 app.use(errorHandler);
 app.use(errorLogger);
 
