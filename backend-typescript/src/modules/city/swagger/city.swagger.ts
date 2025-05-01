@@ -1,30 +1,30 @@
 /**
- * @swagger
- * /api/cities:
+ * @openapi
+ * /cities:
  *   get:
- *     summary: Récupère toutes les villes
+ *     summary: Retrieves the list of cities
  *     tags:
  *       - Cities
  *     responses:
  *       200:
- *         description: Liste des villes
+ *         description: Success - Returns the list of cities
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/City'
- */
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     City:
- *       type: object
- *       properties:
- *         id:
- *           type: string
- *         name:
- *           type: string
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         example: 1
+ *                       name:
+ *                         type: string
+ *                         example: Paris
  */
