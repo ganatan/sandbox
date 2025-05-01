@@ -12,6 +12,7 @@ import errorHandler from './middlewares/error/error-handler';
 import requestLogger from './infrastructure/logger/request-logger';
 import errorLogger from './infrastructure/logger/error-logger';
 
+import healthRoutes from './routes/health.routes';
 import appRoutes from './routes/app.routes';
 import rootRoutes from './routes/root.routes';
 
@@ -22,6 +23,8 @@ configureSecurity(app);
 app.use(compression());
 app.use(express.json());
 app.use(initLocals);
+
+app.use(healthRoutes);
 
 app.use(requestLogger);
 
