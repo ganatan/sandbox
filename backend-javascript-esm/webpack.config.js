@@ -10,7 +10,7 @@ export default (env, argv) => {
   return {
     entry: './src/server.js',
     output: {
-      filename: 'bundle.js',
+      filename: 'server.js',
       path: path.resolve(__dirname, 'dist')
     },
     target: 'node',
