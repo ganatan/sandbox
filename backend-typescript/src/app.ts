@@ -1,5 +1,7 @@
-import express, { Application } from 'express';
+import express from 'express';
 import compression from 'compression';
+
+import configureSecurity from './middlewares/security/security';
 
 import notFoundHandler from './middlewares/error/not-found-handler';
 import responseHandler from './middlewares/response/response-handler';
@@ -11,7 +13,9 @@ import errorLogger from './infrastructure/logger/error-logger';
 import appRoutes from './routes/app.routes';
 import rootRoutes from './routes/root.routes';
 
-const app: Application = express();
+const app = express();
+
+configureSecurity(app);
 
 app.use(compression());
 app.use(express.json());
