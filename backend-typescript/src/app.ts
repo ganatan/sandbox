@@ -3,6 +3,8 @@ import compression from 'compression';
 
 import configureSecurity from './middlewares/security/security';
 
+import initLocals from './middlewares/core/init-locals';
+
 import notFoundHandler from './middlewares/error/not-found-handler';
 import responseHandler from './middlewares/response/response-handler';
 import errorHandler from './middlewares/error/error-handler';
@@ -19,6 +21,7 @@ configureSecurity(app);
 
 app.use(compression());
 app.use(express.json());
+app.use(initLocals);
 
 app.use(requestLogger);
 
