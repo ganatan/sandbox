@@ -3,6 +3,8 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
+const DB_CLIENTS = require('./db-clients.js');
+
 const nodeEnv = process.env.NODE_ENV || 'development';
 
 let envFile = '.env.development';
@@ -12,7 +14,6 @@ if (nodeEnv === 'production') {
 } else if (nodeEnv === 'test') {
   envFile = '.env.test';
 }
-
 dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 const env = {

@@ -1,6 +1,8 @@
 import express from 'express';
 import compression from 'compression';
 
+import appConfig from './config/app.config';
+
 import configureSecurity from './middlewares/security/security';
 
 import initLocals from './middlewares/core/init-locals';
@@ -11,6 +13,8 @@ import errorHandler from './middlewares/error/error-handler';
 
 import requestLogger from './infrastructure/logger/request-logger';
 import errorLogger from './infrastructure/logger/error-logger';
+
+import fakeAuth from './middlewares/auth/fake-auth';
 
 import healthRoutes from './routes/health.routes';
 import versionRoutes from './routes/version.routes';
@@ -25,6 +29,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(initLocals);
 configureSecurity(app);
+
+if (['development', 'test'].includes(appConfig.app.nodeEnv)) {
+    app.use(fakeAuth(appConfig.app.fakeUser));
+}
 
 app.use(healthRoutes);
 

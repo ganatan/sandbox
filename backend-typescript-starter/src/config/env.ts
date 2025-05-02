@@ -12,7 +12,6 @@ if (nodeEnv === 'production') {
 } else if (nodeEnv === 'test') {
   envFile = '.env.test';
 }
-
 dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 export const env = {

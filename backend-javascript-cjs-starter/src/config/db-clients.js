@@ -1,3 +1,5 @@
+'use strict';
+
 const DB_CLIENTS = {
   MOCK: 'mock',
   MYSQL: 'mysql',
