@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-interface User {
-  id: number;
+export interface User {
   username: string;
   role: string;
 }
@@ -12,7 +11,9 @@ declare module 'express' {
   }
 }
 
-const fakeAuth = (user: User = { id: 2, username: 'editor_user', role: 'editor' }) => {
+const fakeAuth = (
+  user: User = { username: 'editor_user', role: 'editor' }
+) => {
   return (req: Request, res: Response, next: NextFunction): void => {
     req.user = user;
     next();

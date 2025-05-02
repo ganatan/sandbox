@@ -3,6 +3,8 @@ import compression from 'compression';
 
 import appConfig from './config/app.config';
 
+console.log('00000000001:' + JSON.stringify(appConfig));
+
 import configureSecurity from './middlewares/security/security';
 
 import initLocals from './middlewares/core/init-locals';
@@ -31,7 +33,7 @@ app.use(initLocals);
 configureSecurity(app);
 
 if (['development', 'test'].includes(appConfig.app.nodeEnv)) {
-    app.use(fakeAuth(appConfig.app.fakeUser));
+  app.use(fakeAuth(appConfig.app.fakeUser));
 }
 
 app.use(healthRoutes);

@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS } from '../../shared/constants/http/http-status';
 
 interface User {
-  id: number;
   username: string;
   role: string;
 }
