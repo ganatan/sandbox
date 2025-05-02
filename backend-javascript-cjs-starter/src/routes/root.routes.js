@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
       status: 'ok',
       app: appConfig.app.name,
       env: process.env.NODE_ENV || 'development',
+      dbClient: appConfig.app.dbClient,
     },
   };
   res.send(result);

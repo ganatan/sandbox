@@ -1,6 +1,7 @@
 'use strict';
 
 const env = require('./env');
+const DB_CLIENTS = require('./db-clients.js');
 
 const appConfig = {
   app: {
@@ -8,6 +9,12 @@ const appConfig = {
     env: env.nodeEnv,
     name: env.name,
     version: env.version,
+    dbClient: env.dbClient || DB_CLIENTS.MOCK,
+    nodeEnv: env.nodeEnv || 'development',
+    fakeUser: {
+      username: env.fakeUser.username || 'default_user',
+      role: env.fakeUser.role || 'viewer',
+    },
   },
   security: {
     corsOrigin: env.corsOrigin,

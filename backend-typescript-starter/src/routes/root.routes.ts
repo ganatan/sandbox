@@ -11,6 +11,7 @@ router.get('/', (req: Request, res: Response) => {
       status: 'ok',
       app: appConfig.app.name,
       env: process.env.NODE_ENV || 'development',
+      dbClient: appConfig.app.dbClient,
     },
   };
   res.json(result);
