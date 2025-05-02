@@ -1,8 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import { defineConfig } from 'eslint/config';
-import eslintPluginPrettier from 'eslint-plugin-prettier';
-import prettier from 'eslint-config-prettier';
 
 export default defineConfig([
   {
@@ -12,14 +10,12 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       js,
-      prettier: eslintPluginPrettier,
     },
     languageOptions: {
       globals: globals.node,
       sourceType: 'commonjs',
     },
     rules: {
-      'prettier/prettier': 'error',
       indent: 'off',
       quotes: ['error', 'single', { avoidEscape: true }],
       semi: ['error', 'always'],
@@ -70,7 +66,7 @@ export default defineConfig([
       'eol-last': ['error', 'always'],
       'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
     },
-    extends: ['js/recommended', prettier],
+    extends: ['js/recommended'],
   },
   {
     files: ['**/*.test.js'],

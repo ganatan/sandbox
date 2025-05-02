@@ -13,5 +13,4 @@ router.get('/authorized', editor, controller.getItems.bind(controller));
 router.get('/denied', admin, controller.getItems.bind(controller));
 router.post('/', controller.createItem.bind(controller));
 
-
 export default router;

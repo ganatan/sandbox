@@ -20,6 +20,7 @@ const permissionHandler = (allowedRoles: string[] = []) => {
         success: false,
         message: 'Access denied',
       });
+
       return;
     }
 

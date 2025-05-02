@@ -12,7 +12,7 @@ declare module 'express' {
 }
 
 const fakeAuth = (
-  user: User = { username: 'editor_user', role: 'editor' }
+  user: User = { username: 'editor_user', role: 'editor' },
 ) => {
   return (req: Request, res: Response, next: NextFunction): void => {
     req.user = user;
