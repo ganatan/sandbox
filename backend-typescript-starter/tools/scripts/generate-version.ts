@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
@@ -13,19 +12,11 @@ if (!existsSync(distPath)) {
 const pkg = JSON.parse(readFileSync(resolve(projectRoot, 'package.json'), 'utf-8'));
 
 const version = pkg.version || '0.0.0';
-let commit = 'unknown';
-
-try {
-  commit = execSync('git rev-parse --short HEAD').toString().trim();
-} catch {
-  console.warn('⚠️ Impossible de récupérer le hash Git.');
-}
 
 const env = process.env.NODE_ENV || 'development';
 
 const versionInfo = {
   version: version,
-  commit: commit,
   buildTime: new Date().toISOString(),
   env: env,
 };

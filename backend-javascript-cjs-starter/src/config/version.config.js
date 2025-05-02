@@ -2,7 +2,6 @@
 
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
-const { execSync } = require('child_process');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -23,11 +22,9 @@ if (env === 'production') {
 } else {
   try {
     const pkg = JSON.parse(readFileSync(resolve(__dirname, '../../package.json'), 'utf-8'));
-    const commit = execSync('git rev-parse --short HEAD').toString().trim();
 
     versionInfo = {
       version: pkg.version || '0.0.0',
-      commit: commit,
       buildTime: new Date().toISOString(),
       env: env,
     };
