@@ -1,6 +1,6 @@
 {
   "name": "backend-javascript-cjs",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Node.js backend using CommonJS module system",
   "main": "index.js",
   "scripts": {
