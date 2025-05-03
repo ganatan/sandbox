@@ -1,0 +1,25 @@
+{
+  "name": "backend-node-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "node dist/app",
+    "dev": "ts-node src/app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.21.1"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.0",
+    "@types/node": "22.9.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.6.3"
+  }
+}

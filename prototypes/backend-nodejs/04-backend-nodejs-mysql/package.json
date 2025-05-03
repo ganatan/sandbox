@@ -1,0 +1,50 @@
+{
+  "name": "backend-node-javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server",
+    "dev": "nodemon src/server",
+    "lint": "eslint .",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "build": "webpack --mode production --output-path dist",
+    "serve": "node dist/bundle.js",
+    "audit": "npm audit",
+    "generate-structure": "node tools/scripts/generate-structure.js",
+    "test-person-repository": "npm test -- person-repository.test.js",
+    "test-person-service": "npm test -- person-service.test.js",
+    "test-person-controller": "npm test -- person-controller.test.js",
+    "test-person-routes": "npm test -- person-routes.test.js",
+    "test-city-repository": "npm test -- city-repository.test.js",
+    "test-city-service": "npm test -- city-service.test.js",
+    "test-city-controller": "npm test -- city-controller.test.js",
+    "test-city-routes": "npm test -- city-routes.test.js",
+    "test-response-handler": "npm test -- response-handler.test.js",
+    "test-app": "npm test -- app.test.js",
+    "test-server": "npm test -- server.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "7.26.9",
+    "@babel/preset-env": "7.26.9",
+    "@eslint/js": "9.20.0",
+    "babel-jest": "29.7.0",
+    "babel-loader": "9.2.1",
+    "eslint": "9.20.1",
+    "express": "4.21.2",
+    "globals": "15.15.0",
+    "jest": "29.7.0",
+    "supertest": "7.0.0",
+    "webpack": "5.98.0",
+    "webpack-cli": "6.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.12.0"
+  }
+}
