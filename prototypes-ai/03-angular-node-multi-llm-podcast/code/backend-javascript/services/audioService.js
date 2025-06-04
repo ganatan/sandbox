@@ -14,9 +14,10 @@ const VOICES = {
 
 async function generateSpeech(text, voiceId, outputPath) {
   let url = `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`;
-  console.log('00000000001:' + url);
-  console.log('00000000002:' + text);
-  console.log('00000000003:' + outputPath);
+  // console.log('00000000001:' + url);
+  // console.log('00000000002:' + text);
+  // console.log('00000000003:' + outputPath);
+  console.log('00000000001:');
   const response = await axios.post(
     url,
     {
@@ -31,7 +32,7 @@ async function generateSpeech(text, voiceId, outputPath) {
       responseType: 'stream'
     }
   )
-
+  console.log('00000000004:' + outputPath);
   const writer = fs.createWriteStream(outputPath)
   response.data.pipe(writer)
 
