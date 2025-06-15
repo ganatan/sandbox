@@ -4,7 +4,7 @@ Je veux que tu sois tres simple et precis dans tes explications.
 
 Je veux ecrire un backend en javascript commonJS
 
-Qui communique avec open-API pour poser une question
+Je veux qu'il communique communique avec open-API pour poser une question
 
 Ne me dis pas encore comment on fait
 

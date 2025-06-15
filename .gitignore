@@ -23,3 +23,8 @@
 # --- OS / IDE général ---
 **/.DS_Store
 **/Thumbs.db
+
+
+# dotenv files
+**/.env
+
