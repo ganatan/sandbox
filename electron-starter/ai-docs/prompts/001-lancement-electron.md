@@ -8,7 +8,11 @@
 
 # Prompt
 
-Maintenant je veux un executable que je puisse lancer
+  Maintenant je veux un executable que je puisse lancer
+  Sous quels OS electron fonctionne
 
-Sous quels OS electron fonctionne
+# Prompt 
+  Erreur lors de la compilation  
+
+  
 

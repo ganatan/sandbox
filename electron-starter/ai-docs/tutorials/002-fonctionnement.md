@@ -35,15 +35,14 @@ Modifier Package.json
 Rajouter dans package.json
   "description": "electron-starter description",
 
-Deplacer 
+
+
 # Erreurs
 "dependencies": {
   "electron": "^28.0.0"
 }
 ⚠️ C’est interdit pour electron-builder,
-
-il faut le déplacer dans devDependencies.  
-
+Deplacer dans devDependencies.  
 
 # Compilation
   "build": "electron-builder"

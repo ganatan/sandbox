@@ -20,5 +20,13 @@
   "devDependencies": {
     "electron": "^37.1.0",
     "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "win": {
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false
+    }
   }
 }
