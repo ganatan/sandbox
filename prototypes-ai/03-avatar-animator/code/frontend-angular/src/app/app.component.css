@@ -1,0 +1,26 @@
+    textarea {
+      resize: vertical;
+      min-height: 200px;
+    }
+
+    .loading {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+    }
+
+    .badge {
+      font-size: 0.75rem;
+    }
+
+    .small-text {
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .btn-group-responsive {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }

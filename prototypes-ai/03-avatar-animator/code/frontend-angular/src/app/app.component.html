@@ -4,11 +4,11 @@
 
   <div class="row g-3 align-items-center mb-4">
     <div class="col-12 col-md-4">
-      <label class="form-label" for="name">Nom du réalisateur</label>
+      <label class="form-label">Nom du réalisateur</label>
       <input type="text" class="form-control text-start" [(ngModel)]="name" placeholder="Nom du réalisateur">
     </div>
     <div class="col-12 col-md-4">
-      <label class="form-label" for="style">Style de réponse</label>
+      <label class="form-label">Style de réponse</label>
       <select class="form-select" [(ngModel)]="style">
         <option value="neutral">Neutre</option>
         <option value="casual">Décontracté</option>
@@ -18,7 +18,7 @@
       </select>
     </div>
     <div class="col-12 col-md-4">
-      <label class="form-label" for="length">Longueur</label>
+      <label class="form-label">Longueur</label>
       <select class="form-select" [(ngModel)]="length">
         <option value="short">Courte</option>
         <option value="medium">Moyenne</option>
@@ -29,14 +29,15 @@
 
   <div class="row g-4 mb-3">
 
+    <!-- ChatGPT -->
     <div class="col-12 col-md-6">
 
+      <!-- Biographie -->
       <div class="d-flex align-items-center gap-2 mb-2 btn-group-responsive">
         <button class="btn btn-primary" (click)="loadBiography('chatgpt')">Biographie - ChatGPT</button>
         <button class="btn btn-outline-secondary" (click)="reset('chatgpt')">Réinitialiser</button>
         <span *ngIf="biographyChatGPT && !chatgptLoading" class="badge bg-primary">✓</span>
-        <span *ngIf="chatgptDuration > 0" class="text-muted ms-auto small-text">Réponse en {{ chatgptDuration.toFixed(1)
-          }}s</span>
+        <span *ngIf="chatgptDuration > 0" class="text-muted ms-auto small-text">Réponse en {{ chatgptDuration.toFixed(1) }}s</span>
       </div>
 
       <div class="position-relative">
@@ -48,27 +49,30 @@
         </div>
       </div>
 
+      <!-- Voix -->
       <div class="d-flex align-items-center gap-2 mt-2 btn-group-responsive">
         <button class="btn btn-outline-primary" (click)="loadVoice('chatgpt')">Voix - ChatGPT</button>
         <span *ngIf="voiceChatGPTLoading" class="spinner-border spinner-border-sm text-primary" role="status"></span>
         <span *ngIf="audioChatGPT && !voiceChatGPTLoading" class="badge bg-primary">Voix OK</span>
-        <span *ngIf="voiceChatGPTDuration > 0" class="text-muted small-text">Réponse en {{
-          voiceChatGPTDuration.toFixed(1) }}s</span>
+        <span *ngIf="voiceChatGPTDuration > 0" class="text-muted small-text">Réponse en {{ voiceChatGPTDuration.toFixed(1) }}s</span>
       </div>
 
+      <!-- Audio -->
       <div class="mt-2">
         <audio *ngIf="audioChatGPT" [src]="audioChatGPT" controls class="w-100"></audio>
       </div>
 
     </div>
 
+    <!-- Claude -->
     <div class="col-12 col-md-6">
+
+      <!-- Biographie -->
       <div class="d-flex align-items-center gap-2 mb-2 btn-group-responsive">
         <button class="btn btn-success" (click)="loadBiography('claude')">Biographie - Claude</button>
         <button class="btn btn-outline-secondary" (click)="reset('claude')">Réinitialiser</button>
         <span *ngIf="biographyClaude && !claudeLoading" class="badge bg-success">✓</span>
-        <span *ngIf="claudeDuration > 0" class="text-muted ms-auto small-text">Réponse en {{ claudeDuration.toFixed(1)
-          }}s</span>
+        <span *ngIf="claudeDuration > 0" class="text-muted ms-auto small-text">Réponse en {{ claudeDuration.toFixed(1) }}s</span>
       </div>
 
       <div class="position-relative">
@@ -79,18 +83,18 @@
           </div>
         </div>
       </div>
+
+      <!-- Voix -->
       <div class="d-flex align-items-center gap-2 mt-2 btn-group-responsive">
-        <button class="btn btn-outline-success" (click)="loadVoice('claude')">Voix - ElevenLabs</button>
+        <button class="btn btn-outline-success" (click)="loadVoice('claude')">Voix - Claude</button>
         <span *ngIf="voiceClaudeLoading" class="spinner-border spinner-border-sm text-success" role="status"></span>
         <span *ngIf="audioClaude && !voiceClaudeLoading" class="badge bg-success">Voix OK</span>
-        <span *ngIf="voiceClaudeDuration > 0" class="text-muted small-text">Réponse en {{ voiceClaudeDuration.toFixed(1)
-          }}s</span>
+        <span *ngIf="voiceClaudeDuration > 0" class="text-muted small-text">Réponse en {{ voiceClaudeDuration.toFixed(1) }}s</span>
       </div>
+
+      <!-- Audio -->
       <div class="mt-2">
-        <audio controls class="w-100">
-          <source *ngIf="audioClaude" [src]="audioClaude" type="audio/mpeg">
-          Votre navigateur ne supporte pas l'audio.
-        </audio>
+        <audio *ngIf="audioClaude" [src]="audioClaude" controls class="w-100"></audio>
       </div>
 
     </div>
@@ -98,3 +102,5 @@
   </div>
 
 </div>
+
+

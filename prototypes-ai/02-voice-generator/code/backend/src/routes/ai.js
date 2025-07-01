@@ -50,11 +50,16 @@ router.post('/biography/:llm', async (req, res) => {
     if (!name || typeof reply !== 'string') {
       return res.json({ success: false, llm: llm, data: 'invalid-input' });
     }
-
-    const fileName = safeFilename(name, llm);
+    let name2 = 'ridley-scott';
+    console.log('00000000001');
+    const fileName = safeFilename(name2, llm);
+    console.log('00000000002');
     const jsonPath = path.join(process.cwd(), 'storage', 'data', `${fileName}.json`);
+    console.log('00000000003');
     await fs.mkdir(path.dirname(jsonPath), { recursive: true });
-    await fs.writeFile(jsonPath, JSON.stringify({ name: name, llm: llm, text: reply }, null, 2));
+    console.log('00000000004');
+    await fs.writeFile(jsonPath, JSON.stringify({ name: name2, llm: llm, text: reply }, null, 2));
+    console.log('00000000005');
 
     return res.json({ success: true, llm: llm, data: reply });
 
