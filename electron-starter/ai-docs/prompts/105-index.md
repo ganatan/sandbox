@@ -1,3 +1,32 @@
+Structure of project root:
+|-- assets
+  |-- favicon.ico
+|-- eslint.config.mjs
+|-- index.html
+|-- jest.config.js
+|-- package-lock.json
+|-- package.json
+|-- README.md
+|-- src
+  |-- main
+    |-- main.js
+    |-- preload.js
+  |-- renderer
+    |-- renderer.js
+  |-- shared
+|-- tests
+  |-- main.test.js
+  |-- renderer.test.js
+|-- tools
+  |-- scripts
+    |-- generate-project-structure.js
+
+le fichier index.html est à la racine
+
+
+
+le fichier main.js
+
 'use strict';
 
 const { app, BrowserWindow, ipcMain } = require('electron')
@@ -25,8 +54,7 @@ function createWindow() {
       preload: __dirname + '/preload.js'
     }
   })
-  // win.loadFile('index.html')
-  win.loadFile(__dirname + '/../renderer/index.html')
+  win.loadFile('index.html')
   console.log('00000000001:createWindow')
   win.webContents.openDevTools()
 
@@ -46,3 +74,8 @@ if (process.env.NODE_ENV !== 'test') {
 
 module.exports = { createWindow, startWebSocketServer }
 
+
+
+
+je pense que index.html serait mieux ailleurs
+les best practices
