@@ -7,6 +7,8 @@
     "dev": "electron .",
     "start": "electron .",
     "lint": "eslint .",
+    "test": "jest",
+    "coverage": "jest --coverage",
     "build": "electron-builder",
     "build-win": "electron-builder --win",
     "build-mac": "electron-builder --mac",
@@ -26,7 +28,9 @@
     "electron": "^37.1.0",
     "electron-builder": "^26.0.12",
     "eslint": "^9.30.1",
-    "globals": "^16.3.0"
+    "globals": "^16.3.0",
+    "jest": "^30.0.3",
+    "jest-cli": "^30.0.3"
   },
   "build": {
     "win": {

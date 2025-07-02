@@ -55,3 +55,6 @@ ton avis et les best practices sur un projet electron
 # Prompt
   ok on installe le lint
   comment faire
+
+# Prompt
+  on va passer mainteant aux test et coverage  

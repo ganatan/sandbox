@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron')
-const { WebSocketServer } = require('ws')
+const WebSocket = require('ws')
 
-const startWebSocketServer = () => {
-  const wss = new WebSocketServer({ port: 8080 })
+function startWebSocketServer() {
+  const wss = new WebSocket.Server({ port: 8080 })
   wss.on('connection', (ws) => {
     console.log('connexion websocket')
     ws.on('message', (msg) => {
@@ -10,10 +10,10 @@ const startWebSocketServer = () => {
       ws.send(`echo: ${msg}`)
     })
   })
-  console.log('00000000002:startWebSocketServer');
+  console.log('00000000002:startWebSocketServer')
 }
 
-const createWindow = () => {
+function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -22,12 +22,17 @@ const createWindow = () => {
     }
   })
   win.loadFile('index.html')
-  console.log('00000000001:createWindow');
+  console.log('00000000001:createWindow')
   win.webContents.openDevTools()
+  return win
 }
 
-app.whenReady().then(() => {
-  startWebSocketServer()
-  createWindow()
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.whenReady().then(() => {
+    startWebSocketServer()
+    createWindow()
+  })
+}
+
+module.exports = { createWindow, startWebSocketServer }
 
