@@ -14,9 +14,7 @@
   <button id="connect">Connecter WebSocket</button>
   <script>
     let ws
-    console.log('00000000001');
     document.getElementById('connect').addEventListener('click', () => {
-      console.log('00000000002');
       ws = new WebSocket('ws://localhost:8080')
       ws.onopen = () => {
         console.log('WebSocket ouvert')

@@ -4,6 +4,7 @@
   "description": "electron-starter description",
   "main": "main.js",
   "scripts": {
+    "dev": "electron .",
     "start": "electron .",
     "build": "electron-builder",
     "build-win": "electron-builder --win",
