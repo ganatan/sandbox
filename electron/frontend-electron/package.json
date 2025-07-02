@@ -15,7 +15,8 @@
     "build-mac": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "postbuild:angular": "node tools/scripts/inject-csp.js"
   },
   "keywords": [],
   "author": "",
