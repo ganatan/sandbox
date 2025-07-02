@@ -24,6 +24,7 @@ function createWindow() {
   win.loadFile('index.html')
   console.log('00000000001:createWindow')
   win.webContents.openDevTools()
+
   return win
 }
 

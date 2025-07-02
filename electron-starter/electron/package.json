@@ -2,8 +2,9 @@
   "name": "electron-starter",
   "version": "1.0.0",
   "description": "electron-starter description",
-  "main": "main.js",
+  "main": "src/main/main.js",
   "scripts": {
+    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
     "dev": "electron .",
     "start": "electron .",
     "lint": "eslint .",
