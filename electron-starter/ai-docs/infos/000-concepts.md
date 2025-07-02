@@ -1,8 +1,3 @@
-eclaire moi sur ces 2 points
-ex. librairies C/C++ en bindings Node
-
-un vieux client Python
-
 Avantages ElectronJS
   Déploiement simplifié - Un seul exécutable contient frontend + backend + runtime Node.js. Pas besoin d'installer Node.js sur chaque poste.
   

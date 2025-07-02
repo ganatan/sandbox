@@ -17,7 +17,9 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "dependencies": {},
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
   "devDependencies": {
     "electron": "^37.1.0",
     "electron-builder": "^26.0.12"
