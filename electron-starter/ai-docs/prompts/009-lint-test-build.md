@@ -1,3 +1,6 @@
+# Prompt
+main.js avec le serveur websocket
+
 const { app, BrowserWindow } = require('electron')
 const { WebSocketServer } = require('ws')
 
@@ -31,3 +34,24 @@ app.whenReady().then(() => {
   createWindow()
 })
 
+
+
+j'ai l'habitude de faire
+lint
+test
+coverage
+test
+
+ici je pense que lint
+test
+coverage
+ok mais build pas necessaire
+car on a electron-builder
+
+
+ton avis et les best practices sur un projet electron
+
+
+# Prompt
+  ok on installe le lint
+  comment faire
