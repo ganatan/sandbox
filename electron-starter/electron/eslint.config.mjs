@@ -2,16 +2,13 @@ import js from "@eslint/js";
 import globals from "globals";
 import { defineConfig } from "eslint/config";
 
-
 export default defineConfig([
   {
     ignores: ['dist/**', 'eslint.config.mjs', 'jest.config.js'],
   },
   {
     files: ["**/*.{js,mjs,cjs}"],
-    plugins: {
-      js
-    },
+    plugins: { js },
     languageOptions: {
       globals: globals.node,
       sourceType: 'commonjs',
@@ -68,7 +65,7 @@ export default defineConfig([
     extends: ["js/recommended"]
   },
   {
-    files: ["**/*.{js,mjs,cjs}"],
+    files: ["tests/**/*.{js,mjs,cjs}"],
     languageOptions: {
       globals: {
         ...globals.node,
@@ -76,5 +73,21 @@ export default defineConfig([
       },
     },
   },
-
+  {
+    files: ["src/renderer/**/*.{js,mjs,cjs}"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+  {
+    files: ["tests/renderer.test.js"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
+    },
+  },
 ]);
