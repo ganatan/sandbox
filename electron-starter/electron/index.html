@@ -1,8 +1,47 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket Electron</title>
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' ws://localhost:8080" /> -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' ws://localhost:8080; script-src 'self' 'unsafe-inline'" />
+</head>
+
+<body>
+  <h1>WebSocket Test</h1>
+  <button id="connect">Connecter WebSocket</button>
+  <script>
+    let ws
+    console.log('00000000001');
+    document.getElementById('connect').addEventListener('click', () => {
+      console.log('00000000002');
+      ws = new WebSocket('ws://localhost:8080')
+      ws.onopen = () => {
+        console.log('WebSocket ouvert')
+        ws.send('hello serveur depuis le clic')
+      }
+      ws.onmessage = (event) => {
+        console.log(`serveur dit: ${event.data}`)
+      }
+      ws.onerror = (err) => {
+        console.error(`erreur: ${err.message}`)
+      }
+      ws.onclose = () => {
+        console.log('WebSocket fermé')
+      }
+    })
+  </script>
+</body>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
@@ -17,4 +56,4 @@
     <h1>Hello from Electron renderer!</h1>
     <p>👋</p>
   </body>
-</html>
+</html> -->
