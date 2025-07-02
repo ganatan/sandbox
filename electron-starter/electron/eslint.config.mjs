@@ -8,7 +8,14 @@ export default defineConfig([
     ignores: ['dist/**', 'eslint.config.mjs'],
   },
   {
-    files: ["**/*.{js,mjs,cjs}"], plugins: { js },
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: {
+      js
+    },
+    languageOptions: {
+      globals: globals.node,
+      sourceType: 'commonjs',
+    },
     rules: {
       indent: 'off',
       quotes: ['error', 'single', { avoidEscape: true }],
@@ -60,7 +67,8 @@ export default defineConfig([
     },
     extends: ["js/recommended"]
   },
-  { files: ["**/*.{js,mjs,cjs}"], 
+  {
+    files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
       globals: {
         ...globals.node,

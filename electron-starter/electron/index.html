@@ -1,4 +1,41 @@
 <!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Electron WebSocket</title>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src ws://localhost:8080" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+    }
+
+    input {
+      margin: 0.5rem;
+    }
+
+    #messages {
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>WebSocket Electron</h1>
+  <input id="messageInput" type="text" placeholder="Tapez un message" />
+  <button id="sendButton">Envoyer</button>
+  <div id="messages"></div>
+  <script src="./src/renderer/renderer.js"></script>
+</body>
+
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -35,43 +72,4 @@
       })
     </script>
   </body>
-</html>
-
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>WebSocket Electron</title>
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self' ws://localhost:8080; script-src 'self' 'unsafe-inline'" />
-</head>
-
-<body>
-  <h1>WebSocket Test</h1>
-  <button id="connect">Connecter WebSocket</button>
-  <script>
-    let ws
-    document.getElementById('connect').addEventListener('click', () => {
-      console.log('00000000001:frontend')
-      ws = new WebSocket('ws://localhost:8080')
-      ws.onopen = () => {
-        console.log('WebSocket ouvert')
-        ws.send('hello serveur depuis le clic')
-      }
-      ws.onmessage = (event) => {
-        console.log(`serveur dit: ${event.data}`)
-      }
-      ws.onerror = (err) => {
-        console.error(`erreur: ${err.message}`)
-      }
-      ws.onclose = () => {
-        console.log('WebSocket fermé')
-      }
-    })
-  </script>
-</body>
-
-</html>
- -->
+</html> -->

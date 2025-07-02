@@ -1,3 +1,5 @@
+'use strict';
+
 const { createWindow } = require('../src/main/main');
 
 test('createWindow est une fonction', () => {

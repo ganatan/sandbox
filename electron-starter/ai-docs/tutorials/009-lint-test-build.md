@@ -169,3 +169,11 @@
 
     ]);
           
+
+
+  - modifier eslint.config.mjs pour integrer la gestion du lint
+
+      languageOptions: {
+      globals: globals.node,
+      sourceType: 'commonjs',
+    },

@@ -1,3 +1,5 @@
+'use strict';
+
 const { app, BrowserWindow } = require('electron')
 const WebSocket = require('ws')
 
@@ -18,7 +20,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: false
     }
   })
   win.loadFile('index.html')
