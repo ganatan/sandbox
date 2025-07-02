@@ -25,8 +25,9 @@ function createWindow() {
       preload: `${__dirname}/preload.js`
     }
   })
-  win.loadFile(`${__dirname}/../renderer/index.html`)
-  win.webContents.openDevTools()
+  // win.loadFile(`${__dirname}/../renderer/index.html`)
+  win.loadFile(`${__dirname}/../renderer/dist/angular-starter/browser/index.html`);
+  win.webContents.openDevTools();
 
   return win
 }
