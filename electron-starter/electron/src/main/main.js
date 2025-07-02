@@ -22,12 +22,10 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: __dirname + '/preload.js'
+      preload: `${__dirname}/preload.js`
     }
   })
-  // win.loadFile('index.html')
-  win.loadFile(__dirname + '/../renderer/index.html')
-  console.log('00000000001:createWindow')
+  win.loadFile(`${__dirname}/../renderer/index.html`)
   win.webContents.openDevTools()
 
   return win

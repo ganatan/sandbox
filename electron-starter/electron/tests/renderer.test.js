@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @jest-environment jsdom
  */
@@ -13,8 +15,8 @@ test('envoie un message au websocket', () => {
       setTimeout(() => this.onopen && this.onopen(), 0)
     }
     addEventListener(event, cb) {
-      if (event === 'open') this.onopen = cb
-      if (event === 'message') this.onmessage = cb
+      if (event === 'open') { this.onopen = cb }
+      if (event === 'message') { this.onmessage = cb }
     }
   }
 

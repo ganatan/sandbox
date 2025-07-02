@@ -1,3 +1,5 @@
+'use strict';
+
 const { contextBridge } = require('electron')
 
 const socket = new WebSocket('ws://localhost:8080')
@@ -11,9 +13,3 @@ contextBridge.exposeInMainWorld('api', {
   }
 })
 
-
-// const { contextBridge, ipcRenderer } = require('electron')
-
-// contextBridge.exposeInMainWorld('api', {
-//   ping: () => ipcRenderer.invoke('ping')
-// })

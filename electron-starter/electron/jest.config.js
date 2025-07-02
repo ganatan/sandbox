@@ -1,3 +1,5 @@
+'use strict';
+
 const config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
