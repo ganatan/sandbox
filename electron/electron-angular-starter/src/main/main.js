@@ -10,7 +10,7 @@ function createWindow() {
     }
   })
   win.loadFile(
-    path.join(__dirname, '../renderer/angular-starter/dist/angular-app/browser/index.html')
+    path.join(__dirname, '../renderer/angular/dist/angular-app/browser/index.html')
   )
 }
 
