@@ -1,19 +1,53 @@
-const { app, BrowserWindow } = require('electron')
+'use strict';
+
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
+const WebSocket = require('ws')
+
+function startWebSocketServer() {
+  const wss = new WebSocket.Server({ port: 8080 })
+  wss.on('connection', (ws) => {
+    console.log('connexion websocket')
+    ws.on('message', (msg) => {
+      console.log(`WebSocketServer: ${msg}`)
+      ws.send(`Reponse WebSocketServer: ${msg}`)
+    })
+  })
+  console.log('00000000002:startWebSocketServer')
+}
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 800,
+    height: 600,
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: `${__dirname}/preload.js`
     }
   })
+  // win.loadFile(`${__dirname}/../renderer/index.html`)
+  // win.loadFile(`${__dirname}/../renderer/dist/angular-starter/browser/index.html`);
+  // path.join(__dirname, '../renderer/dist/angular-starter/browser/index.html')
   win.loadFile(
-    path.join(__dirname, '../renderer/dist/angular-app/browser/index.html')
+    path.join(__dirname, '../renderer/dist/angular-starter/browser/index.html')
   )
+
+  win.webContents.openDevTools();
+
+  return win
 }
 
-app.whenReady().then(() => {
-  createWindow()
+ipcMain.handle('ping', () => {
+  return 'pong'
 })
+
+if (process.env.NODE_ENV !== 'test') {
+  app.whenReady().then(() => {
+    startWebSocketServer()
+    createWindow()
+  })
+}
+
+module.exports = { createWindow, startWebSocketServer }
+

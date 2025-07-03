@@ -1,9 +1,10 @@
 {
-  "name": "angular-electron2",
+  "name": "app-electron-angular",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "electron src/main/main.js",
     "start": "electron src/main/main.js"
   },
   "keywords": [],

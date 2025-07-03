@@ -7,7 +7,9 @@ function createWindow() {
     height: 600,
     webPreferences: { nodeIntegration: false }
   })
-  win.loadFile(path.join(__dirname, 'dist/angular-electron/browser/index.html'))
+  win.loadFile(
+    path.join(__dirname, '../renderer/dist/angular-starter/browser/index.html')
+  )
 }
 
 app.whenReady().then(() => {
