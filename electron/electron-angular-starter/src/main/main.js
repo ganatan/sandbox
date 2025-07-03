@@ -3,11 +3,15 @@ const path = require('path')
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: { nodeIntegration: false }
+    width: 1024,
+    height: 768,
+    webPreferences: {
+      nodeIntegration: false
+    }
   })
-  win.loadFile(path.join(__dirname, 'dist/angular-electron/browser/index.html'))
+  win.loadFile(
+    path.join(__dirname, '../renderer/dist/angular-app/browser/index.html')
+  )
 }
 
 app.whenReady().then(() => {
