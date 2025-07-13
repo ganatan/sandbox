@@ -1,4 +1,59 @@
 
+# Installation
+  
+  https://www.eclipse.org/downloads/
+  https://www.eclipse.org/downloads/packages/
+
+  Eclipse IDE for Enterprise Java and Web Developers
+
+  Decompresser
+  - Utiliser eclipse.exe
+
+  - Indiquer le workspace
+    D:\chendra\10-eclipse\workspace
+
+  - Selection option
+    Exclude Eclipse IDE    
+
+  - Selection du settings
+    Settings    
+
+  - Changer les preferences    
+    Concernant jboss
+
+  - changer les infos Tomcat
+  
+  - Lancer l'application
+    http://localhost:8089/backend-java-spring-starter/
+
+  - verifier les dependances
+    https://mvnrepository.com/    
+
+# Parametre Tomcat
+  Tester Tomcat
+    http://127.0.0.1:8080/
+
+  Installer un serveur Tomcat
+    dans l'onglet
+      Servers / create a new server
+      Apache / Tomcat 11 / Next  
+      Browse / D:\hal\Tomcat 11.0
+      double click sur server
+        Tomcat admin Port : 8088
+        HTTP/1.1 : 8089
+      clic droit
+        clean
+        start            
+
+# Changer les preferences
+
+  Va dans Window → Preferences → Install/Update → Available Software Sites.
+    Cherche l'entrée https://download.jboss.org/jbosstools/photon/stable/updates/.
+    Désactive-la ou supprime-la.
+
+  on coche la case
+
+
 # Comment changer le workspace sur Eclipse
 
   File / Switch Workspace / Other
