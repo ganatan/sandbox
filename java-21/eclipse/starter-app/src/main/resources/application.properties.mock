@@ -1,7 +1,7 @@
 # === Application Mode ===
 db.client=mock
 
-# === Désactivation SQL / Hibernate ===
+# === DÃ©sactivation SQL / Hibernate ===
 spring.autoconfigure.exclude=\
 org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,\
 org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
