@@ -6,10 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@ConditionalOnProperty(
-    name = "db.client",
-    havingValue = "sql",
-    matchIfMissing = false
-)
+@ConditionalOnProperty(name = "db.client", havingValue = "sql")
 public interface PersonRepositoryJpa extends JpaRepository<Person, Long>, PersonRepositoryInterface {
 }
