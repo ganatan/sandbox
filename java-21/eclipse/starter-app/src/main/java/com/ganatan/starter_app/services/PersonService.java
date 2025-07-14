@@ -13,7 +13,6 @@ public class PersonService {
 
 	public PersonService(PersonRepositoryInterface repository) {
 		System.out.println("[ganatan] PersonService Constructor:");
-//		System.out.println("[ganatan] Repository injecté : " + repository.getClass().getSimpleName());
 		System.out.println(
 				"[ganatan] Repository injecté : " + AopProxyUtils.ultimateTargetClass(repository).getSimpleName());
 		this.repository = repository;
