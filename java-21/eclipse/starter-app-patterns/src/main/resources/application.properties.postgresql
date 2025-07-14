@@ -1,9 +1,5 @@
-# === Database Client (mock | pg | mysql) ===
+# === Application Mode ===
 db.client=postgresql
-
-# === Application ===
-spring.application.name=starter-app
-server.port=8080
 
 # === PostgreSQL Configuration ===
 spring.datasource.url=jdbc:postgresql://localhost:5432/backend_javascript

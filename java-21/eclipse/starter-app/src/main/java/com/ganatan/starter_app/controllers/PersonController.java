@@ -1,27 +1,51 @@
-// controllers/PersonController.java
 package com.ganatan.starter_app.controllers;
 
 import com.ganatan.starter_app.entities.Person;
 import com.ganatan.starter_app.services.PersonService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/persons")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PersonController {
     
     private final PersonService service;
     
     public PersonController(PersonService service) {
+        System.out.println("[ganatan] PersonController Constructor:");
         this.service = service;
     }
     
-    @GetMapping
-    public ResponseEntity<List<Person>> getAllPersons() {
-        List<Person> persons = service.getAllPersons();
-        return ResponseEntity.ok(persons);
+    @GetMapping("/persons")
+    public List<Person> getItems() {
+        System.out.println("[ganatan] PersonController getItems:");
+        return service.getItems();
     }
 }
+
+
+
+//package com.ganatan.starter_app.controllers;
+//
+//import com.ganatan.starter_app.services.PersonService;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//import java.util.List;
+//
+//@RestController
+//public class PersonController {
+//
+//    private final PersonService service;
+//
+//    public PersonController(PersonService service) {
+//		System.out.println("[ganatan] PersonController Constructor:");
+//        this.service = service;
+//    }
+//
+//    @GetMapping("/persons")
+//    public List<String> getItems() {
+//    	System.out.println("[ganatan] PersonController getItems:");
+//        return service.getItems();
+//    }
+//}
+//
