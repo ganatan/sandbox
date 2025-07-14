@@ -59,3 +59,24 @@
     dans la même classe
     dans les sous-classes (même en dehors du package)
     dans le même package
+
+
+# JPA
+  JPA signifie Java Persistence API. 
+  C'est une spécification Java standard qui définit comment mapper des objets Java (entities) vers des tables d’une base relationnelle.
+
+  JPA = API de mapping objet-relationnel (ORM) standardisée.
+
+
+# Hibernate
+
+  Hibernate est un ORM (Object-Relational Mapping) pour Java.
+  Il permet de mapper des objets Java (tes @Entity) vers des tables SQL, sans écrire toi-même les requêtes SQL.
+  En backend moderne, Hibernate est la brique technique derrière Spring Data JPA.
+
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+  </dependency>
+  Tu importes Hibernate automatiquement.
+

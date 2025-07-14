@@ -1,0 +1,23 @@
+# === Application Info ===
+spring.application.name=starter-app
+
+# === Database Client (mock | pg | mysql) ===
+db.client=
+
+# === PostgreSQL ===
+db-pg-host=
+db-pg-port=
+db-pg-database=
+db-pg-user=
+db-pg-password=
+
+# === MySQL ===
+db-mysql-host=
+db-mysql-port=
+db-mysql-database=
+db-mysql-user=
+db-mysql-password=
+
+# === Hibernate / JPA ===
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true

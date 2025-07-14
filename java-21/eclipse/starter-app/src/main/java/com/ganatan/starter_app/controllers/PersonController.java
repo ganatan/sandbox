@@ -4,6 +4,7 @@ import com.ganatan.starter_app.services.PersonService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import com.ganatan.starter_app.entities.Person;
 
 @RestController
 public class PersonController {
@@ -15,7 +16,7 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
-    public List<String> api() {
+    public List<Person> api() {
         return service.getItems();
     }
 }
