@@ -74,6 +74,13 @@
   Il permet de mapper des objets Java (tes @Entity) vers des tables SQL, sans écrire toi-même les requêtes SQL.
   En backend moderne, Hibernate est la brique technique derrière Spring Data JPA.
 
+
+  # === Hibernate / JPA ===
+  spring.jpa.hibernate.ddl-auto=update
+  spring.jpa.show-sql=true
+
+  par defaut c'est la base de données H2
+
   <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
