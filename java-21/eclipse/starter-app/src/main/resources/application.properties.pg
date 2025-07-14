@@ -1,5 +1,5 @@
 # === Database Client (mock | pg | mysql) ===
-db.client=postgresql
+db.client=sql
 
 # === Application ===
 spring.application.name=starter-app

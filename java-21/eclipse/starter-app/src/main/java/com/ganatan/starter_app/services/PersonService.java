@@ -1,16 +1,16 @@
 package com.ganatan.starter_app.services;
 
 import com.ganatan.starter_app.entities.Person;
-import com.ganatan.starter_app.repositories.PersonRepository;
+import com.ganatan.starter_app.repositories.PersonRepositoryInterface;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class PersonService {
     
-    private final PersonRepository repository;
+    private final PersonRepositoryInterface repository;
     
-    public PersonService(PersonRepository repository) {
+    public PersonService(PersonRepositoryInterface repository) {
         System.out.println("[ganatan] PersonService Constructor:");
         this.repository = repository;
     }
@@ -24,22 +24,23 @@ public class PersonService {
 
 //package com.ganatan.starter_app.services;
 //
+//import com.ganatan.starter_app.entities.Person;
 //import com.ganatan.starter_app.repositories.PersonRepository;
 //import org.springframework.stereotype.Service;
 //import java.util.List;
 //
 //@Service
 //public class PersonService {
-//
-//	private final PersonRepository repository;
-//
-//	public PersonService(PersonRepository repository) {
-//		System.out.println("[ganatan] PersonService Constructor:");
-//		this.repository = repository;
-//	}
-//
-//	public List<String> getItems() {
-//		System.out.println("[ganatan] PersonService getItems:");
-//		return repository.findAll();
-//	}
+//    
+//    private final PersonRepository repository;
+//    
+//    public PersonService(PersonRepository repository) {
+//        System.out.println("[ganatan] PersonService Constructor:");
+//        this.repository = repository;
+//    }
+//    
+//    public List<Person> getItems() {
+//        System.out.println("[ganatan] PersonService getItems:");
+//        return repository.findAll();
+//    }
 //}

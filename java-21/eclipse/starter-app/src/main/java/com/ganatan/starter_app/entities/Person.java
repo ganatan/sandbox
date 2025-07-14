@@ -1,6 +1,14 @@
 package com.ganatan.starter_app.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "person")
 public class Person {
+
+	@Id
 	private Long id;
 	private String name;
 
@@ -12,7 +20,6 @@ public class Person {
 		this.name = name;
 	}
 
-	// Getters/Setters
 	public Long getId() {
 		return id;
 	}
