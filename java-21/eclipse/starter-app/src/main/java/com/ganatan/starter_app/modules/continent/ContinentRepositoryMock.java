@@ -1,8 +1,7 @@
-package com.ganatan.starter_app.repositories;
+package com.ganatan.starter_app.modules.continent;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ganatan.starter_app.entities.Person;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.ClassPathResource;
@@ -15,25 +14,25 @@ import java.util.List;
 
 @Repository
 @ConditionalOnProperty(name = "db.client", havingValue = "mock")
-public class PersonRepositoryMock implements PersonRepositoryInterface {
+public class ContinentRepositoryMock implements ContinentRepositoryInterface {
 
-    private List<Person> persons = new ArrayList<>();
+    private List<Continent> continents = new ArrayList<>();
 
     @PostConstruct
     public void loadData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            ClassPathResource resource = new ClassPathResource("data/mock/persons.json");
-            persons = mapper.readValue(resource.getInputStream(), new TypeReference<List<Person>>() {});
-            System.out.println("📁 [GANATAN MOCK] JSON chargé : " + persons.size() + " personnes.");
+            ClassPathResource resource = new ClassPathResource("data/mock/continent.json");
+            continents = mapper.readValue(resource.getInputStream(), new TypeReference<List<Continent>>() {});
+            System.out.println("📁 [GANATAN MOCK] JSON chargé : " + continents.size() + " continents.");
         } catch (IOException e) {
             System.err.println("❌ [GANATAN MOCK] Erreur JSON : " + e.getMessage());
-            persons.clear();
+            continents.clear();
         }
     }
 
     @Override
-    public List<Person> findAll() {
-        return persons;
+    public List<Continent> findAll() {
+        return continents;
     }
 }

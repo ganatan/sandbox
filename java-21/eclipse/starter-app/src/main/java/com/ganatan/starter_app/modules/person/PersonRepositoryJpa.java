@@ -1,6 +1,5 @@
-package com.ganatan.starter_app.repositories;
+package com.ganatan.starter_app.modules.person;
 
-import com.ganatan.starter_app.entities.Person;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

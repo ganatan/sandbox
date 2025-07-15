@@ -1,8 +1,7 @@
-package com.ganatan.starter_app.services;
+package com.ganatan.starter_app.modules.person;
 
-import com.ganatan.starter_app.entities.Person;
-import com.ganatan.starter_app.repositories.PersonRepositoryInterface;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import org.springframework.aop.framework.AopProxyUtils;
 

@@ -1,6 +1,5 @@
-package com.ganatan.starter_app.repositories;
+package com.ganatan.starter_app.modules.person;
 
-import com.ganatan.starter_app.entities.Person;
 import java.util.List;
 
 public interface PersonRepositoryInterface {
