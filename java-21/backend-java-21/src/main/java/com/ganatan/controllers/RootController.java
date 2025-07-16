@@ -1,5 +1,5 @@
 
-package com.ganatan.root;
+package com.ganatan.controllers;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

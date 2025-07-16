@@ -1,5 +1,5 @@
 com\ganatan\config\ApplicationConfig.class
 com\ganatan\modules\person\Person.class
+com\ganatan\controllers\RootController.class
 com\ganatan\tools\GenerateProjectStructure.class
 com\ganatan\modules\person\PersonController.class
-com\ganatan\root\RootController.class

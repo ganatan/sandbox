@@ -17,7 +17,7 @@ public class ApplicationConfig extends ResourceConfig {
         System.out.println("==================================");
 
         packages(
-            "com.ganatan.root",
+            "com.ganatan.controllers",
             "com.ganatan.modules.person"
         );
     }

@@ -1,5 +1,5 @@
 com\ganatan\config\ApplicationConfigTest.class
+com\ganatan\controllers\RootControllerTest.class
 com\ganatan\modules\person\PersonControllerTest.class
-com\ganatan\root\RootControllerTest.class
 com\ganatan\modules\person\PersonTest.class
 com\ganatan\tools\GenerateProjectStructureTest.class
