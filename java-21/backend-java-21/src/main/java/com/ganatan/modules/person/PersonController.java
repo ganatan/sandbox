@@ -24,7 +24,7 @@ public class PersonController {
     }
 
     @GET
-    public Response getAllPersons() {
+    public Response getItems() {
         return Response.ok(persons).build();
     }
 }

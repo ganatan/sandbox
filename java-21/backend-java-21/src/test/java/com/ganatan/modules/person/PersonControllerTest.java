@@ -10,7 +10,7 @@ public class PersonControllerTest {
     @Test
     public void testGetAllPersons() {
         PersonController controller = new PersonController();
-        Response response = controller.getAllPersons();
+        Response response = controller.getItems();
 
         assertEquals(200, response.getStatus());
         List<?> persons = (List<?>) response.getEntity();
