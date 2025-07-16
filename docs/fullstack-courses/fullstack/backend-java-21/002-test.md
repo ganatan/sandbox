@@ -37,27 +37,33 @@
 
 # Coverage
 
-  dans pom.xml
+  dans pom.xml et exclure scripts
 
-  <plugin>
-      <groupId>org.jacoco</groupId>
-      <artifactId>jacoco-maven-plugin</artifactId>
-      <version>0.8.11</version>
-      <executions>
-          <execution>
-              <goals>
-                  <goal>prepare-agent</goal>
-              </goals>
-          </execution>
-          <execution>
-              <id>report</id>
-              <phase>verify</phase>
-              <goals>
-                  <goal>report</goal>
-              </goals>
-          </execution>
-      </executions>
-  </plugin>
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.11</version>
+        <configuration>
+        <excludes>
+            <exclude>scripts/**</exclude>
+        </excludes>
+        </configuration>			    
+    <executions>
+        <execution>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>report</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+
 
 
   mvn clean verify

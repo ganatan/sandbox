@@ -107,6 +107,8 @@ mvn package
 mvn install
 mvn checkstyle:check
 mvn dependency:tree
+mvn clean test
+mvn jacoco:report
 ```
 
 ## 📦 Commandes Java utiles

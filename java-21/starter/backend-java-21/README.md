@@ -101,12 +101,15 @@ Accès local :
 ```bash
 mvn clean
 mvn compile
-mvn test
-mvn clean verify
+mvn verify
 mvn package
+
+mvn test
 mvn install
 mvn checkstyle:check
 mvn dependency:tree
+mvn clean test
+mvn jacoco:report
 ```
 
 ## 📦 Commandes Java utiles
