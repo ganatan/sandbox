@@ -293,14 +293,13 @@
 
 
 
-# Compilation et execution
+# Compilation et execution avec Tomcat
     
     mvn clean install
     
     copy de target/backend-java-21.war
     [TOMCAT_HOME]/webapps
 
-# Execution avec Tomcat
   - Modifier le fichier de config
   [TOMCAT_HOME]/conf/tomcat-users.xml
 
