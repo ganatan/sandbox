@@ -8,17 +8,13 @@
         Language : Java
         Spring Boot : 3.5.3
         Group : com.ganatan
+        Artifact : backend-springboot-21
+        name : backend-springboot-21
+        !!!!!! Choisir le nom de l'appli pas trop long !!!!!!!
         description:Projet Spring Boot Java 21 WAR pour Eclipse
-        package.name:com.ganatan.backend-java-21-eclipse
+        package.name:com.ganatan.backend-springboot-21
         Java : 21
         Packaging : jar
-
-
-        Artifact : backend-java-21-eclipse
-        name : backend-java-21-eclipse
-        !!!!!! Choisir le nom de l'appli pas trop long !!!!!!!
-          starter
-          llm
 
 
   Ajoute les dépendances :
@@ -34,7 +30,7 @@
   
   mvn clean install
 
-  java -jar target/backend-java-21-eclipse-0.0.1-SNAPSHOT.jar
+  java -jar target/backend-springboot-21-0.0.1-SNAPSHOT.jar
   java -jar target/starter-app-0.0.1-SNAPSHOT.jar
 
 
