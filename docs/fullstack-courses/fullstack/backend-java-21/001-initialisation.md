@@ -48,22 +48,6 @@
       Packaging: war
       Name: backend-java-21
 
-
-  # !!!!!!! ne marche pas
-	Create New / Project / Maven / Maven Project
-		Sélectionnez un archétype
-			Catalog					Maven Central
-			Filter					org.apache.maven
-			Group Id				org.apache.maven.archetypes
-			Artifact Id			maven.archetype-webapp
-
-    Indiquer 
-		  Group Id				com.ganatan
-			Artifact Id			backend-java-21
-			Package					com.ganatan      
-
-    Repondre Y lors de l'installation      
-
  # Créer la structure des packages
     Supprimer le package par défaut créé automatiquement
     Clic droit sur src/main/java → New → Package
