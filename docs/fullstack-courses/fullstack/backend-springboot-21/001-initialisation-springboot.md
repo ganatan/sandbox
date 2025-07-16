@@ -1,9 +1,4 @@
 
-# Création de deux projet
-
-  - backend-java-21-eclipse    
-  - backend-java-21-intellij 
-
 # Création du projet Eclipse
 
   - Aller sur https://start.spring.io

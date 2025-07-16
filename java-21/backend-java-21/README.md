@@ -102,6 +102,7 @@ Accès local :
 mvn clean
 mvn compile
 mvn test
+mvn clean verify
 mvn package
 mvn install
 mvn checkstyle:check
