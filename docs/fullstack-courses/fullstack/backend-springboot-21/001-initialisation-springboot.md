@@ -32,27 +32,47 @@
 
   java -jar target/backend-springboot-21-0.0.1-SNAPSHOT.jar
   java -jar target/starter-app-0.0.1-SNAPSHOT.jar
+  
+  java -jar target/demo-0.0.1-SNAPSHOT.jar
 
 
   http://localhost:8080/
 
 # Rajout d'un controller
 
+  - renommer application et package
+  package com.ganatan.config;
+
+  import org.springframework.boot.SpringApplication;
+  import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+  # !!!!!! tres important pour les scans
+  @SpringBootApplication(scanBasePackages = "com.ganatan")
+  public class Application {
+
+    public static void main(String[] args) {
+      SpringApplication.run(Application.class, args);
+    }
+
+  }
+
+
   - Creer un repertoire controllers
   
-  package com.ganatan.backend_java_21_eclipse.controllers;
+  package com.ganatan.config.controllers;
 
   import org.springframework.web.bind.annotation.GetMapping;
   import org.springframework.web.bind.annotation.RestController;
 
   @RestController
-  public class HelloController {
+  public class RootController {
 
       @GetMapping("/")
       public String home() {
-          return "starter-app";
+          return "backend-springboot-21";
       }
   }
+
 
 # Gestion des dependencies
   https://mvnrepository.com/
