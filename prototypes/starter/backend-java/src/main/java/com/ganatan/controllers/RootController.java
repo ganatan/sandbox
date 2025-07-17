@@ -48,8 +48,6 @@ public class RootController {
 	}
 }
 
-
-
 //package com.ganatan.controllers;
 //
 //import jakarta.ws.rs.GET;

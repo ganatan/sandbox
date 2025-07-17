@@ -26,21 +26,20 @@ public class RootController {
 		VERSION = properties.getProperty("app.version", "unknown");
 	}
 
-	
-    @GetMapping("/")
-    public Map<String, Object> getStatus() {
-        Map<String, Object> response = new LinkedHashMap<>();
-        response.put("success", true);
+	@GetMapping("/")
+	public Map<String, Object> getStatus() {
+		Map<String, Object> response = new LinkedHashMap<>();
+		response.put("success", true);
 
-        Map<String, Object> data = new LinkedHashMap<>();
+		Map<String, Object> data = new LinkedHashMap<>();
 		data.put("version", VERSION);
-        data.put("status", "ok");
-        data.put("app", "backend-spring");
-        data.put("env", "development");
-        data.put("dbClient", "mock");
+		data.put("status", "ok");
+		data.put("app", "backend-spring");
+		data.put("env", "development");
+		data.put("dbClient", "mock");
 
-        response.put("data", data);
+		response.put("data", data);
 
-        return response;
-    }
+		return response;
+	}
 }

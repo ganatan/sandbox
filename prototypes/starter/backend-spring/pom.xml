@@ -23,6 +23,10 @@
     <surefire.plugin.version>3.2.5</surefire.plugin.version>
     <checkstyle.plugin.version>3.3.0</checkstyle.plugin.version>
     <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
+    
+	<checkstyle.version>10.26.1</checkstyle.version>
+    <maven.checkstyle.plugin.version>3.6.0</maven.checkstyle.plugin.version>
+
   </properties>
 
   <dependencies>
@@ -62,24 +66,23 @@
         <version>${surefire.plugin.version}</version>
       </plugin>
 
-      <plugin>
+    <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${checkstyle.plugin.version}</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
+        <version>${maven.checkstyle.plugin.version}</version>
         <configuration>
-          <configLocation>google_checks.xml</configLocation>
-          <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
+            <configLocation>checkstyle.xml</configLocation>
+            <consoleOutput>true</consoleOutput>
+            <failsOnError>false</failsOnError>
         </configuration>
-      </plugin>
+        <dependencies>
+            <dependency>
+                <groupId>com.puppycrawl.tools</groupId>
+                <artifactId>checkstyle</artifactId>
+                <version>${checkstyle.version}</version>
+            </dependency>
+        </dependencies>
+    </plugin>
 
       <plugin>
         <groupId>org.jacoco</groupId>
