@@ -40,7 +40,7 @@ public class PersonControllerTest {
             new Person(2L, "Martin Scorsese")
         );
 
-        Mockito.when(personService.getAll()).thenReturn(mockPersons);
+        Mockito.when(personService.getItems()).thenReturn(mockPersons);
 
         String responseContent = mockMvc.perform(get("/persons"))
             .andExpect(status().isOk())

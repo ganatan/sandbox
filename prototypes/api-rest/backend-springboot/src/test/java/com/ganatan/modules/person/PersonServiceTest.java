@@ -13,7 +13,7 @@ public class PersonServiceTest {
 
     @Test
     void shouldReturnAllPersons() {
-        List<Person> persons = service.getAll();
+        List<Person> persons = service.getItems();
 
         assertThat(persons).isNotNull();
         assertThat(persons).hasSize(2);
@@ -22,7 +22,7 @@ public class PersonServiceTest {
 
     @Test
     void shouldReturnPersonById() {
-        Person person = service.getById(1L);
+        Person person = service.getItemById(1L);
 
         assertThat(person).isNotNull();
         assertThat(person.getId()).isEqualTo(1L);
@@ -33,27 +33,27 @@ public class PersonServiceTest {
     void shouldCreatePerson() {
         Person newPerson = new Person(10L, "Ridley Scott");
 
-        Person created = service.create(newPerson);
+        Person created = service.createItem(newPerson);
 
         assertThat(created).isNotNull();
         assertThat(created.getId()).isEqualTo(10L);
         assertThat(created.getName()).isEqualTo("Ridley Scott");
 
-        assertThat(service.getAll()).hasSize(3);
+        assertThat(service.getItems()).hasSize(3);
     }
 
     @Test
     void shouldThrowWhenCreatingExistingPerson() {
         Person duplicate = new Person(1L, "Someone Else");
 
-        assertThatThrownBy(() -> service.create(duplicate))
+        assertThatThrownBy(() -> service.createItem(duplicate))
             .isInstanceOf(IllegalStateException.class)
             .hasMessage("ALREADY_EXISTS");
     }
 
     @Test
     void shouldUpdateExistingPerson() {
-        Person updated = service.update(1L, new Person(1L, "Updated Name"));
+        Person updated = service.updateItem(1L, new Person(1L, "Updated Name"));
 
         assertThat(updated).isNotNull();
         assertThat(updated.getId()).isEqualTo(1L);
@@ -62,22 +62,22 @@ public class PersonServiceTest {
 
     @Test
     void shouldReturnNullWhenUpdatingNonExistingPerson() {
-        Person updated = service.update(999L, new Person(999L, "Ghost"));
+        Person updated = service.updateItem(999L, new Person(999L, "Ghost"));
 
         assertThat(updated).isNull();
     }
 
     @Test
     void shouldDeletePerson() {
-        boolean deleted = service.delete(1L);
+        boolean deleted = service.deleteItem(1L);
 
         assertThat(deleted).isTrue();
-        assertThat(service.getById(1L)).isNull();
+        assertThat(service.getItemById(1L)).isNull();
     }
 
     @Test
     void shouldReturnFalseWhenDeletingNonExistingPerson() {
-        boolean deleted = service.delete(999L);
+        boolean deleted = service.deleteItem(999L);
 
         assertThat(deleted).isFalse();
     }

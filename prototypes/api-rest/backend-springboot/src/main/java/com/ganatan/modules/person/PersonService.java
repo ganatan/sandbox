@@ -13,15 +13,15 @@ public class PersonService {
         repository.put(2L, new Person(2L, "Martin Scorsese"));
     }
 
-    public List<Person> getAll() {
+    public List<Person> getItems() {
         return new ArrayList<>(repository.values());
     }
 
-    public Person getById(Long id) {
+    public Person getItemById(Long id) {
         return repository.get(id);
     }
 
-    public Person create(Person person) {
+    public Person createItem(Person person) {
         if (repository.containsKey(person.getId())) {
             throw new IllegalStateException("ALREADY_EXISTS");
         }
@@ -29,15 +29,15 @@ public class PersonService {
         return person;
     }
 
-    public Person update(Long id, Person newPerson) {
+    public Person updateItem(Long id, Person newPerson) {
         if (!repository.containsKey(id)) {
-            return null; // Person non trouvée
+            return null;
         }
         repository.put(id, new Person(id, newPerson.getName()));
         return repository.get(id);
     }
 
-    public boolean delete(Long id) {
+    public boolean deleteItem(Long id) {
         return repository.remove(id) != null;
     }
 }

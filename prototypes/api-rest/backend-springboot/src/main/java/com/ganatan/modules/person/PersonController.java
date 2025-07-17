@@ -17,14 +17,14 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAll() {
-        List<Person> persons = service.getAll();
+    public ResponseEntity<?> getItems() {
+        List<Person> persons = service.getItems();
         return ResponseEntity.ok(Map.of("data", persons));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable Long id) {
-        Person person = service.getById(id);
+    public ResponseEntity<?> getItemById(@PathVariable Long id) {
+        Person person = service.getItemById(id);
         if (person == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Map.of("error", "Person not found"));
@@ -33,15 +33,15 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Person person) {
-        Person created = service.create(person);
+    public ResponseEntity<?> createItem(@RequestBody Person person) {
+        Person created = service.createItem(person);
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(Map.of("data", created));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Person person) {
-        Person updated = service.update(id, person);
+    public ResponseEntity<?> updateItem(@PathVariable Long id, @RequestBody Person person) {
+        Person updated = service.updateItem(id, person);
         if (updated == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Map.of("error", "Person not found"));
@@ -50,8 +50,8 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        boolean deleted = service.delete(id);
+    public ResponseEntity<?> deleteItem(@PathVariable Long id) {
+        boolean deleted = service.deleteItem(id);
         if (!deleted) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Map.of("error", "Person not found"));
