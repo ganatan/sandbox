@@ -35,7 +35,6 @@ Run tests and generate JaCoCo coverage report:
 mvn clean test
 mvn jacoco:report
 ```
-
 Coverage report generated at:
 
 ```
@@ -77,7 +76,7 @@ http://localhost:8080/
 Example endpoints:
 
 - [http://localhost:8080/](http://localhost:8080/)
-- [http://localhost:8080/api/persons](http://localhost:8080/api/persons)
+- [http://localhost:8080/persons](http://localhost:8080/persons)
 
 ---
 
@@ -114,5 +113,39 @@ http://localhost:8080/
 
 ---
 
-📦 Plus besoin de Tomcat externe : **tout est intégré dans le JAR**.
+## 📡 REST API - Person Endpoints
 
+- **GET** `/persons` : Get list of all persons
+- **GET** `/persons/{id}` : Get person by ID
+- **POST** `/persons` : Create new person
+- **PUT** `/persons/{id}` : Update existing person
+- **DELETE** `/persons/{id}` : Delete person by ID
+
+```
+http://localhost:8080/persons
+```
+
+### 🔍 Example JSON body for POST / PUT:
+
+```json
+{
+  "id": 99,
+  "firstName": "Ridley",
+  "lastName": "Scott"
+}
+```
+
+---
+
+
+
+## 🧪 single Unit Tests
+
+Run one tests 
+
+```bash
+mvn test -Dtest=PersonControllerTest
+mvn test -Dtest=PersonServiceTest
+```
+
+---

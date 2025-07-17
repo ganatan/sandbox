@@ -1,24 +1,62 @@
 package com.ganatan.modules.person;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
 
 @RestController
+@RequestMapping("/persons")
 public class PersonController {
 
-    @GetMapping("/persons")
-    public List<Person> getItems() {
-        return List.of(
-            new Person(1L, "Steven", "Spielberg"),
-            new Person(2L, "Martin", "Scorsese"),
-            new Person(3L, "Quentin", "Tarantino"),
-            new Person(4L, "Christopher", "Nolan"),
-            new Person(5L, "James", "Cameron"),
-            new Person(6L, "Clint", "Eastwood"),
-            new Person(7L, "Ridley", "Scott")
-        );
+    private final PersonService service;
+
+    public PersonController(PersonService service) {
+        this.service = service;
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAll() {
+        List<Person> persons = service.getAll();
+        return ResponseEntity.ok(Map.of("data", persons));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable Long id) {
+        Person person = service.getById(id);
+        if (person == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("error", "Person not found"));
+        }
+        return ResponseEntity.ok(Map.of("data", person));
+    }
+
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody Person person) {
+        Person created = service.create(person);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(Map.of("data", created));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Person person) {
+        Person updated = service.update(id, person);
+        if (updated == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("error", "Person not found"));
+        }
+        return ResponseEntity.ok(Map.of("data", updated));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        boolean deleted = service.delete(id);
+        if (!deleted) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("error", "Person not found"));
+        }
+        return ResponseEntity.ok(Map.of("message", "Deleted"));
+    }
 }
+

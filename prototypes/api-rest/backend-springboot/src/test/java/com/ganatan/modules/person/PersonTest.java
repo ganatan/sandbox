@@ -7,10 +7,9 @@ public class PersonTest {
 
     @Test
     void shouldCreatePersonWithCorrectValues() {
-        Person person = new Person(1L, "John", "Doe");
+        Person person = new Person(1L, "John Doe");
 
         assertEquals(1L, person.getId());
-        assertEquals("John", person.getFirstName());
-        assertEquals("Doe", person.getLastName());
+        assertEquals("John Doe", person.getName());
     }
 }
