@@ -42,3 +42,30 @@
 # coverage
 
   mvn jacoco:report
+  !!!!!!!!!!!!!! ne donne un resultat que si avant
+  mvn test
+
+
+# pour backend-spring
+
+rajout de ces dependances
+
+
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>${spring.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.hamcrest</groupId>
+	    <artifactId>hamcrest</artifactId>
+	    <version>2.2</version>
+	    <scope>test</scope>
+	</dependency>	
+	<dependency>
+	    <groupId>com.jayway.jsonpath</groupId>
+	    <artifactId>json-path</artifactId>
+	    <version>2.9.0</version>
+	    <scope>test</scope>
+	</dependency>
