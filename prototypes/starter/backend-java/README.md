@@ -1,6 +1,6 @@
 # backend-java
 
-Java 21 web application packaged as a WAR, without Spring, using Servlet API + JAX-RS (Jakarta EE), deployable on Tomcat or Jetty, with Checkstyle, unit tests, and Maven build.
+Java 21 web application packaged as a WAR, without Spring, using Servlet API + JAX-RS (Jakarta EE), deployable on Tomcat , with Checkstyle, unit tests, and Maven build.
 
 ---
 
