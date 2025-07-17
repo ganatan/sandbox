@@ -1,4 +1,5 @@
-package com.ganatan.tools;
+package scripts;
+
 
 import java.io.File;
 

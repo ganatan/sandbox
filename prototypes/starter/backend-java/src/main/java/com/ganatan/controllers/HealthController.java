@@ -8,24 +8,15 @@ import jakarta.ws.rs.core.Response;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Path("/")
+@Path("/health")
 @Produces(MediaType.APPLICATION_JSON)
-public class RootController {
+public class HealthController {
 
 	@GET
 	public Response getStatus() {
 		Map<String, Object> response = new LinkedHashMap<>();
-		Map<String, Object> data = new LinkedHashMap<>();
 
-		response.put("success", true);
-
-		data.put("version", "1.1.1");
-		data.put("status", "ok");
-		data.put("app", "backend-java-21");
-		data.put("env", "development");
-		data.put("dbClient", "mock");
-		response.put("data", data);
-		response.put("data", data);
+		response.put("status", "ok");
 
 		return Response.ok(response).build();
 	}

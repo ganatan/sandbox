@@ -9,7 +9,7 @@ public class ApplicationConfig extends ResourceConfig {
     public ApplicationConfig() {
 
         System.out.println("==================================");
-        System.out.println("Démarrage backend-java-21 (Jersey)");
+        System.out.println("Démarrage backend-java    (Jersey)");
         System.out.println("API exposées :");
         System.out.println("- /            -> RootController");
         System.out.println("- /persons     -> PersonController");

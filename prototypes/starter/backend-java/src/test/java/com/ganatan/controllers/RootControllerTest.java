@@ -2,8 +2,6 @@ package com.ganatan.controllers;
 
 import org.junit.jupiter.api.Test;
 
-import com.ganatan.controllers.RootController;
-
 import jakarta.ws.rs.core.Response;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;

@@ -92,6 +92,10 @@
 
 # Rajout dans pom.xml d'un plugin
 
+
+    !!!!!!!         supprimer cette ligne
+    !!!!!!!         <encoding>UTF-8</encoding>
+
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-checkstyle-plugin</artifactId>
