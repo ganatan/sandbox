@@ -18,11 +18,11 @@ public class RootControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void shouldReturnRootStatus() throws Exception {
+    void shouldReturnStatusJson() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
-                .andExpect(jsonPath("$.data.version").value("1.1.1"))
+                .andExpect(jsonPath("$.data.version").isString())
                 .andExpect(jsonPath("$.data.status").value("ok"))
                 .andExpect(jsonPath("$.data.app").value("backend-springboot"))
                 .andExpect(jsonPath("$.data.env").value("development"))

@@ -3,11 +3,11 @@ package com.ganatan.config;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ApplicationConfigTest {
+public class ApplicationTest {
 
     @Test
     public void testApplicationConfigInitialization() {
-        ApplicationConfig config = new ApplicationConfig();
+        Application config = new Application();
         assertNotNull(config);
     }
 }

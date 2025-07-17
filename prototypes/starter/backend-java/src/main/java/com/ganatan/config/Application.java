@@ -4,9 +4,9 @@ import jakarta.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 
 @ApplicationPath("/")  
-public class ApplicationConfig extends ResourceConfig {
+public class Application extends ResourceConfig {
 
-    public ApplicationConfig() {
+    public Application() {
 
         System.out.println("==================================");
         System.out.println("Démarrage backend-java    (Jersey)");

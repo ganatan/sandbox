@@ -9,7 +9,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
-public class AppInitializerTest {
+public class ApplicationTest {
     
     @Test
     void shouldRegisterDispatcherServlet() throws Exception {
@@ -19,7 +19,7 @@ public class AppInitializerTest {
         when(servletContext.addServlet(eq("dispatcher"), any(DispatcherServlet.class)))
             .thenReturn(dynamic);
         
-        AppInitializer initializer = new AppInitializer();
+        Application initializer = new Application();
         initializer.onStartup(servletContext);
         
         verify(servletContext).addServlet(eq("dispatcher"), any(DispatcherServlet.class));
