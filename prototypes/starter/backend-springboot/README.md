@@ -1,31 +1,42 @@
-# backend-java
+# backend-springboot
 
-Application Spring Boot packagée en WAR, compatible Tomcat / Jetty, avec linter, tests, build Maven.
+Java 21 web application packaged as a **JAR executable**, using **Spring Boot + Spring MVC**, with embedded **Tomcat**, Checkstyle, unit tests, and Maven build.
 
 ---
 
-## 🔧 Lint (analyse statique)
+## 📊 Updates (Dependency Updates)
 
-Analyse du style de code Java avec Checkstyle :
+Check outdated dependencies and plugins:
+
+```bash
+mvn versions:display-dependency-updates
+mvn versions:display-plugin-updates
+```
+
+---
+
+## 🔧 Lint (Static Analysis)
+
+Run Checkstyle to enforce code style rules:
 
 ```bash
 mvn checkstyle:check
 ```
 
-⛔️ La build échoue si le code ne respecte pas les règles définies dans `checkstyle.xml`.
+⛔️ Build fails if code does not comply with `checkstyle.xml`.
 
 ---
 
-## 🧪 Tests unitaires
+## 🧪 Unit Tests
 
-Exécution des tests + génération du rapport JaCoCo :
+Run tests and generate JaCoCo coverage report:
 
 ```bash
 mvn clean test
 mvn jacoco:report
 ```
 
-Rapport de couverture généré dans :
+Coverage report generated at:
 
 ```
 target/site/jacoco/index.html
@@ -33,77 +44,52 @@ target/site/jacoco/index.html
 
 ---
 
-## 🏗️ Build
+## 🏗️ Build (JAR)
 
-Compilation + tests + packaging + installation locale :
+Compile, test, and package as a **JAR executable** with embedded **Tomcat**:
 
 ```bash
 mvn clean install
 ```
 
-Génère le fichier :
+Generates:
 
 ```
-target/backend-java-1.0.0.war
+target/backend-springboot-1.0.0.jar
 ```
 
 ---
 
-## 🚀 Déploiement local (Tomcat)
+## 🚀 Deployment (Standalone)
 
-1. Copier le fichier WAR dans :
-
-```
-<chemin-vers-tomcat>/webapps
-```
-
-2. Démarrer Tomcat
-
-3. Accéder à l'application :
-
-- http://localhost:8080/backend-java-1.0.0/
-- http://localhost:8080/backend-java-1.0.0/persons
-
----
-
-## 🌐 Déploiement Jetty (optionnel)
-
-Ajoute dans `pom.xml` :
-
-```xml
-<plugin>
-  <groupId>org.eclipse.jetty</groupId>
-  <artifactId>jetty-maven-plugin</artifactId>
-  <version>11.0.25</version>
-  <configuration>
-    <webApp>
-      <contextPath>/</contextPath>
-    </webApp>
-  </configuration>
-</plugin>
-```
-
-Puis exécute :
+Run directly (Tomcat embedded):
 
 ```bash
-mvn clean compile jetty:run
-# ou simplement :
-mvn jetty:run
+java -jar target/backend-springboot-1.0.0.jar
 ```
 
-Accès local :
-- http://localhost:8080/backend-java/
+Application accessible at :
+
+```
+http://localhost:8080/
+```
+
+Example endpoints:
+
+- [http://localhost:8080/](http://localhost:8080/)
+- [http://localhost:8080/api/persons](http://localhost:8080/api/persons)
 
 ---
 
-## 📦 Commandes Maven utiles
+## 📦 Useful Maven Commands
 
 ```bash
 mvn clean
 mvn compile
-mvn test
-mvn clean verify
+mvn verify
 mvn package
+
+mvn test
 mvn install
 mvn checkstyle:check
 mvn dependency:tree
@@ -111,12 +97,22 @@ mvn clean test
 mvn jacoco:report
 ```
 
-## 📦 Commandes Java utiles
+---
+
+## ✅ Production Summary
 
 ```bash
-java -jar target/backend-java-1.0.0.jar
+mvn clean install
+java -jar target/backend-springboot-1.0.0.jar
 ```
 
+Application available at :
 
+```
+http://localhost:8080/
+```
 
+---
+
+📦 Plus besoin de Tomcat externe : **tout est intégré dans le JAR**.
 
