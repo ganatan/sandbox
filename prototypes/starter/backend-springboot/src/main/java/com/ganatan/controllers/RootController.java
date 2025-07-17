@@ -17,7 +17,7 @@ public class RootController {
 		Map<String, Object> data = new LinkedHashMap<>();
 		data.put("version", "1.1.1");
 		data.put("status", "ok");
-		data.put("app", "backend-springboot-21");
+		data.put("app", "backend-springboot");
 		data.put("env", "development");
 		data.put("dbClient", "mock");
 

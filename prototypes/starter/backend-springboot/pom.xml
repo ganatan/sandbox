@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ganatan</groupId>
-	<artifactId>backend-springboot-21</artifactId>
+	<artifactId>backend-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>backend-springboot-21</name>
+	<name>backend-springboot</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
