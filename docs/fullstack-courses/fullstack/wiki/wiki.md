@@ -128,3 +128,18 @@ Configuration	        100% manuelle	      70% manuelle	      5% manuelle (starte
 Gestion JSON	        Jakarta JSON-P	    Jackson (manuel)	  Jackson (auto géré)
 Serveur	              Tomcat externe	    Tomcat externe	    Tomcat embarqué
 Démarrage	            Déploiement WAR	    Déploiement WAR	    java -jar direct
+
+
+# Architecture Windows
+  Windows x86     Architecture 32 bits      Systèmes et applications 32 bits
+  Windows x64     Architecture 64 bits	    Systèmes et applications 64 bits
+
+
+# Compatibilité Java Tomcat
+
+Tomcat	      API Servlet	            Java requis	      Spring MVC type	                      Version Spring MVC
+
+Tomcat 8.x	  javax.servlet 3.1	      Java 7 / 8	      Spring MVC classique (javax.servlet)	Spring 4.x / 5.x	
+Tomcat 9.x	  javax.servlet 4.0	      Java 8	          Spring MVC classique (javax.servlet)	Spring 5.x
+Tomcat 10.x	  jakarta.servlet 5.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)	Spring 6.x
+Tomcat 11.x	  jakarta.servlet 6.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)

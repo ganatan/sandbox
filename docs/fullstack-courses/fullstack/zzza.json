@@ -1,0 +1,110 @@
+{
+    "@timestamp": [
+        "2025-07-19T10:12:28.006Z"
+    ],
+    "fields.accept": [
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    ],
+    "fields.accept.keyword": [
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    ],
+    "fields.acceptLanguage": [
+        "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,da;q=0.6"
+    ],
+    "fields.acceptLanguage.keyword": [
+        "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,da;q=0.6"
+    ],
+    "fields.bodySize": [
+        0
+    ],
+    "fields.contentLength": [
+        0
+    ],
+    "fields.correlationId": [
+        "b9b82f9e-afe5-476e-86c2-2ce82b3ff09a"
+    ],
+    "fields.correlationId.keyword": [
+        "b9b82f9e-afe5-476e-86c2-2ce82b3ff09a"
+    ],
+    "fields.environment": [
+        "development"
+    ],
+    "fields.environment.keyword": [
+        "development"
+    ],
+    "fields.host": [
+        "localhost:3001"
+    ],
+    "fields.host.keyword": [
+        "localhost:3001"
+    ],
+    "fields.hostname": [
+        "chendra"
+    ],
+    "fields.hostname.keyword": [
+        "chendra"
+    ],
+    "fields.httpVersion": [
+        "1.1"
+    ],
+    "fields.httpVersion.keyword": [
+        "1.1"
+    ],
+    "fields.ip": [
+        "::1"
+    ],
+    "fields.ip.keyword": [
+        "::1"
+    ],
+    "fields.method": [
+        "GET"
+    ],
+    "fields.method.keyword": [
+        "GET"
+    ],
+    "fields.processId": [
+        50684
+    ],
+    "fields.protocol": [
+        "http"
+    ],
+    "fields.protocol.keyword": [
+        "http"
+    ],
+    "fields.responseTime": [
+        1
+    ],
+    "fields.route": [
+        "/persons"
+    ],
+    "fields.route.keyword": [
+        "/persons"
+    ],
+    "fields.statusCode": [
+        304
+    ],
+    "fields.timestamp": [
+        "2025-07-19T10:12:28.006Z"
+    ],
+    "fields.userAgent": [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+    ],
+    "fields.userAgent.keyword": [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+    ],
+    "message": [
+        "[GET] /persons - 304"
+    ],
+    "message.keyword": [
+        "[GET] /persons - 304"
+    ],
+    "severity": [
+        "info"
+    ],
+    "severity.keyword": [
+        "info"
+    ],
+    "_id": "mVkrIpgBxf9TPKQbuqq4",
+    "_index": "backend-javascript-logs-2025.07.19",
+    "_score": null
+}
