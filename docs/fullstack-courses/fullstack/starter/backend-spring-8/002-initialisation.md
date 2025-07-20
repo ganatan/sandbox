@@ -155,7 +155,7 @@ Tomcat 11.x	  jakarta.servlet 6.0	    Java 11	          Spring MVC Jakarta (jaka
           public void setName(String name) { this.name = name; }
       }
 
-    PersonController.java      
+    PersonController.java
 
       package com.ganatan.modules.person;
 
