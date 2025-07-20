@@ -89,18 +89,18 @@
 
 
 
-# Jakarta
+# Compatibilité Java Jakarta et Tomcat
 
-Technologie	    Version	        Date    Namespace	        API Servlet	      Versions Java	  Tomcat version
+  Technologie	    Version	        Date    Namespace	        API Servlet	      Versions Java	  Tomcat version
 
-Java EE	        Java EE 5	      2006	  javax.*	          Servlet 2.5	      Java 5, 6	      Tomcat 6.x
-Java EE	        Java EE 6	      2009	  javax.*	          Servlet 3.0	      Java 6, 7	      Tomcat 7.x
-Java EE	        Java EE 7	      2013	  javax.*	          Servlet 3.1	      Java 7, 8	      Tomcat 8.x
-Java EE	        Java EE 8	      2017	  javax.*	          Servlet 4.0	      Java 8, 11	    Tomcat 9.x
-Jakarta EE	    Jakarta EE 8	  2019	  javax.* (legacy)	Servlet 4.0	      Java 8, 11	    Tomcat 9.x
-Jakarta EE	    Jakarta EE 9	  2020	  jakarta.*	        Servlet 5.0	      Java 11	        Tomcat 10.0.x
-Jakarta EE	    Jakarta EE 10	  2022	  jakarta.*	        Servlet 6.0	      Java 11, 17	    Tomcat 10.1.x
-Jakarta EE	    Jakarta EE 11	  2024	  jakarta.*	        Servlet 6.0+	    Java 17, 21	    Tomcat 11.x
+  Java EE	        Java EE 5	      2006	  javax.*	          Servlet 2.5	      Java 5, 6	      Tomcat 6.x
+  Java EE	        Java EE 6	      2009	  javax.*	          Servlet 3.0	      Java 6, 7	      Tomcat 7.x
+  Java EE	        Java EE 7	      2013	  javax.*	          Servlet 3.1	      Java 7, 8	      Tomcat 8.x
+  Java EE	        Java EE 8	      2017	  javax.*	          Servlet 4.0	      Java 8, 11	    Tomcat 9.x
+  Jakarta EE	    Jakarta EE 8	  2019	  javax.* (legacy)	Servlet 4.0	      Java 8, 11	    Tomcat 9.x
+  Jakarta EE	    Jakarta EE 9	  2020	  jakarta.*	        Servlet 5.0	      Java 11	        Tomcat 10.0.x
+  Jakarta EE	    Jakarta EE 10	  2022	  jakarta.*	        Servlet 6.0	      Java 11, 17	    Tomcat 10.1.x
+  Jakarta EE	    Jakarta EE 11	  2024	  jakarta.*	        Servlet 6.0+	    Java 17, 21	    Tomcat 11.x
 
 
 # Architecture Appli Java API 
@@ -137,9 +137,24 @@ Démarrage	            Déploiement WAR	    Déploiement WAR	    java -jar direc
 
 # Compatibilité Java Tomcat
 
-Tomcat	      API Servlet	            Java requis	      Spring MVC type	                      Version Spring MVC
+  Tomcat	      API Servlet	            Java requis	      Spring MVC type	                      Version Spring MVC
 
-Tomcat 8.x	  javax.servlet 3.1	      Java 7 / 8	      Spring MVC classique (javax.servlet)	Spring 4.x / 5.x	
-Tomcat 9.x	  javax.servlet 4.0	      Java 8	          Spring MVC classique (javax.servlet)	Spring 5.x
-Tomcat 10.x	  jakarta.servlet 5.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)	Spring 6.x
-Tomcat 11.x	  jakarta.servlet 6.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)
+  Tomcat 8.x	  javax.servlet 3.1	      Java 7 / 8	      Spring MVC classique (javax.servlet)	Spring 4.x / 5.x	
+  Tomcat 9.x	  javax.servlet 4.0	      Java 8	          Spring MVC classique (javax.servlet)	Spring 5.x
+  Tomcat 10.x	  jakarta.servlet 5.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)	Spring 6.x
+  Tomcat 11.x	  jakarta.servlet 6.0	    Java 11	          Spring MVC Jakarta (jakarta.servlet)
+
+
+# Compatibilité Spring avec Java Tomcat
+
+  Framework               Version Spring Boot	      Version Java	          Version Tomcat
+
+  Spring Boot 3.x	3.0     3.1 / 3.2	                Java 17 / 21	          Tomcat 10 / 11 intégré
+  Spring Boot 2.7.x	      2.7.x	                    Java 8 / 11 / 17	      Tomcat 9.x intégré
+  Spring Boot 2.6.x	      2.6.x	                    Java 8 / 11 / 17	      Tomcat 9.x intégré
+  Spring Boot 2.5.x	      2.5.x	                    Java 8 / 11	            Tomcat 9.x intégré
+  
+  Spring Framework 5.x	  5.x	                      Java 8 / 11 / 17	      Utilisation via WAR (Tomcat externe 9.x)
+  Spring Framework 6.x	  6.x (Spring Boot 3.x)	    Java 17 minimum	        Tomcat 10 / 11 intégré
+  
+  Spring Framework 7.x	  3.x (Spring Boot 3.x)	    Java 21 minimum	        Tomcat 11
