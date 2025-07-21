@@ -14,13 +14,16 @@ public class LatencyController {
     @GET
     @Path("/{delay}")
     public Response simulateLatency(@PathParam("delay") int delayMs) {
-		System.out.println("00000000001");
         try {
             Thread.sleep(delayMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+            return Response.serverError()
+                    .entity("{\"status\":\"error\",\"message\":\"Interrupted during sleep.\"}")
+                    .build();
         }
 
-        return Response.ok("{\"status\":\"ok\", \"latency_ms\":" + delayMs + "}").build();
+        String json = String.format("{\"status\":\"ok\",\"latency_ms\":%d}", delayMs);
+        return Response.ok(json).build();
     }
 }
