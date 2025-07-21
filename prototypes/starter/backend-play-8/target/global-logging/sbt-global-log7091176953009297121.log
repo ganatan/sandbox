@@ -1,0 +1,97 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(early(addDefaultCommands), None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(addDefaultCommands, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(early(initialize), None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(initialize, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(boot, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(writeSbtVersion, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdated file D:\atester\backend-play-8\project\build.properties: set sbt.version to 1.10.11[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(reload, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(sbtStashOnFailure, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(onFailure loadFailed, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(loadp, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mwelcome to sbt 1.10.11 (Oracle Corporation Java 1.8.0_451)[0m
+[0m[[0m[0mdebug[0m] [0m[0mLoad.defaultLoad until apply took 134.8663ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: plugins took 39.5514ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: defsScala took 0.1768ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Scanning directory D:\atester\backend-play-8\project[0m
+[0m[[0m[0mdebug[0m] [0m[0m            Load.loadUnit: mkEval took 5.1663ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Found non-root projects [0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Done in D:\atester\backend-play-8\project, returning: ()[0m
+[0m[[0m[0mdebug[0m] [0m[0mdeducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mClause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)[0m
+[0m[[0m[0mdebug[0m] [0m[0mPlugins.deducer#function took 8.0469 ms[0m
+[0m[[0m[0minfo[0m] [0m[0mloading settings for project backend-play-8-build from plugins.sbt...[0m
+[0m[[0m[0mdebug[0m] [0m[0m              Load.resolveProject(backend-play-8-build) took 27.4194ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m            Load.loadTransitive: finalizeProject(Project(id backend-play-8-build, base: D:\atester\backend-play-8\project, plugins: List(<none>))) took 40.6749ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m[Loading] Done in D:\atester\backend-play-8\project, returning: (backend-play-8-build)[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: loadedProjectsRaw took 1264.8807ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m          Load.loadUnit: cleanEvalClasses took 3.7758ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m        Load.loadUnit(file:/D:/atester/backend-play-8/project/, ...) took 1311.2785ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: load took 1409.4532ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: resolveProjects took 3.186ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: finalTransforms took 36.8425ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: config.delegates took 4.0993ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: Def.make(settings)... took 386.8764ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: structureIndex took 122.3942ms[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Load.apply: mkStreams took 2.871ms[0m
+[0m[[0m[0minfo[0m] [0m[0mloading project definition from D:\atester\backend-play-8\project[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating backend-play-8-build[0m
+[0m[[0m[0minfo[0m] [0m[0mResolved backend-play-8-build dependencies[0m
+[0m[[0m[0minfo[0m] [0m[0mFetching artifacts of backend-play-8-build[0m
+[0m[[0m[0minfo[0m] [0m[0mFetched artifacts of backend-play-8-build[0m
+[0m[[0m[31merror[0m] [0m[0mjava.lang.RuntimeException: found version conflict(s) in library dependencies; some are suspected to be binary incompatible:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m	* org.scala-lang.modules:scala-xml_2.12:2.3.0 (early-semver) is selected over {1.2.0, 1.1.1}[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- org.scala-lang:scala-compiler:2.12.20              (depends on 2.3.0)[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- com.typesafe.sbt:sbt-native-packager:1.3.20 (sbtVersion=1.0, scalaVersion=2.12) (depends on 1.1.1)[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- com.typesafe.play:twirl-api_2.12:1.4.2             (depends on 1.2.0)[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mthis can be overridden using libraryDependencySchemes or evictionErrorLevel[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.sys.package$.error(package.scala:30)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.LibraryManagement$.resolve$1(LibraryManagement.scala:90)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$12(LibraryManagement.scala:142)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.util.Tracked$.$anonfun$lastOutput$1(Tracked.scala:74)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11(LibraryManagement.scala:144)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.LibraryManagement$.$anonfun$cachedUpdate$11$adapted(LibraryManagement.scala:131)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.util.Tracked$.$anonfun$inputChangedW$1(Tracked.scala:220)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.LibraryManagement$.cachedUpdate(LibraryManagement.scala:169)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Classpaths$.$anonfun$updateTask0$1(Defaults.scala:3941)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.Function1.$anonfun$compose$1(Function1.scala:49)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:63)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.std.Transform$$anon$4.work(Transform.scala:69)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.$anonfun$submit$2(Execute.scala:283)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:24)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.work(Execute.scala:292)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.$anonfun$submit$1(Execute.scala:283)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.CompletionService$$anon$2.call(CompletionService.scala:65)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.FutureTask.run(FutureTask.java:266)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.FutureTask.run(FutureTask.java:266)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:750)[0m
+[0m[[0m[31merror[0m] [0m[0m([31mupdate[0m) found version conflict(s) in library dependencies; some are suspected to be binary incompatible:[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m	* org.scala-lang.modules:scala-xml_2.12:2.3.0 (early-semver) is selected over {1.2.0, 1.1.1}[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- org.scala-lang:scala-compiler:2.12.20              (depends on 2.3.0)[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- com.typesafe.sbt:sbt-native-packager:1.3.20 (sbtVersion=1.0, scalaVersion=2.12) (depends on 1.1.1)[0m
+[0m[[0m[31merror[0m] [0m[0m	    +- com.typesafe.play:twirl-api_2.12:1.4.2             (depends on 1.2.0)[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0mthis can be overridden using libraryDependencySchemes or evictionErrorLevel[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(loadFailed, None, None)[0m
+[0m[[0m[33mwarn[0m] [0m[0mProject loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)[0m

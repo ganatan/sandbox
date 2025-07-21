@@ -33,8 +33,7 @@
   Varaibles d'environnement
 
     par defaut ce sera donc
-      C:\Program Files (x86)\Common Files\Oracle\Java\java8path\java.exe
-      C:\Program Files\Common Files\Oracle\Java\javapath\java.exe
+      D:\hal\java\jdk-11\bin
 
   Tester java -version      
 
@@ -42,12 +41,14 @@
   
   sbt new playframework/play-java-seed.g8
   indiquer
-    name          backend-play-8
+    name          backend-play-11
     package       com.ganatan
 
 
-  sbt run    
+  sbt run
    http://localhost:9000
+
+   Version 3.0.8 running Java 11.0.28
     
 
 # Compatibilites sbt / Java
@@ -68,3 +69,6 @@
   2.7.x	          2.12.x	          Java 8	Version stable, recommandée pour Java 8
   2.6.x	          2.12.x	          Java 8	Ancienne version (fin de support)
   2.5.x et avant	2.11.x	          Java 8	Très ancienne (déconseillée)  
+
+
+  
