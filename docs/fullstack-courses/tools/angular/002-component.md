@@ -62,4 +62,7 @@
     encapsulation	        ViewEncapsulation	Contrôle de l’encapsulation CSS
 
 # Component de type standalone
-  Depuis Angular 14
+  Depuis la version Angular 14
+
+# Par defaut les component sont de type standalone
+  Depuis la version Angular 19

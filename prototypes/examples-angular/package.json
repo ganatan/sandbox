@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start-starter": "nx serve angular-starter",
-    "lint-starter": "nx lint angular-starter",
-    "test-starter": "nx test angular-starter",
-    "build-starter": "nx build angular-starter",
     "start-component": "nx serve angular-component",
     "lint-component": "nx lint angular-component",
     "test-component": "nx test angular-component",
-    "build-component": "nx build angular-component"
+    "build-component": "nx build angular-component",
+    "start-rxjs": "nx serve angular-rxjs",
+    "lint-rxjs": "nx lint angular-rxjs",
+    "test-rxjs": "nx test angular-rxjs",
+    "build-rxjs": "nx build angular-rxjs",
+    "start-starter": "nx serve angular-starter",
+    "lint-starter": "nx lint angular-starter",
+    "test-starter": "nx test angular-starter",
+    "build-starter": "nx build angular-starter"
   },
   "private": true,
   "dependencies": {

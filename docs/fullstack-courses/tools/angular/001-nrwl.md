@@ -82,4 +82,6 @@
 # Creation d'une appli
 
   npx nx g @nx/angular:app apps/angular-component
+  npx nx g @nx/angular:app apps/angular-service
+  npx nx g @nx/angular:app apps/angular-rxjs
 
