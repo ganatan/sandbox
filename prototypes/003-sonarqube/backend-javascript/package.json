@@ -9,7 +9,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "sonar": "npx sonarqube-scanner",
-    "sonar:coverage": "npm run test:coverage && npx sonarqube-scanner",
+    "test:coverage": "npm run test:coverage && npx sonarqube-scanner",
     "build": "webpack --mode production --output-path dist",
     "serve": "node dist/bundle.js",
     "audit": "npm audit",

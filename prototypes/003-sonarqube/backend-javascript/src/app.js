@@ -4,6 +4,7 @@ import cors from 'cors';
 import config from './config/config.js';
 
 import formatPersons from './format-items.js';
+// import formatPersons from './format-items-error.js';
 
 const app = express();
 
