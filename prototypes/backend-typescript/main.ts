@@ -1,10 +1,7 @@
-let toto = [
-  { name: '1111111' },
-  { name: '2222222' },
-];
+const x = [1, 2, 3];
+
+const z = x.splice(0,0);
 
 
-toto.map((item) => {
-  item.name = item.name + 'xxxx';
-  console.log('00000000001:' + JSON.stringify(item));
-});
+console.log('00000000001:' + JSON.stringify(x))
+console.log('00000000001:' + JSON.stringify(z))
