@@ -6,7 +6,7 @@
 
     Project : Maven
     Language : Java
-    Spring Boot : 3.2.x
+    Spring Boot : 3.5.5
     Group : com.example
     Artifact : backend-java21-springboot
     Java : 21
