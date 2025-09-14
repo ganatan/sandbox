@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ganatan</groupId>
-	<artifactId>springboot-starter-crud</artifactId>
+	<artifactId>springboot-starter-tests</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-starter</name>
 	<description>Demo project for Spring Boot</description>
@@ -34,7 +34,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
