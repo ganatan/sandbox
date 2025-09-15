@@ -13,13 +13,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class RootControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Test
-    void testRootEndpoint() throws Exception {
-        mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("🚀 Spring Boot Starter is running!"));
-    }
+	@Test
+	void testRootEndpoint() throws Exception {
+		mockMvc.perform(get("/")).andExpect(status().isOk())
+				.andExpect(content().string("Spring Boot Starter is running!"));
+	}
 }

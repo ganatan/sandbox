@@ -11,7 +11,7 @@
 	<groupId>com.ganatan</groupId>
 	<artifactId>springboot-starter-crud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-starter</name>
+	<name>springboot-starter-crud</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
