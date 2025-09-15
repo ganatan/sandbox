@@ -3,8 +3,7 @@ package com.ganatan.starter.modules.person;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "STARTER_PERSON")
-//@Table(name = "STARTER_PERSON", schema = "SYSTEM")
+@Table(name = "person")
 public class Person {
 
 	@Id
@@ -15,7 +14,6 @@ public class Person {
 	private String name;
 
 	public Person() {
-		System.out.println("00000000001:Person:Constructor");
 	}
 
 	public Person(Long id, String name) {

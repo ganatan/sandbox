@@ -15,9 +15,7 @@ public class PersonService {
 	}
 
 	public List<Person> getAll() {
-		List<Person> items = repository.findAll();
-		System.out.println("00000000001:" + items);
-		return items;
+		return repository.findAll();
 	}
 
 	public Optional<Person> getById(Long id) {
