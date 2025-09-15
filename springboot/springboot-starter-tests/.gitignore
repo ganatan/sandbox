@@ -31,3 +31,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### SonarQube / JaCoCo ###
+.sonar/
+.scannerwork/
+jacoco.exec
+
+### Environment / secrets ###
+.env
