@@ -7,13 +7,22 @@ install:angular-bootstrap:
   stage: install
   extends: .default_node_job
   script:
+    - echo "INSTALL step"
+    - echo "Files before install:"
+    - ls -la
     - npm ci
+    - echo "Dependencies installed"
+    - ls -la
 
 test:angular-bootstrap:
   stage: test
   extends: .default_node_job
   script:
     - echo "Installing dependencies"
+    - echo "Files before install:"
+    - ls -la
+
+
 # stages:
 #   - install
 #   - test
