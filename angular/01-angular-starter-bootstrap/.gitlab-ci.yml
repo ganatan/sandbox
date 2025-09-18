@@ -1,11 +1,22 @@
-stages:
-  - install
-
-install:
+install_frontend_angular:
   stage: install
   image: node:20
-  script:
+  before_script:
+    - echo "📂 Checking files before npm ci"
+    - ls -la
     - npm ci
+  script:
+    - echo "✅ Node version:"
+    - node -v
+
+# stages:
+#   - install
+
+# install:
+#   stage: install
+#   image: node:20
+#   script:
+#     - npm ci
 
 # test:bootstrap:
 #   stage: test
