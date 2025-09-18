@@ -9,6 +9,17 @@ install_frontend_angular:
     - node -v
     - npm ci
 
+test_frontend_angular:
+  stage: install
+  image: node:20
+  script:
+    - cd "${PROJECT_DIR:-.}"
+    - echo "📂 Checking files before npm ci"
+    - ls -la
+    - echo "✅ Node version:"
+    - node -v
+    - npm ci
+
 # stages:
 #   - install
 
