@@ -1,0 +1,40 @@
+install_backend_springboot:
+  stage: install
+  image: maven:3.9-eclipse-temurin-21
+  before_script:
+    - cd backend-springboot
+  script:
+    - mvn -B -DskipTests verify
+  # rules:
+  #   - changes: [backend-springboot/**]
+
+test_backend_springboot:
+  stage: test
+  image: maven:3.9-eclipse-temurin-21
+  before_script:
+    - cd backend-springboot
+  script:
+    - mvn -B clean test jacoco:report
+  artifacts:
+    when: always
+    reports:
+      junit: backend-springboot/target/surefire-reports/*.xml
+    paths:
+      - backend-springboot/target/site/jacoco
+  # rules:
+  #   - changes: [backend-springboot/**]
+
+build_backend_springboot:
+  stage: build
+  image: maven:3.9-eclipse-temurin-21
+  before_script:
+    - cd backend-springboot
+  script:
+    - mvn -B -DskipTests package
+  artifacts:
+    paths:
+      - backend-springboot/target/*.jar
+      - backend-springboot/target/*.war
+    expire_in: 7 days
+  # rules:
+  #   - changes: [backend-springboot/**]
