@@ -5,7 +5,7 @@ stages:
   - test
   - build
 
-install:
+install:angular-starter-bootstrap:
   stage: install
   script:
     - echo "Installing dependencies"
@@ -20,7 +20,7 @@ install:
       - angular/01-angular-starter-bootstrap/node_modules/
     expire_in: 1h
 
-test:
+test:angular-starter-bootstrap:
   stage: test
   script:
     - echo "Installing Chromium for headless tests"
@@ -30,16 +30,16 @@ test:
     - echo "Running Angular unit tests in ChromeHeadless"
     - npm run test:ci
   dependencies:
-    - install
+    - install:angular-starter-bootstrap
 
-build:
+build:angular-starter-bootstrap:
   stage: build
   script:
     - echo "Building Angular app for production"
     - cd angular/01-angular-starter-bootstrap
     - npm run build --configuration=production
   dependencies:
-    - install
+    - install:angular-starter-bootstrap
   artifacts:
     paths:
       - angular/01-angular-starter-bootstrap/dist/
