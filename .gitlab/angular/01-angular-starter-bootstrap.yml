@@ -3,7 +3,7 @@
   before_script:
     - cd angular/01-angular-starter-bootstrap
 
-install:angular-bootstrap:
+install:angular-starter-bootstrap:
   stage: install
   extends: .default_node_job
   script:
@@ -14,68 +14,12 @@ install:angular-bootstrap:
     - echo "Dependencies installed"
     - ls -la
 
-test:angular-bootstrap:
+test:angular-starter-bootstrap:
   stage: test
   extends: .default_node_job
   script:
     - echo "Installing dependencies"
     - echo "Files before install:"
     - ls -la
-
-
-# stages:
-#   - install
-#   - test
-
-# install:angular-starter-bootstrap:
-#   stage: install
-#   image: node:20
-#   script:
-#     - cd angular/01-angular-starter-bootstrap
-#     - echo "📦 Installing dependencies"
-#     - npm ci
-#   artifacts:
-#     paths:
-#       - angular/01-angular-starter-bootstrap/node_modules/
-#     expire_in: 1h
-
-# test:angular-starter-bootstrap:
-#   stage: test
-#   image: node:20
-#   script:
-#     - cd angular/01-angular-starter-bootstrap
-#     - echo "🧪 Running unit tests"
-#     - npm run test -- --watch=false --browsers=ChromeHeadless
-#   dependencies:
-#     - install:angular-starter-bootstrap
-
-# stages:
-#   - install
-
-# install:
-#   stage: install
-#   image: node:20
-#   script:
-#     - npm ci
-
-# test:bootstrap:
-#   stage: test
-#   image: node:20
-#   script:
-#     - echo "Running unit tests for Angular Starter Bootstrap"
-#     - npm run test -- --watch=false --browsers=ChromeHeadless
-#   dependencies:
-#     - install:bootstrap
-
-# build:bootstrap:
-#   stage: build
-#   image: node:20
-#   script:
-#     - echo "Building Angular Starter Bootstrap project"
-#     - npm run build
-#   dependencies:
-#     - install:bootstrap
-#   artifacts:
-#     paths:
-#       - dist/
-#     expire_in: 1 week
+  dependencies:
+    - install:angular-starter-bootstrap
