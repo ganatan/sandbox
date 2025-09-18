@@ -8,9 +8,6 @@ install_frontend_angular:
     - echo "✅ Node version:"
     - node -v
     - npm ci
-  script:
-    - echo "✅ Node version:"
-    - node -v
 
 # stages:
 #   - install
