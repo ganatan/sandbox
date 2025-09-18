@@ -1,26 +1,32 @@
-install:bootstrap:
+hello:bootstrap:
   stage: install
   script:
-    - npm ci
-  cache:
-    key: bootstrap-${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
+    - echo "✅ Pipeline déclenché pour angular-starter-bootstrap"
 
-test:bootstrap:
-  stage: test
-  script:
-    - npm run test -- --watch=false --browsers=ChromeHeadless
-  dependencies:
-    - install:bootstrap
 
-build:bootstrap:
-  stage: build
-  script:
-    - npm run build
-  dependencies:
-    - install:bootstrap
-  artifacts:
-    paths:
-      - dist/
-    expire_in: 1 week
+# install:bootstrap:
+#   stage: install
+#   script:
+#     - npm ci
+#   cache:
+#     key: bootstrap-${CI_COMMIT_REF_SLUG}
+#     paths:
+#       - node_modules/
+
+# test:bootstrap:
+#   stage: test
+#   script:
+#     - npm run test -- --watch=false --browsers=ChromeHeadless
+#   dependencies:
+#     - install:bootstrap
+
+# build:bootstrap:
+#   stage: build
+#   script:
+#     - npm run build
+#   dependencies:
+#     - install:bootstrap
+#   artifacts:
+#     paths:
+#       - dist/
+#     expire_in: 1 week
