@@ -1,12 +1,5 @@
 stages:
-  - hello
   - install
-
-hello:
-  stage: hello
-  image: node:20
-  script:
-    - echo "CI pipeline started"
 
 install:
   stage: install
