@@ -5,7 +5,6 @@
 **/coverage/
 **/logs/
 **/data/logs/
-**/package-lock.json
 
 # --- Java (Eclipse, compilation, IDE, build tools) ---
 **/bin/                      # Fichiers compilés (Eclipse)
