@@ -1,25 +1,19 @@
 stages:
   - hello
   - install
-  - test
-  - build
 
-hello:bootstrap:
+hello:
   stage: hello
   image: node:20
   script:
-    - echo "CI pipeline started for Angular Starter Bootstrap project on branch $CI_COMMIT_BRANCH"
+    - echo "CI pipeline started"
 
-install:bootstrap:
+install:
   stage: install
   image: node:20
   script:
-    - echo "Installing dependencies for Angular Starter Bootstrap"
+    - echo "Installing dependencies"
     - npm ci
-  cache:
-    key: bootstrap-${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
 
 # test:bootstrap:
 #   stage: test
