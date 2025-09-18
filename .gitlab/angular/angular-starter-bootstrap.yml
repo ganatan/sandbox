@@ -19,9 +19,6 @@ install:
     paths:
       - angular/01-angular-starter-bootstrap/node_modules/
     expire_in: 1h
-  rules:
-    - changes:
-        - angular/01-angular-starter-bootstrap/**/*
 
 test:
   stage: test
@@ -34,9 +31,6 @@ test:
     - npm run test:ci
   dependencies:
     - install
-  rules:
-    - changes:
-        - angular/01-angular-starter-bootstrap/**/*
 
 build:
   stage: build
@@ -50,9 +44,6 @@ build:
     paths:
       - angular/01-angular-starter-bootstrap/dist/
     expire_in: 1 week
-  rules:
-    - changes:
-        - angular/01-angular-starter-bootstrap/**/*
 
 
 
