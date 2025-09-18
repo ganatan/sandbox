@@ -1,12 +1,20 @@
-hello:bootstrap:
-  stage: install
-  script:
-    - echo "✅ Pipeline déclenché pour angular-starter-bootstrap"
+stages:
+  - hello
+  - install
+  - test
+  - build
 
+hello:bootstrap:
+  stage: hello
+  image: node:20
+  script:
+    - echo "CI pipeline started for Angular Starter Bootstrap project on branch $CI_COMMIT_BRANCH"
 
 install:bootstrap:
   stage: install
+  image: node:20
   script:
+    - echo "Installing dependencies for Angular Starter Bootstrap"
     - npm ci
   cache:
     key: bootstrap-${CI_COMMIT_REF_SLUG}
@@ -15,14 +23,18 @@ install:bootstrap:
 
 # test:bootstrap:
 #   stage: test
+#   image: node:20
 #   script:
+#     - echo "Running unit tests for Angular Starter Bootstrap"
 #     - npm run test -- --watch=false --browsers=ChromeHeadless
 #   dependencies:
 #     - install:bootstrap
 
 # build:bootstrap:
 #   stage: build
+#   image: node:20
 #   script:
+#     - echo "Building Angular Starter Bootstrap project"
 #     - npm run build
 #   dependencies:
 #     - install:bootstrap
