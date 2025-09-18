@@ -1,7 +1,7 @@
 install:bootstrap:
   stage: install
   script:
-    - cd angular/angular-starter-bootstrap
+    - cd angular/01-angular-starter-bootstrap
     - npm ci
   cache:
     key: bootstrap-${CI_COMMIT_REF_SLUG}
@@ -11,7 +11,7 @@ install:bootstrap:
 test:bootstrap:
   stage: test
   script:
-    - cd angular/angular-starter-bootstrap
+    - cd angular/01-angular-starter-bootstrap
     - npm run test -- --watch=false --browsers=ChromeHeadless
   dependencies:
     - install:bootstrap
@@ -19,11 +19,11 @@ test:bootstrap:
 build:bootstrap:
   stage: build
   script:
-    - cd angular/angular-starter-bootstrap
+    - cd angular/01-angular-starter-bootstrap
     - npm run build
   dependencies:
     - install:bootstrap
   artifacts:
     paths:
-      - angular/angular-starter-bootstrap/dist/
+      - angular/01-angular-starter-bootstrap/dist/
     expire_in: 1 week
