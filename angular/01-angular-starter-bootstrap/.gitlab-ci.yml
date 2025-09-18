@@ -4,14 +4,14 @@ hello:bootstrap:
     - echo "✅ Pipeline déclenché pour angular-starter-bootstrap"
 
 
-# install:bootstrap:
-#   stage: install
-#   script:
-#     - npm ci
-#   cache:
-#     key: bootstrap-${CI_COMMIT_REF_SLUG}
-#     paths:
-#       - node_modules/
+install:bootstrap:
+  stage: install
+  script:
+    - npm ci
+  cache:
+    key: bootstrap-${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
 
 # test:bootstrap:
 #   stage: test
