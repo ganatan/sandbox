@@ -13,6 +13,10 @@ install:angular-starter-bootstrap:
     - npm ci
     - echo "Dependencies installed"
     - ls -la
+  artifacts:
+      paths:
+        - angular/01-angular-starter-bootstrap/node_modules/
+      expire_in: 1h    
 
 test:angular-starter-bootstrap:
   stage: test
