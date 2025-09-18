@@ -21,5 +21,6 @@ test:angular-starter-bootstrap:
     - echo "Installing dependencies"
     - echo "Files before install:"
     - ls -la
+    - npm run ng:version
   dependencies:
     - install:angular-starter-bootstrap
