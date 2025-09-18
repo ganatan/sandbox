@@ -1,4 +1,4 @@
-# 🚀 Ganatan Starters 250918-1728
+# 🚀 Ganatan Starters 250918-1730
 
 Ce dépôt contient plusieurs **starters** pour démarrer rapidement des projets **Fullstack**.
 
