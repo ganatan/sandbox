@@ -1,12 +1,21 @@
 stages:
   - install
 
-install:
+# install:
+#   stage: install
+#   image: node:20
+#   script:
+#     - echo "Installing dependencies"
+#     - npm ci
+
+
+install_frontend_angular:
   stage: install
   image: node:20
+  # before_script:
+  #   - npm ci
   script:
-    - echo "Installing dependencies"
-    - npm ci
+    - node -v    
 
 # test:bootstrap:
 #   stage: test
