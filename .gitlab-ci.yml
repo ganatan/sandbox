@@ -2,6 +2,7 @@ stages: [install, test, build]
 
 include:
   - local: .gitlab/angular/angular-starter-bootstrap.yml
+  - local: .gitlab/angular/angular-starter.yml
   # - local: .gitlab/angular/01-angular-starter.yml
   # - local: .gitlab/node/backend-node.yml
   # - local: .gitlab/springboot/backend-springboot.yml
