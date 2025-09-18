@@ -5,10 +5,9 @@ install_frontend_angular:
     - cd "${PROJECT_DIR:-.}"
     - echo "📂 Checking files before npm ci"
     - ls -la
-    - npm ci
-  script:
     - echo "✅ Node version:"
     - node -v
+    - npm ci
 
 # stages:
 #   - install
