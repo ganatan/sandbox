@@ -1,7 +1,8 @@
 install_frontend_angular:
   stage: install
   image: node:20
-  before_script:
+  script:
+    - cd angular/01-angular-starter-bootstrap
     - echo "📂 Checking files before npm ci"
     - ls -la
     - npm ci
