@@ -6,7 +6,7 @@ install:bootstrap:
   cache:
     key: bootstrap-${CI_COMMIT_REF_SLUG}
     paths:
-      - angular/angular-starter-bootstrap/node_modules/
+      - angular/01-angular-starter-bootstrap/node_modules/
 
 test:bootstrap:
   stage: test
