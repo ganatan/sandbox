@@ -1,4 +1,4 @@
-install_frontend_angular:
+install:angular-starter-bootstrap:
   stage: install
   image: node:20
   script:

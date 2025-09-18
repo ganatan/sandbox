@@ -1,7 +1,3 @@
-# stages: [install, lint, test, build]
-# include:
-#   - local: angular/01-angular-starter-bootstrap/.gitlab-ci.yml
-
 stages: [install, test, build, deploy]
 
 include:
