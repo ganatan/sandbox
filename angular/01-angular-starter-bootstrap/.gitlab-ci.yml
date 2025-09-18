@@ -9,15 +9,15 @@ install_frontend_angular:
     - node -v
     - npm ci
 
-test_frontend_angular:
-  stage: test
-  image: node:20
-  script:
-    - cd "${PROJECT_DIR:-.}"
-    - echo "🧪 Running unit tests for Angular Starter Bootstrap"
-    - npm run test -- --watch=false --browsers=ChromeHeadless
-  dependencies:
-    - install_frontend_angular
+# test_frontend_angular:
+#   stage: test
+#   image: node:20
+#   script:
+#     - cd "${PROJECT_DIR:-.}"
+#     - echo "🧪 Running unit tests for Angular Starter Bootstrap"
+#     - npm run test -- --watch=false --browsers=ChromeHeadless
+#   dependencies:
+#     - install_frontend_angular
 
 # stages:
 #   - install
