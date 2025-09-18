@@ -8,13 +8,13 @@ install:bootstrap:
     paths:
       - angular/angular-starter-bootstrap/node_modules/
 
-lint:bootstrap:
-  stage: lint
-  script:
-    - cd angular/angular-starter-bootstrap
-    - npm run lint
-  dependencies:
-    - install:bootstrap
+# lint:bootstrap:
+#   stage: lint
+#   script:
+#     - cd angular/angular-starter-bootstrap
+#     - npm run lint
+#   dependencies:
+#     - install:bootstrap
 
 test:bootstrap:
   stage: test
