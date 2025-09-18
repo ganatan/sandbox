@@ -9,6 +9,16 @@ install:angular-starter-bootstrap:
     - node -v
     - npm ci
 
+test:angular-starter-bootstrap:
+  stage: test
+  image: node:20
+  script:
+    - cd angular/01-angular-starter-bootstrap
+    - echo "Running unit tests for Angular Starter Bootstrap"
+    - npm run test -- --watch=false --browsers=ChromeHeadless
+  dependencies:
+    - install:angular-starter-bootstrap
+
 # stages:
 #   - install
 
