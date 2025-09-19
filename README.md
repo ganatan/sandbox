@@ -6,8 +6,10 @@ Ce dépôt contient plusieurs **starters** pour démarrer rapidement des projets
 
 - **Angular Starter**  
   Base pour créer une application front-end Angular.
-  angular-starter
-  angular-starter-bootstrap
+  
+  angular
+    starter
+    bootstrap
 
 - **Node.js Starter**  
   Backend minimal avec Node.js / Express.
