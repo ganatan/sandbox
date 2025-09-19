@@ -9,6 +9,7 @@ Ce dépôt contient plusieurs **starters** pour démarrer rapidement des projets
   
   angular
     starter
+    eslint
     bootstrap
 
 - **Node.js Starter**  
