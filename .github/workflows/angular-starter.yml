@@ -9,13 +9,15 @@ on:
     branches: [ master ]
     paths:
       - "angular/starter/**"
-      
+
 jobs:
   install:
     runs-on: ubuntu-latest
     container: node:20
     steps:
       - uses: actions/checkout@v4
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
       - name: Install dependencies
         run: |
           cd angular/starter
@@ -32,11 +34,14 @@ jobs:
     needs: install
     steps:
       - uses: actions/checkout@v4
-      - name: Install Chromium
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Install Chromium for headless tests
         run: |
-          apt-get update && apt-get install -y chromium
+          apt-get update
+          apt-get install -y chromium
           export CHROME_BIN=/usr/bin/chromium
-      - name: Run tests
+      - name: Run Angular unit tests in ChromeHeadless
         run: |
           cd angular/starter
           npm run test:ci
@@ -47,7 +52,9 @@ jobs:
     needs: install
     steps:
       - uses: actions/checkout@v4
-      - name: Build Angular app
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Build Angular app for production
         run: |
           cd angular/starter
           npm run build --configuration=production
