@@ -6,3 +6,5 @@ include:
   - local: .gitlab/angular/bootstrap.yml
   - local: .gitlab/angular/ssr.yml
   
+  - local: .gitlab/springboot/starter.yml
+  
