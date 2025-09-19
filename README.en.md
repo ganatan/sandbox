@@ -69,8 +69,14 @@ Each project is built to be **quick to clone and run**, with ready-to-use **GitL
 
 ## ⚙️ CI/CD
 
-- GitLab templates are stored in `.gitlab/angular` and `.gitlab/springboot`.
-- The root `.gitlab-ci.yml` includes the proper templates.
+This repository integrates two complementary pipeline systems:
+
+### 🔹 GitLab CI/CD
+- GitLab templates are stored in `.gitlab/angular` and `.gitlab/springboot`.  
+- The root `.gitlab-ci.yml` file includes the appropriate templates.  
+
+### 🔹 GitHub Actions
+- Workflows are stored in `.github/workflows/` (organized by project: `angular-starter.yml`, `angular-bootstrap.yml`, etc.).  
 
 ---
 
