@@ -7,4 +7,5 @@ include:
   - local: .gitlab/angular/ssr.yml
   
   - local: .gitlab/springboot/starter.yml
+  - local: .gitlab/springboot/checkstyle.yml
   
