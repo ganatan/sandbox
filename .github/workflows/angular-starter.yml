@@ -40,7 +40,8 @@ jobs:
         run: |
           apt-get update
           apt-get install -y chromium
-          export CHROME_BIN=/usr/bin/chromium
+      - name: Set CHROME_BIN env variable
+        run: echo "CHROME_BIN=$(which chromium)" >> $GITHUB_ENV
       - name: Install dependencies
         run: |
           cd angular/starter
@@ -71,70 +72,3 @@ jobs:
         with:
           name: angular-starter-dist
           path: angular/starter/dist/
-
-
-# name: angular-starter
-
-# on:
-#   push:
-#     branches: [ master ]
-#     paths:
-#       - "angular/starter/**"
-#   pull_request:
-#     branches: [ master ]
-#     paths:
-#       - "angular/starter/**"
-
-# jobs:
-#   install:
-#     runs-on: ubuntu-latest
-#     container: node:20
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Install Angular CLI
-#         run: npm install -g @angular/cli
-#       - name: Install dependencies
-#         run: |
-#           cd angular/starter
-#           npm ci
-#       - name: Cache node_modules
-#         uses: actions/cache@v4
-#         with:
-#           path: angular/starter/node_modules
-#           key: ${{ runner.os }}-angular-starter-${{ hashFiles('angular/starter/package-lock.json') }}
-
-#   test:
-#     runs-on: ubuntu-latest
-#     container: node:20
-#     needs: install
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Install Angular CLI
-#         run: npm install -g @angular/cli
-#       - name: Install Chromium for headless tests
-#         run: |
-#           apt-get update
-#           apt-get install -y chromium
-#           export CHROME_BIN=/usr/bin/chromium
-#       - name: Run Angular unit tests in ChromeHeadless
-#         run: |
-#           cd angular/starter
-#           npm run test:ci
-
-#   build:
-#     runs-on: ubuntu-latest
-#     container: node:20
-#     needs: install
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Install Angular CLI
-#         run: npm install -g @angular/cli
-#       - name: Build Angular app for production
-#         run: |
-#           cd angular/starter
-#           npm run build --configuration=production
-#       - name: Upload build artifact
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: angular-starter-dist
-#           path: angular/starter/dist/
