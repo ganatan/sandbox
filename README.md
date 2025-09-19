@@ -61,7 +61,6 @@ Chaque projet est pensé pour être **rapide à cloner et exécuter**, avec des 
 
 - Les templates GitLab sont stockés dans `.gitlab/angular` et `.gitlab/springboot`.
 - Le fichier racine `.gitlab-ci.yml` inclut les templates adaptés.
-- Grâce aux règles (`rules: changes`), seuls les pipelines des dossiers modifiés se déclenchent.
 
 ---
 

@@ -61,7 +61,6 @@ Each project is built to be **quick to clone and run**, with ready-to-use **GitL
 
 - GitLab templates are stored in `.gitlab/angular` and `.gitlab/springboot`.
 - The root `.gitlab-ci.yml` includes the proper templates.
-- Thanks to `rules: changes`, only pipelines for modified folders are triggered.
 
 ---
 
