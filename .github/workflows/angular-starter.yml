@@ -1,13 +1,15 @@
-name: Angular Starter CI
+name: angular-starter
 
 on:
   push:
+    branches: [ master ]
     paths:
       - "angular/starter/**"
   pull_request:
+    branches: [ master ]
     paths:
       - "angular/starter/**"
-
+      
 jobs:
   install:
     runs-on: ubuntu-latest
