@@ -1,4 +1,4 @@
-stages: [install, test, build]
+stages: [install, lint, test, build]
 
 include:
   - local: .gitlab/angular/starter.yml
