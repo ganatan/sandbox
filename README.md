@@ -5,6 +5,10 @@ Chaque starter est conçu comme un projet minimal fonctionnel, prêt à être ut
 
 ---
 
+**👉 Looking for the English version?** : [![English](./ui/version-en.png)](./README.en.md)
+
+---
+
 ## 📂 Structure du dépôt
 
 ```
@@ -88,8 +92,3 @@ mvn spring-boot:run
 
 ---
 
-## 📌 Notes
-
-- Chaque starter peut être utilisé comme **base pédagogique** ou comme **base projet réelle**.
-- Les intégrations avancées (Kafka, RabbitMQ, Oracle, etc.) sont fournies sous forme de starters dédiés.
-- Les tests unitaires, la couverture et l’intégration continue sont inclus progressivement selon les starters.
