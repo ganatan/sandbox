@@ -1,5 +1,6 @@
 stages: [install, test, build]
 
 include:
-  - local: .gitlab/angular/bootstrap.yml
   - local: .gitlab/angular/starter.yml
+  - local: .gitlab/angular/eslint.yml
+  - local: .gitlab/angular/bootstrap.yml

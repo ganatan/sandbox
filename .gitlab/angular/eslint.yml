@@ -5,51 +5,51 @@ stages:
   - test
   - build
 
-install:angular-starter:
+install:angular-eslint:
   stage: install
   script:
     - echo "Installing dependencies"
-    - cd angular/starter
+    - cd angular/eslint
     - npm ci
   cache:
     paths:
-      - angular/starter/node_modules/
+      - angular/eslint/node_modules/
     policy: pull-push
   artifacts:
     paths:
-      - angular/starter/node_modules/
+      - angular/eslint/node_modules/
     expire_in: 1h
   rules:
     - changes:
-        - angular/starter/**/*
+        - angular/eslint/**/*
 
-test:angular-starter:
+test:angular-eslint:
   stage: test
   script:
     - echo "Installing Chromium for headless tests"
     - apt-get update && apt-get install -y chromium
     - export CHROME_BIN=/usr/bin/chromium
-    - cd angular/starter
+    - cd angular/eslint
     - echo "Running Angular unit tests in ChromeHeadless"
     - npm run test:ci
   dependencies:
-    - install:angular-starter
+    - install:angular-eslint
   rules:
     - changes:
-        - angular/starter/**/*
+        - angular/eslint/**/*
 
-build:angular-starter:
+build:angular-eslint:
   stage: build
   script:
     - echo "Building Angular app for production"
-    - cd angular/starter
+    - cd angular/eslint
     - npm run build --configuration=production
   dependencies:
-    - install:angular-starter
+    - install:angular-eslint
   artifacts:
     paths:
-      - angular/starter/dist/
+      - angular/eslint/dist/
     expire_in: 1 week
   rules:
     - changes:
-        - angular/starter/**/*
+        - angular/eslint/**/*
