@@ -1,11 +1,11 @@
 stages: [install, lint, test, build]
 
 include:
-  - local: .gitlab/angular/starter.yml
-  - local: .gitlab/angular/eslint.yml
-  - local: .gitlab/angular/bootstrap.yml
-  - local: .gitlab/angular/ssr.yml
+  - local: .gitlab/angular/angular-starter.yml
+  - local: .gitlab/angular/angular-eslint.yml
+  - local: .gitlab/angular/angular-bootstrap.yml
+  - local: .gitlab/angular/angular-ssr.yml
   
-  - local: .gitlab/springboot/starter.yml
-  - local: .gitlab/springboot/checkstyle.yml
+  - local: .gitlab/springboot/springboot-starter.yml
+  - local: .gitlab/springboot/springboot-checkstyle.yml
   
