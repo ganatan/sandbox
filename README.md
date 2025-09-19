@@ -45,6 +45,15 @@ Chaque starter est conçu comme un projet minimal fonctionnel, prêt à être ut
 
 ---
 
+## 🔧 Intégration Continue (CI)
+
+| Projet            | Badge CI |
+|-------------------|----------|
+| Angular Starter   | [![Angular Starter CI](https://github.com/ganatan/starters/actions/workflows/angular-starter.yml/badge.svg?branch=master)](https://github.com/ganatan/starters/actions/workflows/angular-starter.yml) |
+| Angular Bootstrap | [![Angular Bootstrap CI](https://github.com/ganatan/starters/actions/workflows/angular-bootstrap.yml/badge.svg?branch=master)](https://github.com/ganatan/starters/actions/workflows/angular-bootstrap.yml) |
+
+---
+
 ## 🚀 Objectif
 
 L’objectif de ce dépôt est de fournir une **base commune** pour différents types de projets :
