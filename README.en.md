@@ -1,4 +1,4 @@
-# 002-STARTERS
+# Starters
 
 This repository contains several **starters** (bootstrap projects) for different environments and technologies.  
 Each starter is designed as a minimal functional project, ready to be used, tested, and extended.
