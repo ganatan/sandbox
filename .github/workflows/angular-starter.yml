@@ -54,7 +54,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: node:20
-    needs: install
+    needs: test
     steps:
       - uses: actions/checkout@v4
       - name: Install Angular CLI
