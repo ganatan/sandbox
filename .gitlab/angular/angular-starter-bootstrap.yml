@@ -1,0 +1,91 @@
+image: node:20
+
+stages:
+  - install
+  - test
+  - build
+
+install:angular-starter-bootstrap:
+  stage: install
+  script:
+    - echo "Installing dependencies"
+    - cd angular/01-angular-starter-bootstrap
+    - npm ci
+  cache:
+    paths:
+      - angular/01-angular-starter-bootstrap/node_modules/
+    policy: pull-push
+  artifacts:
+    paths:
+      - angular/01-angular-starter-bootstrap/node_modules/
+    expire_in: 1h
+
+test:angular-starter-bootstrap:
+  stage: test
+  script:
+    - echo "Installing Chromium for headless tests"
+    - apt-get update && apt-get install -y chromium
+    - export CHROME_BIN=/usr/bin/chromium
+    - cd angular/01-angular-starter-bootstrap
+    - echo "Running Angular unit tests in ChromeHeadless"
+    - npm run test:ci
+  dependencies:
+    - install:angular-starter-bootstrap
+
+build:angular-starter-bootstrap:
+  stage: build
+  script:
+    - echo "Building Angular app for production"
+    - cd angular/01-angular-starter-bootstrap
+    - npm run build --configuration=production
+  dependencies:
+    - install:angular-starter-bootstrap
+  artifacts:
+    paths:
+      - angular/01-angular-starter-bootstrap/dist/
+    expire_in: 1 week
+
+
+# # image: node:20
+
+# # stages:
+# #   - install
+# #   - test
+# #   - build
+
+# # install:
+# #   stage: install
+# #   script:
+# #     - echo "Installing dependencies"
+# #     - npm ci
+# #   cache:
+# #     paths:
+# #       - node_modules/
+# #     policy: pull-push
+# #   artifacts:
+# #     paths:
+# #       - node_modules/
+# #     expire_in: 1h
+
+# # test:
+# #   stage: test
+# #   script:
+# #     - echo "Installing Chromium for headless tests"
+# #     - apt-get update && apt-get install -y chromium
+# #     - export CHROME_BIN=/usr/bin/chromium
+# #     - echo "Running Angular unit tests in ChromeHeadless"
+# #     - npm run test:ci
+# #   dependencies:
+# #     - install
+
+# # build:
+# #   stage: build
+# #   script:
+# #     - echo "🏗️ Building Angular app for production"
+# #     - npm run build --configuration=production
+# #   dependencies:
+# #     - install
+# #   artifacts:
+# #     paths:
+# #       - dist/
+# #     expire_in: 1 week
