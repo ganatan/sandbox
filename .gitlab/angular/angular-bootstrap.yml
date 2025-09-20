@@ -1,3 +1,50 @@
+image: node:20
+
+stages:
+  - install
+  - test
+  - build
+  - docker
+
+install:angular-bootstrap:
+  stage: install
+  script:
+    - echo "Installing dependencies"
+    - cd angular/angular-bootstrap
+    - npm ci
+  cache:
+    paths:
+      - angular/angular-bootstrap/node_modules/
+    policy: pull-push
+  artifacts:
+    paths:
+      - angular/angular-bootstrap/node_modules/
+    expire_in: 1h
+
+test:angular-bootstrap:
+  stage: test
+  script:
+    - echo "Installing Chromium for headless tests"
+    - apt-get update && apt-get install -y chromium
+    - export CHROME_BIN=/usr/bin/chromium
+    - cd angular/angular-bootstrap
+    - npm run test:ci
+  dependencies:
+    - install:angular-bootstrap
+
+build:angular-bootstrap:
+  stage: build
+  script:
+    - echo "Building Angular app for production"
+    - cd angular/angular-bootstrap
+    - npm run build --configuration=production
+  dependencies:
+    - install:angular-bootstrap
+  artifacts:
+    paths:
+      - angular/angular-bootstrap/dist/
+    expire_in: 1 week
+
 docker:angular-bootstrap:
   stage: docker
   image: docker:latest
@@ -12,93 +59,3 @@ docker:angular-bootstrap:
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
     - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
-
-
-# stages:
-#   - docker
-
-# docker:test:
-#   stage: docker
-#   image: docker:latest
-#   services:
-#     - docker:dind
-#   variables:
-#     DOCKER_DRIVER: overlay2
-#   script:
-#     - echo "🔑 Login to GitLab Registry"
-#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-#     - echo "🐳 Build hello image"
-#     - echo "FROM hello-world" > Dockerfile
-#     - docker build -t $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA .
-#     - echo "📤 Push image"
-#     - docker push $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA
-
-
-# image: node:20
-
-# stages:
-#   - install
-#   - test
-#   - build
-#   - docker
-
-# install:angular-bootstrap:
-#   stage: install
-#   script:
-#     - echo "Installing dependencies"
-#     - cd angular/angular-bootstrap
-#     - npm ci
-#   cache:
-#     paths:
-#       - angular/angular-bootstrap/node_modules/
-#     policy: pull-push
-#   artifacts:
-#     paths:
-#       - angular/angular-bootstrap/node_modules/
-#     expire_in: 1h
-
-# test:angular-bootstrap:
-#   stage: test
-#   script:
-#     - echo "Installing Chromium for headless tests"
-#     - apt-get update && apt-get install -y chromium
-#     - export CHROME_BIN=/usr/bin/chromium
-#     - cd angular/angular-bootstrap
-#     - npm run test:ci
-#   dependencies:
-#     - install:angular-bootstrap
-
-# build:angular-bootstrap:
-#   stage: build
-#   script:
-#     - echo "Building Angular app for production"
-#     - cd angular/angular-bootstrap
-#     - npm run build --configuration=production
-#   dependencies:
-#     - install:angular-bootstrap
-#   artifacts:
-#     paths:
-#       - angular/angular-bootstrap/dist/
-#     expire_in: 1 week
-
-# docker:angular-bootstrap:
-#   stage: docker
-#   image: docker:latest
-#   services:
-#     - docker:dind
-#   variables:
-#     DOCKER_DRIVER: overlay2
-#   script:
-#     - echo "🐳 Building Docker image"
-#     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-#     - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
-#         -f angular/angular-bootstrap/docker/Dockerfile.frontend-angular \
-#         angular/angular-bootstrap
-#     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
-#     - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
-#         "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
-#     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
-#   dependencies:
-#     - build:angular-bootstrap
-#   only:
-#     - master
