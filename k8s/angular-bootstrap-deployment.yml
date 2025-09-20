@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-bootstrap
+  labels:
+    app: angular-bootstrap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-bootstrap
+  template:
+    metadata:
+      labels:
+        app: angular-bootstrap
+    spec:
+      containers:
+        - name: angular-bootstrap
+          image: registry.gitlab.com/ton-groupe/ton-repo/angular-bootstrap:latest
+          ports:
+            - containerPort: 80   # ⚠️ Nginx écoute sur 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-bootstrap
+spec:
+  selector:
+    app: angular-bootstrap
+  ports:
+    - protocol: TCP
+      port: 4000        
+      targetPort: 80    
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: angular-bootstrap
+spec:
+  to:
+    kind: Service
+    name: angular-bootstrap
+  port:
+    targetPort: 4000
