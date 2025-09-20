@@ -1,4 +1,4 @@
-stages: [install, test, build]
+stages: [install, test, build, deploy]
 
 include:
   - local: .gitlab/angular/angular-bootstrap.yml
