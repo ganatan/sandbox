@@ -1,7 +1,7 @@
 stages:
   - docker
 
-docker:test:
+docker:angular-bootstrap:
   stage: docker
   image: docker:latest
   services:
@@ -9,13 +9,38 @@ docker:test:
   variables:
     DOCKER_DRIVER: overlay2
   script:
-    - echo "🔑 Login to GitLab Registry"
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - echo "🐳 Build hello image"
-    - echo "FROM hello-world" > Dockerfile
-    - docker build -t $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA .
-    - echo "📤 Push image"
-    - docker push $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA
+    - echo "Building Docker image"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
+        -f angular/angular-bootstrap/docker/Dockerfile.frontend-angular \
+        angular/angular-bootstrap
+    - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
+    - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
+        "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
+    - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
+  only:
+    - master
+
+
+
+# stages:
+#   - docker
+
+# docker:test:
+#   stage: docker
+#   image: docker:latest
+#   services:
+#     - docker:dind
+#   variables:
+#     DOCKER_DRIVER: overlay2
+#   script:
+#     - echo "🔑 Login to GitLab Registry"
+#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#     - echo "🐳 Build hello image"
+#     - echo "FROM hello-world" > Dockerfile
+#     - docker build -t $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA .
+#     - echo "📤 Push image"
+#     - docker push $CI_REGISTRY_IMAGE/hello:$CI_COMMIT_SHA
 
 
 # image: node:20
@@ -73,14 +98,16 @@ docker:test:
 #   variables:
 #     DOCKER_DRIVER: overlay2
 #   script:
-#     - echo "Building Docker image"
-#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-#     - docker build -t $CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA -f angular/angular-bootstrap/Dockerfile angular/angular-bootstrap
-#     - docker push $CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA
-#     - docker tag $CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/angular-bootstrap:latest
-#     - docker push $CI_REGISTRY_IMAGE/angular-bootstrap:latest
+#     - echo "🐳 Building Docker image"
+#     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+#     - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
+#         -f angular/angular-bootstrap/docker/Dockerfile.frontend-angular \
+#         angular/angular-bootstrap
+#     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
+#     - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" \
+#         "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
+#     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
 #   dependencies:
 #     - build:angular-bootstrap
 #   only:
 #     - master
-
