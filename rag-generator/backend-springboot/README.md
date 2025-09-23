@@ -20,7 +20,9 @@ mvn versions:display-plugin-updates
 Run Java static code analysis with **Checkstyle**:
 
 ```bash
-mvn checkstyle:check
+mvn checkstyle:check        # run analysis and FAIL the build if violations are found
+mvn checkstyle:checkstyle   # run analysis and generate a report, but DO NOT fail the build
+
 ```
 
 The build will fail if the code does not comply with the rules defined in `checkstyle.xml`.
