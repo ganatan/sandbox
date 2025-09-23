@@ -60,7 +60,7 @@ target/backend-springboot-1.0.0.jar
 
 ---
 
-## 🚀 Run
+## 🚀 Run Application
 
 Run the application locally on port `8080`:
 

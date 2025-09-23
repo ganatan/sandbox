@@ -3,6 +3,7 @@ workflow:
     - changes:
         - angular-bootstrap/**/*
         - rag-generator/frontend-angular/**/*
+        - rag-generator/backend-springboot/**/*
     - when: never
 
 stages:
