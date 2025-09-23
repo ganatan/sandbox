@@ -1,5 +1,32 @@
-stages: [install, lint, test, build, docker]
+workflow:
+  rules:
+    - changes:
+        - angular-bootstrap/**/*
+        - rag-generator/frontend-angular/**/*
+    - when: never
 
-include:
-  - local: .gitlab/angular-bootstrap-ci.yml
-  - local: .gitlab/rag-generator-frontend-angular-ci.yml
+stages:
+  - trigger
+
+trigger-angular-bootstrap:
+  stage: trigger
+  trigger:
+    include: .gitlab/angular-bootstrap-ci.yml
+  rules:
+    - changes:
+        - angular-bootstrap/**/*
+
+trigger-rag-generator-frontend-angular:
+  stage: trigger
+  trigger:
+    include: .gitlab/rag-generator-frontend-angular-ci.yml
+  rules:
+    - changes:
+        - rag-generator/frontend-angular/**/*
+
+
+# stages: [install, lint, test, build, docker]
+
+# include:
+#   - local: .gitlab/angular-bootstrap-ci.yml
+#   - local: .gitlab/rag-generator-frontend-angular-ci.yml
