@@ -1,6 +1,6 @@
 export function reply(
   mode: string,
-  data: { question?: string; style?: string; length?: string; llm?: string }
+  data: { question?: string; style?: string; length?: string; llm?: string },
 ): string {
   const question = (data.question || 'Question inconnue').replace('-', ' ');
   const style = data.style || 'neutral';

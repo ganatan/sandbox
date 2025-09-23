@@ -13,28 +13,28 @@
     <div class="col-12 col-lg-5">
       <div class="row g-3">
         <div class="col-6">
-          <label class="form-label">Modèle</label>
-          <select class="form-select" [(ngModel)]="model" (ngModelChange)="onModelChange($event)">
+          <label for="modelSelect" class="form-label">Modèle</label>
+          <select id="modelSelect" class="form-select" [(ngModel)]="model" (ngModelChange)="onModelChange($event)">
             <option value="chatgpt">ChatGPT</option>
             <option value="claude">Claude</option>
           </select>
         </div>
         <div class="col-6">
-          <label class="form-label">Mode</label>
-          <select class="form-select" [(ngModel)]="mode" (ngModelChange)="onModeChange($event)">
+          <label for="modeSelect" class="form-label">Mode</label>
+          <select id="modeSelect" class="form-select" [(ngModel)]="mode" (ngModelChange)="onModeChange($event)">
             <option value="rag">Avec RAG</option>
             <option value="direct">Sans RAG</option>
           </select>
         </div>
         <div class="col-6">
-          <label class="form-label">Style</label>
-          <select class="form-select" [(ngModel)]="style" (ngModelChange)="onStyleChange($event)">
+          <label for="styleSelect" class="form-label">Style</label>
+          <select id="styleSelect" class="form-select" [(ngModel)]="style" (ngModelChange)="onStyleChange($event)">
             <option *ngFor="let s of styleOptions" [value]="s.value">{{ s.label }}</option>
           </select>
         </div>
         <div class="col-6">
-          <label class="form-label">Longueur</label>
-          <select class="form-select" [(ngModel)]="length" (ngModelChange)="onLengthChange($event)">
+          <label for="lengthSelect" class="form-label">Longueur</label>
+          <select id="lengthSelect" class="form-select" [(ngModel)]="length" (ngModelChange)="onLengthChange($event)">
             <option value="short">Courte</option>
             <option value="medium">Moyenne</option>
             <option value="long">Longue</option>

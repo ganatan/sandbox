@@ -1,6 +1,6 @@
 {
-  "name": "rag-connector-frontend",
-  "version": "20.3.1",
+  "name": "llm-connector-frontend",
+  "version": "20.1.0",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 4200",
@@ -24,12 +24,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "20.3.1",
-    "@angular/compiler": "20.3.1",
-    "@angular/core": "20.3.1",
-    "@angular/forms": "20.3.1",
-    "@angular/platform-browser": "20.3.1",
-    "@angular/router": "20.3.1",
+    "@angular/common": "20.3.0",
+    "@angular/compiler": "20.3.0",
+    "@angular/core": "20.3.0",
+    "@angular/forms": "20.3.0",
+    "@angular/platform-browser": "20.3.0",
+    "@angular/router": "20.3.0",
     "@fortawesome/fontawesome-free": "7.0.1",
     "bootstrap": "5.3.8",
     "express": "5.1.0",
@@ -38,12 +38,12 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "20.3.2",
-    "@angular/cli": "20.3.2",
-    "@angular/compiler-cli": "20.3.1",
+    "@angular/build": "20.3.1",
+    "@angular/cli": "20.3.1",
+    "@angular/compiler-cli": "20.3.0",
     "@types/jasmine": "5.1.9",
     "angular-eslint": "20.3.0",
-    "eslint": "9.36.0",
+    "eslint": "9.35.0",
     "jasmine-core": "5.10.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
@@ -51,6 +51,6 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.44.1"
+    "typescript-eslint": "8.44.0"
   }
 }

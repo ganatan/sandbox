@@ -2,3 +2,4 @@ stages: [install, lint, test, build, docker]
 
 include:
   - local: .gitlab/angular-bootstrap-ci.yml
+  - local: .gitlab/rag-generator-frontend-angular-ci.yml

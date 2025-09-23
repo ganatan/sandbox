@@ -1,7 +1,7 @@
 workflow:
   rules:
     - changes:
-        - angular-bootstrap/**/*
+        - rag-generator/frontend-angular/**/*
     - when: never
 
 image: node:20
@@ -13,11 +13,11 @@ stages:
   - build
   - docker
 
-.default-angular-bootstrap:
+.default-frontend-angular:
   variables:
-    PROJECT_DIR: angular-bootstrap
+    PROJECT_DIR: rag-generator/frontend-angular
   cache:
-    key: angular-bootstrap
+    key: frontend-angular
     paths:
       - $PROJECT_DIR/node_modules/
     policy: pull-push
@@ -26,29 +26,29 @@ stages:
       - $PROJECT_DIR/node_modules/
     expire_in: 1h
 
-install:angular-bootstrap:
+install:frontend-angular:
   stage: install
-  extends: .default-angular-bootstrap
+  extends: .default-frontend-angular
   script:
     - echo "Installing dependencies"
     - cd $PROJECT_DIR
     - npm ci
 
-lint:angular-bootstrap:
+lint:frontend-angular:
   stage: lint
-  extends: .default-angular-bootstrap
+  extends: .default-frontend-angular
   dependencies:
-    - install:angular-bootstrap
+    - install:frontend-angular
   script:
     - echo "Running ESLint"
     - cd $PROJECT_DIR
     - npm run lint
 
-test:angular-bootstrap:
+test:frontend-angular:
   stage: test
-  extends: .default-angular-bootstrap
+  extends: .default-frontend-angular
   dependencies:
-    - install:angular-bootstrap
+    - install:frontend-angular
   script:
     - echo "Installing Chromium for headless tests"
     - apt-get update && apt-get install -y chromium
@@ -56,11 +56,11 @@ test:angular-bootstrap:
     - cd $PROJECT_DIR
     - npm run test:ci
 
-build:angular-bootstrap:
+build:frontend-angular:
   stage: build
-  extends: .default-angular-bootstrap
+  extends: .default-frontend-angular
   dependencies:
-    - install:angular-bootstrap
+    - install:frontend-angular
   script:
     - echo "Building Angular app for production"
     - cd $PROJECT_DIR
@@ -70,18 +70,18 @@ build:angular-bootstrap:
       - $PROJECT_DIR/dist/
     expire_in: 1 week
 
-docker:angular-bootstrap:
+docker:frontend-angular:
   stage: docker
   image: docker:latest
   services:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay2
-    PROJECT_DIR: angular-bootstrap
+    PROJECT_DIR: rag-generator/frontend-angular
   script:
     - echo "Building Docker image"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" -f $PROJECT_DIR/docker/Dockerfile.frontend-angular $PROJECT_DIR
-    - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
-    - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
-    - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
+    - docker build -t "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:$CI_COMMIT_SHA" -f $PROJECT_DIR/docker/Dockerfile.frontend-angular $PROJECT_DIR
+    - docker push "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:$CI_COMMIT_SHA"
+    - docker tag "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:latest"
+    - docker push "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:latest"

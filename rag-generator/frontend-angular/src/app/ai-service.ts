@@ -19,12 +19,13 @@ export class AiService {
 
   generateContent(model: string, question: string, length: string, style: string, mode: string): Observable<ContentGenerationResponse> {
     if (environment.useMock) {
-      const mockData = mockReply(mode, { llm: model, question, length, style });
+      const mockData = mockReply(mode, { llm: model, question: question, length: length, style: style });
+
       return of({ success: true, data: mockData }).pipe(delay(1000));
     }
 
     const url = `${this.baseUrl}/llm/${mode}/${model}`;
-    const body = { name: question, length, style };
+    const body = { name: question, length: length, style: style };
 
     return this.http.post<ContentGenerationResponse>(url, body).pipe(
       catchError((error: HttpErrorResponse) => {
