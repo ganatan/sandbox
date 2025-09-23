@@ -24,9 +24,11 @@ trigger-rag-generator-frontend-angular:
     - changes:
         - rag-generator/frontend-angular/**/*
 
+trigger-rag-generator-backend-springboot:
+  stage: trigger
+  trigger:
+    include: .gitlab/rag-generator-backend-springboot-ci.yml
+  rules:
+    - changes:
+        - rag-generator/backend-springboot/**/*
 
-# stages: [install, lint, test, build, docker]
-
-# include:
-#   - local: .gitlab/angular-bootstrap-ci.yml
-#   - local: .gitlab/rag-generator-frontend-angular-ci.yml
