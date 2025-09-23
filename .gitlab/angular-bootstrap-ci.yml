@@ -11,22 +11,22 @@ install:angular-bootstrap:
   stage: install
   script:
     - echo "Installing dependencies"
-    - cd angular/angular-bootstrap
+    - cd angular-bootstrap
     - npm ci
   cache:
     paths:
-      - angular/angular-bootstrap/node_modules/
+      - angular-bootstrap/node_modules/
     policy: pull-push
   artifacts:
     paths:
-      - angular/angular-bootstrap/node_modules/
+      - angular-bootstrap/node_modules/
     expire_in: 1h
 
 lint:angular-bootstrap:
   stage: lint
   script:
     - echo "Running ESLint"
-    - cd angular/angular-bootstrap
+    - cd angular-bootstrap
     - npm run lint
   dependencies:
     - install:angular-bootstrap
@@ -37,7 +37,7 @@ test:angular-bootstrap:
     - echo "Installing Chromium for headless tests"
     - apt-get update && apt-get install -y chromium
     - export CHROME_BIN=/usr/bin/chromium
-    - cd angular/angular-bootstrap
+    - cd angular-bootstrap
     - npm run test:ci
   dependencies:
     - install:angular-bootstrap
@@ -46,13 +46,13 @@ build:angular-bootstrap:
   stage: build
   script:
     - echo "Building Angular app for production"
-    - cd angular/angular-bootstrap
+    - cd angular-bootstrap
     - npm run build --configuration=production
   dependencies:
     - install:angular-bootstrap
   artifacts:
     paths:
-      - angular/angular-bootstrap/dist/
+      - angular-bootstrap/dist/
     expire_in: 1 week
 
 docker:angular-bootstrap:
@@ -65,7 +65,7 @@ docker:angular-bootstrap:
   script:
     - echo "Building Docker image"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" -f angular/angular-bootstrap/docker/Dockerfile.frontend-angular angular/angular-bootstrap
+    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" -f angular-bootstrap/docker/Dockerfile.frontend-angular angular-bootstrap
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
     - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
