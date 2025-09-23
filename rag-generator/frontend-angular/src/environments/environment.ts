@@ -1,4 +1,4 @@
 export const environment = {
-  useMock: false,
+  useMock: true,
   backend: 'http://localhost:3000/api',
 };

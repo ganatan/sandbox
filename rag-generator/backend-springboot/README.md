@@ -4,7 +4,7 @@ Spring Boot application packaged as a **JAR**, with **Checkstyle**, **unit tests
 
 ---
 
-## 📊 Dependency Updates
+## Dependency Updates
 
 Check for outdated dependencies and plugins:
 
@@ -15,7 +15,7 @@ mvn versions:display-plugin-updates
 
 ---
 
-## 🔧 Lint (Static Analysis)
+## Lint (Static Analysis)
 
 Run Java static code analysis with **Checkstyle**:
 
@@ -23,11 +23,11 @@ Run Java static code analysis with **Checkstyle**:
 mvn checkstyle:check
 ```
 
-⛔ The build will fail if the code does not comply with the rules defined in `checkstyle.xml`.
+The build will fail if the code does not comply with the rules defined in `checkstyle.xml`.
 
 ---
 
-## 🧪 Unit Tests & Coverage
+## Unit Tests & Coverage
 
 Run unit tests and generate a **JaCoCo coverage report**:
 
@@ -44,7 +44,7 @@ target/site/jacoco/index.html
 
 ---
 
-## 🏗️ Build
+## Build
 
 Compile, run tests, and package the application:
 
@@ -60,7 +60,7 @@ target/backend-springboot-1.0.0.jar
 
 ---
 
-## 🚀 Run Application
+## Run Application
 
 Run the application locally on port `8080`:
 
@@ -82,7 +82,29 @@ http://localhost:8080
 
 ---
 
-## 📦 Maven Commands
+## Docker
+
+Build Docker image:
+
+```bash
+docker build -t backend-springboot:latest -f docker/Dockerfile.backend-springboot .
+```
+
+Run container:
+
+```bash
+docker run -d --name backend-springboot -p 8080:8080 backend-springboot:latest
+```
+
+Access at:
+
+```
+http://localhost:8080
+```
+
+---
+
+## Maven Commands
 
 ```bash
 mvn clean                  # clean target directory
