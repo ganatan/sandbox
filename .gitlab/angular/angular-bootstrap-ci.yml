@@ -2,6 +2,7 @@ image: node:20
 
 stages:
   - install
+  - lint
   - test
   - build
   - docker
@@ -20,6 +21,15 @@ install:angular-bootstrap:
     paths:
       - angular/angular-bootstrap/node_modules/
     expire_in: 1h
+
+lint:angular-bootstrap:
+  stage: lint
+  script:
+    - echo "Running ESLint"
+    - cd angular/angular-bootstrap
+    - npm run lint
+  dependencies:
+    - install:angular-bootstrap
 
 test:angular-bootstrap:
   stage: test

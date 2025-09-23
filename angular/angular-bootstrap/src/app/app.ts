@@ -9,4 +9,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('angular-starter');
+  // constructor() {
+  //   console.log('00000000001');
+  // }
 }
