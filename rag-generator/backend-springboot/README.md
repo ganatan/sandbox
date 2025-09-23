@@ -82,7 +82,7 @@ http://localhost:8080
 
 ---
 
-## 📦 Common Maven Commands
+## 📦 Maven Commands
 
 ```bash
 mvn clean                  # clean target directory
