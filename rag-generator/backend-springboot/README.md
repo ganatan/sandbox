@@ -22,7 +22,6 @@ Run Java static code analysis with **Checkstyle**:
 ```bash
 mvn checkstyle:check        # run analysis and FAIL the build if violations are found
 mvn checkstyle:checkstyle   # run analysis and generate a report, but DO NOT fail the build
-
 ```
 
 The build will fail if the code does not comply with the rules defined in `checkstyle.xml`.
@@ -115,6 +114,7 @@ mvn test                   # run tests
 mvn package                # build the artifact
 mvn install                # install to local repository
 mvn checkstyle:check       # run static analysis
+mvn checkstyle:checkstyle  # run static analysis
 mvn dependency:tree        # view dependency tree
 mvn spring-boot:run        # run Spring Boot app
 ```
