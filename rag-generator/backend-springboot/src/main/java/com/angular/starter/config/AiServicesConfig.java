@@ -9,7 +9,6 @@ import java.util.Map;
 public class AiServicesConfig {
 
 	public AiServicesConfig() {
-		System.out.println("00000000001:constructor:AiServicesConfig");
 	}
 
 	public static Map<String, List<Map<String, String>>> getAllServices() {

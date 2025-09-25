@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 public class QdrantConfig {
 
 	public QdrantConfig() {
-		System.out.println("00000000001:constructor:QdrantConfig");
 	}
 
     @Bean

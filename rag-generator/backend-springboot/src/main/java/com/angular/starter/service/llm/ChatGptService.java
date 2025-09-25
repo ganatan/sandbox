@@ -1,212 +1,134 @@
 package com.angular.starter.service.llm;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class ChatGptService {
 
-	@Value("${openai.api.key}")
-	private String openAiApiKey;
+    private static final String BASE_URL = "https://api.openai.com/v1";
+    private static final String ENDPOINT = "/chat/completions";
+    private static final String MODEL = "gpt-4-turbo";
+    private static final String ROLE_USER = "user";
 
-	private final RestTemplate restTemplate = new RestTemplate();
+    private final WebClient webClient;
 
-	public String reply(String mode, Map<String, Object> input) {
-		try {
-			String question = input.getOrDefault("name", "inconnue").toString();
-			String rawStyle = input.getOrDefault("style", "neutral").toString();
-			String rawLength = input.getOrDefault("length", "medium").toString();
+    private static final Map<String, String> styleMap = Map.ofEntries(
+            Map.entry("neutral", "neutre, objectif, informatif sans émotion"),
+            Map.entry("casual", "décontracté, langage simple et familier"),
+            Map.entry("technical", "axé sur les faits techniques et professionnels"),
+            Map.entry("narrative", "raconté comme une histoire avec du rythme"),
+            Map.entry("press", "journalistique, structuré comme un article de presse"),
+            Map.entry("humorous", "humoristique, ton léger et amusant"),
+            Map.entry("poetic", "poétique, style littéraire et imagé"),
+            Map.entry("dramatic", "dramatique, avec tension et intensité émotionnelle"),
+            Map.entry("emotional", "émotionnel, centré sur les sentiments et l’empathie"),
+            Map.entry("cinematic", "cinématographique, ambiance visuelle et descriptive comme un film"),
+            Map.entry("historical", "historique, avec mise en contexte chronologique"),
+            Map.entry("marketing", "marketing, valorisant avec un ton accrocheur"),
+            Map.entry("scientific", "scientifique, ton analytique et factuel"),
+            Map.entry("satirical", "satirique, critique subtile et ironique"),
+            Map.entry("inspirational", "inspirant, motivant avec des citations et une mise en valeur"),
+            Map.entry("minimal", "très court, phrases simples et dépouillées"),
+            Map.entry("dialog", "rédigé sous forme de dialogue entre deux personnes"),
+            Map.entry("interview", "présenté comme une interview fictive, questions-réponses")
+    );
 
-			String style = styleMap.getOrDefault(rawStyle, styleMap.get("neutral"));
-			String length = lengthMap.getOrDefault(rawLength, lengthMap.get("medium"));
+    private static final Map<String, String> lengthMap = Map.of(
+            "short", "environ 30 mots, réponse très concise",
+            "medium", "environ 60 mots, réponse équilibrée",
+            "long", "environ 100 mots, réponse développée mais synthétique"
+    );
 
-			String prompt;
-			if ("rag".equals(mode)) {
-				prompt = String.format("Réponds à la question avec récupération de contexte : %s. Style %s, %s.",
-						question, style, length);
-			} else {
-				prompt = String.format("Réponds directement à la question : %s. Style %s, %s.", question, style,
-						length);
-			}
-			System.out.println("00000000001:prompt:" + prompt);
-//			HttpHeaders headers = new HttpHeaders();
-//			headers.setContentType(MediaType.APPLICATION_JSON);
-//			headers.setBearerAuth(openAiApiKey);
-//			prompt = "Que veut dire dinosaure";
-			
-//			prompt = "Réponds à la question avec récupération de contexte Quels sont les thèmes récurrents dans les films de Christopher Nolan ?. Style neutre, objectif, informatif sans émotion, environ 60 mots, réponse équilibrée.";
-			
-			
-          HttpHeaders headers = new HttpHeaders();
-          headers.setContentType(MediaType.APPLICATION_JSON);
-          headers.setBearerAuth(openAiApiKey);
+    public ChatGptService(@Value("${openai.api.key}") String apiKey, WebClient.Builder builder) {
+        this.webClient = builder.baseUrl(BASE_URL)
+                .defaultHeader("Authorization", "Bearer " + apiKey)
+                .defaultHeader("Content-Type", "application/json")
+                .build();
+    }
 
-          String body = """
-              {
-                "model": "gpt-4-turbo",
-                "messages": [
-                  { "role": "user", "content": "%s" }
-                ]
-              }
-              """.formatted(prompt);
+    public String reply(String mode, Map<String, Object> input) {
+        try {
+            String question = input.getOrDefault("name", "inconnue").toString();
+            String rawStyle = input.getOrDefault("style", "neutral").toString();
+            String rawLength = input.getOrDefault("length", "medium").toString();
 
-          HttpEntity<String> request = new HttpEntity<>(body, headers);
+            String style = styleMap.getOrDefault(rawStyle, styleMap.get("neutral"));
+            String length = lengthMap.getOrDefault(rawLength, lengthMap.get("medium"));
 
-          ResponseEntity<Map> response = restTemplate.postForEntity(
-              "https://api.openai.com/v1/chat/completions",
-              request,
-              Map.class
-          );
+            String prompt = "rag".equals(mode)
+                    ? String.format("Réponds à la question avec récupération de contexte : %s. Style %s, %s.", question, style, length)
+                    : String.format("Réponds directement à la question : %s. Style %s, %s.", question, style, length);
 
-          Map<String, Object> choice = ((Map<String, Object>) ((java.util.List<?>) response.getBody().get("choices")).get(0));
-          Map<String, Object> message = (Map<String, Object>) choice.get("message");
-          return message.get("content").toString().trim();
-			
+            ChatGptRequest request = new ChatGptRequest(MODEL, List.of(new ChatGptRequest.Message(ROLE_USER, prompt)));
 
-			
-			
-//			String body = """
-//					{
-//					  "model": "gpt-4-turbo",
-//					  "messages": [
-//					    { "role": "user", "content": "%s" }
-//					  ]
-//					}
-//					""".formatted(prompt);
-//
-//			HttpEntity<String> request = new HttpEntity<>(body, headers);
-//
-//			ResponseEntity<Map> response = restTemplate.postForEntity("https://api.openai.com/v1/chat/completions",
-//					request, Map.class);
-//
-//			Map<String, Object> choice = ((Map<String, Object>) ((java.util.List<?>) response.getBody().get("choices"))
-//					.get(0));
-//			Map<String, Object> message = (Map<String, Object>) choice.get("message");
-//			return message.get("content").toString().trim();
+            ChatGptResponse response = webClient.post()
+                    .uri(ENDPOINT)
+                    .bodyValue(request)
+                    .retrieve()
+                    .bodyToMono(ChatGptResponse.class)
+                    .onErrorResume(e -> {
+                        System.err.println("❌ ChatGptService error: " + e.getMessage());
+                        return Mono.empty();
+                    })
+                    .block();
 
-		} catch (Exception e) {
-			System.err.println("❌ ChatGptService error: " + e.getMessage());
-			return "Erreur lors de l’appel à l’API OpenAI.";
-		}
-	}
+            if (response == null || response.getChoices().isEmpty()) {
+                return "Erreur : pas de réponse reçue.";
+            }
 
-	private static final Map<String, String> styleMap = Map.ofEntries(
-			Map.entry("neutral", "neutre, objectif, informatif sans émotion"),
-			Map.entry("casual", "décontracté, langage simple et familier"),
-			Map.entry("technical", "axé sur les faits techniques et professionnels"),
-			Map.entry("narrative", "raconté comme une histoire avec du rythme"),
-			Map.entry("press", "journalistique, structuré comme un article de presse"),
-			Map.entry("humorous", "humoristique, ton léger et amusant"),
-			Map.entry("poetic", "poétique, style littéraire et imagé"),
-			Map.entry("dramatic", "dramatique, avec tension et intensité émotionnelle"),
-			Map.entry("emotional", "émotionnel, centré sur les sentiments et l’empathie"),
-			Map.entry("cinematic", "cinématographique, ambiance visuelle et descriptive comme un film"),
-			Map.entry("historical", "historique, avec mise en contexte chronologique"),
-			Map.entry("marketing", "marketing, valorisant avec un ton accrocheur"),
-			Map.entry("scientific", "scientifique, ton analytique et factuel"),
-			Map.entry("satirical", "satirique, critique subtile et ironique"),
-			Map.entry("inspirational", "inspirant, motivant avec des citations et une mise en valeur"),
-			Map.entry("minimal", "très court, phrases simples et dépouillées"),
-			Map.entry("dialog", "rédigé sous forme de dialogue entre deux personnes"),
-			Map.entry("interview", "présenté comme une interview fictive, questions-réponses"));
+            return response.getChoices().get(0).getMessage().getContent().trim();
+        } catch (Exception e) {
+            System.err.println("❌ ChatGptService exception: " + e.getMessage());
+            return "Erreur lors de l’appel à l’API OpenAI.";
+        }
+    }
 
-	private static final Map<String, String> lengthMap = Map.of("short", "environ 30 mots, réponse très concise",
-			"medium", "environ 60 mots, réponse équilibrée", "long",
-			"environ 100 mots, réponse développée mais synthétique");
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public static class ChatGptRequest {
+        private String model;
+        private List<Message> messages;
+
+        public ChatGptRequest(String model, List<Message> messages) {
+            this.model = model;
+            this.messages = messages;
+        }
+
+        public String getModel() { return model; }
+        public List<Message> getMessages() { return messages; }
+
+        public static class Message {
+            private String role;
+            private String content;
+
+            public Message(String role, String content) {
+                this.role = role;
+                this.content = content;
+            }
+
+            public String getRole() { return role; }
+            public String getContent() { return content; }
+        }
+    }
+
+    public static class ChatGptResponse {
+        private List<Choice> choices;
+        public List<Choice> getChoices() { return choices; }
+
+        public static class Choice {
+            private Message message;
+            public Message getMessage() { return message; }
+        }
+
+        public static class Message {
+            private String content;
+            public String getContent() { return content; }
+        }
+    }
 }
-
-//package com.angular.starter.service.llm;
-//
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.http.*;
-//import org.springframework.stereotype.Service;
-//import org.springframework.web.client.RestTemplate;
-//
-//import java.util.Map;
-//
-//@Service
-//public class ChatGptService {
-//
-//    @Value("${openai.api.key}")
-//    private String openAiApiKey;
-//
-//    private final RestTemplate restTemplate = new RestTemplate();
-//
-//    public String reply(String type, Map<String, Object> input) {
-//        try {
-//            String name = input.getOrDefault("name", "inconnu").toString();
-//            String rawStyle = input.getOrDefault("style", "neutral").toString();
-//            String rawLength = input.getOrDefault("length", "medium").toString();
-//
-//            String style = styleMap.getOrDefault(rawStyle, styleMap.get("neutral"));
-//            String length = lengthMap.getOrDefault(rawLength, lengthMap.get("medium"));
-//
-//            String prompt;
-//            if ("summary".equals(type)) {
-//                prompt = String.format("Fais un résumé du film \"%s\" avec un style %s, %s.", name, style, length);
-//            } else {
-//                prompt = String.format("Écris une biographie de %s avec un style %s, %s.", name, style, length);
-//            }
-//
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setContentType(MediaType.APPLICATION_JSON);
-//            headers.setBearerAuth(openAiApiKey);
-//
-//            String body = """
-//                {
-//                  "model": "gpt-4-turbo",
-//                  "messages": [
-//                    { "role": "user", "content": "%s" }
-//                  ]
-//                }
-//                """.formatted(prompt);
-//
-//            HttpEntity<String> request = new HttpEntity<>(body, headers);
-//
-//            ResponseEntity<Map> response = restTemplate.postForEntity(
-//                "https://api.openai.com/v1/chat/completions",
-//                request,
-//                Map.class
-//            );
-//
-//            Map<String, Object> choice = ((Map<String, Object>) ((java.util.List<?>) response.getBody().get("choices")).get(0));
-//            Map<String, Object> message = (Map<String, Object>) choice.get("message");
-//            return message.get("content").toString().trim();
-//
-//        } catch (Exception e) {
-//            System.err.println("❌ ChatGptService error: " + e.getMessage());
-//            return "Erreur lors de l’appel à l’API OpenAI.";
-//        }
-//    }
-//
-//    private static final Map<String, String> styleMap = Map.ofEntries(
-//        Map.entry("neutral", "neutre, objectif, informatif sans émotion"),
-//        Map.entry("casual", "décontracté, langage simple et familier"),
-//        Map.entry("technical", "axé sur les faits techniques et professionnels"),
-//        Map.entry("narrative", "raconté comme une histoire avec du rythme"),
-//        Map.entry("press", "journalistique, structuré comme un article de presse"),
-//        Map.entry("humorous", "humoristique, ton léger et amusant"),
-//        Map.entry("poetic", "poétique, style littéraire et imagé"),
-//        Map.entry("dramatic", "dramatique, avec tension et intensité émotionnelle"),
-//        Map.entry("emotional", "émotionnel, centré sur les sentiments et l’empathie"),
-//        Map.entry("cinematic", "cinématographique, ambiance visuelle et descriptive comme un film"),
-//        Map.entry("historical", "historique, avec mise en contexte chronologique"),
-//        Map.entry("marketing", "marketing, valorisant avec un ton accrocheur"),
-//        Map.entry("scientific", "scientifique, ton analytique et factuel"),
-//        Map.entry("satirical", "satirique, critique subtile et ironique"),
-//        Map.entry("inspirational", "inspirant, motivant avec des citations et une mise en valeur"),
-//        Map.entry("minimal", "très court, phrases simples et dépouillées"),
-//        Map.entry("dialog", "rédigé sous forme de dialogue entre deux personnes"),
-//        Map.entry("interview", "présenté comme une interview fictive, questions-réponses")
-//    );
-//
-//    private static final Map<String, String> lengthMap = Map.of(
-//        "short", "environ 30 mots, réponse très concise",
-//        "medium", "environ 60 mots, réponse équilibrée",
-//        "long", "environ 100 mots, réponse développée mais synthétique"
-//    );
-//}

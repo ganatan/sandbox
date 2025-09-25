@@ -21,7 +21,6 @@ public class RootController {
 	
 	@GetMapping("/api/test")
 	public Map<String, Object> testGet() {
-	  System.out.println("00000000001");
 	  System.out.println("GET /api/test");
 	  return Map.of(
 	      "success", true,

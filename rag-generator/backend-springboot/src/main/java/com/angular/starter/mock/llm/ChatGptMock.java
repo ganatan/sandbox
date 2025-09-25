@@ -13,8 +13,6 @@ public class ChatGptMock {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        
-        System.out.println("00000000001:reply:" + input);
 
         String name = normalize((String) input.getOrDefault("name", "Inconnu"));
         String style = (String) input.getOrDefault("style", "neutral");
