@@ -17,7 +17,8 @@
     "docker:app-stop": "docker stop angular-ssr && docker rm angular-ssr",
     "docker:app-clean": "docker rm -f angular-ssr && docker rmi -f angular-ssr",
     "docker:app-logs": "docker logs -f angular-ssr",
-    "serve": "node dist/angular-starter/server/server.mjs"
+    "serve": "node dist/angular-starter/server/server.mjs",
+    "lint": "ng lint"
   },
   "prettier": {
     "printWidth": 100,
@@ -53,12 +54,15 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "5.1.9",
     "@types/node": "^20.17.19",
+    "angular-eslint": "20.3.0",
+    "eslint": "^9.35.0",
     "jasmine-core": "5.10.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.40.0"
   }
 }

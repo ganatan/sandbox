@@ -1,4 +1,4 @@
-# angular-bootstrap 250923-1019
+# angular-bootstrap 251007-0937
 
 
 # Installation

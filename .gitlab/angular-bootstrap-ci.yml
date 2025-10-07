@@ -81,7 +81,7 @@ docker:angular-bootstrap:
   script:
     - echo "Building Docker image"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" -f $PROJECT_DIR/docker/Dockerfile.frontend-angular $PROJECT_DIR
+    - docker build -t "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" -f $PROJECT_DIR/docker/Dockerfile.angular-bootstrap $PROJECT_DIR
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA"
     - docker tag "$CI_REGISTRY_IMAGE/angular-bootstrap:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
     - docker push "$CI_REGISTRY_IMAGE/angular-bootstrap:latest"
