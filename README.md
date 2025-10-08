@@ -83,6 +83,7 @@ sandbox/
 | Project                      | CI Badge |
 |-----------------------------|----------|
 | Frontend Angular            | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) |
+| Backend Spring Boot           | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) |
 
 ---
 
@@ -91,6 +92,8 @@ sandbox/
 | Component                   | Docker Badge |
 |----------------------------|---------------|
 | Frontend Angular             | [![Docker Image Version - Frontend Angular](https://img.shields.io/docker/v/ganatan/rag-generator-frontend-angular?label=Frontend%20Angular%20Docker&logo=docker&sort=semver)](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) |
+| Backend Spring Boot          | [![Docker Image Version - Backend Spring Boot](https://img.shields.io/docker/v/ganatan/rag-generator-backend-springboot?label=Backend%20SpringBoot%20Docker&logo=docker&sort=semver)](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) |
+
 
 ---
 
