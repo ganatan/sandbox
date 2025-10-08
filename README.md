@@ -15,7 +15,7 @@
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Project Goals](#project-goals)
 - [Project Overview](#project-overview)
