@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { App } from './app';
 import { ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { AiService } from './ai-service';
 import { ContentGenerationResponse } from './ai-service';
 
 describe('App Component', () => {
-  let fixture: any;
+  let fixture: ComponentFixture<App>;
   let app: App;
   let aiServiceMock: jasmine.SpyObj<AiService>;
 
@@ -67,7 +67,7 @@ describe('App Component', () => {
     const mockResponse: ContentGenerationResponse = {
       success: true,
       data: 'Generated text',
-      error: undefined,
+      error: null,
     };
     aiServiceMock.generateContent.and.returnValue(of(mockResponse));
     // Act

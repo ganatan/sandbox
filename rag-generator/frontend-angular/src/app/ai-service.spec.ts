@@ -83,8 +83,9 @@ describe('AiService', () => {
   it('should return proper message for network error (status 0)', () => {
     // Arrange
     const error = new HttpErrorResponse({ status: 0, statusText: 'Unknown Error' });
+    const getErrorMessage = (service as unknown as { getErrorMessage: (e: HttpErrorResponse) => string }).getErrorMessage;
     // Act
-    const result = (service as any).getErrorMessage(error);
+    const result = getErrorMessage(error);
     // Assert
     expect(result).toBe('Serveur inaccessible. Vérifiez votre connexion.');
   });
@@ -92,8 +93,9 @@ describe('AiService', () => {
   it('should return formatted message for generic error', () => {
     // Arrange
     const error = new HttpErrorResponse({ status: 404, statusText: 'Not Found', error: 'Missing' });
+    const getErrorMessage = (service as unknown as { getErrorMessage: (e: HttpErrorResponse) => string }).getErrorMessage;
     // Act
-    const result = (service as any).getErrorMessage(error);
+    const result = getErrorMessage(error);
     // Assert
     expect(result).toBe(`Erreur 404: ${error.message}`);
   });
