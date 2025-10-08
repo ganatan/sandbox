@@ -115,7 +115,7 @@ sandbox/
 
 ---
 
-## 🧩 Frontend — Angular 20
+## 🧩 Frontend — Angular 20.3.3
 
 ### ⚙️ Installation
 ```bash
