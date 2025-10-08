@@ -19,7 +19,7 @@
 
 ---
 
-**👉 English version available here:** [![English](./ui/version-en.png)](./README-en.md)
+**👉 English version available here:** [![English](./ui/version.png)](./README-en.md)
 
 ---
 
