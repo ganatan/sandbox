@@ -16,8 +16,6 @@
 ---
 
 ## 📘 Table of Contents
-
-- [Project Goals](#-project-goals)
 - [Project Overview](#-project-overview)
 - [Project Structure](#-project-structure)
 - [Components](#-components)
