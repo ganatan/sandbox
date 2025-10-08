@@ -43,7 +43,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/rag-generator-frontend-angular:latest \
-            -f rag-generator/frontend-angular/docker/Dockerfile.frontend-angular .
+            -f docker/Dockerfile.frontend-angular .            
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/rag-generator-frontend-angular:latest
