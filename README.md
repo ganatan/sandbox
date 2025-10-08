@@ -25,9 +25,10 @@
 - [Docker Images](#docker-images)
 - [Frontend — Angular 20](#frontend--angular-20)
 - [Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
-- [Docker](#docker)
+- [Docker](#docker-1)
 - [GitLab CI/CD](#gitlab-cicd)
 - [OpenShift Deployment](#openshift-deployment)
+- [Author & License](#author--license)
 
 ---
 
