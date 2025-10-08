@@ -1,6 +1,11 @@
-# RAG Generator
-**FullStack Application : Angular (frontend) + Spring Boot (backend)**
-**CI/CD GitLab + Déploiement OpenShift (Kubernetes)**
+# RAG Generator — Angular 20 & Spring Boot 3.5.5
+
+<img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="logo ganatan">
+
+## 🚀 Objectifs du projet
+- ✅ Démontrer une architecture **RAG (Retrieval-Augmented Generation)** complète  
+- ✅ Application **FullStack** : frontend **Angular 20** et backend **Spring Boot 3.5.5 (Java 21)**  
+- ✅ Intégration **CI/CD GitLab** et déploiement sur **OpenShift (Kubernetes)**  
 
 ---
 
