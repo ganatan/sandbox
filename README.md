@@ -86,6 +86,22 @@ sandbox/
 
 ---
 
+## 🔧 Continuous Integration (CI)
+
+| Project                      | CI Badge |
+|-----------------------------|----------|
+| Frontend Angular            | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) |
+
+---
+
+## 📦 Docker Images
+
+| Component                   | Docker Badge |
+|----------------------------|---------------|
+| Frontend Angular             | [![Docker Image Version - Frontend Angular](https://img.shields.io/docker/v/ganatan/rag-generator-frontend-angular?label=Frontend%20Angular%20Docker&logo=docker&sort=semver)](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) |
+
+---
+
 ## 🧩 Frontend — Angular 20
 
 ### ⚙️ Installation
