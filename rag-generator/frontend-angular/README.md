@@ -1,4 +1,4 @@
-# Project rag-generator-frontedn-angular
+# Project rag-generator-frontend-angular
 
 ### Installation
 * `npm install` (installing dependencies)

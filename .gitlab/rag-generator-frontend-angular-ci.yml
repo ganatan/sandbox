@@ -86,7 +86,7 @@ docker:frontend-angular:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
     - docker build -t "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:$CI_COMMIT_SHA" -f $PROJECT_DIR/docker/Dockerfile.frontend-angular $PROJECT_DIR
     - docker push "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:$CI_COMMIT_SHA"
-    - docker tag "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:latest"
+    - docker tag "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:latest"
     - docker push "$CI_REGISTRY_IMAGE/rag-generator-frontend-angular:latest"
 
 deploy:frontend-angular:
