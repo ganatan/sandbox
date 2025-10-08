@@ -8,7 +8,7 @@ import { reply as mockReply } from './ai.mock';
 export interface ContentGenerationResponse {
   success: boolean;
   data: string;
-  error?: string;
+  error?: string | null;
 }
 
 @Injectable({ providedIn: 'root' })
