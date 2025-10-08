@@ -238,7 +238,6 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 - Frontend → https://rag-generator-frontend-angular-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com
 - Backend → https://rag-generator-backend-springboot-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com
 
-
 > Déployé via des manifests Kubernetes avec probes de santé et rolling updates.
 
 ---
