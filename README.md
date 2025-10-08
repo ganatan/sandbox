@@ -17,8 +17,9 @@
 
 ## Table of Contents
 
+
 - [Project Goals](#project-goals)
-- [Project Overview](#project-overview)
+- [Project Overview](#-project-overview)
 - [Project Structure](#project-structure)
 - [Components](#components)
 - [Continuous Integration (CI)](#continuous-integration-ci)
@@ -32,7 +33,7 @@
 
 ---
 
-## Project Overview
+## 📘 Project Overview
 
 **RAG Generator** is a production-grade **proof of concept** for a Retrieval-Augmented Generation application.  
 It demonstrates a modular architecture with independent builds, tests, and deployments for:
