@@ -9,7 +9,6 @@
 - ✅ **FullStack application**: **Angular 20.3.3** frontend and **Spring Boot 3.5.5 (Java 21)** backend  
 - ✅ **GitLab CI/CD** integration and deployment on **OpenShift (Kubernetes)**  
 
-
 ---
 
 **👉 Version française disponible ici** : [![Français](./ui/version-fr.png)](./README-fr.md)
@@ -245,7 +244,7 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 
 ---
 
-## Author & License
+## 👤 Author & License
 
 **Author:** Danny — [www.ganatan.com](https://www.ganatan.com)  
 **License:** MIT  
