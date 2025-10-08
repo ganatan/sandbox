@@ -245,5 +245,5 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 
 ## Author & License
 
-**Author:** Danny Collodet — [www.ganatan.com](https://www.ganatan.com)  
+**Author:** Danny — [www.ganatan.com](https://www.ganatan.com)  
 **License:** MIT  
