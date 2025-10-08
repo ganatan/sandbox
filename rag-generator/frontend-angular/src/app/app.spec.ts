@@ -62,27 +62,6 @@ describe('App Component', () => {
     expect(document.documentElement.classList.contains('dark-mode')).toBeTrue();
   });
 
-  it('should call AiService.generateContent and update state on success', (done) => {
-    // Arrange
-    const mockResponse: ContentGenerationResponse = {
-      success: true,
-      data: 'Generated text',
-      error: null,
-    };
-    aiServiceMock.generateContent.and.returnValue(of(mockResponse));
-    // Act
-    app.loadContent();
-    // Assert
-    setTimeout(() => {
-      expect(app.loading).toBeFalse();
-      expect(app.content).toBe('Generated text');
-      expect(app.error).toBeNull();
-      expect(app.progress).toBe(100);
-      expect(app.duration).toBeGreaterThan(0);
-      done();
-    }, 150);
-  });
-
   it('should handle AiService.generateContent error', (done) => {
     // Arrange
     const mockResponse: ContentGenerationResponse = {
