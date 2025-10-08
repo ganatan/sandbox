@@ -1,6 +1,6 @@
 # backend-springboot
 
-Spring Boot application packaged as a **JAR**, with **Checkstyle**, **unit tests**, **code coverage**, and **Maven build**.
+Spring Boot application packaged as a **JAR**, with **Checkstyle**, **unit tests**, **code coverage**, and **Maven build**, **oc deployment**.
 
 ---
 
