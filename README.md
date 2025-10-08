@@ -2,14 +2,6 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Frontend-Angular%2020-DD0031?logo=angular&logoColor=white">
-  <img src="https://img.shields.io/badge/Backend-Spring%20Boot%203.5.5-6DB33F?logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/Java-21-007396?logo=java&logoColor=white">
-  <img src="https://img.shields.io/badge/CI/CD-GitLab-orange?logo=gitlab">
-  <img src="https://img.shields.io/badge/Deploy-OpenShift-red?logo=redhatopenshift">
-</p>
-
 ---
 
 ## 🎯 Project Goals  
