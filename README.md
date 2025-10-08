@@ -17,18 +17,19 @@
 ---
 
 ## 📚 Table of Contents
-- [Project Goals](#project-goals)
-- [Project Overview](#project-overview)
-- [Project Structure](#project-structure)
-- [Components](#components)
-- [Continuous Integration (CI)](#continuous-integration-ci)
-- [Docker Images](#docker-images)
-- [Frontend — Angular 20](#frontend--angular-20)
-- [Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
-- [Docker](#docker-1)
-- [GitLab CI/CD](#gitlab-cicd)
-- [OpenShift Deployment](#openshift-deployment)
-- [Author & License](#author--license)
+
+- [🎯 Project Goals](#project-goals)
+- [🧱 Project Overview](#project-overview)
+- [🗂️ Project Structure](#project-structure)
+- [⚙️ Components](#components)
+- [🔧 Continuous Integration (CI)](#continuous-integration-ci)
+- [📦 Docker Images](#docker-images)
+- [🧩 Frontend — Angular 20](#frontend--angular-20)
+- [☕ Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
+- [🐳 Docker](#docker)
+- [🚀 GitLab CI/CD](#gitlab-cicd)
+- [☸️ OpenShift Deployment](#openshift-deployment)
+- [👤 Author & License](#author--license)
 
 ---
 
