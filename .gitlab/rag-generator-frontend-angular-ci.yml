@@ -2,6 +2,8 @@ workflow:
   rules:
     - changes:
         - rag-generator/frontend-angular/**/*
+        - k8s/rag-generator-frontend-angular-deployment.yml
+
     - when: never
 
 image: node:20
@@ -12,6 +14,7 @@ stages:
   - test
   - build
   - docker
+  - deploy
 
 .default-frontend-angular:
   variables:
@@ -85,3 +88,21 @@ docker:frontend-angular:
     - docker push "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:$CI_COMMIT_SHA"
     - docker tag "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:latest"
     - docker push "$CI_REGISTRY_IMAGE/rag-generator/frontend-angular:latest"
+
+deploy:angular-ssr:
+  stage: deploy
+  image:
+    name: quay.io/openshift/origin-cli:latest
+    entrypoint: [""]
+  script:
+    - echo "Connecting to OpenShift..."
+    - oc login "$OPENSHIFT_SERVER" --token="$OPENSHIFT_TOKEN" --insecure-skip-tls-verify=true
+    - oc project ganatan-dev
+    - echo "Applying OpenShift deployment..."
+    - oc apply -f k8s/rag-generator-frontend-angular-deployment.yml
+    - echo "Restarting deployment..."
+    - oc rollout restart deployment/rag-generator-frontend-angular -n ganatan-dev
+  only:
+    - main
+    - master
+  when: on_success
