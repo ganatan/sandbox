@@ -32,8 +32,20 @@ public class AiServicesConfig {
 				"agent",
 				List.of(create("langchain", "LangChain", "Chain tools, memory, and LLMs into intelligent agents"),
 						create("llamaindex", "LlamaIndex", "Connect LLMs to data sources, documents, and files")),
-				"music", List.of(create("suno", "Suno AI", "Generate full songs with lyrics, melody, and vocals"),
-						create("udio", "Udio AI", "Generate high-quality vocal music tracks from prompt")));
+				"music", List
+						.of(create("suno", "Suno AI", "Generate full songs with lyrics, melody, and vocals"),
+								create("udio", "Udio AI", "Generate high-quality vocal music tracks from prompt")),
+				"rag",
+				List.of(create("qdrant", "Qdrant",
+						"Open-source vector database optimized for semantic search and RAG pipelines (v1.11+)"),
+						create("openai-embeddings", "OpenAI Embeddings",
+								"text-embedding-3-small model for efficient vector generation and retrieval"),
+						create("langchain", "LangChain",
+								"Framework for building RAG pipelines: retrieval, context building, and LLM orchestration (v0.3+)"),
+						create("llm", "GPT-4o / Claude 3 Opus",
+								"Large Language Models used for contextual generation: GPT-4o for speed, Claude 3 for precision"))
+
+		);
 	}
 
 	private static Map<String, String> create(String type, String label, String purpose) {
