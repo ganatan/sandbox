@@ -19,8 +19,8 @@
 
 - [Project Goals](#-project-goals)
 - [Project Overview](#-project-overview)
-- [Project Structure](#-project-structure)
-- [Components](#-components)
+- [Project Structure](#project-structure)
+- [Components](#components)
 - [Continuous Integration (CI)](#-continuous-integration-ci)
 - [Docker Images](#-docker-images)
 - [Frontend — Angular 20](#-frontend--angular-20)
