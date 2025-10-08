@@ -28,7 +28,6 @@
 - [🐳 Docker](#-docker)
 - [🚀 GitLab CI/CD](#-gitlab-cicd)
 - [☸️ OpenShift Deployment](#️-openshift-deployment)
-- [🧠 Technical Stack](#-technical-stack)
 
 ---
 
@@ -274,16 +273,3 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 
 ---
 
-## 🧠 Technical Stack
-
-| Layer | Technology | Version |
-|--------|-------------|----------|
-| Frontend | Angular | 20.x |
-| Backend | Spring Boot | 3.5.x |
-| Java | 21 |
-| CI/CD | GitLab | SaaS / Self-Hosted |
-| Deployment | OpenShift | 4.14+ |
-| Containers | Docker | 24+ |
-| Code Quality | ESLint / Checkstyle | - |
-| Tests | Jasmine / JUnit / JaCoCo | - |
-| Infrastructure | GitLab + OpenShift | Integrated CI/CD with Kubernetes deployment |
