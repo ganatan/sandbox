@@ -15,7 +15,7 @@
 
 ---
 
-## 📚 Table des matières
+## Table des matières
 - [Objectifs du projet](#objectifs-du-projet)
 - [Présentation du projet](#présentation-du-projet)
 - [Structure du projet](#structure-du-projet)
@@ -30,7 +30,7 @@
 
 ---
 
-## 🧱 Présentation du projet
+## Présentation du projet
 
 **RAG Generator** est une preuve de concept **production-ready** pour une application basée sur le principe du *Retrieval-Augmented Generation (RAG)*.  
 Elle démontre une architecture modulaire avec des builds, tests et déploiements indépendants pour :  
@@ -42,7 +42,7 @@ Les images Docker sont partagées entre les environnements **local**, **CI** et 
 
 ---
 
-## 🗂️ Structure du projet
+## Structure du projet
 
 ```
 sandbox/
@@ -77,7 +77,7 @@ sandbox/
 
 ---
 
-## ⚙️ Composants
+## Composants
 
 | Composant | Technologie | Rôle |
 |------------|-------------|------|
@@ -89,7 +89,7 @@ sandbox/
 
 ---
 
-## 🔧 Intégration Continue (CI)
+## Intégration Continue (CI)
 
 | Projet | Badge CI |
 |----------|-----------|
@@ -98,7 +98,7 @@ sandbox/
 
 ---
 
-## 📦 Images Docker
+## Images Docker
 
 | Composant | Image Docker |
 |------------|---------------|
@@ -107,7 +107,7 @@ sandbox/
 
 ---
 
-## 🧩 Frontend — Angular 20
+## Frontend — Angular 20
 
 ### Installation
 ```bash
@@ -143,7 +143,7 @@ npm run serve:ssr
 
 ---
 
-## ☕ Backend — Spring Boot 3.5.5
+## Backend — Spring Boot 3.5.5
 
 ### Analyse statique
 ```bash
@@ -173,7 +173,7 @@ java -jar target/backend-springboot-1.0.0.jar
 
 ---
 
-## 🐳 Docker
+## Docker
 
 ### Construction des images
 ```bash
@@ -192,7 +192,7 @@ docker run -d --name backend-springboot -p 3000:3000 backend-springboot:latest
 
 ---
 
-## 🚀 GitLab CI/CD
+## GitLab CI/CD
 
 `.gitlab-ci.yml` inclut les deux pipelines :
 
@@ -212,7 +212,7 @@ Chaque pipeline exécute :
 
 ---
 
-## ☸️ Déploiement OpenShift
+## Déploiement OpenShift
 
 ### Connexion au cluster
 ```bash
