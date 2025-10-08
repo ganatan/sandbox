@@ -3,9 +3,13 @@ name: rag-generator-backend-springboot
 on:
   push:
     branches: [master]
+    paths:
+      - 'rag-generator/backend-springboot/**'
   pull_request:
     branches: [master]
-
+    paths:
+      - 'rag-generator/backend-springboot/**'
+      
 jobs:
   build-test-docker:
     runs-on: ubuntu-latest

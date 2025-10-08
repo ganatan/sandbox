@@ -3,8 +3,12 @@ name: rag-generator-frontend-angular
 on:
   push:
     branches: [master]
+    paths:
+      - 'rag-generator/frontend-angular/**'
   pull_request:
     branches: [master]
+    paths:
+      - 'rag-generator/frontend-angular/**'    
 
 jobs:
   build-and-push:
