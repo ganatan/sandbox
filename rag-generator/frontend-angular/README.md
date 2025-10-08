@@ -1,3 +1,5 @@
+# Project rag-generator-frontedn-angular
+
 ### Installation
 * `npm install` (installing dependencies)
 * `npm outdated` (verifying dependencies)
