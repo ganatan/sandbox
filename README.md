@@ -31,7 +31,7 @@
 
 ---
 
-## Project Overview
+## 🧱 Project Overview
 
 **RAG Generator** is a production-grade **proof of concept** for a Retrieval-Augmented Generation application.  
 It demonstrates a modular architecture with independent builds, tests, and deployments for:
