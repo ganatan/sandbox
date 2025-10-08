@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "docker:list-containers": "docker ps -a",
