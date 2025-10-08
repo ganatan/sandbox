@@ -1,14 +1,14 @@
 # RAG Generator
-**FullStack Application: Angular (frontend) + Spring Boot (backend)**
-**GitLab CI/CD + OpenShift (Kubernetes) Deployment**
+**FullStack Application : Angular (frontend) + Spring Boot (backend)**
+**CI/CD GitLab + Déploiement OpenShift (Kubernetes)**
 
 ---
 
-**👉 Version française disponible ici** : [![Français](./ui/version-fr.png)](./README-fr.md)
+**👉 English version available here** : [![English](./ui/version-en.png)](./README.md)
 
 ---
 
-## 📁 Project Structure
+## 📁 Structure du projet
 
 ```
 .
@@ -32,7 +32,7 @@
 │   │   └── docker/Dockerfile.frontend-angular
 │   │
 │   └── databases/
-│       └── (SQL scripts, init, migrations)
+│       └── (scripts SQL, init, migrations)
 │
 ├── .gitlab-ci.yml
 └── README.md
@@ -42,21 +42,21 @@
 
 ## ⚙️ Description
 
-**RAG Generator** is a complete FullStack application demonstrating a **Retrieval-Augmented Generation (RAG)** architecture.
-It combines a **frontend built with Angular 20** and a **backend powered by Spring Boot 3.5 (Java 21)**.
-The project includes a full **GitLab CI/CD pipeline** and **automated OpenShift deployment**.
+**RAG Generator** est une application FullStack complète démontrant une architecture **RAG (Retrieval-Augmented Generation)**.
+Elle associe un **frontend Angular 20** et un **backend Spring Boot 3.5 (Java 21)**.
+Le projet inclut un pipeline **GitLab CI/CD** complet et un **déploiement OpenShift** automatisé.
 
 ---
 
-## 🧩 Components
+## 🧩 Composants
 
-| Component | Technology | Role |
+| Composant | Technologie | Rôle |
 |------------|-------------|------|
-| Frontend | Angular 20 | User interface |
-| Backend | Spring Boot 3.5 / Java 21 | REST API / business logic |
-| Database | PostgreSQL / Oracle | Context and embeddings storage |
-| Registry | GitLab Container Registry | Docker image repository |
-| Cluster | OpenShift 4.x | Container orchestration and hosting |
+| Frontend | Angular 20 | Interface utilisateur |
+| Backend | Spring Boot 3.5 / Java 21 | API REST / logique métier |
+| Database | PostgreSQL / Oracle | Stockage contextuel |
+| Registry | GitLab Container Registry | Stockage des images Docker |
+| Cluster | OpenShift 4.x | Orchestration et hébergement |
 
 ---
 
@@ -77,7 +77,7 @@ npm run test
 npm run coverage
 ```
 
-Report:
+Rapport :
 ```
 rag-generator/frontend-angular/coverage/index.html
 ```
@@ -88,13 +88,13 @@ rag-generator/frontend-angular/coverage/index.html
 npm run build
 ```
 
-### Local Development Server
+### Démarrage local
 
 ```bash
 npm run start
 ```
 
-App available at:
+Application disponible sur :
 ```
 http://localhost:4200
 ```
@@ -103,21 +103,21 @@ http://localhost:4200
 
 ## ☕ Backend Spring Boot
 
-### Static Analysis
+### Analyse statique
 
 ```bash
 cd rag-generator/backend-springboot
 mvn checkstyle:check
 ```
 
-### Unit Tests & Coverage
+### Tests unitaires & couverture
 
 ```bash
 mvn clean test
 mvn jacoco:report
 ```
 
-Report:
+Rapport :
 ```
 rag-generator/backend-springboot/target/site/jacoco/index.html
 ```
@@ -128,17 +128,17 @@ rag-generator/backend-springboot/target/site/jacoco/index.html
 mvn clean install
 ```
 
-### Run Application
+### Exécution locale
 
 ```bash
 mvn spring-boot:run
 ```
-or
+ou
 ```bash
 java -jar target/backend-springboot-1.0.0.jar
 ```
 
-API available at:
+API disponible sur :
 ```
 http://localhost:8080
 ```
@@ -147,14 +147,14 @@ http://localhost:8080
 
 ## 🐳 Docker
 
-### Build Images
+### Build des images
 
 ```bash
 docker build -t frontend-angular:latest -f rag-generator/frontend-angular/docker/Dockerfile.frontend-angular .
 docker build -t backend-springboot:latest -f rag-generator/backend-springboot/docker/Dockerfile.backend-springboot .
 ```
 
-### Run Containers
+### Exécution locale
 
 ```bash
 docker run -d --name frontend-angular -p 4000:80 frontend-angular:latest
@@ -163,11 +163,11 @@ docker run -d --name backend-springboot -p 8080:8080 backend-springboot:latest
 
 ---
 
-## 🚀 GitLab CI/CD
+## 🚀 CI/CD GitLab
 
-### Main `.gitlab-ci.yml`
+### `.gitlab-ci.yml` principal
 
-Includes both frontend and backend pipelines:
+Inclut les pipelines spécifiques au frontend et au backend :
 
 ```yaml
 include:
@@ -175,7 +175,7 @@ include:
   - local: .gitlab/rag-generator-backend-springboot-ci.yml
 ```
 
-### Pipeline Stages
+### Pipelines détaillés
 
 #### Frontend Angular
 - install:frontend-angular
@@ -194,16 +194,16 @@ include:
 
 ---
 
-## ☸️ OpenShift Deployment
+## ☸️ Déploiement OpenShift
 
-### 1. Connect to Cluster
+### 1. Connexion au cluster
 
 ```bash
-oc login https://api.openshift.example.com:6443 --token=<YOUR_TOKEN>
+oc login https://api.openshift.example.com:6443 --token=<VOTRE_TOKEN>
 oc project ganatan-dev
 ```
 
-### 2. Push Docker Images
+### 2. Publication des images Docker
 
 #### Frontend
 
@@ -219,7 +219,7 @@ docker tag backend-springboot:latest registry.gitlab.com/ganatan/sandbox/rag-gen
 docker push registry.gitlab.com/ganatan/sandbox/rag-generator/backend-springboot:latest
 ```
 
-### 3. Apply Kubernetes Manifests
+### 3. Déploiement des manifests
 
 #### Frontend
 
@@ -233,7 +233,7 @@ oc apply -f k8s/rag-generator-frontend-angular-deployment.yml -n ganatan-dev
 oc apply -f k8s/rag-generator-backend-springboot-deployment.yml -n ganatan-dev
 ```
 
-### 4. Restart & Logs
+### 4. Redémarrage et logs
 
 ```bash
 oc rollout restart deployment/frontend-angular -n ganatan-dev
@@ -242,19 +242,19 @@ oc get pods -n ganatan-dev
 oc logs -f deployment/backend-springboot -n ganatan-dev
 ```
 
-### 5. Application URLs
+### 5. Accès à l’application
 
-Frontend:
+Frontend :
 ```
 https://frontend-angular-ganatan-dev.apps.openshift.example.com
 ```
 
-Backend:
+Backend :
 ```
 https://backend-springboot-ganatan-dev.apps.openshift.example.com
 ```
 
-### 6. Full Cleanup
+### 6. Nettoyage complet
 
 ```bash
 oc delete all -l app=frontend-angular -n ganatan-dev
@@ -263,7 +263,7 @@ oc delete all -l app=backend-springboot -n ganatan-dev
 
 ---
 
-## 📦 Useful Maven Commands
+## 📦 Commandes Maven utiles
 
 ```bash
 mvn clean
@@ -278,17 +278,15 @@ mvn spring-boot:run
 
 ---
 
-## 🧠 Technical Stack
+## 🧠 Stack technique
 
-| Layer | Technology | Version |
+| Couche | Technologie | Version |
 |--------|--------------|----------|
 | Frontend | Angular | 20.x |
 | Backend | Spring Boot | 3.5.x |
 | Java | 21 |
-| CI/CD | GitLab | SaaS or Self-Hosted |
-| Deployment | OpenShift | 4.14+ |
-| Containers | Docker | 24+ |
-| Code Quality | ESLint / Checkstyle | - |
+| CI/CD | GitLab | SaaS ou Self-Hosted |
+| Déploiement | OpenShift | 4.14+ |
+| Conteneurs | Docker | 24+ |
+| Qualité | ESLint / Checkstyle | - |
 | Tests | Jasmine / JUnit / JaCoCo | - |
-
-
