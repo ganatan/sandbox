@@ -17,18 +17,18 @@
 
 ## 📚 Table of Contents
 
-- [🎯 Project Goals](#project-goals)
+- [Project Goals](#project-goals)
 - [Project Overview](#project-overview)
-- [🗂️ Project Structure](#project-structure)
-- [⚙️ Components](#components)
-- [🔧 Continuous Integration (CI)](#continuous-integration-ci)
-- [📦 Docker Images](#docker-images)
-- [🧩 Frontend — Angular 20](#frontend--angular-20)
-- [☕ Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
-- [🐳 Docker](#docker)
-- [🚀 GitLab CI/CD](#gitlab-cicd)
-- [☸️ OpenShift Deployment](#openshift-deployment)
-- [👤 Author & License](#author--license)
+- [Project Structure](#project-structure)
+- [Components](#components)
+- [Continuous Integration (CI)](#continuous-integration-ci)
+- [Docker Images](#docker-images)
+- [Frontend — Angular 20](#frontend--angular-20)
+- [Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
+- [Docker](#docker)
+- [GitLab CI/CD](#gitlab-cicd)
+- [OpenShift Deployment](#openshift-deployment)
+- [Author & License](#author--license)
 
 ---
 
@@ -44,7 +44,7 @@ Docker images are shared across local, CI, and OpenShift environments for full r
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 sandbox/
@@ -79,7 +79,7 @@ sandbox/
 
 ---
 
-## ⚙️ Components
+## Components
 
 | Component | Technology | Role |
 |------------|-------------|------|
@@ -91,7 +91,7 @@ sandbox/
 
 ---
 
-## 🔧 Continuous Integration (CI)
+## Continuous Integration (CI)
 
 | Project | CI Badge |
 |----------|-----------|
@@ -100,7 +100,7 @@ sandbox/
 
 ---
 
-## 📦 Docker Images
+## Docker Images
 
 | Component | Docker Image |
 |------------|---------------|
@@ -109,7 +109,7 @@ sandbox/
 
 ---
 
-## 🧩 Frontend — Angular 20
+## Frontend — Angular 20
 
 ### Installation
 ```bash
@@ -145,7 +145,7 @@ npm run serve:ssr
 
 ---
 
-## ☕ Backend — Spring Boot 3.5.5
+## Backend — Spring Boot 3.5.5
 
 ### Static Analysis
 ```bash
@@ -175,7 +175,7 @@ java -jar target/backend-springboot-1.0.0.jar
 
 ---
 
-## 🐳 Docker
+## Docker
 
 ### Build Images
 ```bash
@@ -194,7 +194,7 @@ docker run -d --name backend-springboot -p 3000:3000 backend-springboot:latest
 
 ---
 
-## 🚀 GitLab CI/CD
+## GitLab CI/CD
 
 `.gitlab-ci.yml` includes both pipelines:
 
@@ -214,7 +214,7 @@ Each pipeline performs:
 
 ---
 
-## ☸️ OpenShift Deployment
+## OpenShift Deployment
 
 ### Login
 ```bash
@@ -244,7 +244,7 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 
 ---
 
-## 👤 Author & License
+## Author & License
 
 **Author:** Danny — [www.ganatan.com](https://www.ganatan.com)  
 **License:** MIT  
