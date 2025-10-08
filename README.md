@@ -158,7 +158,7 @@ java -jar target/backend-springboot-1.0.0.jar
 
 Local API:  
 ```
-http://localhost:8080
+http://localhost:3000
 ```
 
 > All backend tasks (lint, test, build, deploy) are automated via GitLab CI.
@@ -170,6 +170,7 @@ http://localhost:8080
 ### Build Images
 
 ```bash
+cd sandbox
 docker build -t frontend-angular:latest -f rag-generator/frontend-angular/docker/Dockerfile.frontend-angular .
 docker build -t backend-springboot:latest -f rag-generator/backend-springboot/docker/Dockerfile.backend-springboot .
 ```
@@ -177,10 +178,18 @@ docker build -t backend-springboot:latest -f rag-generator/backend-springboot/do
 ### Run Containers Locally
 
 ```bash
+cd sandbox
 docker run -d --name frontend-angular -p 4000:80 frontend-angular:latest
-docker run -d --name backend-springboot -p 8080:8080 backend-springboot:latest
+docker run -d --name backend-springboot -p 3000:3000 backend-springboot:latest
 ```
 
+Once running, the applications can be accessed locally:
+
+- **Frontend (Angular SPA / SSR)** → [http://localhost:4000](http://localhost:4000)  
+- **Backend (Spring Boot API)** → [http://localhost:3000](http://localhost:3000)
+
+> Both containers can be executed simultaneously.  
+> This setup mirrors the same configuration used in CI/CD and OpenShift environments.
 > Used for local development, integration testing, and CI builds.
 
 ---
