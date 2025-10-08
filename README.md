@@ -13,6 +13,20 @@
 
 ---
 
+## 🧱 Project Overview
+
+**RAG Generator** is a working **proof of concept** demonstrating a production-grade setup for  
+a Retrieval-Augmented Generation (RAG) application.  
+
+It showcases a **modular architecture** with independent builds, pipelines, and deployments for:
+- `frontend-angular` — the user interface  
+- `backend-springboot` — the API layer and orchestration logic  
+
+Each module can be built, tested, and deployed independently through **GitLab CI/CD pipelines**.  
+The same Docker images are used across **local, CI, and OpenShift** environments, ensuring full reproducibility.
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -29,43 +43,40 @@
 │   ├── backend-springboot/
 │   │   ├── src/
 │   │   ├── pom.xml
+│   │   ├── scripts/
 │   │   └── docker/Dockerfile.backend-springboot
 │   │
 │   ├── frontend-angular/
 │   │   ├── src/
 │   │   ├── package.json
+│   │   ├── scripts/
 │   │   └── docker/Dockerfile.frontend-angular
 │   │
 │   └── databases/
-│       └── (SQL scripts, init, migrations)
+│       └── (SQL scripts)
 │
 ├── .gitlab-ci.yml
 └── README.md
 ```
 
----
-
-## ⚙️ Description
-
-**RAG Generator** is a complete FullStack application demonstrating a **Retrieval-Augmented Generation (RAG)** architecture.
-It combines a **frontend built with Angular 20** and a **backend powered by Spring Boot 3.5 (Java 21)**.
-The project includes a full **GitLab CI/CD pipeline** and **automated OpenShift deployment**.
+> Each pipeline handles linting, testing, packaging, Docker image creation,  
+> and deployment to OpenShift automatically.
 
 ---
 
-## 🧩 Components
+## ⚙️ Components
 
 | Component | Technology | Role |
 |------------|-------------|------|
-| Frontend | Angular 20 | User interface |
-| Backend | Spring Boot 3.5 / Java 21 | REST API / business logic |
-| Database | PostgreSQL / Oracle | Context and embeddings storage |
-| Registry | GitLab Container Registry | Docker image repository |
-| Cluster | OpenShift 4.x | Container orchestration and hosting |
+| **Frontend** | Angular 20 | User Interface |
+| **Backend** | Spring Boot 3.5.5 / Java 21 | REST API, RAG orchestration |
+| **Database** | PostgreSQL / Oracle | Context & embeddings storage |
+| **Registry** | GitLab Container Registry | Docker image hosting |
+| **Cluster** | OpenShift 4.x | Kubernetes-based deployment |
 
 ---
 
-## 🧱 Frontend Angular
+## 🧩 Frontend — Angular 20
 
 ### Installation
 
@@ -82,31 +93,38 @@ npm run test
 npm run coverage
 ```
 
-Report:
+Coverage report:  
 ```
 rag-generator/frontend-angular/coverage/index.html
 ```
 
-### Build
+### Build & Run
 
+#### 🧩 Standard (SPA mode)
 ```bash
 npm run build
-```
-
-### Local Development Server
-
-```bash
 npm run start
 ```
-
-App available at:
+Local access (no SSR):  
 ```
 http://localhost:4200
 ```
 
+#### ⚡ Server-Side Rendering (SSR mode)
+```bash
+npm run build:ssr
+npm run serve:ssr
+```
+Local access (with SSR):  
+```
+http://localhost:4000
+```
+
+> The SSR mode runs the Angular Universal server on Node.js for pre-rendered HTML responses, while the SPA mode serves static assets via the development server.
+
 ---
 
-## ☕ Backend Spring Boot
+## ☕ Backend — Spring Boot 3.5.5
 
 ### Static Analysis
 
@@ -122,31 +140,28 @@ mvn clean test
 mvn jacoco:report
 ```
 
-Report:
+Coverage report:  
 ```
 rag-generator/backend-springboot/target/site/jacoco/index.html
 ```
 
-### Build
+### Build & Run
 
 ```bash
 mvn clean install
-```
-
-### Run Application
-
-```bash
 mvn spring-boot:run
 ```
-or
+or  
 ```bash
 java -jar target/backend-springboot-1.0.0.jar
 ```
 
-API available at:
+Local API:  
 ```
 http://localhost:8080
 ```
+
+> All backend tasks (lint, test, build, deploy) are automated via GitLab CI.
 
 ---
 
@@ -159,20 +174,22 @@ docker build -t frontend-angular:latest -f rag-generator/frontend-angular/docker
 docker build -t backend-springboot:latest -f rag-generator/backend-springboot/docker/Dockerfile.backend-springboot .
 ```
 
-### Run Containers
+### Run Containers Locally
 
 ```bash
 docker run -d --name frontend-angular -p 4000:80 frontend-angular:latest
 docker run -d --name backend-springboot -p 8080:8080 backend-springboot:latest
 ```
 
+> Used for local development, integration testing, and CI builds.
+
 ---
 
 ## 🚀 GitLab CI/CD
 
-### Main `.gitlab-ci.yml`
+### Main Pipeline
 
-Includes both frontend and backend pipelines:
+`.gitlab-ci.yml` includes two specific pipelines:  
 
 ```yaml
 include:
@@ -180,91 +197,55 @@ include:
   - local: .gitlab/rag-generator-backend-springboot-ci.yml
 ```
 
-### Pipeline Stages
+Each pipeline performs:
+- Lint  
+- Unit tests  
+- Build  
+- Docker image creation  
+- Push to GitLab Registry  
+- Deployment to OpenShift  
 
-#### Frontend Angular
-- install:frontend-angular
-- lint:frontend-angular
-- test:frontend-angular
-- build:frontend-angular
-- docker:frontend-angular
-- deploy:frontend-angular
-
-#### Backend Spring Boot
-- lint:backend-springboot
-- test:backend-springboot
-- build:backend-springboot
-- docker:backend-springboot
-- deploy:backend-springboot
+> Pipelines are triggered automatically on merge or tag creation.
 
 ---
 
 ## ☸️ OpenShift Deployment
 
-### 1. Connect to Cluster
+### Cluster Connection
 
 ```bash
 oc login https://api.openshift.example.com:6443 --token=<YOUR_TOKEN>
 oc project ganatan-dev
 ```
 
-### 2. Push Docker Images
-
-#### Frontend
-
-```bash
-docker tag frontend-angular:latest registry.gitlab.com/ganatan/sandbox/rag-generator/frontend-angular:latest
-docker push registry.gitlab.com/ganatan/sandbox/rag-generator/frontend-angular:latest
-```
-
-#### Backend
-
-```bash
-docker tag backend-springboot:latest registry.gitlab.com/ganatan/sandbox/rag-generator/backend-springboot:latest
-docker push registry.gitlab.com/ganatan/sandbox/rag-generator/backend-springboot:latest
-```
-
-### 3. Apply Kubernetes Manifests
-
-#### Frontend
+### Apply Manifests
 
 ```bash
 oc apply -f k8s/rag-generator-frontend-angular-deployment.yml -n ganatan-dev
-```
-
-#### Backend
-
-```bash
 oc apply -f k8s/rag-generator-backend-springboot-deployment.yml -n ganatan-dev
 ```
 
-### 4. Restart & Logs
+### Restart & Logs
 
 ```bash
 oc rollout restart deployment/frontend-angular -n ganatan-dev
 oc rollout restart deployment/backend-springboot -n ganatan-dev
-oc get pods -n ganatan-dev
 oc logs -f deployment/backend-springboot -n ganatan-dev
 ```
 
-### 5. Application URLs
+### Application URLs
 
-Frontend:
+Frontend  
 ```
 https://frontend-angular-ganatan-dev.apps.openshift.example.com
 ```
 
-Backend:
+Backend  
 ```
 https://backend-springboot-ganatan-dev.apps.openshift.example.com
 ```
 
-### 6. Full Cleanup
-
-```bash
-oc delete all -l app=frontend-angular -n ganatan-dev
-oc delete all -l app=backend-springboot -n ganatan-dev
-```
+> Deployed via Kubernetes manifests with readiness/liveness probes and auto-rollout.
 
 ---
 
@@ -295,5 +276,4 @@ mvn spring-boot:run
 | Containers | Docker | 24+ |
 | Code Quality | ESLint / Checkstyle | - |
 | Tests | Jasmine / JUnit / JaCoCo | - |
-
-
+| Infrastructure | GitLab + OpenShift | Integrated CI/CD with Kubernetes deployment |
