@@ -1,4 +1,4 @@
-# 🚀 RAG Generator — Angular 20.3.3 & Spring Boot 3.5.5  
+# 🚀 RAG Generator — Angular 20 & Spring Boot 3.5.5  
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
