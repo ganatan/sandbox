@@ -1,5 +1,5 @@
 {
-  "name": "rag-connector-frontend",
+  "name": "rag-connector-frontend-angular",
   "version": "20.3.3",
   "scripts": {
     "ng": "ng",
