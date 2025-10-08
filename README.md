@@ -108,7 +108,7 @@ rag-generator/frontend-angular/coverage/index.html
 
 ### ⚡ Build & Run
 
-#### 🧩 Standard (SPA mode)
+#### 🧩 Standard Mode
 ```bash
 npm run build
 npm run start
@@ -125,7 +125,7 @@ Local access (with SSR):
 👉 [http://localhost:4000](http://localhost:4000)
 
 > SSR mode uses Angular Universal for pre-rendered HTML on Node.js.  
-> SPA mode serves static assets via the dev server.
+> Standard mode serves static assets via the dev server.
 
 ---
 
@@ -235,8 +235,8 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 ```
 
 ### 🌐 Application URLs
-- Frontend → https://frontend-angular-ganatan-dev.apps.openshift.example.com  
-- Backend → https://backend-springboot-ganatan-dev.apps.openshift.example.com  
+- Frontend → https://rag-generator-frontend-angular-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com
+- Backend → https://rag-generator-backend-springboot-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com
 
 > Deployment via Kubernetes manifests with readiness/liveness probes and rolling updates.
 
