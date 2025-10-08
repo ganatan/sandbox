@@ -12,7 +12,7 @@
 
 ---
 
-**French version available here:** [![Français](./ui/version-fr.png)](./README-fr.md)
+**👉 Version française disponible ici** : [![Français](./ui/version-fr.png)](./README-fr.md)
 
 ---
 
@@ -108,7 +108,7 @@ sandbox/
 
 ---
 
-## Frontend — Angular 20.3.3
+## Frontend — Angular 20
 
 ### Installation
 ```bash
