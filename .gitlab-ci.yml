@@ -1,30 +1,12 @@
 workflow:
   rules:
     - changes:
-        - angular-bootstrap/**/*
-        - angular-ssr/**/*
         - rag-generator/frontend-angular/**/*
         - rag-generator/backend-springboot/**/*
     - when: never
 
 stages:
   - trigger
-
-trigger-angular-bootstrap:
-  stage: trigger
-  trigger:
-    include: .gitlab/angular-bootstrap-ci.yml
-  rules:
-    - changes:
-        - angular-bootstrap/**/*
-
-trigger-angular-ssr:
-  stage: trigger
-  trigger:
-    include: .gitlab/angular-ssr-ci.yml
-  rules:
-    - changes:
-        - angular-ssr/**/*
 
 trigger-rag-generator-frontend-angular:
   stage: trigger
