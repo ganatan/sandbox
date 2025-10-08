@@ -39,7 +39,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/rag-generator-backend-springboot:latest .
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/rag-generator-backend-springboot:latest \
+            -f docker/Dockerfile.backend-springboot .        
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/rag-generator-backend-springboot:latest
