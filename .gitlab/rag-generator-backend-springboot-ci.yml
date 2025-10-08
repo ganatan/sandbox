@@ -2,6 +2,8 @@ workflow:
   rules:
     - changes:
         - rag-generator/backend-springboot/**/*
+        - k8s/rag-generator-backend-springboot-deployment.yml
+        
     - when: never
 
 image: maven:3.9-eclipse-temurin-21
@@ -91,3 +93,20 @@ docker:backend-springboot:
     - docker tag "$CI_REGISTRY_IMAGE/rag-generator-backend-springboot:$CI_COMMIT_SHA" "$CI_REGISTRY_IMAGE/rag-generator-backend-springboot:latest"
     - docker push "$CI_REGISTRY_IMAGE/rag-generator-backend-springboot:latest"
 
+deploy:backend-springboot:
+  stage: deploy
+  image:
+    name: quay.io/openshift/origin-cli:latest
+    entrypoint: [""]
+  script:
+    - echo "Connecting to OpenShift..."
+    - oc login "$OPENSHIFT_SERVER" --token="$OPENSHIFT_TOKEN" --insecure-skip-tls-verify=true
+    - oc project ganatan-dev
+    - echo "Applying OpenShift deployment..."
+    - oc apply -f k8s/rag-generator-backend-springboot-deployment.yml
+    - echo "Restarting deployment..."
+    - oc rollout restart deployment/rag-generator-backend-springboot -n ganatan-dev
+  only:
+    - main
+    - master
+  when: on_success

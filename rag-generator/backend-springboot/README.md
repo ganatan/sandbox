@@ -105,6 +105,16 @@ http://localhost:8080
 
 ---
 
+## OpenShift
+
+Build Deployment:
+
+```bash
+oc apply -f k8s/deployment-backend-springboot.yaml -n ganatan-dev
+```
+
+
+---
 ## Maven Commands
 
 ```bash
