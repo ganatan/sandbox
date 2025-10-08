@@ -44,7 +44,7 @@ Docker images are shared across local, CI, and OpenShift environments for full r
 
 ---
 
-## 🏗️ Project Structure
+## 🧱 Project Structure
 
 ```
 sandbox/
@@ -79,7 +79,7 @@ sandbox/
 
 ---
 
-## ⚙️ Components
+## 🧱 Components
 
 | Component | Technology | Role |
 |------------|-------------|------|
