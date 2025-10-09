@@ -256,12 +256,11 @@ anthropic.api.key=claude-your-key
 #### Quand `use.mock=true`
 - Le backend utilise les **mocks locaux** situés dans `com.ganatan.starter.mock.llm.*`
 - Aucune connexion à une API externe ni à une base de données
-- Tous les endpoints `/api/*` renvoient des données simulées
 
 #### Quand `use.mock=false`
 - Le backend utilise les **vraies clés API** pour appeler OpenAI / Claude
 - La base de données **Oracle** est activée via Hibernate / JPA
-- Les endpoints CRUD `/api/persons` deviennent accessibles
+- Les endpoints CRUD `/persons` deviennent accessibles
 
 ---
 
@@ -290,13 +289,13 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 | Endpoint | Méthode | Description |
 |-----------|----------|--------------|
-| `/api/persons` | **GET** | Retourne toutes les personnes |
-| `/api/persons/{id}` | **GET** | Retourne une personne spécifique |
-| `/api/persons` | **POST** | Crée une nouvelle personne |
-| `/api/persons/{id}` | **PUT** | Met à jour une personne existante |
-| `/api/persons/{id}` | **DELETE** | Supprime une personne par ID |
+| `/persons`     | **GET** | Retourne toutes les personnes |
+| `/persons/{id}`     | **GET** | Retourne une personne spécifique |
+| `/persons`     | **POST** | Crée une nouvelle personne |
+| `/persons/{id}`     | **PUT** | Met à jour une personne existante |
+| `/persons/{id}`     | **DELETE** | Supprime une personne par ID |
 
-> Les endpoints `/api/persons` sont disponibles uniquement quand `use.mock=false`  
+> Les endpoints `/persons` sont disponibles uniquement quand `use.mock=false`  
 > et utilisent la base Oracle via JPA/Hibernate.
 
 ---
