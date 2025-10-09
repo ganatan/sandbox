@@ -212,7 +212,7 @@ Each pipeline performs:
 
 ---
 
-## ☸️ OpenShift Deployment
+## 🧮 OpenShift Deployment
 
 ### Login
 ```bash
