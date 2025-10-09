@@ -33,20 +33,23 @@ module.exports = tseslint.config(
       "@angular-eslint/component-class-suffix": [
         "error",
         {
-          suffixes: ["","Component"] 
+          suffixes: ["", "Component"]
         }
       ],
-      "semi": ["error", "always"],
-      "comma-dangle": ["error", "always-multiline"],
-      'object-shorthand': ['error', 'consistent'],
-      "no-undefined": "error",
+      "@angular-eslint/prefer-inject": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+      ],
+      "no-undefined": "off",
       "no-var": "error",
       "prefer-const": "error",
       "func-names": "error",
       "id-length": "error",
       "newline-before-return": "error",
       "space-before-blocks": "error",
-      "no-alert": "error"             
+      "no-alert": "error"
     },
   },
   {

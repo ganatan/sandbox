@@ -1,4 +1,4 @@
-package com.angular.starter.config;
+package com.ganatan.starter.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

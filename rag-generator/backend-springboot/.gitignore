@@ -32,6 +32,21 @@ build/
 hs_err_pid*.log
 
 # ================================================
+# 🧱 Docker / Qdrant / Local volumes
+# ================================================
+
+# Qdrant local data (runtime)
+docker/qdrant_storage/
+docker/qdrant_storage/**
+!docker/qdrant_storage/.gitkeep
+
+# Docker intermediate artifacts
+docker/*.tar
+docker/*.img
+docker-compose.override.yml
+docker-compose.local.yml
+
+# ================================================
 # 🧪 IDE: Eclipse / Spring Tools Suite (STS)
 # ================================================
 

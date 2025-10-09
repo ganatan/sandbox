@@ -3,8 +3,8 @@ import { App } from './app';
 import { ActivatedRoute } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
-import { AiService } from './ai-service';
-import { ContentGenerationResponse } from './ai-service';
+import { AiService } from './core/services/ai-service';
+import { ContentGenerationResponse } from './core/services/ai-service';
 
 describe('App Component', () => {
   let fixture: ComponentFixture<App>;

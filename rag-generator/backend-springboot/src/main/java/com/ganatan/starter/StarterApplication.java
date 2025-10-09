@@ -1,4 +1,4 @@
-package com.angular.starter;
+package com.ganatan.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

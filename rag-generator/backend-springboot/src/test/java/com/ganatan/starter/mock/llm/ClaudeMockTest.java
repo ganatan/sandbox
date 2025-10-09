@@ -1,6 +1,9 @@
-package com.angular.starter.mock.llm;
+package com.ganatan.starter.mock.llm;
 
 import org.junit.jupiter.api.Test;
+
+import com.ganatan.starter.mock.llm.ClaudeMock;
+
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;

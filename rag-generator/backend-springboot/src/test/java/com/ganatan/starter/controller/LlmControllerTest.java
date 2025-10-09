@@ -1,9 +1,5 @@
-package com.angular.starter.controller;
+package com.ganatan.starter.controller;
 
-import com.angular.starter.mock.llm.ChatGptMock;
-import com.angular.starter.mock.llm.ClaudeMock;
-import com.angular.starter.service.llm.ChatGptService;
-import com.angular.starter.service.llm.ClaudeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,6 +10,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.ganatan.starter.controller.LlmController;
+import com.ganatan.starter.mock.llm.ChatGptMock;
+import com.ganatan.starter.mock.llm.ClaudeMock;
+import com.ganatan.starter.service.llm.ChatGptService;
+import com.ganatan.starter.service.llm.ClaudeService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;

@@ -12,6 +12,7 @@
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
+    "serve": "node dist/angular-starter/server/server.mjs",
     "docker:list-containers": "docker ps -a",
     "docker:list-images": "docker images",
     "docker:list-volumes": "docker volume ls",
@@ -20,8 +21,7 @@
     "docker:app-stop": "docker stop frontend-angular && docker rm frontend-angular",
     "docker:app-clean": "docker rm -f frontend-angular && docker rmi -f frontend-angular",
     "docker:app-logs": "docker logs -f frontend-angular",
-    "generate-project-structure": "node tools/scripts/generate-project-structure.js",
-    "serve": "node dist/angular-starter/server/server.mjs"
+    "generate-project-structure": "node tools/scripts/generate-project-structure.js"
   },
   "private": true,
   "dependencies": {

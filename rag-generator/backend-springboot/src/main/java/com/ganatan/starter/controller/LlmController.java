@@ -1,12 +1,12 @@
-package com.angular.starter.controller;
-
-import com.angular.starter.mock.llm.ChatGptMock;
-import com.angular.starter.mock.llm.ClaudeMock;
-import com.angular.starter.service.llm.ChatGptService;
-import com.angular.starter.service.llm.ClaudeService;
+package com.ganatan.starter.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import com.ganatan.starter.mock.llm.ChatGptMock;
+import com.ganatan.starter.mock.llm.ClaudeMock;
+import com.ganatan.starter.service.llm.ChatGptService;
+import com.ganatan.starter.service.llm.ClaudeService;
 
 import java.util.Map;
 

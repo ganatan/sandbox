@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { AiService, ContentGenerationResponse } from './ai-service';
+import { AiService, ContentGenerationResponse } from '../app/core/services/ai-service';
 import { environment } from '../environments/environment';
 
 @Component({

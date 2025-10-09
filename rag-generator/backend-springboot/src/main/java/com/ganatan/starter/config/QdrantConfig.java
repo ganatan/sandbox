@@ -1,4 +1,4 @@
-package com.angular.starter.config;
+package com.ganatan.starter.config;
 
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.QdrantGrpcClient;

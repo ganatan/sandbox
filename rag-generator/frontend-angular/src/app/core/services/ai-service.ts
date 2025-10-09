@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 import { reply as mockReply } from './ai.mock';
 
 export interface ContentGenerationResponse {

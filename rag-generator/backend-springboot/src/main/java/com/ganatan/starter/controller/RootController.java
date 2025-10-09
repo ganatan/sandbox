@@ -1,10 +1,10 @@
-package com.angular.starter.controller;
+package com.ganatan.starter.controller;
 
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.angular.starter.config.AiServicesConfig;
+import com.ganatan.starter.config.AiServicesConfig;
 
 import java.util.Map;
 
