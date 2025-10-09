@@ -32,13 +32,15 @@
 
 ## 🧬 Présentation du projet
 
-**RAG Generator** est une preuve de concept **production-ready** illustrant une architecture **Retrieval-Augmented Generation**.  
-Le projet démontre une architecture modulaire avec builds, tests et déploiements indépendants pour :
-- `frontend-angular` — l’interface utilisateur  
-- `backend-springboot` — l’API et la logique d’orchestration  
+**RAG Generator** est une démonstration complète d’une architecture **RAG (Retrieval-Augmented Generation)** prête pour la production.  
+L’application se compose de deux modules indépendants :  
+- `frontend-angular` : interface utilisateur  
+- `backend-springboot` : API et logique métier  
 
-Chaque module peut être déployé indépendamment via GitLab CI/CD.  
-Les images Docker sont partagées entre les environnements locaux, CI et OpenShift afin d’assurer la reproductibilité complète.
+Chaque module peut être construit, testé et déployé séparément via **GitLab CI/CD**.  
+Les images Docker sont utilisées aussi bien en local qu’en CI et sur **OpenShift**, pour garantir une exécution identique partout.
+
+
 
 ---
 
