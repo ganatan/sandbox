@@ -213,7 +213,7 @@ src/
 
 ## ☕ Backend — Spring Boot 3.5.5
 
-### Static Analysis
+### Code Quality Check
 ```bash
 cd sandbox
 cd rag-generator/backend-springboot
