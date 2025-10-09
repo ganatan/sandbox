@@ -1,48 +1,48 @@
-# RAG Generator — Angular 20 & Spring Boot 3.5.5
+# 🧠 RAG Generator — Angular 20 & Spring Boot 3.5.5
 
-<img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
+<img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="logo ganatan">
 
 ---
 
-## Objectifs du projet
+## 🎯 Objectifs du projet
 - ✅ Démontrer une architecture complète **RAG (Retrieval-Augmented Generation)**  
 - ✅ Application **FullStack** : **Angular 20.3.3** en frontend et **Spring Boot 3.5.5 (Java 21)** en backend  
 - ✅ Intégration **GitLab CI/CD** et déploiement sur **OpenShift (Kubernetes)**  
 
 ---
 
-**👉 English version available here** : [![English](./ui/version-en.png)](./README.md)
+**👉 English version available here:** [![English](./ui/version-en.png)](./README.md)
 
 ---
 
-## Table des matières
-- [Objectifs du projet](#objectifs-du-projet)
-- [Présentation du projet](#présentation-du-projet)
-- [Structure du projet](#structure-du-projet)
-- [Composants](#composants)
-- [Intégration Continue (CI)](#intégration-continue-ci)
-- [Images Docker](#images-docker)
-- [Frontend — Angular 20](#frontend--angular-20)
-- [Backend — Spring Boot 3.5.5](#backend--spring-boot-355)
-- [Docker](#docker)
-- [GitLab CI/CD](#gitlab-cicd)
-- [Déploiement OpenShift](#déploiement-openshift)
+## 📘 Sommaire
+- [Présentation du projet](#-présentation-du-projet)
+- [Structure du projet](#-structure-du-projet)
+- [Composants](#-composants)
+- [Intégration Continue (CI)](#-intégration-continue-ci)
+- [Images Docker](#-images-docker)
+- [Frontend — Angular 20](#-frontend--angular-20)
+- [Backend — Spring Boot 3.5.5](#-backend--spring-boot-355)
+- [Docker](#-docker)
+- [GitLab CI/CD](#-gitlab-cicd)
+- [Déploiement OpenShift](#-déploiement-openshift)
+- [Auteur & Licence](#-auteur--licence)
 
 ---
 
-## Présentation du projet
+## 🧬 Présentation du projet
 
-**RAG Generator** est une preuve de concept **production-ready** pour une application basée sur le principe du *Retrieval-Augmented Generation (RAG)*.  
-Elle démontre une architecture modulaire avec des builds, tests et déploiements indépendants pour :  
+**RAG Generator** est une preuve de concept **production-ready** illustrant une architecture **Retrieval-Augmented Generation**.  
+Le projet démontre une architecture modulaire avec builds, tests et déploiements indépendants pour :
 - `frontend-angular` — l’interface utilisateur  
 - `backend-springboot` — l’API et la logique d’orchestration  
 
-Chaque module peut être déployé indépendamment via **GitLab CI/CD**.  
-Les images Docker sont partagées entre les environnements **local**, **CI** et **OpenShift** pour une reproductibilité totale.
+Chaque module peut être déployé indépendamment via GitLab CI/CD.  
+Les images Docker sont partagées entre les environnements locaux, CI et OpenShift afin d’assurer la reproductibilité complète.
 
 ---
 
-## Structure du projet
+## 🧩 Structure du projet
 
 ```
 sandbox/
@@ -72,24 +72,24 @@ sandbox/
 └── README.md
 ```
 
-> Chaque pipeline gère le lint, les tests, le packaging, la création d’images Docker  
+> Chaque pipeline gère le linting, les tests, le packaging, la création d’images Docker  
 > et le déploiement automatique sur OpenShift.
 
 ---
 
-## Composants
+## 🧮 Composants
 
 | Composant | Technologie | Rôle |
 |------------|-------------|------|
 | Frontend | Angular 20 | Interface utilisateur |
 | Backend | Spring Boot 3.5.5 / Java 21 | API REST, orchestration RAG |
 | Base de données | PostgreSQL / Oracle | Stockage du contexte et des embeddings |
-| Registre | GitLab Container Registry | Hébergement des images Docker |
+| Registry | GitLab Container Registry | Hébergement des images Docker |
 | Cluster | OpenShift 4.x | Déploiement Kubernetes |
 
 ---
 
-## Intégration Continue (CI)
+## 🔧 Intégration Continue (CI)
 
 | Projet | Badge CI |
 |----------|-----------|
@@ -98,7 +98,7 @@ sandbox/
 
 ---
 
-## Images Docker
+## 📦 Images Docker
 
 | Composant | Image Docker |
 |------------|---------------|
@@ -107,7 +107,7 @@ sandbox/
 
 ---
 
-## Frontend — Angular 20
+## 🧩 Frontend — Angular 20
 
 ### Installation
 ```bash
@@ -134,7 +134,7 @@ npm run start
 ```
 → http://localhost:4200
 
-**Mode SSR (Server-Side Rendering)**
+**Server-Side Rendering (SSR)**
 ```bash
 npm run build:ssr
 npm run serve:ssr
@@ -143,7 +143,7 @@ npm run serve:ssr
 
 ---
 
-## Backend — Spring Boot 3.5.5
+## ☕ Backend — Spring Boot 3.5.5
 
 ### Analyse statique
 ```bash
@@ -173,7 +173,7 @@ java -jar target/backend-springboot-1.0.0.jar
 
 ---
 
-## Docker
+## 🐳 Docker
 
 ### Construction des images
 ```bash
@@ -192,7 +192,7 @@ docker run -d --name backend-springboot -p 3000:3000 backend-springboot:latest
 
 ---
 
-## GitLab CI/CD
+## 🚀 GitLab CI/CD
 
 `.gitlab-ci.yml` inclut les deux pipelines :
 
@@ -202,38 +202,38 @@ include:
   - local: .gitlab/rag-generator-backend-springboot-ci.yml
 ```
 
-Chaque pipeline exécute :
+Chaque pipeline effectue :
 - Lint  
 - Tests unitaires  
 - Build  
-- Création de l’image Docker  
-- Push vers le registre  
-- Déploiement OpenShift  
+- Création d’image Docker  
+- Push vers le Registry  
+- Déploiement sur OpenShift  
 
 ---
 
-## Déploiement OpenShift
+## 🛫 Déploiement OpenShift
 
-### Connexion au cluster
+### Connexion
 ```bash
 oc login https://api.openshift.example.com:6443 --token=<YOUR_TOKEN>
 oc project ganatan-dev
 ```
 
-### Application des manifestes
+### Application des manifests
 ```bash
 oc apply -f k8s/rag-generator-frontend-angular-deployment.yml -n ganatan-dev
 oc apply -f k8s/rag-generator-backend-springboot-deployment.yml -n ganatan-dev
 ```
 
-### Redémarrage & logs
+### Redémarrage & Logs
 ```bash
 oc rollout restart deployment/frontend-angular -n ganatan-dev
 oc rollout restart deployment/backend-springboot -n ganatan-dev
 oc logs -f deployment/backend-springboot -n ganatan-dev
 ```
 
-### URLs des applications
+### URLs d'application
 
 | Application | Environnement | URL |
 |--------------|----------------|-----|
@@ -242,7 +242,7 @@ oc logs -f deployment/backend-springboot -n ganatan-dev
 
 ---
 
-## Auteur & Licence
+## 👤 Auteur & Licence
 
 **Auteur :** Danny — [www.ganatan.com](https://www.ganatan.com)  
-**Licence :** MIT  
+**Licence :** MIT
