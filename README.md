@@ -215,6 +215,7 @@ src/
 
 ### Static Analysis
 ```bash
+cd sandbox
 cd rag-generator/backend-springboot
 mvn checkstyle:check
 ```

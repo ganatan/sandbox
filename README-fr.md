@@ -170,10 +170,7 @@ npm run start
 > Utilise les données mock locales.
 
 #### Mode développement connecté au backend
-```bash
-ng serve --configuration production
-```
-ou mettre `useMock: false` dans `environment.ts`.  
+mettre `useMock: false` dans `environment.ts`.  
 → http://localhost:4200  
 > Envoie les requêtes vers `http://localhost:3000/api`.
 
@@ -181,15 +178,9 @@ ou mettre `useMock: false` dans `environment.ts`.
 
 ### Build & SSR
 
-#### Build standard
 ```bash
 npm run build
-```
-
-#### Build avec rendu serveur (SSR)
-```bash
-npm run build:ssr
-npm run serve:ssr
+npm run serve
 ```
 → http://localhost:4000
 
@@ -223,6 +214,7 @@ src/
 
 ### Analyse statique
 ```bash
+cd sandbox
 cd rag-generator/backend-springboot
 mvn checkstyle:check
 ```
