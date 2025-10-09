@@ -329,7 +329,7 @@ cd rag-generator/frontend-angular
 docker build -t frontend-angular:latest -f docker/Dockerfile.frontend-angular .
 
 cd ../backend-springboot
-docker build -t backend-springboot:latest -f rag-generator/backend-springboot/docker/Dockerfile.backend-springboot .
+docker build -t backend-springboot:latest -f docker/Dockerfile.backend-springboot .
 ```
 
 ### Run Containers
