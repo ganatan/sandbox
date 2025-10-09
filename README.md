@@ -117,6 +117,7 @@ sandbox/
 
 ### Installation
 ```bash
+git clone https://github.com/ganatan/sandbox.git
 cd sandbox
 cd rag-generator/frontend-angular
 npm ci
