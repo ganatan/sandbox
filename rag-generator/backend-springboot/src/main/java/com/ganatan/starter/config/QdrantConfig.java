@@ -11,10 +11,8 @@ public class QdrantConfig {
 	public QdrantConfig() {
 	}
 
-    @Bean
-    public QdrantClient qdrantClient() {
-        return new QdrantClient(
-            QdrantGrpcClient.newBuilder("localhost", 6334, false).build()
-        );
-    }
+	@Bean
+	public QdrantClient qdrantClient() {
+		return new QdrantClient(QdrantGrpcClient.newBuilder("localhost", 6334, false).build());
+	}
 }

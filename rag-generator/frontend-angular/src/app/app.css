@@ -1,7 +1,7 @@
 .container {
   flex: 1;
   background-color: var(--bg);
-}
+ }
 
 h1 {
   font-weight: 800;
@@ -97,4 +97,3 @@ body.dark-mode {
   pointer-events: none;
   opacity: 0.6;
 }
-
