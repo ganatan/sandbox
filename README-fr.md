@@ -5,7 +5,7 @@
 ---
 
 ## 🎯 Objectifs du projet
-- ✅ Démontrer une architecture complète **RAG (Retrieval-Augmented Generation)**  
+- ✅ construire une architecture complète **RAG (Retrieval-Augmented Generation)**  
 - ✅ Application **FullStack** : **Angular 20.3.3** en frontend et **Spring Boot 3.5.5 (Java 21)** en backend  
 - ✅ Intégration **GitLab CI/CD** et déploiement sur **OpenShift (Kubernetes)**  
 
