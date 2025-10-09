@@ -133,7 +133,7 @@ Coverage report:
 
 ---
 
-### ⚙️ Environment Configuration
+### Environment Configuration
 
 The frontend behavior is controlled by the `useMock` flag defined in:
 
@@ -160,7 +160,7 @@ export const environment = {
 
 ---
 
-### 🧪 Main Commands
+### Main Commands
 
 #### Development Mode (mock enabled by default)
 ```bash
@@ -179,7 +179,7 @@ or set `useMock: false` in `environment.ts`.
 
 ---
 
-### 🏗️ Build & SSR
+### Build & SSR
 
 #### Standard Build (SPA)
 ```bash
@@ -195,7 +195,7 @@ npm run serve:ssr
 
 ---
 
-### 📂 Key Folder Structure
+### Key Folder Structure
 
 ```
 src/
@@ -236,12 +236,90 @@ mvn jacoco:report
 Coverage report:  
 `rag-generator/backend-springboot/target/site/jacoco/index.html`
 
+---
+
+### Configuration
+
+Backend behavior is controlled by the `use.mock` flag in `application.properties`.
+
+```properties
+spring.application.name=backend-springboot
+server.port=3000
+
+# Toggle between mock and full API + database
+use.mock=true
+
+# LLM API keys (only used when use.mock=false)
+openai.api.key=sk-your-openai-api-key
+anthropic.api.key=claude-your-key
+```
+
+#### When `use.mock=true`
+- The backend uses **local mocks** under `com.ganatan.starter.mock.llm.*`
+- No external API or database connection
+- All `/api/*` endpoints return simulated data
+
+#### When `use.mock=false`
+- The backend uses **real API keys** to call OpenAI / Claude
+- The **Oracle database** is enabled through Hibernate/JPA
+- CRUD endpoints under `/api/persons` become active
+
+---
+
+### Oracle Database Configuration
+
+Example configuration for Oracle XE:
+
+```properties
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1
+spring.datasource.username=system
+spring.datasource.password=Trustno1
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+```
+
+---
+
+### REST Endpoints Overview
+
+| Endpoint | Method | Description |
+|-----------|---------|--------------|
+| `/api/persons` | **GET** | Returns all persons |
+| `/api/persons/{id}` | **GET** | Returns a specific person |
+| `/api/persons` | **POST** | Creates a new person |
+| `/api/persons/{id}` | **PUT** | Updates an existing person |
+| `/api/persons/{id}` | **DELETE** | Deletes a person by ID |
+
+> The `/api/persons` endpoints are available only when `use.mock=false`  
+> and connect to the Oracle database via JPA/Hibernate.
+
+---
+
+### LLM Integration
+
+| Mode | API Calls | Description |
+|------|------------|--------------|
+| **Mock Mode (`use.mock=true`)** | Disabled | Uses local responses from `mock/llm/` |
+| **Real Mode (`use.mock=false`)** | Enabled | Calls OpenAI / Claude with real API keys |
+
+---
+
 ### Build & Run
+
+#### Standard Execution
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
-or
+
+#### Run from JAR
 ```bash
 java -jar target/backend-springboot-1.0.0.jar
 ```

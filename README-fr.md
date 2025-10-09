@@ -5,7 +5,7 @@
 ---
 
 ## 🎯 Objectifs du projet
-- ✅ construire une architecture complète **RAG (Retrieval-Augmented Generation)**  
+- ✅ Construire une architecture complète **RAG (Retrieval-Augmented Generation)**  
 - ✅ Application **FullStack** : **Angular 20.3.4** en frontend et **Spring Boot 3.5.5 (Java 21)** en backend  
 - ✅ Intégration **GitLab CI/CD** et déploiement sur **OpenShift (Kubernetes)**  
 
@@ -132,7 +132,7 @@ Rapport de couverture :
 
 ---
 
-### ⚙️ Configuration d’environnement
+### Configuration d’environnement
 
 Le comportement du frontend est contrôlé par la variable `useMock` définie dans :
 
@@ -159,7 +159,7 @@ export const environment = {
 
 ---
 
-### 🧪 Commandes principales
+### Commandes principales
 
 #### Mode développement (mock activé par défaut)
 ```bash
@@ -178,9 +178,9 @@ ou mettre `useMock: false` dans `environment.ts`.
 
 ---
 
-### 🏗️ Build & SSR
+### Build & SSR
 
-#### Build standard (SPA)
+#### Build standard
 ```bash
 npm run build
 ```
@@ -194,7 +194,7 @@ npm run serve:ssr
 
 ---
 
-### 📂 Structure clé des dossiers
+### Structure des dossiers
 
 ```
 src/
@@ -226,7 +226,7 @@ cd rag-generator/backend-springboot
 mvn checkstyle:check
 ```
 
-### Tests unitaires & couverture
+### Tests unitaires et couverture
 ```bash
 mvn clean test
 mvn jacoco:report
@@ -235,12 +235,90 @@ mvn jacoco:report
 Rapport de couverture :  
 `rag-generator/backend-springboot/target/site/jacoco/index.html`
 
-### Build & Exécution
+---
+
+### ⚙️ Configuration
+
+Le comportement du backend est contrôlé par la propriété `use.mock` dans le fichier `application.properties`.
+
+```properties
+spring.application.name=backend-springboot
+server.port=3000
+
+# Bascule entre mode mock et mode complet (API + base de données)
+use.mock=true
+
+# Clés API LLM (utilisées uniquement quand use.mock=false)
+openai.api.key=sk-your-openai-api-key
+anthropic.api.key=claude-your-key
+```
+
+#### Quand `use.mock=true`
+- Le backend utilise les **mocks locaux** situés dans `com.ganatan.starter.mock.llm.*`
+- Aucune connexion à une API externe ni à une base de données
+- Tous les endpoints `/api/*` renvoient des données simulées
+
+#### Quand `use.mock=false`
+- Le backend utilise les **vraies clés API** pour appeler OpenAI / Claude
+- La base de données **Oracle** est activée via Hibernate / JPA
+- Les endpoints CRUD `/api/persons` deviennent accessibles
+
+---
+
+### 🗄️ Configuration de la base Oracle
+
+Exemple de configuration pour Oracle XE :
+
+```properties
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1
+spring.datasource.username=system
+spring.datasource.password=Trustno1
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+```
+
+---
+
+### 🧩 Endpoints REST
+
+| Endpoint | Méthode | Description |
+|-----------|----------|--------------|
+| `/api/persons` | **GET** | Retourne toutes les personnes |
+| `/api/persons/{id}` | **GET** | Retourne une personne spécifique |
+| `/api/persons` | **POST** | Crée une nouvelle personne |
+| `/api/persons/{id}` | **PUT** | Met à jour une personne existante |
+| `/api/persons/{id}` | **DELETE** | Supprime une personne par ID |
+
+> Les endpoints `/api/persons` sont disponibles uniquement quand `use.mock=false`  
+> et utilisent la base Oracle via JPA/Hibernate.
+
+---
+
+### 🧠 Intégration LLM
+
+| Mode | Appels API | Description |
+|------|-------------|--------------|
+| **Mode mock (`use.mock=true`)** | Désactivés | Utilise les réponses locales de `mock/llm/` |
+| **Mode réel (`use.mock=false`)** | Activés | Appelle OpenAI / Claude avec les clés API réelles |
+
+---
+
+### 🏗️ Build & Exécution
+
+#### Exécution standard
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
-ou
+
+#### Exécution depuis le JAR
 ```bash
 java -jar target/backend-springboot-1.0.0.jar
 ```
