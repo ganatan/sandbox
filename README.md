@@ -101,10 +101,11 @@ sandbox/
 
 ## 📦 Docker Images
 
+
 | Component | Docker Hub | GitLab Container Registry |
 |------------|-------------|----------------------------|
-| **Frontend Angular** | [hub.docker.com/r/ganatan/rag-generator-frontend-angular](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) | `registry.gitlab.com/ganatan/sandbox/rag-generator/frontend-angular:latest` |
-| **Backend Spring Boot** | [hub.docker.com/r/ganatan/rag-generator-backend-springboot](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) | `registry.gitlab.com/ganatan/sandbox/rag-generator/backend-springboot:latest` |
+| **Frontend Angular** | [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-frontend--angular-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) | [![GitLab Registry](https://img.shields.io/badge/GitLab%20Registry-frontend--angular-orange?logo=gitlab&logoColor=white)](https://gitlab.com/ganatan/sandbox/container_registry) |
+| **Backend Spring Boot** | [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-backend--springboot-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) | [![GitLab Registry](https://img.shields.io/badge/GitLab%20Registry-backend--springboot-orange?logo=gitlab&logoColor=white)](https://gitlab.com/ganatan/sandbox/container_registry) |
 
 ---
 
