@@ -301,6 +301,28 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 ---
 
+## Qdrant Vector Database
+
+**Docker Compose example:**
+
+```yaml
+services:
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333" # REST API
+      - "6334:6334" # gRPC API
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+```
+
+**Default connection:**
+```properties
+qdrant.host=localhost
+qdrant.port=6333
+```
+
 ### 🏗️ Build & Exécution
 
 #### Exécution standard
