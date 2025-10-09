@@ -46,6 +46,11 @@ Docker images are shared across local, CI, and OpenShift environments for full r
 
 ```
 sandbox/
+├── .github/
+│   └── workflows/
+│       ├── rag-generator-frontend-angular.yml
+│       └── rag-generator-backend-springboot.yml
+│
 ├── .gitlab/
 │   ├── rag-generator-frontend-angular-ci.yml
 │   └── rag-generator-backend-springboot-ci.yml

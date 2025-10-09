@@ -38,10 +38,9 @@ public class GenerateProjectStructure {
 
 	private static boolean shouldSkip(File file) {
 		String name = file.getName();
-		return name.equals("bin") || name.equals("target") || name.equals(".git") ||
-		       name.equals(".settings") || name.equals(".mvn") || name.equals(".idea") ||
-		       name.equals("HELP.md") || name.equals("README.md") || name.equals("LICENSE") ||
-		       name.equals(".classpath") || name.equals(".project") || name.equals(".gitignore") ||
-		       name.equals("checkstyle.xml");
+		return name.equals("bin") || name.equals("target") || name.equals(".git") || name.equals(".settings")
+				|| name.equals(".mvn") || name.equals(".idea") || name.equals("HELP.md") || name.equals("README.md")
+				|| name.equals("LICENSE") || name.equals(".classpath") || name.equals(".project")
+				|| name.equals(".gitignore") || name.equals("checkstyle.xml");
 	}
 }

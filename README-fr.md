@@ -46,6 +46,11 @@ Les images Docker sont partagées entre les environnements locaux, CI et OpenShi
 
 ```
 sandbox/
+├── .github/
+│   └── workflows/
+│       ├── rag-generator-frontend-angular.yml
+│       └── rag-generator-backend-springboot.yml
+│
 ├── .gitlab/
 │   ├── rag-generator-frontend-angular-ci.yml
 │   └── rag-generator-backend-springboot-ci.yml
