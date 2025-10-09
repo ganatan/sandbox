@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.ganatan.starter.controller.LlmController;
-import com.ganatan.starter.mock.llm.ChatGptMock;
-import com.ganatan.starter.mock.llm.ClaudeMock;
-import com.ganatan.starter.service.llm.ChatGptService;
-import com.ganatan.starter.service.llm.ClaudeService;
+import com.ganatan.starter.modules.llm.ChatGptMock;
+import com.ganatan.starter.modules.llm.ChatGptService;
+import com.ganatan.starter.modules.llm.ClaudeMock;
+import com.ganatan.starter.modules.llm.ClaudeService;
+import com.ganatan.starter.modules.llm.LlmController;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;

@@ -48,8 +48,8 @@ Docker images are shared across local, CI, and OpenShift environments for full r
 sandbox/
 ├── .github/
 │   └── workflows/
-│       ├── rag-generator-frontend-angular.yml
-│       └── rag-generator-backend-springboot.yml
+│       ├── rag-generator-frontend-angular-ci.yml
+│       └── rag-generator-backend-springboot-ci.yml
 │
 ├── .gitlab/
 │   ├── rag-generator-frontend-angular-ci.yml
@@ -98,8 +98,8 @@ sandbox/
 
 | Project | GitHub Actions | GitLab CI |
 |----------|----------------|-----------|
-| **Frontend Angular** | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=frontend-angular)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
-| **Backend Spring Boot** | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=backend-springboot)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
+| **Frontend Angular** | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular-ci.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular-ci.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=frontend-angular)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
+| **Backend Spring Boot** | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot-ci.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot-ci.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=backend-springboot)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
 
 ---
 
@@ -261,7 +261,7 @@ anthropic.api.key=claude-your-key
 #### When `use.mock=false`
 - The backend uses **real API keys** to call OpenAI / Claude
 - The **Oracle database** is enabled through Hibernate/JPA
-- CRUD endpoints under `/persons` become active
+- CRUD endpoints under `/api/persons` become active
 
 ---
 
@@ -290,13 +290,13 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 
 | Endpoint | Method | Description |
 |-----------|---------|--------------|
-| `/persons`     | **GET** | Returns all persons |
-| `/persons/{id}` | **GET** | Returns a specific person |
-| `/persons`     | **POST** | Creates a new person |
-| `/persons/{id}`     | **PUT** | Updates an existing person |
-| `/persons/{id}`     | **DELETE** | Deletes a person by ID |
+| `/api/persons` | **GET** | Returns all persons |
+| `/api/persons/{id}` | **GET** | Returns a specific person |
+| `/api/persons` | **POST** | Creates a new person |
+| `/api/persons/{id}` | **PUT** | Updates an existing person |
+| `/api/persons/{id}` | **DELETE** | Deletes a person by ID |
 
-> The `/persons` endpoints are available only when `use.mock=false`  
+> The `/api/persons` endpoints are available only when `use.mock=false`  
 > and connect to the Oracle database via JPA/Hibernate.
 
 ---

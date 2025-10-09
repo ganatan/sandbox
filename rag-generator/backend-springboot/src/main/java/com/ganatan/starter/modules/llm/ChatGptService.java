@@ -1,4 +1,4 @@
-package com.ganatan.starter.service.llm;
+package com.ganatan.starter.modules.llm;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.beans.factory.annotation.Value;

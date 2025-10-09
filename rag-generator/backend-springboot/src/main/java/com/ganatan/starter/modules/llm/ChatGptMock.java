@@ -1,4 +1,4 @@
-package com.ganatan.starter.mock.llm;
+package com.ganatan.starter.modules.llm;
 
 import org.springframework.stereotype.Component;
 

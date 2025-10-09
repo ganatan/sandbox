@@ -1,12 +1,7 @@
-package com.ganatan.starter.controller;
+package com.ganatan.starter.modules.llm;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-
-import com.ganatan.starter.mock.llm.ChatGptMock;
-import com.ganatan.starter.mock.llm.ClaudeMock;
-import com.ganatan.starter.service.llm.ChatGptService;
-import com.ganatan.starter.service.llm.ClaudeService;
 
 import java.util.Map;
 

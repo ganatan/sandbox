@@ -2,7 +2,7 @@ package com.ganatan.starter.mock.llm;
 
 import org.junit.jupiter.api.Test;
 
-import com.ganatan.starter.mock.llm.ChatGptMock;
+import com.ganatan.starter.modules.llm.ChatGptMock;
 
 import java.util.HashMap;
 import java.util.Map;
