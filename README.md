@@ -91,7 +91,6 @@ sandbox/
 
 ## 🔧 Continuous Integration (CI)
 
-
 | Project | GitHub Actions | GitLab CI |
 |----------|----------------|-----------|
 | **Frontend Angular** | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=frontend-angular)](https://gitlab.com/ganatan/sandbox/-/pipelines) |

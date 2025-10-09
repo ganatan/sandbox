@@ -91,19 +91,19 @@ sandbox/
 
 ## 🔧 Intégration Continue (CI)
 
-| Projet | Badge CI |
-|----------|-----------|
-| Frontend Angular | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) |
-| Backend Spring Boot | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) |
+| Projet  | GitHub Actions | GitLab CI |
+|----------|----------------|-----------|
+| **Frontend Angular** | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=frontend-angular)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
+| **Backend Spring Boot** | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=backend-springboot)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
 
 ---
 
 ## 📦 Images Docker
 
-| Composant | Image Docker |
-|------------|---------------|
-| Frontend Angular | [Docker Hub — frontend-angular](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) |
-| Backend Spring Boot | [Docker Hub — backend-springboot](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) |
+| Composant | Docker Hub | GitLab Container Registry |
+|------------|-------------|----------------------------|
+| **Frontend Angular** | [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-frontend--angular-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) | [![GitLab Registry](https://img.shields.io/badge/GitLab%20Registry-frontend--angular-orange?logo=gitlab&logoColor=white)](https://gitlab.com/ganatan/sandbox/container_registry) |
+| **Backend Spring Boot** | [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-backend--springboot-blue?logo=docker&logoColor=white)](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) | [![GitLab Registry](https://img.shields.io/badge/GitLab%20Registry-backend--springboot-orange?logo=gitlab&logoColor=white)](https://gitlab.com/ganatan/sandbox/container_registry) |
 
 ---
 
