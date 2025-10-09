@@ -130,21 +130,91 @@ npm run coverage
 Rapport de couverture :  
 `rag-generator/frontend-angular/coverage/index.html`
 
-### Build & Exécution
+---
 
-**Mode standard**
+### ⚙️ Configuration d’environnement
+
+Le comportement du frontend est contrôlé par la variable `useMock` définie dans :
+
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  useMock: true,
+  backend: 'http://localhost:3000/api',
+};
+```
+
+| Clé | Type | Description |
+|-----|------|-------------|
+| `useMock` | `boolean` | Active le mode **mock local** (`true`) ou l’API backend réelle (`false`) |
+| `backend` | `string` | URL du backend (par défaut : `http://localhost:3000/api`) |
+
+**Mode mock (`useMock: true`)**  
+→ L’application utilise des données locales simulées au lieu d’appeler le backend.  
+
+**Mode API (`useMock: false`)**  
+→ L’application envoie les requêtes au backend Spring Boot.
+
+> Il suffit de modifier la valeur de `useMock` dans le fichier d’environnement pour basculer entre mock et API.
+
+---
+
+### 🧪 Commandes principales
+
+#### Mode développement (mock activé par défaut)
 ```bash
-npm run build
 npm run start
 ```
-→ http://localhost:4200
+→ http://localhost:4200  
+> Utilise les données mock locales.
 
-**Server-Side Rendering (SSR)**
+#### Mode développement connecté au backend
+```bash
+ng serve --configuration production
+```
+ou mettre `useMock: false` dans `environment.ts`.  
+→ http://localhost:4200  
+> Envoie les requêtes vers `http://localhost:3000/api`.
+
+---
+
+### 🏗️ Build & SSR
+
+#### Build standard (SPA)
+```bash
+npm run build
+```
+
+#### Build avec rendu serveur (SSR)
 ```bash
 npm run build:ssr
 npm run serve:ssr
 ```
 → http://localhost:4000
+
+---
+
+### 📂 Structure clé des dossiers
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   └── services/
+│   │       ├── ai-service.ts
+│   │       ├── ai-service.spec.ts
+│   │       └── ai.mock.ts
+│   ├── app.ts
+│   ├── app.routes.ts
+│   └── app.config.ts
+├── environments/
+│   ├── environment.ts
+│   └── environment.development.ts
+└── main.ts
+```
+
+> `ai-service.ts` vérifie automatiquement `environment.useMock`  
+> et bascule entre les données locales (`ai.mock.ts`) et les appels HTTP réels (`backend/api`).
 
 ---
 
