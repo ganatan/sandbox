@@ -77,7 +77,7 @@ sandbox/
 
 ---
 
-## 🔧 Components
+## 🧮 Components
 
 | Component | Technology | Role |
 |------------|-------------|------|
