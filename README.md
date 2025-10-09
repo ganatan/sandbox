@@ -131,21 +131,91 @@ npm run coverage
 Coverage report:  
 `rag-generator/frontend-angular/coverage/index.html`
 
-### Build & Run
+---
 
-**Standard Mode**
+### ⚙️ Environment Configuration
+
+The frontend behavior is controlled by the `useMock` flag defined in:
+
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  useMock: true,
+  backend: 'http://localhost:3000/api',
+};
+```
+
+| Key | Type | Description |
+|-----|------|--------------|
+| `useMock` | `boolean` | Enables local mock mode (`true`) or real backend API mode (`false`) |
+| `backend` | `string` | Backend API URL (default: `http://localhost:3000/api`) |
+
+**Mock Mode (`useMock: true`)**  
+→ The app loads local mock data instead of calling the backend.  
+
+**API Mode (`useMock: false`)**  
+→ The app sends requests to the Spring Boot backend API.
+
+> Simply switch the `useMock` value in the environment file to toggle between mock and API modes.
+
+---
+
+### 🧪 Main Commands
+
+#### Development Mode (mock enabled by default)
 ```bash
-npm run build
 npm run start
 ```
-→ http://localhost:4200
+→ http://localhost:4200  
+> Uses mock data locally.
 
-**Server-Side Rendering (SSR)**
+#### Development Mode connected to backend
+```bash
+ng serve --configuration production
+```
+or set `useMock: false` in `environment.ts`.  
+→ http://localhost:4200  
+> Sends requests to `http://localhost:3000/api`.
+
+---
+
+### 🏗️ Build & SSR
+
+#### Standard Build (SPA)
+```bash
+npm run build
+```
+
+#### Server-Side Rendering (SSR)
 ```bash
 npm run build:ssr
 npm run serve:ssr
 ```
 → http://localhost:4000
+
+---
+
+### 📂 Key Folder Structure
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   └── services/
+│   │       ├── ai-service.ts
+│   │       ├── ai-service.spec.ts
+│   │       └── ai.mock.ts
+│   ├── app.ts
+│   ├── app.routes.ts
+│   └── app.config.ts
+├── environments/
+│   ├── environment.ts
+│   └── environment.development.ts
+└── main.ts
+```
+
+> `ai-service.ts` automatically checks `environment.useMock`  
+> and switches between local mock data (`ai.mock.ts`) and real backend HTTP calls (`backend/api`).
 
 ---
 
