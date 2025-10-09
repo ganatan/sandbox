@@ -91,19 +91,20 @@ sandbox/
 
 ## 🔧 Continuous Integration (CI)
 
-| Project | CI Badge |
-|----------|-----------|
-| Frontend Angular | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) |
-| Backend Spring Boot | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) |
+
+| Project | GitHub Actions | GitLab CI |
+|----------|----------------|-----------|
+| **Frontend Angular** | [![Frontend Angular CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-frontend-angular.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=frontend-angular)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
+| **Backend Spring Boot** | [![Backend Spring Boot CI](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml/badge.svg?branch=master)](https://github.com/ganatan/sandbox/actions/workflows/rag-generator-backend-springboot.yml) | [![GitLab Pipeline](https://gitlab.com/ganatan/sandbox/badges/master/pipeline.svg?job=backend-springboot)](https://gitlab.com/ganatan/sandbox/-/pipelines) |
 
 ---
 
 ## 📦 Docker Images
 
-| Component | Docker Image |
-|------------|---------------|
-| Frontend Angular | [Docker Hub — frontend-angular](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) |
-| Backend Spring Boot | [Docker Hub — backend-springboot](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) |
+| Component | Docker Hub | GitLab Container Registry |
+|------------|-------------|----------------------------|
+| **Frontend Angular** | [hub.docker.com/r/ganatan/rag-generator-frontend-angular](https://hub.docker.com/r/ganatan/rag-generator-frontend-angular) | `registry.gitlab.com/ganatan/sandbox/rag-generator/frontend-angular:latest` |
+| **Backend Spring Boot** | [hub.docker.com/r/ganatan/rag-generator-backend-springboot](https://hub.docker.com/r/ganatan/rag-generator-backend-springboot) | `registry.gitlab.com/ganatan/sandbox/rag-generator/backend-springboot:latest` |
 
 ---
 
