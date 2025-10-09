@@ -40,8 +40,6 @@ L’application se compose de deux modules indépendants :
 Chaque module peut être construit, testé et déployé séparément via **GitLab CI/CD**.  
 Les images Docker sont utilisées aussi bien en local qu’en CI et sur **OpenShift**, pour garantir une exécution identique partout.
 
-
-
 ---
 
 ## 🧩 Structure du projet
@@ -255,8 +253,6 @@ anthropic.api.key=claude-your-key
 
 #### Quand `use.mock=false`
 - Le backend utilise les **vraies clés API** pour appeler OpenAI / Claude
-- La base de données **Oracle** est activée via Hibernate / JPA
-- Les endpoints CRUD `/api/persons` deviennent accessibles
 
 ---
 
@@ -365,25 +361,6 @@ Chaque pipeline effectue :
 ---
 
 ## 🛫 Déploiement OpenShift
-
-### Connexion
-```bash
-oc login https://api.openshift.example.com:6443 --token=<YOUR_TOKEN>
-oc project ganatan-dev
-```
-
-### Application des manifests
-```bash
-oc apply -f k8s/rag-generator-frontend-angular-deployment.yml -n ganatan-dev
-oc apply -f k8s/rag-generator-backend-springboot-deployment.yml -n ganatan-dev
-```
-
-### Redémarrage & Logs
-```bash
-oc rollout restart deployment/frontend-angular -n ganatan-dev
-oc rollout restart deployment/backend-springboot -n ganatan-dev
-oc logs -f deployment/backend-springboot -n ganatan-dev
-```
 
 ### URLs d'application
 

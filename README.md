@@ -254,8 +254,6 @@ anthropic.api.key=claude-your-key
 
 #### When `use.mock=false`
 - The backend uses **real API keys** to call OpenAI / Claude
-- The **Oracle database** is enabled through Hibernate/JPA
-- CRUD endpoints under `/api/persons` become active
 
 ---
 
@@ -290,7 +288,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 | `/api/persons/{id}` | **PUT** | Updates an existing person |
 | `/api/persons/{id}` | **DELETE** | Deletes a person by ID |
 
-> The `/api/persons` endpoints are available only when `use.mock=false`  
+> The `/api/persons` endpoints are available  
 > and connect to the Oracle database via JPA/Hibernate.
 
 ---
@@ -364,25 +362,6 @@ Each pipeline performs:
 ---
 
 ## 🛫 OpenShift Deployment
-
-### Login
-```bash
-oc login https://api.openshift.example.com:6443 --token=<YOUR_TOKEN>
-oc project ganatan-dev
-```
-
-### Apply Manifests
-```bash
-oc apply -f k8s/rag-generator-frontend-angular-deployment.yml -n ganatan-dev
-oc apply -f k8s/rag-generator-backend-springboot-deployment.yml -n ganatan-dev
-```
-
-### Restart & Logs
-```bash
-oc rollout restart deployment/frontend-angular -n ganatan-dev
-oc rollout restart deployment/backend-springboot -n ganatan-dev
-oc logs -f deployment/backend-springboot -n ganatan-dev
-```
 
 ### Application URLs
 
