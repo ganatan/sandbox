@@ -323,13 +323,16 @@ java -jar target/backend-springboot-1.0.0.jar
 ### Construction des images
 ```bash
 cd sandbox
-docker build -t frontend-angular:latest -f rag-generator/frontend-angular/docker/Dockerfile.frontend-angular .
+cd rag-generator/frontend-angular
+docker build -t frontend-angular:latest -f docker/Dockerfile.frontend-angular .
+
+cd ../backend-springboot
 docker build -t backend-springboot:latest -f rag-generator/backend-springboot/docker/Dockerfile.backend-springboot .
 ```
 
 ### Exécution des conteneurs
 ```bash
-docker run -d --name frontend-angular -p 4000:80 frontend-angular:latest
+docker run -d --name frontend-angular -p 4000:4000 frontend-angular:latest
 docker run -d --name backend-springboot -p 3000:3000 backend-springboot:latest
 ```
 
