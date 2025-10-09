@@ -117,6 +117,7 @@ sandbox/
 
 ### Installation
 ```bash
+cd sandbox
 cd rag-generator/frontend-angular
 npm ci
 ```
@@ -129,7 +130,7 @@ npm run coverage
 ```
 
 Coverage report:  
-`rag-generator/frontend-angular/coverage/index.html`
+`rag-generator/frontend-angular/coverage/angular-starter/index.html`
 
 ---
 
@@ -170,10 +171,7 @@ npm run start
 > Uses mock data locally.
 
 #### Development Mode connected to backend
-```bash
-ng serve --configuration production
-```
-or set `useMock: false` in `environment.ts`.  
+set `useMock: false` in `environment.ts`.  
 → http://localhost:4200  
 > Sends requests to `http://localhost:3000/api`.
 
@@ -181,15 +179,9 @@ or set `useMock: false` in `environment.ts`.
 
 ### Build & SSR
 
-#### Standard Build (SPA)
 ```bash
 npm run build
-```
-
-#### Server-Side Rendering (SSR)
-```bash
-npm run build:ssr
-npm run serve:ssr
+npm run serve
 ```
 → http://localhost:4000
 

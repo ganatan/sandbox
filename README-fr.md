@@ -116,6 +116,7 @@ sandbox/
 
 ### Installation
 ```bash
+cd sandbox
 cd rag-generator/frontend-angular
 npm ci
 ```
@@ -128,7 +129,7 @@ npm run coverage
 ```
 
 Rapport de couverture :  
-`rag-generator/frontend-angular/coverage/index.html`
+`rag-generator/frontend-angular/coverage/angular-starter/index.html`
 
 ---
 
