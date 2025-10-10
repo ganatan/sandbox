@@ -1,7 +1,7 @@
 {
   "name": "rag-connector-frontend-angular",
   "version": "20.3.4",
-  "description": "Angular 20 frontend for RAG Generator",
+  "description": "Angular frontend for RAG Generator",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --port 4200",

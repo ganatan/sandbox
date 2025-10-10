@@ -1,6 +1,6 @@
 # backend-springboot
 
-The **RAG Generator backend** is a Spring Boot application packaged as a **JAR**, with **Checkstyle**, **unit tests**, **code coverage**, and a full **Maven build**.  
+The **RAG Generator Java backend** is a Spring Boot application packaged as a **JAR**, with **Checkstyle**, **unit tests**, **code coverage**, and a full **Maven build**.  
 It supports automated deployment to **OpenShift (oc)**.
 ---
 
