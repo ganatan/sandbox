@@ -382,17 +382,6 @@ Chaque pipeline effectue :
 
 ---
 
-## 🛫 Déploiement OpenShift
-
-### URLs d'application
-
-| Application | Environnement | URL |
-|--------------|----------------|-----|
-| Frontend Angular | OpenShift Route | [rag-generator-frontend-angular](https://rag-generator-frontend-angular-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com) |
-| Backend Spring Boot | OpenShift Route | [rag-generator-backend-springboot](https://rag-generator-backend-springboot-route-ganatan-dev.apps.rm2.thpm.p1.openshiftapps.com) |
-
----
-
 ## 👤 Auteur & Licence
 
 **Auteur :** Danny — [www.ganatan.com](https://www.ganatan.com)  
