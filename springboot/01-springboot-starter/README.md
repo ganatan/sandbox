@@ -48,7 +48,7 @@ mvn spring-boot:run
 java -jar target/springboot-starter-1.0.0.jar
 ```
 
-Accès :
+Application URL:
 
 ```text
 http://localhost:3000
@@ -56,7 +56,7 @@ http://localhost:3000
 
 ---
 
-## 📦 Commandes Maven
+## Maven commands 
 
 ```bash
 mvn clean            
