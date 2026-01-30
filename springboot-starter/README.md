@@ -15,6 +15,11 @@
 <licenses/>
 ```
 
+
+server.port=3000
+
+
+
 ## Build
 
 
@@ -56,8 +61,5 @@ mvn compile
 mvn test             
 mvn package          
 mvn install          
-mvn dependency:tree  
-mvn versions:display-dependency-updates
-mvn versions:display-plugin-updates
 mvn spring-boot:run       
 ```
