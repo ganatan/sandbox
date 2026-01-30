@@ -1,3 +1,3 @@
 # MVP
 
-init repo
+init repo & Add configuration

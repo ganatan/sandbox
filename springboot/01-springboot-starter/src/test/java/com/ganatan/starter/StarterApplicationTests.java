@@ -1,10 +1,10 @@
-package com.ganatan.springboot_starter;
+package com.ganatan.starter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootStarterApplicationTests {
+class StarterApplicationTests {
 
 	@Test
 	void contextLoads() {
