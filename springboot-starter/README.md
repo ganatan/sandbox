@@ -3,8 +3,9 @@
 
 ---
 
-## Configuration 
+## Configuration
 
+### pom.xml
 
 ```xml
 <artifactId>springboot-starter</artifactId>
@@ -14,6 +15,8 @@
 <url/>
 <licenses/>
 ```
+
+### application.properties
 
 ```properties
 server.port=3000
