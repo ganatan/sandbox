@@ -15,9 +15,9 @@
 <licenses/>
 ```
 
-
+```properties
 server.port=3000
-
+```
 
 
 ## Build
