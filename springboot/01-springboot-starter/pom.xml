@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ganatan</groupId>
-	<artifactId>springboot-starter</artifactId>
+  <artifactId>springboot-starter</artifactId>
   <version>1.0.0</version>
-	<name>springboot-starter</name>
-	<description>Demo project for Spring Boot</description>
-	<url/>
-  <licenses>
+  <name>springboot-starter</name>
+  <description>Demo project for Spring Boot</description>
+  <url/>
+	<licenses>
 		<license/>
 	</licenses>
 	<developers>

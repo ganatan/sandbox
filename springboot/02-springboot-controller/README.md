@@ -68,9 +68,8 @@ mvn spring-boot:run
 ```
 
 
-
 ## Available endpoints
 
 ```text
 GET http://localhost:3000/
-GET http://localhost:3000/customers
+GET http://localhost:3000/group-purchases

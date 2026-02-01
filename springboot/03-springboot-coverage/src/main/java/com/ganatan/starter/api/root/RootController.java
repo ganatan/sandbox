@@ -15,4 +15,5 @@ public class RootController {
       "java", System.getProperty("java.version")
     );
   }
+
 }

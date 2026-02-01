@@ -84,3 +84,19 @@ mvn spring-boot:run
 ```text
 GET http://localhost:3000/
 GET http://localhost:3000/group-purchases
+GET http://localhost:3000/group-purchases/1
+
+GET http://localhost:3000/group-purchases/1/join
+GET http://localhost:3000/group-purchases/1/join
+
+GET http://localhost:3000/group-purchases/1/join
+
+
+Response 
+
+{
+    "timestamp": "2026-01-31T11:32:34.342Z",
+    "status": 400,
+    "error": "Bad Request",
+    "path": "/group-purchases/1/join"
+}
