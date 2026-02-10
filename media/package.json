@@ -1,0 +1,22 @@
+{
+  "name": "media",
+  "private": true,
+  "scripts": {
+    "kafka:start:zk": "cmd /c infra\\scripts\\kafka-start.bat zookeeper",
+    "kafka:start:kraft": "cmd /c infra\\scripts\\kafka-start.bat kraft",
+    "kafka:stop": "cmd /c infra\\scripts\\kafka-stop.bat",
+    "kafka:clean": "cmd /c infra\\scripts\\kafka-clean.bat",
+    "kafka:ps": "cmd /c infra\\scripts\\docker-list-containers.bat",
+    "kafka:logs": "docker logs -f ganatan-kafka",
+
+    "docker:clean": "cmd /c infra\\scripts\\docker-clean.bat",
+
+    "api:run": "mvn -f services\\media-api\\pom.xml spring-boot:run",
+    "api:test": "mvn -f services\\media-api\\pom.xml test",
+    "api:package": "mvn -f services\\media-api\\pom.xml -DskipTests package",
+    "api:clean": "mvn -f services\\media-api\\pom.xml clean",
+
+    "dev:zk": "npm run kafka:start:zk && npm run api:run",
+    "dev:kraft": "npm run kafka:start:kraft && npm run api:run"
+  }
+}
