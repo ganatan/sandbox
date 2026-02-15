@@ -1,0 +1,13 @@
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\api\dto\MediaCreateRequestDto.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\api\dto\MediaCreateResponseDto.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\api\MediaController.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\config\CorsConfig.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\domain\MediaEntity.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\domain\MediaRepository.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\kafka\event\EventEnvelope.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\kafka\event\MediaCreatedPayloadV1.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\kafka\KafkaController.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\kafka\KafkaProducerService.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\MediaApiApplication.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\com\ganatan\mediaapi\service\MediaService.java
+D:\Chendra\00-tutorials\003-sandbox\media\services\media-api\src\main\java\tools\GenerateStructure.java

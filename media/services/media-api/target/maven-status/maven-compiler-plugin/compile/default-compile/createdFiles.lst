@@ -1,0 +1,13 @@
+com\ganatan\mediaapi\api\dto\MediaCreateResponseDto.class
+com\ganatan\mediaapi\kafka\event\EventEnvelope.class
+com\ganatan\mediaapi\kafka\event\MediaCreatedPayloadV1.class
+com\ganatan\mediaapi\api\dto\MediaCreateRequestDto.class
+com\ganatan\mediaapi\api\MediaController.class
+com\ganatan\mediaapi\service\MediaService.class
+com\ganatan\mediaapi\kafka\KafkaController.class
+com\ganatan\mediaapi\config\CorsConfig.class
+com\ganatan\mediaapi\domain\MediaEntity.class
+com\ganatan\mediaapi\domain\MediaRepository.class
+com\ganatan\mediaapi\kafka\KafkaProducerService.class
+tools\GenerateStructure.class
+com\ganatan\mediaapi\MediaApiApplication.class

@@ -12,7 +12,7 @@ public class RootController {
   public record ApiInfo(String application, String status, String java) {}
 
   @GetMapping("/")
-  public Map<String, Object> rootWithMapOf() {
+  public Map<String, Object> root() {
     return Map.of(
       "application", "springboot-starter",
       "status", "running",
