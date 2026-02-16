@@ -11,41 +11,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/media")
 public class MediaController {
 
-  private final MediaService mediaService;
+  private final MediaRepository mediaRepository;
 
-  public MediaController(MediaService mediaService) {
-    this.mediaService = mediaService;
+  public MediaController(MediaRepository mediaRepository) {
+    this.mediaRepository = mediaRepository;
   }
 
   @GetMapping
   public List<Media> getAllMedia() {
-    return mediaService.findAll();
+    return mediaRepository.findAll();
   }
 
   @GetMapping("/{id}")
   public Media getMediaById(@PathVariable String id) {
-    return mediaService.findById(id);
+    return findById(id);
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Media createMedia(@RequestBody Media media) {
-    return mediaService.create(media);
+    return mediaRepository.save(media);
   }
 
   @PutMapping("/{id}")
-  public Media updateMedia(@PathVariable String id, @RequestBody Media media) {
-    return mediaService.update(id, media);
+  public Media updateMedia(@PathVariable String id, @RequestBody Media modified) {
+    Media existing = findById(id);
+    existing.setName(modified.getName());
+    existing.setReleaseDate(modified.getReleaseDate());
+    return mediaRepository.save(existing);
   }
 
   @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deleteMedia(@PathVariable String id) {
-    mediaService.delete(id);
+    mediaRepository.delete(findById(id));
+  }
+
+  private Media findById(String id) {
+    return mediaRepository.findById(id)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 }
