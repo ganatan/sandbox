@@ -1,3 +1,2 @@
 @echo off
-docker run -d --name backend-springboot -p 8080:8080 backend-springboot
-pause
+docker run -d --name backend-springboot -p 3000:3000 backend-springboot

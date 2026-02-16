@@ -1,3 +1,2 @@
 @echo off
-docker build -t backend-springboot -f ../docker/Dockerfile.backend-springboot ..
-pause
+docker build -f docker\Dockerfile.backend-springboot -t backend-springboot .
