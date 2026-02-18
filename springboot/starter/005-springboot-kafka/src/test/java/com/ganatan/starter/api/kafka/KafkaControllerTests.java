@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class KafkaControllerTest {
+class KafkaControllerTests {
 
     @Mock
     private KafkaTemplate<String, String> kafkaTemplate;
