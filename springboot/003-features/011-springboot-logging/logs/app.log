@@ -1,0 +1,49 @@
+2026-02-18T10:59:28.859 INFO  [main] c.ganatan.starter.StarterApplication - Starting StarterApplication using Java 21.0.8 with PID 14936 (D:\demo\011-springboot-logging\target\classes started by chend in D:\demo\011-springboot-logging)
+2026-02-18T10:59:28.862 INFO  [main] c.ganatan.starter.StarterApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-18T10:59:29.635 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2026-02-18T10:59:29.644 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2026-02-18T10:59:29.646 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-18T10:59:29.647 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-02-18T10:59:29.684 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-18T10:59:29.686 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 775 ms
+2026-02-18T10:59:29.980 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2026-02-18T10:59:29.997 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path '/'
+2026-02-18T10:59:30.005 INFO  [main] c.ganatan.starter.StarterApplication - Started StarterApplication in 1.61 seconds (process running for 1.848)
+2026-02-18T10:59:37.206 INFO  [http-nio-3000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-18T10:59:37.206 INFO  [http-nio-3000-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-18T10:59:37.208 INFO  [http-nio-3000-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-02-18T10:59:37.285 INFO  [http-nio-3000-exec-1] c.g.s.api.logging.LoggingController - demo-log message=hello user=mulder
+2026-02-18T11:00:55.448 INFO  [http-nio-3000-exec-5] c.g.s.api.logging.LoggingController - demo-log message=hello user=mulder
+2026-02-18T11:01:12.564 INFO  [http-nio-3000-exec-3] c.g.s.api.logging.LoggingController - demo-log message=hello user=mulder
+2026-02-18T11:01:55.675 INFO  [main] c.g.starter.StarterApplicationTests - Starting StarterApplicationTests using Java 21.0.8 with PID 7996 (started by chend in D:\demo\011-springboot-logging)
+2026-02-18T11:01:55.677 INFO  [main] c.g.starter.StarterApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-02-18T11:01:56.833 INFO  [main] c.g.starter.StarterApplicationTests - Started StarterApplicationTests in 1.704 seconds (process running for 3.399)
+2026-02-18T11:01:57.510 INFO  [main] c.ganatan.starter.StarterApplication - Starting StarterApplication using Java 21.0.8 with PID 7996 (started by chend in D:\demo\011-springboot-logging)
+2026-02-18T11:01:57.510 INFO  [main] c.ganatan.starter.StarterApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-18T11:01:57.785 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2026-02-18T11:01:57.807 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2026-02-18T11:01:57.809 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-18T11:01:57.810 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-02-18T11:01:57.872 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-18T11:01:57.873 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 362 ms
+2026-02-18T11:01:57.967 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2026-02-18T11:01:57.992 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path '/'
+2026-02-18T11:01:57.995 INFO  [main] c.ganatan.starter.StarterApplication - Started StarterApplication in 0.506 seconds (process running for 4.561)
+2026-02-18T11:01:58.071 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-18T11:01:58.093 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-02-18T11:28:01.034 INFO  [main] c.g.starter.StarterApplicationTests - Starting StarterApplicationTests using Java 21.0.8 with PID 10020 (started by chend in D:\Chendra\00-tutorials\003-sandbox\springboot\003-features\011-springboot-logging)
+2026-02-18T11:28:01.036 INFO  [main] c.g.starter.StarterApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-02-18T11:28:02.222 INFO  [main] c.g.starter.StarterApplicationTests - Started StarterApplicationTests in 1.738 seconds (process running for 3.47)
+2026-02-18T11:28:02.947 INFO  [main] c.ganatan.starter.StarterApplication - Starting StarterApplication using Java 21.0.8 with PID 10020 (started by chend in D:\Chendra\00-tutorials\003-sandbox\springboot\003-features\011-springboot-logging)
+2026-02-18T11:28:02.948 INFO  [main] c.ganatan.starter.StarterApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-18T11:28:03.198 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2026-02-18T11:28:03.217 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2026-02-18T11:28:03.221 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-18T11:28:03.222 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-02-18T11:28:03.288 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-18T11:28:03.291 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 340 ms
+2026-02-18T11:28:03.412 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2026-02-18T11:28:03.440 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path '/'
+2026-02-18T11:28:03.443 INFO  [main] c.ganatan.starter.StarterApplication - Started StarterApplication in 0.51 seconds (process running for 4.69)
+2026-02-18T11:28:03.535 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-18T11:28:03.558 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
