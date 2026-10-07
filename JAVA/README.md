@@ -8,6 +8,7 @@
 
 - [001-compilation.md](compilation/001-compilation.md)
 - [002-compilation-multiclass.md](compilation/002-compilation-multiclass.md)
+- [003-compilation-build.md](compilation/003-compilation-build.md)
 
 ## Commandes
 
