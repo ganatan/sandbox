@@ -9,3 +9,5 @@
 - [001-compilation.md](compilation/001-compilation.md)
 
 ## Commandes
+
+- [001-commandes.md](commandes/001-commandes.md)
