@@ -10,3 +10,4 @@
 - [While](008-while.md)
 - [Opérateurs logiques](009-operateurs-logiques.md)
 - [Classes et méthodes](010-classes-methodes.md)
+- [Héritage et polymorphisme](011-heritage-polymorphisme.md)
