@@ -2,9 +2,7 @@
 
 ## Principe
 
-`Timer` permet d'exécuter automatiquement une tâche à intervalles réguliers.
-
-`TimerTask` définit le traitement à exécuter.
+`Timer` permet de programmer l'exécution d'un traitement à intervalles réguliers.
 
 ## Main.java
 
@@ -16,13 +14,11 @@ public class Main {
     public static void main(String[] args) {
         Timer timer = new Timer();
 
-        TimerTask task = new TimerTask() {
+        timer.schedule(new TimerTask() {
             public void run() {
                 System.out.println("Christopher Nolan");
             }
-        };
-
-        timer.scheduleAtFixedRate(task, 0, 2000);
+        }, 0, 2000);
     }
 }
 ```
@@ -55,10 +51,11 @@ Arrêter avec `Ctrl + C`.
 ## Commande essentielle
 
 ```java
-timer.scheduleAtFixedRate(task, 0, 2000);
+Timer timer = new Timer();
 ```
 
-- `task` : tâche à exécuter.
+- `Timer` : planifie les exécutions.
 - `0` : démarrage immédiat.
 - `2000` : répétition toutes les 2 secondes.
-- `TimerTask.run()` : traitement exécuté à chaque déclenchement.
+
+**Remarque :** `Timer` utilise obligatoirement une tâche de type `TimerTask`. Pour planifier sans `TimerTask`, utiliser `ScheduledExecutorService`.
