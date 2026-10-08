@@ -1,8 +1,8 @@
-# prototype woper MCP
+# Sandbox
 
-Documentation technique Java 8, IntelliJ, Linux et GitLab.
+Documentation Java 8, IntelliJ, Linux et GitLab.
 
 | | |
 |---|---|
-| [**Java 8**](java/README.md) | [**GitLab**](gitlab/README.md) |
-| [**Linux**](linux/README.md) | [**IntelliJ**](intellij/README.md) |
+| [Java 8](java/README.md) | [IntelliJ](intellij/README.md) |
+| [Linux](linux/README.md) | [GitLab](gitlab/README.md) |
