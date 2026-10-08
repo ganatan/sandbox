@@ -1,3 +1,0 @@
-# Timeout
-
-Documentation à compléter.
