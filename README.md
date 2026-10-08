@@ -1,6 +1,8 @@
 # prototype woper MCP
 
+Documentation technique Java 8, IntelliJ, Linux et GitLab.
+
 | | |
 |---|---|
-| [**JAVA**](JAVA/README.md) | [**GITLAB**](GITLAB/README.md) |
-| [**LINUX**](LINUX/README.md) | [**INTELLIJ**](INTELLIJ/README.md) |
+| [**Java 8**](java/README.md) | [**GitLab**](gitlab/README.md) |
+| [**Linux**](linux/README.md) | [**IntelliJ**](intellij/README.md) |
