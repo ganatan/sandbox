@@ -4,3 +4,4 @@
 - [String](002-string.md)
 - [List](003-list.md)
 - [Try Catch Finally](004-try-catch-finally.md)
+- [Throw](005-throw.md)
