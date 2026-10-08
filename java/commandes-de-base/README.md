@@ -7,3 +7,4 @@
 - [Throw](005-throw.md)
 - [Propagation des exceptions](006-propagation-exceptions.md)
 - [Switch](007-switch.md)
+- [While](008-while.md)
