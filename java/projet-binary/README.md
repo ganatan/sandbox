@@ -8,3 +8,4 @@ Tutoriels Java 8 consacrés à la manipulation des données binaires et à leur 
 - [004 - Binary Buffer Read Write](004-binary-buffer-read-write.md)
 - [005 - Binary Object](005-binary-object.md)
 - [006 - Binary File Write](006-binary-file-write.md)
+- [007 - Binary File Read](007-binary-file-read.md)
