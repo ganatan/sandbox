@@ -2,16 +2,20 @@
 
 ## Contexte
 
-Document fictif transmis par un fournisseur de services multimédias pour permettre à une équipe de développer un client compatible.
+Document fournisseur **entièrement fictif**, utilisé pour étudier un protocole de communication industriel.
 
-**Media Protocol V1** est un protocole binaire pédagogique, indépendant de tout langage de programmation. Il permet de transmettre des informations sur un film entre deux applications.
+**Media Protocol V1** est un protocole binaire, indépendant du langage de programmation, destiné à transmettre des informations sur un film entre deux applications.
 
 ## Transport
 
-- TCP
-- Port par défaut : `5000`
+- UDP, en datagrammes
+- Adresse de destination par défaut : `127.0.0.1`
+- Port de destination et d'écoute par défaut : `5000`
 - Ordre des octets : Big Endian
-- Une connexion peut transporter plusieurs messages
+- Un datagramme contient exactement un message Media Protocol V1
+- Pas de connexion préalable, d'accusé de réception ni de retransmission définis par le protocole V1
+
+UDP ne garantit ni la livraison, ni l'ordre, ni l'unicité des datagrammes.
 
 ## Structure d'un message
 
@@ -23,7 +27,7 @@ Document fictif transmis par un fournisseur de services multimédias pour permet
 | Length | uint32 | 4 | Taille du payload en octets |
 | Payload | variable | Length | Données métier |
 
-La taille totale du message est `8 + Length` octets.
+La taille du message UDP utile est `8 + Length` octets, hors en-têtes IP et UDP.
 
 ## Message Media (type 01)
 
@@ -32,7 +36,7 @@ La taille totale du message est `8 + Length` octets.
 | id | int32 | 4 | Identifiant du film |
 | year | int32 | 4 | Année du film |
 
-Le payload Media mesure exactement 8 octets.
+Le payload Media V1 mesure exactement 8 octets. Le datagramme Media V1 doit donc contenir exactement **16 octets de données**.
 
 ## Exemple
 
@@ -53,17 +57,23 @@ ID      : 1
 Year    : 2024
 ```
 
+## Règles d'émission
+
+1. Construire l'en-tête et le payload en Big Endian.
+2. Former un message de 16 octets.
+3. Envoyer ce message dans un seul datagramme UDP à l'adresse et au port du récepteur.
+
 ## Règles de réception
 
-1. Lire exactement les 8 octets d'en-tête.
-2. Vérifier la signature `4D 50`, la version `01` et le type `01`.
-3. Vérifier que la longueur annoncée vaut `8` pour ce type.
-4. Lire exactement 8 octets de payload.
-5. Décoder `id` et `year` en Big Endian.
-6. Rejeter un message invalide ou incomplet.
+1. Recevoir un datagramme UDP complet, en conservant sa longueur réelle.
+2. Vérifier que le datagramme contient exactement 16 octets.
+3. Vérifier la signature `4D 50`, la version `01` et le type `01`.
+4. Vérifier que le champ Length vaut `8`.
+5. Décoder les champs `id` et `year` en Big Endian.
+6. Rejeter le datagramme invalide sans interrompre l'écoute des suivants.
 
 ## Objectif de l'étude
 
-À partir de cette seule documentation, analyser le protocole puis développer un émetteur et un récepteur Java 8 compatibles, sans Maven ni dépendance externe.
+À partir de cette documentation, analyser le protocole puis développer un émetteur UDP et un récepteur UDP en Java 8, sans Maven ni dépendance externe.
 
 > Document entièrement fictif, sans affiliation avec Netflix ou un autre fournisseur réel.
