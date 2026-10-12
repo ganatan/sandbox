@@ -7,3 +7,4 @@ Documentation des concepts informatiques essentiels.
 | Concept | Description |
 |---|---|
 | [Datagram](001-datagram.md) | Unité de données transmise sans connexion préalable |
+| [Big Endian et Little Endian](002-big-endian.md) | Ordre des octets en mémoire et sur le réseau |
