@@ -7,3 +7,4 @@
 - [Test avec Mockito](005-test-mockito.md)
 - [Test d'intégration](006-test-integration.md)
 - [Test d'intégration UDP](007-test-integration-udp.md)
+- [Tests de messages binaires](008-test-binaire.md)
