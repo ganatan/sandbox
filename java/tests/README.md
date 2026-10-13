@@ -8,3 +8,4 @@
 - [Test d'intégration](006-test-integration.md)
 - [Test d'intégration UDP](007-test-integration-udp.md)
 - [Tests de messages binaires](008-test-binaire.md)
+- [Test d'intégration UDP binaire](009-test-udp-binaire.md)
