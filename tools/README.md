@@ -6,3 +6,4 @@
 - [004 - Markdown Essentiel](004-markdown-essentiel.md)
 - [005 - Distrobox complet](005-distrobox-complet.md)
 - [006 - Podman](006-podman.md)
+- [007 - GNOME](007-gnome.md)
