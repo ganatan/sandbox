@@ -1,76 +1,89 @@
-# Cinéma Java 8 — trois bibliothèques JAR, aucune application
+# Cinéma Java 8 — trois bibliothèques, Apache Ant et JUnit 3
 
-Ce monorepo est un exercice pour comprendre **les dépendances entre bibliothèques**, le **classpath**, la **compilation de JAR**, et les **tests JUnit 3 `TestCase`**. Il ne contient **aucune application** ni méthode `main` métier. Les tests sont lancés par le runner JUnit.
+Projet d'apprentissage **sans application principale**, **sans Maven**, **sans Gradle**. Trois modules Java 8 produisent chacun leur propre JAR, sont liés par des dépendances et possèdent leurs tests `extends TestCase`.
 
-## 1. Architecture
+**Deux méthodes sont disponibles :**
+- **Avec Apache Ant** : `ant jar`, `ant test`, `ant test-model`, `ant test-catalogue`, `ant test-format`.
+- **Sans Ant** : `build.bat` / `build.sh`, `test.bat film-model` / `bash test.sh film-model`, ou les commandes manuelles `javac`, `jar`, `java`.
+
+## 1. Arborescence
 
 ```text
 cinema-java8/
+├── build.xml
+├── build.bat
+├── build.sh
+├── test.bat
+├── test.sh
 ├── film-model/
+│   ├── build.xml
 │   ├── build/
 │   │   ├── dependencies.properties
 │   │   └── test-dependencies.properties
-│   ├── conf-coverage/
-│   │   └── Logger/
-│   │       └── log4j-for-coverage.xml
+│   ├── conf-coverage/Logger/log4j-for-coverage.xml
 │   ├── dist/
 │   ├── src/com/ganatan/cinema/model/Film.java
 │   ├── test/com/ganatan/cinema/model/FilmTest.java
 │   └── tools/
 ├── film-catalogue/
+│   ├── build.xml
 │   ├── build/
-│   ├── conf-coverage/
+│   │   ├── dependencies.properties
+│   │   └── test-dependencies.properties
+│   ├── conf-coverage/Logger/log4j-for-coverage.xml
 │   ├── dist/
 │   ├── src/com/ganatan/cinema/catalogue/Catalogue.java
 │   ├── test/com/ganatan/cinema/catalogue/CatalogueTest.java
 │   └── tools/
-├── film-format/
-│   ├── build/
-│   ├── conf-coverage/
-│   ├── dist/
-│   ├── src/com/ganatan/cinema/format/FormatFilm.java
-│   ├── test/com/ganatan/cinema/format/FormatFilmTest.java
-│   └── tools/
-├── build.bat
-├── build.sh
-├── test.bat
-└── test.sh
+└── film-format/
+    ├── build.xml
+    ├── build/
+    │   ├── dependencies.properties
+    │   └── test-dependencies.properties
+    ├── conf-coverage/Logger/log4j-for-coverage.xml
+    ├── dist/
+    ├── src/com/ganatan/cinema/format/FormatFilm.java
+    ├── test/com/ganatan/cinema/format/FormatFilmTest.java
+    └── tools/
 ```
 
-Les trois modules sont des **bibliothèques**, non des programmes autonomes.
+Le répertoire `build/` de chaque module est **réservé aux propriétés de configuration**. Les classes compilées sont stockées dans `.out/` de chaque module avec Ant, ou dans `.out/` de la racine avec les scripts sans Ant. `dist/` reçoit le JAR de chaque bibliothèque. `conf-coverage/` reprend l'arborescence professionnelle, mais aucun outil de couverture n'est activé ici.
 
-| Bibliothèque | Fonction | Dépendances de production |
+## 2. Dépendances et ordre
+
+| Module | JAR | Dépendance |
 |---|---|---|
-| film-model | Objet Film | Aucune |
-| film-catalogue | Fournit un film | film-model.jar |
-| film-format | Formate un film | film-model.jar |
+| film-model | `film-model/dist/film-model.jar` | Aucune |
+| film-catalogue | `film-catalogue/dist/film-catalogue.jar` | `film-model.jar` |
+| film-format | `film-format/dist/film-format.jar` | `film-model.jar` |
 
 ```text
-film-catalogue.jar ----> film-model.jar
-film-format.jar -------^
+film-catalogue.jar ---> film-model.jar
+film-format.jar ------> film-model.jar
 ```
 
-L'ordre de compilation est `model`, puis `catalogue` et `format`.
+Il faut d'abord construire `film-model`, puis `film-catalogue` et `film-format`. Le `build.xml` de la racine respecte cet ordre.
 
-## 2. Prérequis
+## 3. Prérequis
 
-- **JDK 8** avec `java`, `javac` et `jar` accessibles dans le PATH.
-- **JUnit 3.8.2**, seulement pour compiler et lancer les tests.
-- Sous Linux, Bash. Sous Windows, l'invite de commandes **CMD**.
+- **JDK 8** : `java`, `javac`, `jar`.
+- **JUnit 3.8.2** : dépendance externe nécessaire **uniquement aux tests**.
+- **Apache Ant** : nécessaire uniquement pour les commandes de la méthode Ant.
+- CMD sous Windows ou Bash sous Linux.
 
 Vérifier :
 
 ```bat
 java -version
 javac -version
-jar
+ant -version
 ```
 
-Le JAR JUnit peut être téléchargé sur Maven Central : https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar . Maven lui-même n'est pas nécessaire.
+Lien direct JUnit : https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar
 
-Placer éventuellement ce JAR dans `lib/junit-3.8.2.jar` à la racine du projet (il n'est pas fourni dans Git).
+Placer `junit-3.8.2.jar` dans le répertoire local `lib/` à la racine. Ce JAR n'est pas versionné dans Git.
 
-Windows CMD :
+**Windows CMD** (adapter le chemin à ton poste) :
 
 ```bat
 cd /d D:\demo\cinema-java8
@@ -78,7 +91,7 @@ set "JUNIT_JAR=D:\demo\cinema-java8\lib\junit-3.8.2.jar"
 dir "%JUNIT_JAR%"
 ```
 
-Linux :
+**Linux** :
 
 ```bash
 cd /chemin/vers/cinema-java8
@@ -86,11 +99,11 @@ export JUNIT_JAR="$PWD/lib/junit-3.8.2.jar"
 test -f "$JUNIT_JAR"
 ```
 
-La variable `JUNIT_JAR` doit contenir **le chemin du fichier JAR**, et non celui du dossier.
+Sur Windows, `set` ne persiste que dans le terminal courant. `JUNIT_JAR` désigne le **fichier**, pas seulement le dossier.
 
-## 3. Code de production
+## 4. Code Java des bibliothèques
 
-`film-model/src/com/ganatan/cinema/model/Film.java` :
+**film-model/src/com/ganatan/cinema/model/Film.java** :
 
 ```java
 package com.ganatan.cinema.model;
@@ -114,7 +127,7 @@ public class Film {
 }
 ```
 
-`film-catalogue/src/com/ganatan/cinema/catalogue/Catalogue.java` :
+**film-catalogue/src/com/ganatan/cinema/catalogue/Catalogue.java** :
 
 ```java
 package com.ganatan.cinema.catalogue;
@@ -128,7 +141,7 @@ public class Catalogue {
 }
 ```
 
-`film-format/src/com/ganatan/cinema/format/FormatFilm.java` :
+**film-format/src/com/ganatan/cinema/format/FormatFilm.java** :
 
 ```java
 package com.ganatan.cinema.format;
@@ -142,59 +155,13 @@ public class FormatFilm {
 }
 ```
 
-## 4. Compiler les trois bibliothèques et produire les JAR
-
-Windows CMD, depuis la racine :
-
-```bat
-build.bat
-```
-
-Linux :
-
-```bash
-bash build.sh
-```
-
-Résultats :
-
-```text
-film-model/dist/film-model.jar
-film-catalogue/dist/film-catalogue.jar
-film-format/dist/film-format.jar
-```
-
-Les fichiers `.class` intermédiaires sont dans `.out/` à la racine ; **`build/` dans chaque module conserve les propriétés de configuration**.
-
-Exemple des instructions exécutées pour construire `film-model` sous Windows :
-
-```bat
-javac -source 8 -target 8 -d .out\model film-model\src\com\ganatan\cinema\model\Film.java
-jar cf film-model\dist\film-model.jar -C .out\model .
-```
-
-Exemple : compiler `Catalogue` en fournissant la dépendance `film-model.jar` :
-
-```bat
-javac -source 8 -target 8 -cp film-model\dist\film-model.jar -d .out\catalogue film-catalogue\src\com\ganatan\cinema\catalogue\Catalogue.java
-jar cf film-catalogue\dist\film-catalogue.jar -C .out\catalogue .
-```
-
-Le `-cp` (classpath) permet à `javac` de retrouver la classe `Film` fournie par un autre JAR. Le `-d` fixe le dossier contenant les classes compilées. L'option `-C` de `jar` permet d'archiver des fichiers depuis un dossier.
-
-Inspecter :
-
-```bat
-jar tf film-model\dist\film-model.jar
-```
-
-Il n'y a pas de `Main-Class` dans ces JAR. `java -jar film-model/dist/film-model.jar` n'est **pas** une commande de lancement valide pour cette bibliothèque.
+Aucune bibliothèque n'a besoin de `public static void main(String[] args)`.
 
 ## 5. Code des tests JUnit 3
 
-Chaque test hérite de `junit.framework.TestCase`. JUnit 3 reconnaît les méthodes publiques sans argument dont le nom commence par `test`.
+Les tests héritent de `junit.framework.TestCase`. Une méthode de test JUnit 3 est typiquement `public void test...()`.
 
-`film-model/test/com/ganatan/cinema/model/FilmTest.java` :
+**FilmTest.java** :
 
 ```java
 package com.ganatan.cinema.model;
@@ -212,7 +179,7 @@ public class FilmTest extends TestCase {
 }
 ```
 
-`film-catalogue/test/com/ganatan/cinema/catalogue/CatalogueTest.java` :
+**CatalogueTest.java** :
 
 ```java
 package com.ganatan.cinema.catalogue;
@@ -226,7 +193,7 @@ public class CatalogueTest extends TestCase {
 }
 ```
 
-`film-format/test/com/ganatan/cinema/format/FormatFilmTest.java` :
+**FormatFilmTest.java** :
 
 ```java
 package com.ganatan.cinema.format;
@@ -241,50 +208,158 @@ public class FormatFilmTest extends TestCase {
 }
 ```
 
-## 6. Exécuter **tous** les tests
+Le `System.out.println("00000000001")` confirme visuellement que la méthode a été exécutée, tandis que les assertions vérifient les résultats.
 
-Windows CMD :
+## 6. Méthode A — Avec Apache Ant
+
+Ant lit les fichiers `build.xml`. Une balise `<target>` représente une tâche nommée et `depends` définit l'ordre d'exécution. La cible `jar` fabrique un JAR et `test` compile puis exécute une classe `TestCase` via `junit.textui.TestRunner`.
+
+**Toutes les commandes suivantes sont lancées depuis la racine du projet.**
+
+| Action | Commande Ant |
+|---|---|
+| Compiler les trois modules et créer les JAR | `ant jar` |
+| Construire l'ensemble | `ant` |
+| Compiler l'ensemble (avec JAR) | `ant compile` |
+| Exécuter tous les tests | `ant test` |
+| Tester uniquement FilmTest | `ant test-model` |
+| Tester uniquement CatalogueTest | `ant test-catalogue` |
+| Tester uniquement FormatFilmTest | `ant test-format` |
+| Nettoyer classes et JAR | `ant clean` |
+| Voir les cibles | `ant -p` |
+| Afficher les détails | `ant -verbose test-model` |
+
+Exemple Windows :
 
 ```bat
-test.bat
+cd /d D:\demo\cinema-java8
+set "JUNIT_JAR=D:\demo\cinema-java8\lib\junit-3.8.2.jar"
+ant test-model
 ```
 
-Ou explicitement :
-
-```bat
-test.bat all
-```
-
-Linux :
+Exemple Linux :
 
 ```bash
-bash test.sh
-bash test.sh all
+export JUNIT_JAR="$PWD/lib/junit-3.8.2.jar"
+ant test
 ```
 
-Le script :
-1. Vérifie que `JUNIT_JAR` existe.
-2. Compile les trois bibliothèques et construit les trois JAR.
-3. Compile les trois classes de test contre ces JAR et JUnit.
-4. Exécute successivement `FilmTest`, `CatalogueTest` et `FormatFilmTest`.
-5. S'arrête en cas d'échec de compilation ou de test.
+`ant test-model` ne lance **que FilmTest**. `ant test` lance les trois classes, et s'arrête à la première erreur. Ant construit automatiquement les JAR prérequis dans l'ordre. La compilation de dépendances n'est pas la même chose que leur exécution de tests.
 
-Résultat attendu pour **chaque classe** :
+**Lancer une bibliothèque directement**, une fois ses dépendances construites :
 
-```text
-.
-Time: 0.001
-
-OK (1 test)
+```bat
+cd film-model
+ant compile
+ant test
+ant jar
+cd ..
 ```
 
-Le temps d'exécution est variable. Il y a **trois classes de test, trois méthodes de test**.
+Pour `film-catalogue`, commencer par `ant -f film-model/build.xml jar` depuis la racine, puis :
 
-## 7. Exécuter les tests d'**une seule bibliothèque**
+```bat
+cd film-catalogue
+ant test
+cd ..
+```
+
+Ou plus simplement, depuis la racine : `ant test-catalogue`.
+
+### Exemple commenté par les concepts (XML réel de film-model)
+
+```xml
+<project name="film-model" default="jar" basedir=".">
+    <property environment="env"/>
+    <property file="build/dependencies.properties"/>
+    <property file="build/test-dependencies.properties"/>
+    <property name="classes.dir" location=".out/classes"/>
+    <property name="tests.dir" location=".out/tests"/>
+    <property name="dist.jar" location="dist/film-model.jar"/>
+
+    <path id="production.path">
+    </path>
+
+    <path id="test.path">
+        <path refid="production.path"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${tests.dir}"/>
+        <pathelement location="${test.junit.path}"/>
+    </path>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="src" destdir="${classes.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="production.path"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="dist"/>
+        <jar destfile="${dist.jar}" basedir="${classes.dir}"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <available file="${test.junit.path}" property="junit.available"/>
+        <fail unless="junit.available" message="Definir JUNIT_JAR vers junit-3.8.2.jar"/>
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="test" destdir="${tests.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="test.path"/>
+        </javac>
+        <java classname="junit.textui.TestRunner" fork="true" failonerror="true">
+            <arg value="com.ganatan.cinema.model.FilmTest"/>
+            <classpath refid="test.path"/>
+        </java>
+    </target>
+    <target name="clean">
+        <delete dir=".out"/>
+        <delete file="${dist.jar}"/>
+    </target>
+</project>
+```
+
+- `property environment="env"` récupère `JUNIT_JAR` comme `${env.JUNIT_JAR}`.
+- `property file="..."` charge les propriétés des modules.
+- `path` constitue le classpath de compilation ou de test.
+- `javac` compile les `.java` en `.class`.
+- `jar` crée un JAR de bibliothèque.
+- `java classname="junit.textui.TestRunner"` exécute JUnit 3. L'option `failonerror` fait échouer le build si le runner sort avec une erreur.
+
+L'exemple utilise la tâche Ant `java`, **pas** la tâche optionnelle Ant `junit` : il n'y a donc pas besoin d'un module Ant-JUnit supplémentaire.
+
+## 7. Fichiers dependencies.properties
+
+**film-model/build/dependencies.properties** : aucune bibliothèque supplémentaire.
+
+**film-catalogue/build/dependencies.properties** :
+
+```properties
+dependency.film-model=../film-model/dist/film-model.jar
+```
+
+**film-format/build/dependencies.properties** :
+
+```properties
+dependency.film-model=../film-model/dist/film-model.jar
+```
+
+**Chaque module : build/test-dependencies.properties**
+
+```properties
+test.junit.path=${env.JUNIT_JAR}
+```
+
+Ici, contrairement à la version initiale du projet, **Ant lit réellement les fichiers properties**. Le classpath de Catalogue et Format inclut leur dépendance Model, et le classpath de test inclut JUnit. Le script global construit les JAR dans l'ordre.
+
+## 8. Méthode B — Sans Ant avec les scripts existants
+
+Les scripts manuels restent disponibles : ils ne nécessitent pas Ant.
 
 Windows CMD :
 
 ```bat
+build.bat
+test.bat all
 test.bat film-model
 test.bat film-catalogue
 test.bat film-format
@@ -293,80 +368,114 @@ test.bat film-format
 Linux :
 
 ```bash
+bash build.sh
+bash test.sh all
 bash test.sh film-model
 bash test.sh film-catalogue
 bash test.sh film-format
 ```
 
-Exemple :
+Les scripts de test recompilent **les trois** JAR de production, même si un seul test est sélectionné. En revanche, ils ne compilent et n'exécutent que le `TestCase` demandé.
+
+Les scripts définissent eux-mêmes les chemins de dépendances et **ne lisent pas** les fichiers `.properties`. C'est précisément une différence pédagogique avec Ant.
+
+## 9. Méthode C — Commandes manuelles javac, jar et java
+
+Pour comprendre exactement les mécanismes, voici les commandes **Windows CMD depuis la racine**.
+
+### Compiler film-model
 
 ```bat
-test.bat film-model
+mkdir .out\model
+javac -source 8 -target 8 -d .out\model film-model\src\com\ganatan\cinema\model\Film.java
 ```
 
-Cette commande **recompile les trois JAR** pour garantir la présence des dépendances, mais ne compile et n'exécute que la classe de test **`FilmTest`**. Elle ne lance ni `CatalogueTest` ni `FormatFilmTest`.
+### Créer son JAR
 
-Pour cibler une seule **méthode** `testResultat()`, le plus simple est IntelliJ : clic droit sur la méthode, puis `Run`. Le runner JUnit 3 en ligne de commande utilisé ici sélectionne une classe, et exécute toutes ses méthodes `test...`.
+```bat
+jar cf film-model\dist\film-model.jar -C .out\model .
+jar tf film-model\dist\film-model.jar
+```
 
-## 8. Exécution manuelle d'une seule classe de test sous Windows
+### Compiler film-catalogue qui dépend du JAR Model
 
-Après `build.bat` et configuration de `JUNIT_JAR` :
+```bat
+mkdir .out\catalogue
+javac -source 8 -target 8 -cp film-model\dist\film-model.jar -d .out\catalogue film-catalogue\src\com\ganatan\cinema\catalogue\Catalogue.java
+jar cf film-catalogue\dist\film-catalogue.jar -C .out\catalogue .
+```
+
+### Compiler une seule classe TestCase
 
 ```bat
 mkdir .out\tests
 javac -source 8 -target 8 -cp "film-model\dist\film-model.jar;%JUNIT_JAR%" -d .out\tests film-model\test\com\ganatan\cinema\model\FilmTest.java
+```
+
+### Exécuter une seule classe de test
+
+```bat
 java -cp ".out\tests;film-model\dist\film-model.jar;%JUNIT_JAR%" junit.textui.TestRunner com.ganatan.cinema.model.FilmTest
 ```
 
-Ici :
-- `.out\tests` contient `FilmTest.class` ;
-- `film-model.jar` contient la classe `Film` ;
-- `junit-3.8.2.jar` contient `TestCase` et `TestRunner` ;
-- `junit.textui.TestRunner` est le lanceur des tests et non le `main()` de notre bibliothèque ;
-- `com.ganatan.cinema.model.FilmTest` est le nom complet de la classe testée.
+Un succès ressemble à ceci :
 
-Sous Linux, le séparateur du classpath est `:` ; sous Windows, c'est `;`.
+```text
+00000000001
+.
+Time: 0.001
 
-## 9. IntelliJ IDEA
+OK (1 test)
+```
 
-1. Ouvrir le dossier `cinema-java8/`.
-2. Vérifier `Project SDK = JDK 8`.
-3. Si nécessaire, marquer `src/` comme `Sources Root` et `test/` comme `Test Sources Root`.
-4. Ajouter `junit-3.8.2.jar` aux dépendances de test du module IntelliJ concerné.
-5. Ajouter les JAR des bibliothèques nécessaires aux dépendances du module.
-6. Ouvrir `FilmTest.java`, clic droit sur `testResultat()`, puis **Run**.
-7. Pour une classe de test entière, clic droit sur le nom de classe `FilmTest`, puis **Run**.
+L'ordre exact et le temps affiché peuvent varier selon le runner.
 
-Une configuration IntelliJ correcte n'est pas nécessaire pour exécuter `test.bat`, car le script construit lui-même son classpath. Inversement, la présence des fichiers `dependencies.properties` n'enregistre pas automatiquement les dépendances dans IntelliJ.
+**Options importantes :**
 
-## 10. Pourquoi les fichiers build/dependencies.properties existent-ils ?
+| Élément | Signification |
+|---|---|
+| `javac` | Compile un fichier Java en bytecode `.class` |
+| `-source 8 -target 8` | Demande une compilation au format Java 8 |
+| `-cp` / `-classpath` | Définit les classes et JAR accessibles |
+| `-d` | Destination des `.class` |
+| `jar cf` | Crée une archive JAR |
+| `-C dossier .` | Archive le contenu du dossier |
+| `java -cp` | Exécute une classe avec ses dépendances |
+| `junit.textui.TestRunner` | Classe principale fournie par JUnit, et non par notre projet |
 
-Chaque module contient :
-- `build/dependencies.properties` : dépendances de production du module ;
-- `build/test-dependencies.properties` : dépendances nécessaires aux tests.
+Windows utilise `;` pour séparer les entrées du classpath ; Linux utilise `:`.
 
-Dans cet exercice, ces fichiers **documentent** les dépendances : les scripts `build.bat`, `build.sh`, `test.bat` et `test.sh` définissent actuellement les chemins des JAR explicitement. Les scripts **ne lisent pas encore** les propriétés. Ce choix évite d'inventer un format de build propriétaire.
+## 10. Exécuter les tests dans IntelliJ
 
-Le dossier `conf-coverage/Logger/` contient un exemple de configuration Log4j pour reproduire l'arborescence observée. Ni Log4j ni l'instrumentation de couverture ne sont activés dans cet exercice.
+1. Ouvrir `cinema-java8` et sélectionner le JDK 8.
+2. Configurer les répertoires `src/` comme **Sources Root** et `test/` comme **Test Sources Root**.
+3. Ajouter localement `junit-3.8.2.jar` aux dépendances de test.
+4. Ajouter au module Catalogue ou Format le JAR `film-model.jar`, ou créer des dépendances vers le module Model.
+5. Ouvrir `FilmTest.java` et exécuter `testResultat()` via **Run**.
+
+Si IntelliJ propose Ant, il est aussi possible d'ouvrir la fenêtre Ant et d'y ajouter le fichier `build.xml` pour lancer les cibles.
 
 ## 11. Erreurs fréquentes
 
-| Erreur | Cause probable | Solution |
+| Erreur | Explication | Correction |
 |---|---|---|
-| `JUNIT_JAR` non défini | Variable absente | Définir la variable dans le terminal actuel |
-| `junit.textui.TestRunner` introuvable | JUnit absent du classpath | Vérifier `dir "%JUNIT_JAR%"` |
-| `TestCase` rouge dans IntelliJ | JUnit non référencé par le module | Ajouter le JAR comme dépendance de test |
-| `Film` introuvable | `film-model.jar` absent | Recompiler et vérifier `-cp` |
-| `no main manifest attribute` | On tente de lancer une bibliothèque avec `java -jar` | Exécuter les tests plutôt que le JAR |
-| `UnsupportedClassVersionError` | Version Java incompatible | Vérifier `java -version` et `javac -version` |
+| `ant: command not found` | Ant absent du PATH | Installer Ant ou utiliser les scripts manuels |
+| `Unable to find a javac compiler` | JDK absent ou configuration Ant incorrecte | Définir `JAVA_HOME` sur le JDK 8 |
+| `JUNIT_JAR` non défini | Test sans bibliothèque JUnit | Définir le chemin complet vers le JAR |
+| `junit.textui.TestRunner` introuvable | Classpath JUnit incorrect | Vérifier le JAR et le classpath |
+| `package ...model does not exist` | Model non construit ou absent des dépendances | Construire Model puis le module utilisateur |
+| `TestCase` rouge dans IntelliJ | Bibliothèque non chargée | Ajouter JUnit aux dépendances de test |
+| `no main manifest attribute` | Essai de `java -jar` sur une bibliothèque | Lancer `TestRunner`, pas le JAR |
 
-## 12. Exercice pratique
+## 12. Exercice complet
 
-1. Exécuter `test.bat all` ; les trois tests doivent passer.
-2. Modifier `film-catalogue/src/.../Catalogue.java` en remplaçant `Interstellar` par `Dune`.
-3. Exécuter `test.bat film-catalogue` ; le test doit échouer car il attend encore `Interstellar`.
-4. Modifier `CatalogueTest.java` pour attendre `Dune`.
-5. Relancer `test.bat film-catalogue` ; le test doit réussir.
-6. Lancer `test.bat all` pour vérifier l'ensemble du monorepo.
+1. Lancer `ant clean`, puis `ant jar`.
+2. Vérifier les trois fichiers `.jar` dans leurs répertoires `dist/`.
+3. Lancer `ant test` : trois tests doivent passer.
+4. Modifier `Catalogue.java` pour retourner `new Film("Dune", 2021)`.
+5. Lancer `ant test-catalogue` : le test doit échouer car il attend `Interstellar`.
+6. Adapter `CatalogueTest.java` pour attendre `Dune`.
+7. Relancer `ant test-catalogue`, puis `ant test`.
+8. Refaire l'exercice **sans Ant** avec `test.bat film-catalogue` ou `bash test.sh film-catalogue`.
 
-**Le principe à retenir :** une bibliothèque peut être compilée en JAR et validée par `TestCase` sans aucune application principale.
+**À retenir :** Java compile, JUnit teste, Ant orchestre. Une bibliothèque peut parfaitement être compilée et testée sans méthode `main()` dans son code métier.

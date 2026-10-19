@@ -1,0 +1,29 @@
+<project name="cinema-java8" default="jar" basedir=".">
+    <target name="model">
+        <ant dir="film-model" target="jar" inheritAll="false"/>
+    </target>
+    <target name="catalogue" depends="model">
+        <ant dir="film-catalogue" target="jar" inheritAll="false"/>
+    </target>
+    <target name="format" depends="model">
+        <ant dir="film-format" target="jar" inheritAll="false"/>
+    </target>
+    <target name="jar" depends="catalogue,format"/>
+    <target name="compile" depends="jar"/>
+    <target name="test-model" depends="model">
+        <ant dir="film-model" target="test" inheritAll="false"/>
+    </target>
+    <target name="test-catalogue" depends="catalogue">
+        <ant dir="film-catalogue" target="test" inheritAll="false"/>
+    </target>
+    <target name="test-format" depends="format">
+        <ant dir="film-format" target="test" inheritAll="false"/>
+    </target>
+    <target name="test" depends="test-model,test-catalogue,test-format"/>
+    <target name="clean">
+        <ant dir="film-model" target="clean" inheritAll="false"/>
+        <ant dir="film-catalogue" target="clean" inheritAll="false"/>
+        <ant dir="film-format" target="clean" inheritAll="false"/>
+        <delete dir=".out"/>
+    </target>
+</project>

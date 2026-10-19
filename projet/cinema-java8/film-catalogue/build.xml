@@ -1,0 +1,43 @@
+<project name="film-catalogue" default="jar" basedir=".">
+    <property environment="env"/>
+    <property file="build/dependencies.properties"/>
+    <property file="build/test-dependencies.properties"/>
+    <property name="classes.dir" location=".out/classes"/>
+    <property name="tests.dir" location=".out/tests"/>
+    <property name="dist.jar" location="dist/film-catalogue.jar"/>
+    <path id="production.path">
+        <pathelement location="${dependency.film-model}"/>
+    </path>
+    <path id="test.path">
+        <path refid="production.path"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${tests.dir}"/>
+        <pathelement location="${test.junit.path}"/>
+    </path>
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="src" destdir="${classes.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="production.path"/>
+        </javac>
+    </target>
+    <target name="jar" depends="compile">
+        <mkdir dir="dist"/>
+        <jar destfile="${dist.jar}" basedir="${classes.dir}"/>
+    </target>
+    <target name="test" depends="compile">
+        <available file="${test.junit.path}" property="junit.available"/>
+        <fail unless="junit.available" message="Definir JUNIT_JAR vers junit-3.8.2.jar"/>
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="test" destdir="${tests.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="test.path"/>
+        </javac>
+        <java classname="junit.textui.TestRunner" fork="true" failonerror="true">
+            <arg value="com.ganatan.cinema.catalogue.CatalogueTest"/>
+            <classpath refid="test.path"/>
+        </java>
+    </target>
+    <target name="clean">
+        <delete dir=".out"/>
+        <delete file="${dist.jar}"/>
+    </target>
+</project>
