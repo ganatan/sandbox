@@ -1,37 +1,55 @@
-# Cinema Java 8 - 3 JAR et une application
+# Cinema Java 8 — 3 bibliotheques et une application
 
-Exemple de monorepo Java 8 sans Maven ni Gradle.
+Mini-monorepo Java 8, sans Maven ni Gradle. Chaque module a la meme structure :
 
-Chaque module contient `src/`, `test/` et `tools/` :
+```text
+film-model/
+    build/
+        dependencies.properties
+        test-dependencies.properties
+    conf-coverage/
+        Logger/
+            log4j-for-coverage.xml
+    dist/
+    src/
+    test/
+    tools/
+```
 
-- `film-model` : objet Film
-- `film-catalogue` : creation d'un Film, depend de film-model
-- `film-format` : affichage d'un Film, depend de film-model
-- `cinema-app` : application avec Main, depend des 3 bibliotheques
+Les trois autres modules (`film-catalogue`, `film-format`, `cinema-app`) ont exactement ces repertoires.
 
-## Compilation
+## Modules
 
-Linux : `bash build.sh`
+| Module | Fonction | Dependances |
+|---|---|---|
+| film-model | Classe Film | Aucune |
+| film-catalogue | Retourne un Film | film-model |
+| film-format | Formate un Film | film-model |
+| cinema-app | Main | Les trois bibliotheques |
 
-Windows CMD : `build.bat`
+## Compiler et produire les JAR
 
-Les quatre JAR sont crees dans `dist/`.
-
-## Execution
+Linux :
 
 ```bash
-java -jar dist/cinema-app.jar
+bash build.sh
+java -jar cinema-app/dist/cinema-app.jar
+```
+
+Windows CMD :
+
+```bat
+build.bat
+java -jar cinema-app\dist\cinema-app.jar
 ```
 
 Resultat : `Interstellar (2014)`.
 
-Le manifeste de l'application contient `Main-Class` et `Class-Path`. Les bibliotheques n'ont pas de Main-Class.
+Chaque JAR est produit dans le `dist/` de son module. Les classes temporaires sont dans `.out/` a la racine, pas dans `build/`.
 
-## Tests - JUnit 3
+## Tests JUnit 3 (TestCase)
 
-Chaque dossier `test/` contient une classe qui `extends junit.framework.TestCase` avec une methode `testResultat()`.
-
-Il faut un JAR JUnit 3.8.2 accessible localement. Aucun telechargement automatique et aucun JAR tiers n'est versionne dans le depot.
+Prevoir localement `junit-3.8.2.jar`.
 
 Linux :
 
@@ -47,14 +65,16 @@ set JUNIT_JAR=C:\chemin\vers\junit-3.8.2.jar
 test.bat
 ```
 
-Le runner utilise `junit.textui.TestRunner` et renvoie un code d'erreur si les tests echouent.
+Les tests utilisent `extends junit.framework.TestCase` et `junit.textui.TestRunner`.
 
-## Comprendre les JAR
+## Role des fichiers de configuration
 
-```bash
-jar tf dist/film-model.jar
-```
+`build/dependencies.properties` et `build/test-dependencies.properties` documentent les dependances dans cet exemple. Les scripts de demonstration definissent leur classpath explicitement ; ils ne lisent pas encore ces fichiers.
 
-## Exercice
+`conf-coverage/Logger/log4j-for-coverage.xml` reproduit l'emplacement observe dans le projet professionnel. La couverture et Log4j ne sont pas actives dans cet exemple.
 
-Changer `Interstellar` pour `Dune` dans `film-catalogue/src/`, adapter ses tests puis relancer la compilation et les tests.
+`tools/` est reserve aux outils internes.
+
+## Exercices
+
+Change Interstellar en Dune dans `film-catalogue/src/`, adapte le test dans `film-catalogue/test/`, puis recompile et relance.

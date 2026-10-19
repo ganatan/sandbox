@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Main-Class: com.ganatan.cinema.app.Main
-Class-Path: film-model.jar film-catalogue.jar film-format.jar
+Class-Path: ../../film-model/dist/film-model.jar ../../film-catalogue/dist/film-catalogue.jar ../../film-format/dist/film-format.jar
 
