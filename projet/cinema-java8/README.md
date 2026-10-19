@@ -1,59 +1,60 @@
-# Cinéma Java 8 — 3 bibliothèques et une application
+# Cinema Java 8 - 3 JAR et une application
 
-Projet Java 8 sans Maven, Gradle ni dépendance externe. Chaque bibliothèque produit son propre JAR.
+Exemple de monorepo Java 8 sans Maven ni Gradle.
 
-## Modules
+Chaque module contient `src/`, `test/` et `tools/` :
 
-| Module | Classe | Livrable | Dépendance |
-|---|---|---|---|
-| film-model | Film | film-model.jar | Aucune |
-| film-catalogue | Catalogue | film-catalogue.jar | film-model.jar |
-| film-format | FormatFilm | film-format.jar | film-model.jar |
-| cinema-app | Main | cinema-app.jar | Les trois JAR |
+- `film-model` : objet Film
+- `film-catalogue` : creation d'un Film, depend de film-model
+- `film-format` : affichage d'un Film, depend de film-model
+- `cinema-app` : application avec Main, depend des 3 bibliotheques
 
-## Compiler
-
-Avec le JDK 8 installé et `javac` / `jar` dans le PATH :
+## Compilation
 
 Linux : `bash build.sh`
 
 Windows CMD : `build.bat`
 
-## Exécuter
+Les quatre JAR sont crees dans `dist/`.
+
+## Execution
 
 ```bash
 java -jar dist/cinema-app.jar
 ```
 
-Résultat :
+Resultat : `Interstellar (2014)`.
 
-```text
-Interstellar (2014)
-```
+Le manifeste de l'application contient `Main-Class` et `Class-Path`. Les bibliotheques n'ont pas de Main-Class.
 
-Les quatre JAR doivent rester ensemble dans `dist/`, car le manifeste de `cinema-app.jar` contient les dépendances dans `Class-Path`.
+## Tests - JUnit 3
 
-## Inspecter les JAR
+Chaque dossier `test/` contient une classe qui `extends junit.framework.TestCase` avec une methode `testResultat()`.
 
-```bash
-jar tf dist/film-model.jar
-jar xf dist/film-model.jar
-```
-
-## Lancer sans manifeste
+Il faut un JAR JUnit 3.8.2 accessible localement. Aucun telechargement automatique et aucun JAR tiers n'est versionne dans le depot.
 
 Linux :
 
 ```bash
-java -cp 'dist/*' com.ganatan.cinema.app.Main
+export JUNIT_JAR=/chemin/vers/junit-3.8.2.jar
+bash test.sh
 ```
 
 Windows CMD :
 
 ```bat
-java -cp "dist/*" com.ganatan.cinema.app.Main
+set JUNIT_JAR=C:\chemin\vers\junit-3.8.2.jar
+test.bat
+```
+
+Le runner utilise `junit.textui.TestRunner` et renvoie un code d'erreur si les tests echouent.
+
+## Comprendre les JAR
+
+```bash
+jar tf dist/film-model.jar
 ```
 
 ## Exercice
 
-Modifie `film-catalogue/src/com/ganatan/cinema/catalogue/Catalogue.java` pour retourner `new Film("Dune", 2021)`, recompile puis relance l'application.
+Changer `Interstellar` pour `Dune` dans `film-catalogue/src/`, adapter ses tests puis relancer la compilation et les tests.
