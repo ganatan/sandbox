@@ -1,3 +1,3 @@
 # Projets
 
-- [Cinéma Java 8 — 3 JAR et une application](cinema-java8/README.md)
+- [Cinéma Java 8 — trois bibliothèques JAR, tests JUnit 3](cinema-java8/README.md)
