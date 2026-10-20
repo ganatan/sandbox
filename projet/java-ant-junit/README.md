@@ -18,7 +18,9 @@ java-ant-junit/
 │   ├── classes/
 │   └── tests/
 └── dist/
-    └── app.jar
+    ├── app.jar
+    ├── app.jar.MD5
+    └── app-install.zip
 ```
 
 `build/` et `dist/` sont générés par Ant. Le dossier `lib/` est présent sur GitHub, mais `junit.jar` doit être ajouté localement.
@@ -54,10 +56,13 @@ import junit.framework.TestCase;
 public class MessageTest extends TestCase {
     public void testCalculate() {
         Message message = new Message();
+        System.out.println("00000000001");
         assertEquals(3, message.calculate());
     }
 }
 ```
+
+L'instruction `System.out.println("00000000001")` rend l'exécution du test visible dans la console.
 
 `TestCase` appartient à **JUnit 3**. Une méthode de test commence par `test` et `assertEquals` compare le résultat attendu à celui de la méthode testée.
 
@@ -166,7 +171,7 @@ cd /d D:\demo\java-ant-junit
 | `ant compile` | Compile `Main.java` et `Message.java` dans `build/classes/` |
 | `ant compile-test` | Compile `MessageTest.java` dans `build/tests/` |
 | `ant test` | Compile et exécute le test JUnit |
-| `ant jar` | Crée `dist/app.jar` |
+| `ant jar` | Crée `dist/app.jar`, `app.jar.MD5` et `app-install.zip` |
 | `ant` | Compile, teste, puis crée le JAR |
 | `ant -p` | Liste les cibles principales disponibles |
 
@@ -183,6 +188,23 @@ Résultat attendu de l'application :
 ```text
 3
 ```
+
+Après `ant jar`, le dossier `dist/` contient :
+
+| Fichier | Utilité |
+|---|---|
+| `app.jar` | Application Java exécutable (`Main-Class: Main`) |
+| `app.jar.MD5` | Somme de contrôle MD5 du JAR (intégrité, pas sécurité cryptographique) |
+| `app-install.zip` | Archive de livraison contenant `app.jar` et `app.jar.MD5` |
+
+Pour afficher le MD5 et vérifier le JAR sous Windows CMD :
+
+```bat
+type dist\app.jar.MD5
+certutil -hashfile dist\app.jar MD5
+```
+
+Comparer les deux valeurs hexadécimales. Pour installer, décompresser `app-install.zip` puis lancer `java -jar app.jar` dans le dossier extrait. `ant clean` supprime les anciens livrables.
 
 Le test JUnit affiche un succès lorsqu'il passe, avec un bilan du type `OK (1 test)`. S'il échoue, `ant test` retourne une erreur et la cible `ant` ne génère pas le JAR.
 
@@ -217,7 +239,26 @@ Vérifier aussi dans **Project Structure → Project** que le SDK sélectionné 
 
 Pour construire avec Ant dans IntelliJ, ouvrir son **Terminal**, s'assurer que la commande `ant` est reconnue, puis lancer `ant test` ou `ant`. Ce terminal utilise le `build.xml` du projet.
 
-## 8. Comprendre le build
+## 8. Corriger le chemin de sortie IntelliJ
+
+Si IntelliJ affiche :
+
+```text
+The output path is not specified for module java-ant-junit
+```
+
+Cela concerne **le compilateur interne d'IntelliJ**, pas Apache Ant. Le fichier `build.xml` connaît déjà les dossiers `build/classes/`, `build/tests/` et `dist/`, mais IntelliJ n'importe pas automatiquement ces propriétés.
+
+Pour corriger dans IntelliJ sous Windows :
+
+1. Aller dans **File → Project Structure** (`Ctrl + Alt + Shift + S`).
+2. Sous **Project**, définir **Compiler output** sur `D:\\demo\\java-ant-junit\\out`.
+3. Sous **Modules → Paths**, sélectionner **Inherit project compile output path**.
+4. Valider avec **Apply → OK**.
+
+Le dossier `out/` peut être créé par le compilateur IntelliJ. Cela n'affecte pas le build Ant : pour compiler avec Ant, utiliser le terminal IntelliJ et `ant` ou `ant test`.
+
+## 9. Comprendre le build
 
 | IntelliJ | Apache Ant |
 |---|---|
@@ -228,7 +269,7 @@ Pour construire avec Ant dans IntelliJ, ouvrir son **Terminal**, s'assurer que l
 
 Le dossier `out/`, s'il apparaît, est généré par IntelliJ et ne remplace pas le dossier `build/` d'Ant.
 
-## 9. En cas de problème
+## 10. En cas de problème
 
 | Erreur | Vérification |
 |---|---|
@@ -239,4 +280,4 @@ Le dossier `out/`, s'il apparaît, est généré par IntelliJ et ne remplace pas
 | Tests Ant en échec | Vérifier `ant test` et `MessageTest.java` |
 | `Unable to access jarfile dist\app.jar` | Lancer `ant jar` depuis la racine du projet |
 
-Ce projet reste volontairement minimal : **trois classes, un fichier `build.xml`, une bibliothèque JUnit et un JAR exécutable**.
+Ce projet reste volontairement minimal : **trois classes, un fichier `build.xml`, une bibliothèque JUnit, un JAR exécutable, son MD5 et une archive ZIP**.
