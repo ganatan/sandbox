@@ -1,0 +1,59 @@
+<project name="java-ant-junit" default="all" basedir=".">
+    <property name="src.dir" location="src"/>
+    <property name="build.dir" location="build"/>
+    <property name="classes.dir" location="${build.dir}/classes"/>
+    <property name="tests.dir" location="${build.dir}/tests"/>
+    <property name="dist.dir" location="dist"/>
+    <property name="junit.jar" location="lib/junit.jar"/>
+
+    <target name="check-junit">
+        <available file="${junit.jar}" property="junit.available"/>
+        <fail unless="junit.available" message="Place JUnit 3.8.2 dans lib/junit.jar"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <include name="Main.java"/>
+            <include name="Message.java"/>
+        </javac>
+    </target>
+
+    <target name="compile-test" depends="compile,check-junit">
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${tests.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <include name="MessageTest.java"/>
+            <classpath>
+                <pathelement location="${classes.dir}"/>
+                <pathelement location="${junit.jar}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="compile-test">
+        <java classname="junit.textui.TestRunner" fork="true" failonerror="true">
+            <arg value="MessageTest"/>
+            <classpath>
+                <pathelement location="${classes.dir}"/>
+                <pathelement location="${tests.dir}"/>
+                <pathelement location="${junit.jar}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/app.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="all" depends="test,jar"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+</project>
