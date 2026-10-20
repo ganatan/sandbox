@@ -5,7 +5,7 @@
         <ant dir="message3" target="jar" inheritAll="false"/>
     </target>
     <target name="compile" depends="jar"/>
-    <target name="test">
+    <target name="test" depends="jar">
         <ant dir="message1" target="test" inheritAll="false"/>
         <ant dir="message2" target="test" inheritAll="false"/>
         <ant dir="message3" target="test" inheritAll="false"/>
