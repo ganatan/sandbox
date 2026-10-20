@@ -94,17 +94,144 @@ type message3\dist\message3.jar.MD5
 
 MD5 vérifie ici l'intégrité du fichier et non son authenticité cryptographique.
 
-## IntelliJ IDEA
+## Configurer IntelliJ IDEA sous Windows
 
-Dans **File → Project Structure** :
+**Ant et IntelliJ ont deux classpaths distincts.** Un JAR présent dans `lib/` et déclaré dans `build.xml` est exploitable par Ant, mais IntelliJ ne l'ajoute pas automatiquement aux dépendances de son compilateur. C'est notamment pourquoi un test peut fonctionner avec `ant test` sans afficher l'icône verte **Run** dans l'éditeur.
 
-1. Choisir **JDK 8**.
-2. Définir **Project → Compiler output** sur un dossier `out/` à la racine du projet.
-3. Pour chacun des trois modules, marquer son `src/` **Sources Root** et son `test/` **Test Sources Root**.
-4. Dans **Modules → Dependencies**, ajouter `junit.jar` du module, scope **Test**.
-5. Ajouter également les JAR nécessaires depuis les dossiers `lib/` de message2 et message3, scope **Compile**, après un `ant jar`.
-6. Dans **Modules → Paths**, choisir **Inherit project compile output path**.
+### 1. Préparer les JAR
 
-Si l'icône verte Run manque sur un test, vérifier la dépendance JUnit et **Test Sources Root**. IntelliJ ne lit pas automatiquement les classpaths de `build.xml`. La compilation Ant fonctionne indépendamment de la compilation IntelliJ.
+Installer **JUnit 3.8.2**, et non JUnit 4 ou 5, dans les trois dossiers :
 
-Si `The output path is not specified` apparaît, régler **Compiler output** dans la configuration IntelliJ. Le fichier `build.xml` gère de son côté `build/classes`, `build/tests` et `dist`.
+```text
+message1/lib/junit.jar
+message2/lib/junit.jar
+message3/lib/junit.jar
+```
+
+Depuis la racine du projet, exécuter d'abord :
+
+```bat
+ant jar
+```
+
+Ant construit les bibliothèques dans l'ordre et copie automatiquement les JAR internes :
+
+```text
+message1/lib/junit.jar
+message2/lib/junit.jar
+message2/lib/message1.jar
+message3/lib/junit.jar
+message3/lib/message1.jar
+message3/lib/message2.jar
+```
+
+Le simple dépôt des JAR suffit **pour Ant parce que les fichiers build.xml les déclarent dans leurs classpaths**. Ce ne serait pas suffisant sans cette configuration.
+
+### 2. Déclarer trois modules dans IntelliJ
+
+Ouvrir le projet dans IntelliJ IDEA. Dans **File → Project Structure** (`Ctrl + Alt + Shift + S`), vérifier que `message1`, `message2`, `message3` sont bien reconnus comme trois modules. Si ce n'est pas le cas, utiliser **Modules → + → Import Module** pour importer ou créer un module Java pour chaque dossier.
+
+Dans **Project**, choisir le **JDK 8** comme SDK du projet.
+
+Dans **Modules → Sources**, configurer pour chacun des trois modules :
+
+| Répertoire | Marquage |
+|---|---|
+| `message1/src`, `message2/src`, `message3/src` | **Sources Root** (bleu) dans leurs modules respectifs |
+| `message1/test`, `message2/test`, `message3/test` | **Test Sources Root** (vert) dans leurs modules respectifs |
+
+Ne pas marquer `com/` ou `protocol/` comme racine : la racine des packages est bien `src/` ou `test/`.
+
+### 3. Ajouter les dépendances de chaque module
+
+Aller dans **Project Structure → Modules → Dependencies**. Choisir le module concerné, cliquer sur **+ → JARs or Directories**, sélectionner les JAR physiques dans son `lib/`, puis configurer leur **Scope** :
+
+| Module IntelliJ | Fichier JAR | Scope |
+|---|---|---|
+| `message1` | `message1/lib/junit.jar` | **Test** |
+| `message2` | `message2/lib/junit.jar` | **Test** |
+| `message2` | `message2/lib/message1.jar` | **Compile** |
+| `message3` | `message3/lib/junit.jar` | **Test** |
+| `message3` | `message3/lib/message1.jar` | **Compile** |
+| `message3` | `message3/lib/message2.jar` | **Compile** |
+
+Pourquoi ces scopes ?
+
+- **Test** : JUnit sert à compiler et exécuter `MessageXTest` uniquement.
+- **Compile** : les classes `Message2` et `Message3` utilisent des classes des bibliothèques précédentes.
+
+Dans cette démonstration, on choisit des **JAR** comme dépendances pour reproduire une livraison Java 8 sans Maven. IntelliJ permet également des dépendances entre modules, mais c'est une autre configuration.
+
+Après modification, cliquer sur **Apply → OK**. Lorsqu'Ant reconstruit un JAR, il le recopie à la même adresse dans `lib/`.
+
+### 4. Définir le répertoire de sortie d'IntelliJ
+
+Si IntelliJ indique :
+
+```text
+The output path is not specified for module message1
+```
+
+Ouvrir **File → Project Structure → Project → Compiler output** et choisir, par exemple, le chemin absolu :
+
+```text
+D:\\demo\\java-ant-junit-libraries\\out
+```
+
+Dans **Modules → Paths**, sélectionner **Inherit project compile output path** pour les trois modules, puis **Apply → OK**.
+
+| Build | Configuration | Répertoire de sortie |
+|---|---|---|
+| Ant | `messageX/build.xml` | `messageX/build/classes` et `messageX/build/tests` |
+| IntelliJ | Project Structure | `out/` (sous-répertoires gérés par l'IDE) |
+| Livraison Ant | `messageX/build.xml` | `messageX/dist/` |
+
+Le réglage du **Compiler output** IntelliJ n'est pas tiré automatiquement du `build.xml`.
+
+### 5. Lancer un test avec l'icône Run
+
+Ouvrir, par exemple :
+
+```text
+message3/test/com/example/starter/protocol/Message3Test.java
+```
+
+```java
+package com.example.starter.protocol;
+
+import junit.framework.TestCase;
+
+public class Message3Test extends TestCase {
+    public void testCalculate() {
+        Message3 message = new Message3();
+        System.out.println("00000000001");
+        assertEquals(10, message.calculate());
+    }
+}
+```
+
+IntelliJ devrait reconnaître cette méthode de test JUnit 3 et afficher l'icône verte dans la marge. Sélectionner **Run 'Message3Test.testCalculate()'**.
+
+Résultat attendu : l'affichage `00000000001` et **un test réussi**.
+
+Pour vérifier sans utiliser les configurations de tests IntelliJ, dans CMD à la racine :
+
+```bat
+ant test-message1
+ant test-message2
+ant test-message3
+```
+
+### 6. Diagnostic
+
+| Symptôme | Cause ou vérification |
+|---|---|
+| `package junit.framework does not exist` | JAR JUnit absent des dépendances IntelliJ du module ou mauvais scope |
+| `TestCase` / `assertEquals` en rouge | Vérifier `junit.jar` et son scope **Test** |
+| Pas d'icône verte Run | Vérifier JUnit, `test/` en **Test Sources Root**, signature `public void test...`, prise en charge JUnit dans l'IDE |
+| `Message1` ou `Message2` non résolu | Construire avec `ant jar`, puis déclarer les JAR internes avec scope **Compile** |
+| `The output path is not specified` | Configurer **Project → Compiler output** et **Modules → Paths** |
+| `ant test` fonctionne, mais pas Run dans IntelliJ | Ant a son classpath ; vérifier séparément la configuration des modules IntelliJ |
+| Test d'IntelliJ lancé avec un mauvais Java | Vérifier le **Project SDK**, le **Module SDK** et le **JRE** de la Run Configuration |
+
+**À retenir :** pour Ant, `lib/` + le classpath du `build.xml` ; pour IntelliJ, `Project Structure → Modules → Dependencies`, les racines `src/test` et le chemin de sortie du compilateur.
