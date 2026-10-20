@@ -48,6 +48,13 @@
                 <attribute name="Main-Class" value="Main"/>
             </manifest>
         </jar>
+        <checksum file="${dist.dir}/app.jar" algorithm="MD5" fileext=".MD5" forceOverwrite="true"/>
+        <zip destfile="${dist.dir}/app-install.zip">
+            <fileset dir="${dist.dir}">
+                <include name="app.jar"/>
+                <include name="app.jar.MD5"/>
+            </fileset>
+        </zip>
     </target>
 
     <target name="all" depends="test,jar"/>
