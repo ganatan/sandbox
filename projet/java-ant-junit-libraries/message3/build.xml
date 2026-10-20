@@ -1,0 +1,71 @@
+<project name="message3" default="all" basedir=".">
+    <property name="src.dir" location="src"/>
+    <property name="test.dir" location="test"/>
+    <property name="classes.dir" location="build/classes"/>
+    <property name="tests.dir" location="build/tests"/>
+    <property name="dist.dir" location="dist"/>
+    <path id="runtime.path">
+        <fileset dir="lib" includes="*.jar" excludes="junit.jar"/>
+    </path>
+    <path id="test.path">
+        <path refid="runtime.path"/>
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${tests.dir}"/>
+        <pathelement location="lib/junit.jar"/>
+    </path>
+    <target name="dependencies" depends="check-dependencies">
+        <mkdir dir="lib"/>
+        <copy file="../message1/dist/message1.jar" todir="lib" overwrite="true"/>
+        <copy file="../message2/dist/message2.jar" todir="lib" overwrite="true"/>
+    </target>
+    <target name="check-dependencies">
+        <available file="../message1/dist/message1.jar" property="message1.available"/>
+        <fail unless="message1.available" message="Construire message1 depuis la racine avec ant jar"/>
+        <available file="../message2/dist/message2.jar" property="message2.available"/>
+        <fail unless="message2.available" message="Construire message2 depuis la racine avec ant jar"/>
+    </target>
+
+    <target name="compile" depends="dependencies">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="runtime.path"/>
+        </javac>
+    </target>
+    <target name="check-junit">
+        <available file="lib/junit.jar" property="junit.available"/>
+        <fail unless="junit.available" message="Installer JUnit 3.8.2 dans message3/lib/junit.jar"/>
+    </target>
+    <target name="compile-test" depends="compile,check-junit">
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${tests.dir}" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false">
+            <classpath refid="test.path"/>
+        </javac>
+    </target>
+    <target name="test" depends="compile-test">
+        <java classname="junit.textui.TestRunner" fork="true" failonerror="true">
+            <arg value="com.example.starter.protocol.Message3Test"/>
+            <classpath refid="test.path"/>
+        </java>
+    </target>
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/message3.jar" basedir="${classes.dir}"/>
+        <checksum file="${dist.dir}/message3.jar" algorithm="MD5" fileext=".MD5" forceOverwrite="true"/>
+        <zip destfile="${dist.dir}/message3-install.zip">
+            <fileset dir="${dist.dir}">
+                <include name="message3.jar"/>
+                <include name="message3.jar.MD5"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="message*.jar"/>
+            </fileset>
+        </zip>
+    </target>
+    <target name="all" depends="test,jar"/>
+    <target name="clean">
+        <delete dir="build"/>
+        <delete dir="dist"/>
+        <delete file="lib/message1.jar"/>
+        <delete file="lib/message2.jar"/>
+    </target>
+</project>
