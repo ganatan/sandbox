@@ -1,0 +1,37 @@
+<project name="java-ant-junit-libraries" default="all" basedir=".">
+    <target name="jar">
+        <ant dir="message1" target="jar" inheritAll="false"/>
+        <ant dir="message2" target="jar" inheritAll="false"/>
+        <ant dir="message3" target="jar" inheritAll="false"/>
+    </target>
+    <target name="compile" depends="jar"/>
+    <target name="test">
+        <ant dir="message1" target="test" inheritAll="false"/>
+        <ant dir="message2" target="test" inheritAll="false"/>
+        <ant dir="message3" target="test" inheritAll="false"/>
+    </target>
+    <target name="test-message1">
+        <ant dir="message1" target="test" inheritAll="false"/>
+    </target>
+    <target name="test-message2" depends="build-message1">
+        <ant dir="message2" target="test" inheritAll="false"/>
+    </target>
+    <target name="test-message3" depends="build-message2">
+        <ant dir="message3" target="test" inheritAll="false"/>
+    </target>
+    <target name="build-message1">
+        <ant dir="message1" target="jar" inheritAll="false"/>
+    </target>
+    <target name="build-message2" depends="build-message1">
+        <ant dir="message2" target="jar" inheritAll="false"/>
+    </target>
+    <target name="all">
+        <antcall target="jar"/>
+        <antcall target="test"/>
+    </target>
+    <target name="clean">
+        <ant dir="message3" target="clean" inheritAll="false"/>
+        <ant dir="message2" target="clean" inheritAll="false"/>
+        <ant dir="message1" target="clean" inheritAll="false"/>
+    </target>
+</project>
