@@ -1,0 +1,6 @@
+/build/
+/dist/
+/out/
+/.idea/
+*.iml
+/lib/*.jar
