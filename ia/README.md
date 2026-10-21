@@ -1,5 +1,7 @@
 # Intelligence artificielle — Histoire et concepts
 
+**[Lire d'abord : l'IA expliquée simplement (niveau 10 ans)](001-ia-expliquee-simplement.md)**
+
 ## Objectif
 
 Comprendre progressivement l'intelligence artificielle avant de programmer des expériences en Java 8, sans Internet et sans bibliothèque externe, puis réutiliser ces connaissances pour un site de cinéma comme BoxyMovies.
