@@ -2,6 +2,22 @@
 
 **[Lire d'abord : l'IA expliquée simplement (niveau 10 ans)](001-ia-expliquee-simplement.md)**
 
+## Parcours pratique Java 8 — 10 tutoriels
+
+Chaque chapitre explique un concept avec des mots simples, un exemple cinéma, un programme `Main.java`, les commandes `javac` et `java`, le résultat attendu et un exercice. Aucun téléchargement nécessaire.
+
+1. [Introduction : l'IA comme si j'avais 10 ans](001-ia-expliquee-simplement.md)
+2. [Comment une machine apprend](002-comment-une-machine-apprend.md)
+3. [Les nombres utiles pour l'IA](003-les-nombres-utiles-pour-ia.md)
+4. [Représenter un film avec des nombres](004-representer-un-film-avec-des-nombres.md)
+5. [Trouver des films similaires : 1-NN puis KNN](005-trouver-des-films-similaires-knn.md)
+6. [Faire des groupes avec K-means](006-faire-des-groupes-kmeans.md)
+7. [Prédire un nombre : régression linéaire](007-predire-un-nombre-regression-lineaire.md)
+8. [Prédire oui ou non : classification](008-predire-oui-ou-non-classification.md)
+9. [Détecter les valeurs bizarres : anomalies](009-detecter-les-valeurs-bizarres.md)
+10. [Comprendre les neurones artificiels](010-comprendre-les-neurones.md)
+11. [Comprendre ChatGPT, tokens et LLM](011-comprendre-chatgpt-et-les-llm.md)
+
 ## Objectif
 
 Comprendre progressivement l'intelligence artificielle avant de programmer des expériences en Java 8, sans Internet et sans bibliothèque externe, puis réutiliser ces connaissances pour un site de cinéma comme BoxyMovies.
