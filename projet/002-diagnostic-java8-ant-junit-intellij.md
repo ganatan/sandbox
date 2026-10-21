@@ -1,4 +1,210 @@
-# Java 8 — Guide de secours IntelliJ, Ant, JUnit et JAR externes
+# Java 8 — Guide complet de dépannage Ant, JUnit, IntelliJ et JAR
+
+## Architecture réelle confirmée
+
+**Mission : Java 8, Ant, environ dix bibliothèques dépendantes, centaines de tests JUnit, très peu d'Internet.**
+
+Un script de compilation global compile les bibliothèques externes et le dépôt principal, exécute des tests, génère puis distribue les fichiers nécessaires. **Chaque bibliothèque** possède :
+
+- `src/` : sources Java de cette bibliothèque.
+- `test/` : ses classes JUnit.
+- `lib/` : les JAR **utilisés par cette bibliothèque**, distribués automatiquement par Ant.
+- `dist/` : ses propres livrables générés, **JAR et ZIP**.
+- `build.xml` ou des scripts Ant liés.
+
+Exemple indicatif :
+
+```text
+workspace/
+├── scripts-ant/
+├── Message1/
+│   ├── src/
+│   ├── test/
+│   ├── lib/common.jar
+│   ├── dist/Message1.jar
+│   ├── dist/Message1.zip
+│   └── build.xml
+├── Message2/
+│   ├── src/
+│   ├── test/
+│   ├── lib/Message1.jar
+│   ├── dist/Message2.jar
+│   ├── dist/Message2.zip
+│   └── build.xml
+└── DepotPrincipal/
+    ├── src/
+    ├── test/
+    ├── lib/
+    ├── dist/
+    └── build.xml
+```
+
+### Problèmes observés
+
+1. **Les scripts Ant fonctionnent** et réussissent leurs tests.
+2. Les `System.out.println` ne sont pas visibles dans la sortie Ant consultée.
+3. L'exécution directe JUnit dans IntelliJ a déjà fonctionné après déclaration des Sources Root, Test Sources Root et JUnit.
+4. Le problème revient quand on reprend/réouvre/réimporte le dépôt principal.
+
+**Hypothèse de diagnostic, non certitude :** le classpath IntelliJ n'est pas identique à celui d'Ant, des références vers les JAR générés ont changé, ou les configurations de modules/tests n'ont pas été conservées.
+
+## Règle fondamentale : `lib` n'est pas `dist`
+
+| Chemin de MaLib | Fonction | Action dans IntelliJ |
+|---|---|---|
+| `src/` | Code actuel | Sources Root |
+| `test/` | Tests actuels | Test Sources Root |
+| `lib/*.jar` | JAR utilisés par **MaLib** | Dependencies si nécessaires |
+| `dist/MaLib.jar` | Propre livrable de MaLib | **Ne pas ajouter à MaLib** si ses sources sont ouvertes |
+| `dist/*.zip` | Archive distribuée | Ne pas ajouter au classpath |
+| `build/` ou `out/` | Classes compilées | Sortie de compilation, pas Source Root |
+
+Le JAR `MaLib/dist/MaLib.jar` peut être copié par Ant dans **`AutreLib/lib/`**, car AutreLib l'utilise.
+
+### Faut-il importer les JAR des dix bibliothèques ?
+
+**Non, pas systématiquement.** Pour travailler sur MaLib, partir des JAR présents dans **son `lib/`**, puis vérifier les dépendances indirectes, JUnit et les ressources du test. Ne pas rajouter au hasard tous les `dist/` des autres bibliothèques.
+
+## Procédure prioritaire, étape par étape
+
+1. Exécuter le **script Ant global** qui fabrique/distribue les fichiers `lib` et `dist`.
+2. Repérer la bibliothèque contenant **la classe de test** voulue et son nom de package complet.
+3. Vérifier physiquement ses fichiers `lib/*.jar` et les éventuels JAR de test.
+4. Ouvrir la **bonne racine de projet** dans IntelliJ.
+5. `File → Project Structure → Project` : sélectionner le **JDK 8**.
+6. `Modules → Sources` : marquer le `src` de cette bibliothèque comme Sources et son `test` comme Tests.
+7. `Modules → Dependencies` : ajouter les JAR nécessaires de **son `lib/`**, puis JUnit avec portée Test si disponible.
+8. Vérifier que les dépendances transitives sont résolues et éviter les classes chargées deux fois depuis module et JAR.
+9. `Run → Edit Configurations → + → JUnit` : choisir **Test kind = Class** et le nom complet `com.exemple.MaClasseTest`.
+10. Dans **Use classpath of module**, sélectionner le module contenant ce test et ses dépendances.
+11. Vérifier JRE Java 8, Working directory, propriétés `-D...` et variables d'environnement du test.
+12. Exécuter. En cas d'échec, lire la **première erreur** puis le premier `Caused by`.
+13. Enregistrer la configuration JUnit, fermer et rouvrir IntelliJ pour vérifier sa persistance.
+
+La présence d'un dossier `lib` dans le projet ne garantit pas que ses JAR sont déjà déclarés. **Ajouter un répertoire comme dossier de classes n'ajoute pas nécessairement chaque JAR qu'il contient** : inspecter les entrées réelles dans Dependencies.
+
+## Comprendre le retour du problème après « remise du repo »
+
+- **Réouverture** : vérifier Run Configurations et SDK/modules conservés.
+- **Nouveau clone** : les dossiers générés `lib` et `dist` peuvent être ignorés par Git ; lancer de nouveau le build global avant les tests IntelliJ.
+- **Checkout/reset** : les références IntelliJ vers les modules, bibliothèques ou fichiers de configuration peuvent ne plus correspondre.
+- **Réimportation** : les marques Sources/Tests et les noms de modules peuvent avoir été reconstruits.
+- **Nouveau chemin de workspace** : les chemins absolus vers les JAR ou ressources deviennent invalides.
+- **Nouveau build global** : les JAR sont remplacés ; contrôler versions, chemins, rafraîchissement et sorties compilées.
+
+**Test d'isolement :** faire fonctionner une classe JUnit, fermer/rouvrir *le même dossier* sans Git, puis retester après build Ant, puis seulement après la manipulation de dépôt qui casse l'exécution. Noter le premier changement qui provoque l'échec.
+
+## Afficher `System.out.println` avec Ant
+
+La tâche Ant `junit` peut capturer la console et déposer le résultat dans des rapports.
+
+Premier paramètre à rechercher dans **la tâche effectivement exécutée** : `showoutput="true"`.
+
+```xml
+<junit printsummary="yes" showoutput="true">
+    <formatter type="plain" usefile="false"/>
+    <classpath>
+        <pathelement location="build/classes"/>
+        <pathelement location="build/test-classes"/>
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </classpath>
+    <test name="com.exemple.MaClasseTest"/>
+</junit>
+```
+
+**Exemple de principe, pas un remplacement direct des scripts professionnels.** Les classes doivent déjà être compilées, et le classpath doit comprendre les JAR nécessaires et JUnit.
+
+- `printsummary` : bilan de tests, pas affichage des `println`.
+- `showoutput` : exposition des flux capturés.
+- `formatter` : présentation du rapport.
+- `usefile="false"` : sortie du rapport sur console.
+- `todir` : répertoire des rapports.
+- `fork` : exécution éventuelle des tests dans une JVM distincte.
+
+Le script principal peut déléguer à d'autres fichiers avec `<ant>`, `<subant>`, `<import>` ou `<include>`. Chercher la vraie tâche `<junit>`, `<batchtest>`, les `formatter` et les dossiers contenant `TEST-*.xml` ou `TEST-*.txt`. Ne changer un script partagé qu'après validation de l'équipe.
+
+## Sélectionner une classe par Ant ou Java, sans IntelliJ
+
+Si tu disposes d'une cible qui accepte une propriété :
+
+```bat
+ant -Dtest.class=com.exemple.MaClasseTest test-one
+```
+
+Cette commande **ne fonctionne que si la cible `test-one` est effectivement définie** dans le build et utilise la propriété `test.class` ; sinon il faut étudier ou adapter le script autorisé.
+
+Depuis Java 8, avec JUnit 3 :
+
+```bat
+java -cp "build\classes;build\test-classes;lib\junit.jar;lib\AutreLib.jar" junit.textui.TestRunner com.exemple.MaClasseTest
+```
+
+Avec JUnit 4 :
+
+```bat
+java -cp "build\classes;build\test-classes;lib\junit-4.jar;lib\hamcrest-core.jar;lib\AutreLib.jar" org.junit.runner.JUnitCore com.exemple.MaClasseTest
+```
+
+Ces noms sont des exemples. Ajouter tous les JAR requis. Séparateur de classpath Windows `;`, Linux `:`.
+
+## Erreurs à reconnaître immédiatement
+
+| Message | Piste prioritaire |
+|---|---|
+| `package junit.framework does not exist` | JUnit 3 absent du classpath |
+| `package org.junit does not exist` | JUnit 4 absent |
+| `No runnable methods` | Mauvais framework / mauvaise convention de test |
+| `ClassNotFoundException` | Classe ou package absent du classpath |
+| `NoClassDefFoundError` | Dépendance indirecte absente ou initialisation en échec |
+| `NoSuchMethodError` | Mauvaise version de JAR, doublon |
+| `NoSuchFieldError` | Incompatibilité binaire |
+| `UnsupportedClassVersionError` | Classe compilée avec une version supérieure à Java 8 |
+| `ExceptionInInitializerError` | Échec d'un initialiseur statique |
+| `UnsatisfiedLinkError` | Dépendance native DLL/SO |
+| `FileNotFoundException` | Working directory ou ressource absente |
+| `BindException` | Port occupé |
+| `SocketTimeoutException` | Dépendance réseau ou délai |
+| `OutOfMemoryError` | Mémoire insuffisante |
+| `junit task not found` | Support JUnit indisponible pour Ant |
+| `Unable to find a javac compiler` | Ant lancé avec mauvais JDK/JRE |
+| Ant OK, IntelliJ KO | JDK, classpath, module, Working directory |
+| Après réouverture, KO | Modules, JAR générés ou Run Configuration perdus |
+
+## Commandes utiles hors ligne
+
+Windows CMD :
+
+```bat
+where java
+where javac
+where ant
+java -version
+javac -version
+ant -version
+echo %JAVA_HOME%
+dir lib\*.jar
+dir dist\*.jar
+jar tf lib\AutreLib.jar
+ant -p
+ant -verbose nom-de-la-cible
+```
+
+Sous Linux, utiliser `which`, `ls` et les chemins locaux adaptés.
+
+Pour contrôler le JAR réellement utilisé à l'exécution, ajouter provisoirement aux options JVM de Java 8 :
+
+```text
+-verbose:class
+```
+
+Ne conserver que les traces nécessaires : ces logs peuvent être volumineux.
+
+---
+
+## Annexes — Catalogue complémentaire des diagnostics
+
 
 ## Le problème réel
 
