@@ -1,0 +1,6 @@
+build/
+dist/
+src/generated/**/*.java
+src/generated/**/*.class
+.idea/
+*.iml
