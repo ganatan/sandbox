@@ -86,7 +86,8 @@
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="${dist.dir}"/>
-        <delete dir="${generated.dir}"/>
-        <mkdir dir="${generated.dir}"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${generated.dir}" excludes=".gitkeep"/>
+        </delete>
     </target>
 </project>
