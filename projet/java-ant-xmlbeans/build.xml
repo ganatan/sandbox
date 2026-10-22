@@ -23,7 +23,7 @@
         <mkdir dir="${build.dir}/generated-classes"/>
         <mkdir dir="${dist.dir}"/>
         <taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpathref="dependencies"/>
-        <xmlbean schema="${misc.dir}" includes="film.xsd" srcgendir="${generated.dir}"
+        <xmlbean schema="${misc.dir}" includes="film.xsd,film.xsdconfig" srcgendir="${generated.dir}"
                  classgendir="${build.dir}/generated-classes" destfile="${schema.jar}"
                  javasource="1.8" source="1.8" classpathref="dependencies"
                  failonerror="true"/>
