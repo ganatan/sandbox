@@ -10,3 +10,4 @@
 - [Java 8 — Ant, JUnit et classes générées XSD](java-ant-junit-xsd/README.md)
 - [Java 8 — Ant, JUnit et Apache XMLBeans](java-ant-xmlbeans/README.md)
 - [Java 8 — Ant, JUnit et logging maison](java-ant-junit-logging/README.md)
+- [Java 8 — Ant, JUnit et génériques Java](java-ant-junit-generics/README.md)
