@@ -1,0 +1,102 @@
+<project name="java-ant-xmlbeans" default="all" basedir=".">
+    <property name="main.dir" location="src/main"/>
+    <property name="generated.dir" location="src/generated"/>
+    <property name="misc.dir" location="src/misc"/>
+    <property name="test.dir" location="test"/>
+    <property name="build.dir" location="build"/>
+    <property name="classes.dir" location="${build.dir}/classes"/>
+    <property name="tests.dir" location="${build.dir}/tests"/>
+    <property name="dist.dir" location="dist"/>
+    <property name="schema.jar" location="${dist.dir}/film-schema.jar"/>
+
+    <path id="dependencies">
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
+
+    <target name="check-xmlbeans">
+        <available file="lib/xmlbeans-5.4.1.jar" property="xmlbeans.available"/>
+        <fail unless="xmlbeans.available" message="Copier xmlbeans-5.4.1.jar et ses dependances dans lib/"/>
+    </target>
+
+    <target name="generate" depends="check-xmlbeans">
+        <mkdir dir="${generated.dir}"/>
+        <mkdir dir="${build.dir}/generated-classes"/>
+        <mkdir dir="${dist.dir}"/>
+        <taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpathref="dependencies"/>
+        <xmlbean schema="${misc.dir}" includes="film.xsd" srcgendir="${generated.dir}"
+                 classgendir="${build.dir}/generated-classes" destfile="${schema.jar}"
+                 javasource="1.8" source="1.8" classpathref="dependencies"
+                 failonerror="true"/>
+    </target>
+
+    <target name="compile" depends="generate">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${main.dir}" destdir="${classes.dir}" source="1.8" target="1.8"
+               encoding="UTF-8" includeantruntime="false">
+            <classpath>
+                <path refid="dependencies"/>
+                <pathelement location="${schema.jar}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="check-junit">
+        <available file="lib/junit.jar" property="junit.available"/>
+        <fail unless="junit.available" message="Copier JUnit 3.8.2 dans lib/junit.jar"/>
+    </target>
+
+    <target name="compile-test" depends="compile,check-junit">
+        <mkdir dir="${tests.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${tests.dir}" source="1.8" target="1.8"
+               encoding="UTF-8" includeantruntime="false">
+            <classpath>
+                <path refid="dependencies"/>
+                <pathelement location="${schema.jar}"/>
+                <pathelement location="${classes.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test" depends="compile-test">
+        <java classname="junit.textui.TestRunner" fork="true" failonerror="true">
+            <arg value="com.ganatan.cinema.FilmTest"/>
+            <classpath>
+                <path refid="dependencies"/>
+                <pathelement location="${schema.jar}"/>
+                <pathelement location="${classes.dir}"/>
+                <pathelement location="${tests.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="com.ganatan.cinema.Main" fork="true" failonerror="true">
+            <classpath>
+                <path refid="dependencies"/>
+                <pathelement location="${schema.jar}"/>
+                <pathelement location="${classes.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="${dist.dir}/app.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="com.ganatan.cinema.Main"/>
+            </manifest>
+        </jar>
+        <zip destfile="${dist.dir}/app-install.zip">
+            <fileset dir="${dist.dir}" includes="app.jar,film-schema.jar"/>
+            <zipfileset dir="lib" prefix="lib" includes="*.jar"/>
+        </zip>
+    </target>
+
+    <target name="all" depends="test,jar"/>
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete includeemptydirs="true">
+            <fileset dir="${generated.dir}" excludes=".gitkeep"/>
+        </delete>
+    </target>
+</project>
