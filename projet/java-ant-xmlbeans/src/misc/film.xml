@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<film xmlns="urn:ganatan:cinema">
+    <titre>Alien</titre>
+    <annee>1979</annee>
+</film>
