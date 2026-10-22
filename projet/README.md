@@ -8,3 +8,4 @@
 - [Java 8 — Ant, JUnit 3 et packages séparés](java-ant-junit-packages/README.md)
 - [Java 8 — trois bibliothèques Ant et JUnit](java-ant-junit-libraries/README.md)
 - [Java 8 — Ant, JUnit et classes générées XSD](java-ant-junit-xsd/README.md)
+- [Java 8 — Ant, JUnit et Apache XMLBeans](java-ant-xmlbeans/README.md)
