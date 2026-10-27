@@ -1,10 +1,10 @@
-# Java 8 - AbstractReceiver et super()
+# Java 8 - AbstractReceiver et constructeurs
 
 ## Objectif
 
-Reproduire un constructeur sans paramètre qui utilise un logger par défaut, et permettre à chaque classe fille de choisir une valeur différente transmise à `super`.
+Un exemple minimal reprenant le fonctionnement d'une classe abstraite avec constructeur sans paramètre, logger personnalisé et valeur transmise à `super(...)`.
 
-## Arborescence
+## Structure
 
 ```text
 message-receiver/
@@ -19,27 +19,52 @@ message-receiver/
     └── Main.java
 ```
 
-## Constructeurs de AbstractReceiver
+## Classe de base
+
+`Receiver` reçoit deux paramètres : un `InterfaceLogger` et une chaîne `type`.
+
+```java
+public abstract class Receiver {
+    private final InterfaceLogger logger;
+    private final String type;
+
+    protected Receiver(InterfaceLogger logger, String type) {
+        this.logger = logger;
+        this.type = type;
+    }
+
+    public void receive(String message) {
+        logger.log(type + " : " + message);
+    }
+}
+```
+
+## Classe abstraite intermédiaire
 
 ```java
 public abstract class AbstractReceiver extends Receiver {
-    protected AbstractReceiver() {
-        this(new ConsoleLogger());
+    private static final InterfaceLogger LOGGER = new ConsoleLogger();
+
+    public AbstractReceiver() {
+        this(LOGGER);
     }
 
-    protected AbstractReceiver(InterfaceLogger specificLogger) {
+    public AbstractReceiver(InterfaceLogger specificLogger) {
         this(specificLogger, "DEFAULT");
     }
 
-    protected AbstractReceiver(InterfaceLogger specificLogger, String type) {
+    public AbstractReceiver(InterfaceLogger specificLogger, String type) {
         super(specificLogger, type);
     }
 }
 ```
 
-Le constructeur vide délègue au constructeur avec logger. Celui-ci délègue au constructeur avec logger et valeur. Enfin `super` transmet les deux paramètres à `Receiver`.
+- `AbstractReceiver()` conserve exactement le cas du constructeur sans paramètre.
+- `this(LOGGER)` appelle le deuxième constructeur dans la même classe.
+- `this(specificLogger, "DEFAULT")` définit la valeur par défaut.
+- `super(specificLogger, type)` transmet le logger et la valeur à `Receiver`.
 
-## Deux récepteurs
+## Classes filles
 
 ```java
 public class MyReceiver extends AbstractReceiver {
@@ -52,19 +77,37 @@ public class MyReceiver extends AbstractReceiver {
 ```java
 public class MyReceiver2 extends AbstractReceiver {
     public MyReceiver2() {
-        super(new ConsoleLogger(), "SPECIAL");
+        this(new ConsoleLogger());
+    }
+
+    public MyReceiver2(InterfaceLogger logger) {
+        super(logger, "SPECIAL");
     }
 }
 ```
 
-Le premier utilise `DEFAULT`. Le second utilise `SPECIAL`, passé directement à `super`, sans `INSTANCE`.
+Chaque classe fille peut donc conserver les valeurs par défaut ou définir sa valeur directement dans `super`, sans `INSTANCE`.
 
-## Exécution
+## Main
 
-Depuis le dossier `message-receiver` :
+```java
+public class Main {
+    public static void main(String[] args) {
+        MyReceiver receiver1 = new MyReceiver();
+        MyReceiver2 receiver2 = new MyReceiver2();
+
+        receiver1.receive("Bonjour");
+        receiver2.receive("Bonjour");
+    }
+}
+```
+
+## Compilation Java 8
+
+Sous Linux :
 
 ```bash
-mkdir build
+mkdir -p build
 javac -source 8 -target 8 -d build src/*.java
 java -cp build Main
 ```
@@ -77,11 +120,11 @@ javac -source 8 -target 8 -d build src\*.java
 java -cp build Main
 ```
 
-Sortie :
+Résultat attendu :
 
 ```text
 DEFAULT : Bonjour
 SPECIAL : Bonjour
 ```
 
-Ce projet est autonome sous Java 8, sans dépendances ni Ant.
+Aucune dépendance externe, ni Maven, ni Gradle ou Ant.
