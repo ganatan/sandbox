@@ -1,11 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        MyMessageReceiver receiver1 = new MyMessageReceiver();
-        MyMessageReceiver2 receiver2 = new MyMessageReceiver2();
-        MyMessageReceiver2 receiver3 = new MyMessageReceiver2(DefaultMessageConfiguration.INSTANCE);
+        InterfaceLogger logger = new ConsoleLogger();
 
-        receiver1.receive("Bonjour du recepteur 1");
-        receiver2.receive("Bonjour du recepteur 2");
-        receiver3.receive("Configuration choisie dans Main");
+        MyReceiver receiver1 = new MyReceiver(logger);
+        MyReceiver2 receiver2 = new MyReceiver2(logger);
+
+        receiver1.receive("Bonjour");
+        receiver2.receive("Bonjour");
     }
 }
