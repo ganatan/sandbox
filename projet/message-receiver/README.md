@@ -2,9 +2,9 @@
 
 ## Objectif
 
-Passer une valeur différente au constructeur de la classe mère, sans `INSTANCE`, tout en conservant un paramètre `InterfaceLogger`.
+Reproduire un constructeur sans paramètre qui utilise un logger par défaut, et permettre à chaque classe fille de choisir une valeur différente transmise à `super`.
 
-## Structure
+## Arborescence
 
 ```text
 message-receiver/
@@ -19,43 +19,49 @@ message-receiver/
     └── Main.java
 ```
 
-## Principe
-
-`Receiver` reçoit un `InterfaceLogger` et une chaîne de caractères.
-
-`AbstractReceiver` possède deux constructeurs :
+## Constructeurs de AbstractReceiver
 
 ```java
-protected AbstractReceiver(InterfaceLogger logger) {
-    this(logger, "DEFAULT");
-}
+public abstract class AbstractReceiver extends Receiver {
+    protected AbstractReceiver() {
+        this(new ConsoleLogger());
+    }
 
-protected AbstractReceiver(InterfaceLogger logger, String type) {
-    super(logger, type);
+    protected AbstractReceiver(InterfaceLogger specificLogger) {
+        this(specificLogger, "DEFAULT");
+    }
+
+    protected AbstractReceiver(InterfaceLogger specificLogger, String type) {
+        super(specificLogger, type);
+    }
 }
 ```
 
-`MyReceiver` utilise la valeur par défaut :
+Le constructeur vide délègue au constructeur avec logger. Celui-ci délègue au constructeur avec logger et valeur. Enfin `super` transmet les deux paramètres à `Receiver`.
+
+## Deux récepteurs
 
 ```java
-public MyReceiver(InterfaceLogger logger) {
-    super(logger);
+public class MyReceiver extends AbstractReceiver {
+    public MyReceiver() {
+        super();
+    }
 }
 ```
 
-`MyReceiver2` définit une valeur directement dans l'appel à `super` :
-
 ```java
-public MyReceiver2(InterfaceLogger logger) {
-    super(logger, "SPECIAL");
+public class MyReceiver2 extends AbstractReceiver {
+    public MyReceiver2() {
+        super(new ConsoleLogger(), "SPECIAL");
+    }
 }
 ```
 
-`this(...)` appelle un autre constructeur de la même classe. `super(...)` appelle un constructeur de la classe mère. Ces appels doivent être la première instruction du constructeur en Java 8.
+Le premier utilise `DEFAULT`. Le second utilise `SPECIAL`, passé directement à `super`, sans `INSTANCE`.
 
-## Compiler et exécuter
+## Exécution
 
-Depuis `message-receiver/` :
+Depuis le dossier `message-receiver` :
 
 ```bash
 mkdir build
@@ -71,11 +77,11 @@ javac -source 8 -target 8 -d build src\*.java
 java -cp build Main
 ```
 
-Résultat :
+Sortie :
 
 ```text
 DEFAULT : Bonjour
 SPECIAL : Bonjour
 ```
 
-Aucune dépendance externe, ni Maven, ni Gradle, ni Ant requis.
+Ce projet est autonome sous Java 8, sans dépendances ni Ant.
