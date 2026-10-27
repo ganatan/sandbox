@@ -1,38 +1,61 @@
-# Java 8 - MessageReceiver : constructeurs et configurations
+# Java 8 - AbstractReceiver et super()
 
 ## Objectif
 
-Créer deux récepteurs de messages héritant de la même classe abstraite, mais utilisant chacun une configuration différente. Un constructeur sans paramètre conserve la configuration par défaut et un constructeur avec paramètre permet de choisir la configuration.
+Passer une valeur différente au constructeur de la classe mère, sans `INSTANCE`, tout en conservant un paramètre `InterfaceLogger`.
 
-## Arborescence
+## Structure
 
 ```text
-019-message-receiver/
+message-receiver/
 ├── README.md
 └── src/
-    ├── MessageConfiguration.java
-    ├── DefaultMessageConfiguration.java
-    ├── SpecialMessageConfiguration.java
-    ├── StdMessageReceiver.java
-    ├── AbstractMessageReceiver.java
-    ├── MyMessageReceiver.java
-    ├── MyMessageReceiver2.java
+    ├── InterfaceLogger.java
+    ├── ConsoleLogger.java
+    ├── Receiver.java
+    ├── AbstractReceiver.java
+    ├── MyReceiver.java
+    ├── MyReceiver2.java
     └── Main.java
 ```
 
-## Concepts Java 8
+## Principe
 
-- `MessageConfiguration` est une interface commune aux différentes configurations.
-- `DefaultMessageConfiguration.INSTANCE` et `SpecialMessageConfiguration.INSTANCE` sont des constantes d'enum, utilisées comme instances uniques.
-- `StdMessageReceiver` reçoit la configuration dans son constructeur et la conserve dans un champ `final`.
-- `AbstractMessageReceiver()` appelle `this(DefaultMessageConfiguration.INSTANCE)` : c'est la délégation entre constructeurs.
-- `AbstractMessageReceiver(MessageConfiguration configuration)` appelle `super(configuration)` : c'est la transmission à la classe mère.
-- `MyMessageReceiver` choisit la configuration par défaut.
-- `MyMessageReceiver2` choisit la configuration spéciale ou celle fournie lors de l'instanciation.
+`Receiver` reçoit un `InterfaceLogger` et une chaîne de caractères.
 
-## Compilation
+`AbstractReceiver` possède deux constructeurs :
 
-Depuis le dossier `019-message-receiver` :
+```java
+protected AbstractReceiver(InterfaceLogger logger) {
+    this(logger, "DEFAULT");
+}
+
+protected AbstractReceiver(InterfaceLogger logger, String type) {
+    super(logger, type);
+}
+```
+
+`MyReceiver` utilise la valeur par défaut :
+
+```java
+public MyReceiver(InterfaceLogger logger) {
+    super(logger);
+}
+```
+
+`MyReceiver2` définit une valeur directement dans l'appel à `super` :
+
+```java
+public MyReceiver2(InterfaceLogger logger) {
+    super(logger, "SPECIAL");
+}
+```
+
+`this(...)` appelle un autre constructeur de la même classe. `super(...)` appelle un constructeur de la classe mère. Ces appels doivent être la première instruction du constructeur en Java 8.
+
+## Compiler et exécuter
+
+Depuis `message-receiver/` :
 
 ```bash
 mkdir build
@@ -48,16 +71,11 @@ javac -source 8 -target 8 -d build src\*.java
 java -cp build Main
 ```
 
-## Résultat attendu
+Résultat :
 
 ```text
-Configuration par defaut : Bonjour du recepteur 1
-Configuration speciale : Bonjour du recepteur 2
-Configuration par defaut : Configuration choisie dans Main
+DEFAULT : Bonjour
+SPECIAL : Bonjour
 ```
 
-## Important
-
-Le type du paramètre est `MessageConfiguration` et non une classe de configuration concrète. Les deux enums peuvent donc être transmis au même constructeur. Le constructeur sans paramètre reste disponible pour préserver les appels existants.
-
-Dans un projet réel, remplace `MessageConfiguration` par le type commun effectivement attendu par le constructeur de la classe mère.
+Aucune dépendance externe, ni Maven, ni Gradle, ni Ant requis.
