@@ -1,9 +1,13 @@
 public abstract class AbstractReceiver extends Receiver {
-    protected AbstractReceiver(InterfaceLogger logger) {
-        this(logger, "DEFAULT");
+    protected AbstractReceiver() {
+        this(new ConsoleLogger());
     }
 
-    protected AbstractReceiver(InterfaceLogger logger, String type) {
-        super(logger, type);
+    protected AbstractReceiver(InterfaceLogger specificLogger) {
+        this(specificLogger, "DEFAULT");
+    }
+
+    protected AbstractReceiver(InterfaceLogger specificLogger, String type) {
+        super(specificLogger, type);
     }
 }
