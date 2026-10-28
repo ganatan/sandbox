@@ -14,3 +14,5 @@
 - [Surcharge de constructeur](012-surcharge-constructeur.md)
 - [Abstract](013-abstract.md)
 - [Opérations numériques](014-operations-numeriques.md)
+- [Casting en Java](015-casting.md)
+- [Conversions numériques](016-conversions-numeriques.md)
