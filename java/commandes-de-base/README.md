@@ -16,3 +16,5 @@
 - [Opérations numériques](014-operations-numeriques.md)
 - [Casting en Java](015-casting.md)
 - [Conversions numériques](016-conversions-numeriques.md)
+- [Conversions avancées int, long, float et double](017-conversions-avancees.md)
+- [Dates, heures et conversions](018-dates-heures-conversions.md)
