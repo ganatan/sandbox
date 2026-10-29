@@ -5,14 +5,14 @@
 Vérifier la conversion de `MsgBody1` vers `MsgBody2` sans réutiliser le converter dans le calcul attendu et sans modifier le message converti.
 
 - `actual` : message d'origine, avec `get_pitch()` qui retourne un `float`.
-- `expected` : message après conversion, contenant `StructEncsElevation`.
+- `expected` : message après conversion, contenant `StructPitch`.
 - `set_value()` et `get_value()` : méthodes de la structure chargées de transformer la valeur.
 
 ## Fonction de test
 
 ```java
-private void checkPitch(StructEncsElevation expected, float actual) {
-    StructEncsElevation elevation = expected.copy();
+private void checkPitch(StructPitch expected, float actual) {
+    StructPitch elevation = expected.copy();
     elevation.set_value(actual);
     assertEquals(expected.get_value(), elevation.get_value(), 0.0);
 }
