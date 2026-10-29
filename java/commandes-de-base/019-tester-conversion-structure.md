@@ -2,7 +2,7 @@
 
 ## Objectif
 
-Vérifier la conversion de `MsgBodyNavigation` vers `MsgBodyPlatform` sans réutiliser le converter dans le calcul attendu et sans modifier le message converti.
+Vérifier la conversion de `MsgBody1` vers `MsgBody2` sans réutiliser le converter dans le calcul attendu et sans modifier le message converti.
 
 - `actual` : message d'origine, avec `get_pitch()` qui retourne un `float`.
 - `expected` : message après conversion, contenant `StructEncsElevation`.
@@ -21,7 +21,7 @@ private void checkPitch(StructEncsElevation expected, float actual) {
 ## Utilisation
 
 ```java
-void test(MsgBodyPlatform expected, MsgBodyNavigation actual) {
+void test(MsgBody2 expected, MsgBody1 actual) {
     checkPitch(expected.get_attitude().get_pitch(), actual.get_pitch());
 }
 ```
