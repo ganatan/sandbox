@@ -18,3 +18,4 @@
 - [Conversions numériques](016-conversions-numeriques.md)
 - [Conversions avancées int, long, float et double](017-conversions-avancees.md)
 - [Dates, heures et conversions](018-dates-heures-conversions.md)
+- [Tester une conversion avec une structure Java 8](019-tester-conversion-structure.md)
