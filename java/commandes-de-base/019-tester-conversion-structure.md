@@ -2,19 +2,19 @@
 
 ## Objectif
 
-Vérifier la conversion de `MsgBody1` vers `MsgBody2` sans réutiliser le converter dans le calcul attendu et sans modifier le message converti.
+Vérifier la conversion de `MsgBody1` vers `MsgBody2` en réutilisant directement `StructPitch`, sans constructeur, sans copie et sans rappeler le converter.
 
-- `actual` : message d'origine, avec `get_pitch()` qui retourne un `float`.
-- `expected` : message après conversion, contenant `StructPitch`.
-- `set_value()` et `get_value()` : méthodes de la structure chargées de transformer la valeur.
+- `actual` : message d'origine (`MsgBody1`), avec un `float` dans `get_pitch()`.
+- `expected` : message après conversion (`MsgBody2`), contenant `StructPitch`.
+- `set_value()` et `get_value()` : méthodes de transformation de la structure.
 
 ## Fonction de test
 
 ```java
 private void checkPitch(StructPitch expected, float actual) {
-    StructPitch elevation = expected.copy();
-    elevation.set_value(actual);
-    assertEquals(expected.get_value(), elevation.get_value(), 0.0);
+    double value = expected.get_value();
+    expected.set_value(actual);
+    assertEquals(value, expected.get_value(), 0.0);
 }
 ```
 
@@ -26,10 +26,11 @@ void test(MsgBody2 expected, MsgBody1 actual) {
 }
 ```
 
-## Points importants
+## À retenir
 
-- `copy()` est une méthode **supposée** dans cet exemple : elle doit exister dans la bibliothèque et produire une copie indépendante. Ce n'est pas une méthode Java standard.
-- Si `copy()` n'existe pas, utiliser le mécanisme de copie ou de création indépendant réellement fourni par la bibliothèque. Ne pas modifier `expected`.
-- `set_value(actual)` et `get_value()` appliquent la logique de la structure ; un cast `(float)` ou `(double)` ne remplace pas cette transformation.
-- `0.0` impose une comparaison numérique sans tolérance.
-- Pour un test indépendant de la transformation elle-même, utiliser également des valeurs attendues de référence.
+- `value` conserve la valeur obtenue après conversion.
+- `set_value(actual)` applique la valeur d'origine à la structure existante.
+- `get_value()` retourne la valeur transformée à comparer.
+- Aucun constructeur, `copy()`, `clone()` ou rappel du converter.
+- `0.0` signifie aucune tolérance numérique.
+- Le test **modifie `expected`**. Il n'est valide que si `set_value(actual)` puis `get_value()` reproduisent la transformation attendue. Il ne vérifie pas indépendamment la justesse de cette transformation.
