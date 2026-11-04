@@ -21,3 +21,7 @@ Documentation des concepts informatiques essentiels.
 | Concept | Description |
 |---|---|
 | [Historique Java 8 à 27](005-historique-java.md) | Versions, évolutions du langage et outils Java : Maven, Tomcat, Spring, JUnit |
+
+## Intelligence artificielle
+
+[Comprendre l'IA : 12 tutoriels progressifs sous forme de discussions](ia/README.md)
