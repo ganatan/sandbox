@@ -1,33 +1,94 @@
-# Qu'est-ce que l'intelligence artificielle ?
+# Comprendre l'intelligence artificielle
 
-**Toi :** Une IA, c'est un programme qui pense ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** C'est d'abord un système qui accomplit des tâches associées à l'intelligence : reconnaître, prédire, traduire, planifier ou générer. Cela ne prouve pas qu'il pense ou ressent comme nous.
+## 1. Comprendre le principe
 
-## Le programme classique et le modèle
+Une IA accomplit certaines tâches associées à l'intelligence humaine.
 
-Un logiciel classique applique des règles explicites : si une condition est remplie, il effectue une opération prévue. Avec l'apprentissage automatique, on définit plutôt une architecture, des exemples et un objectif. Un algorithme ajuste alors des paramètres numériques pour que le modèle réussisse sa tâche.
+Elle traite des informations grâce à des calculs et des modèles.
 
-**Toi :** Pourtant, dans les deux cas, il y a des calculs ?
+Reconnaître un visage ou traduire un texte en sont des exemples.
 
-**Moi :** Absolument. L'IA ne remplace pas les algorithmes : elle les utilise. La différence essentielle est que beaucoup de régularités sont *apprises* plutôt qu'écrites directement.
+Elle n'est pas nécessairement consciente.
 
-Imagine reconnaître les chats. Énumérer toutes leurs apparences à la main est presque impossible. On peut entraîner un modèle sur des images variées pour qu'il apprenne les caractéristiques utiles, y compris dans des photos nouvelles.
+## 2. Une idée fondamentale
 
-## Des IA très différentes
+Un logiciel traditionnel applique des règles explicites.
 
-Les systèmes symboliques manipulent des règles et des connaissances. Le machine learning exploite des régularités statistiques. Le deep learning utilise des réseaux de neurones à plusieurs couches. Les systèmes génératifs produisent du contenu : texte, image, son, vidéo.
+Un modèle apprenant ajuste des paramètres grâce à des exemples.
 
-Ces familles peuvent être combinées ; toutes les IA ne sont pas des chatbots.
+Il peut reconnaître un animal malgré des photos très différentes.
 
-## Une question fondamentale
+Les deux techniques se complètent souvent.
 
-**Toi :** Une réponse intelligente prouve-t-elle la conscience ?
+## 3. Un exemple à imaginer
 
-**Moi :** Non. Il faut distinguer le comportement observable, le raisonnement sur certaines tâches, la représentation des connaissances et l'expérience subjective. La conscience artificielle n'est pas une propriété démontrée par le simple fait de bien converser.
+L'IA symbolique représente des règles et des connaissances.
 
-## À retenir
+Le machine learning s'appuie sur les données.
 
-L'IA est un ensemble de méthodes informatiques, pas une magie. Elle peut généraliser à de nouvelles situations, mais aussi commettre des erreurs. Ses résultats demandent une évaluation adaptée.
+Le deep learning utilise des réseaux de neurones profonds.
 
-**Question suivante :** comment cette discipline est-elle apparue ?
+L'IA générative crée des textes, images ou sons.
+
+## 4. Comment cela fonctionne
+
+Une IA peut travailler sans corps ni visage.
+
+Un filtre antispam peut s'appuyer sur des modèles statistiques.
+
+Un robot peut au contraire utiliser des commandes entièrement classiques.
+
+Il ne faut donc pas confondre robotique et IA.
+
+## 5. Le contexte historique ou pratique
+
+Les données fournissent les exemples ou les observations.
+
+L'algorithme définit une méthode de traitement.
+
+Le modèle produit une prédiction à partir de nouvelles entrées.
+
+L'entraînement sert à ajuster les paramètres du modèle.
+
+## 6. Les conséquences
+
+L'intelligence pratique se mesure sur des tâches précises.
+
+Une conversation fluide ne prouve pas la conscience.
+
+Un système peut être fort en mathématiques et faible ailleurs.
+
+Il faut éviter d'attribuer des intentions humaines à un calcul.
+
+## 7. Les limites et précautions
+
+Les résultats peuvent être erronés malgré un ton assuré.
+
+Un modèle peut reproduire les défauts de ses données.
+
+Une situation inconnue peut provoquer un échec.
+
+La vérification humaine reste essentielle.
+
+## 8. Ce qu'il faut retenir
+
+L'IA est un domaine scientifique qui remonte à plusieurs décennies.
+
+ChatGPT représente une application récente et populaire.
+
+Les systèmes actuels sont des outils à évaluer.
+
+Comprendre leurs capacités et leurs limites est la meilleure première étape.
+
+## Résumé
+
+- Une IA accomplit certaines tâches associées à l'intelligence humaine.
+- Un logiciel traditionnel applique des règles explicites.
+- L'IA symbolique représente des règles et des connaissances.
+- Une IA peut travailler sans corps ni visage.
+- Les données fournissent les exemples ou les observations.
+- L'intelligence pratique se mesure sur des tâches précises.
+- Les résultats peuvent être erronés malgré un ton assuré.
+- L'IA est un domaine scientifique qui remonte à plusieurs décennies.

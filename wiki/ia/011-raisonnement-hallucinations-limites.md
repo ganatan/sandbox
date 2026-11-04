@@ -1,37 +1,94 @@
-# Raisonnement, hallucinations et limites de l'IA
+# Les agents IA : de la conversation à l'action
 
-**Toi :** Comment un système capable de résoudre un problème difficile peut-il inventer une référence ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Parce que produire un texte plausible et vérifier un fait sont deux opérations différentes. Un modèle de langage est entraîné à générer des suites adaptées à son contexte, pas à consulter automatiquement une source de vérité pour chaque affirmation.
+## 1. Comprendre le principe
 
-## L'hallucination
+Un chatbot répond généralement à une demande textuelle.
 
-On appelle couramment **hallucination** une sortie qui présente une information inventée ou erronée comme si elle était fondée : un livre inexistant, une citation fabriquée, un calcul incorrect.
+Un agent peut poursuivre un objectif en plusieurs étapes.
 
-**Toi :** Est-ce qu'il ment ?
+Il utilise souvent un modèle et des outils externes.
 
-**Moi :** Le mot « mensonge » suppose généralement une intention de tromper. Dans le cas d'un modèle, il est plus précis de parler de génération incorrecte ou insuffisamment vérifiée.
+Son autonomie dépend des autorisations accordées.
 
-## Raisonnement et apparence de raisonnement
+## 2. Une idée fondamentale
 
-Un modèle peut résoudre de vrais problèmes, combiner des étapes et effectuer des déductions. Mais son niveau de fiabilité varie fortement selon la tâche. Une démonstration fluide peut masquer une erreur dans une prémisse ou une étape.
+Imaginons un assistant chargé d'organiser une réunion.
 
-Il ne faut pas confondre une réponse convaincante avec une preuve.
+Il doit examiner les disponibilités des participants.
 
-## Les limites importantes
+Il peut proposer des créneaux et préparer une invitation.
 
-Les connaissances peuvent être incomplètes ou périmées. Les consignes peuvent être ambiguës. Le contexte est limité. Certains biais proviennent des données et de l'entraînement. Un modèle peut échouer à reproduire une réponse correcte dans des conditions légèrement différentes.
+L'envoi effectif nécessite une connexion et des permissions.
 
-## Comment travailler sérieusement avec l'IA ?
+## 3. Un exemple à imaginer
 
-**Toi :** Alors comment lui faire confiance ?
+Un agent peut diviser un objectif en tâches simples.
 
-**Moi :** En adaptant la vérification au risque. Pour une explication pédagogique, on peut confronter plusieurs exemples. Pour une affirmation historique, consulter des sources. Pour un résultat numérique, refaire le calcul. Pour la santé, le droit ou la sécurité, ne pas substituer une réponse générée à une expertise adaptée.
+Il choisit ensuite une action à réaliser.
 
-Les citations ne suffisent pas : il faut vérifier qu'elles existent et soutiennent réellement les affirmations.
+Il observe le résultat de cette action.
 
-## À retenir
+Il peut corriger son plan en fonction de ce qu'il découvre.
 
-L'IA est un outil puissant mais faillible. Sa crédibilité linguistique ne constitue pas une garantie factuelle. Une bonne utilisation associe question précise, sources, contrôles et jugement humain.
+## 4. Comment cela fonctionne
 
-**Question suivante :** comment concevoir utilement un système d'IA complet ?
+Les outils permettent de chercher des informations.
+
+Ils peuvent aussi consulter des documents ou un agenda.
+
+Certains outils autorisent des modifications de fichiers.
+
+Aucune de ces capacités n'est automatique sans accès approprié.
+
+## 5. Le contexte historique ou pratique
+
+La boucle agentique combine décision, action et observation.
+
+Elle peut s'exécuter plusieurs fois sur une même mission.
+
+Une étape erronée peut perturber toutes les suivantes.
+
+Les conditions d'arrêt doivent être clairement définies.
+
+## 6. Les conséquences
+
+Un agent peut mal comprendre une instruction.
+
+Une source consultée peut contenir une instruction malveillante.
+
+Des actions inutiles peuvent augmenter les coûts.
+
+Les erreurs sont particulièrement sensibles lorsque l'agent peut agir.
+
+## 7. Les limites et précautions
+
+Les droits d'accès doivent rester limités au nécessaire.
+
+La suppression de données mérite une validation explicite.
+
+Les actions importantes doivent être traçables.
+
+Un humain doit garder le contrôle lorsque les conséquences sont sérieuses.
+
+## 8. Ce qu'il faut retenir
+
+Les agents peuvent aider sur certains processus répétitifs.
+
+Ils ne deviennent pas infaillibles parce qu'ils disposent d'outils.
+
+Leur qualité se mesure sur les résultats réels.
+
+La sécurité et la supervision restent centrales.
+
+## Résumé
+
+- Un chatbot répond généralement à une demande textuelle.
+- Imaginons un assistant chargé d'organiser une réunion.
+- Un agent peut diviser un objectif en tâches simples.
+- Les outils permettent de chercher des informations.
+- La boucle agentique combine décision, action et observation.
+- Un agent peut mal comprendre une instruction.
+- Les droits d'accès doivent rester limités au nécessaire.
+- Les agents peuvent aider sur certains processus répétitifs.

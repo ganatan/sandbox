@@ -1,37 +1,94 @@
-# L'histoire de l'intelligence artificielle
+# Les origines de l'IA et ses pionniers
 
-**Toi :** Est-ce que tout a commencé avec ChatGPT ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Non, loin de là. ChatGPT est une étape visible d'une histoire commencée bien avant Internet grand public.
+## 1. Comprendre le principe
 
-## Les premiers grands jalons
+Les automates existent depuis bien avant les ordinateurs modernes.
 
-En **1950**, Alan Turing propose de discuter de l'intelligence des machines à travers leur comportement dans une conversation. Ce n'est pas un test de conscience. En **1956**, l'atelier de Dartmouth contribue à installer le terme « intelligence artificielle ».
+Ils reproduisaient des mouvements sans nécessairement apprendre.
 
-Les premiers chercheurs essaient de traduire le raisonnement en symboles et en règles. C'est prometteur pour les mathématiques, la logique ou certains jeux, mais beaucoup plus difficile dans la réalité quotidienne, pleine d'ambiguïtés.
+La philosophie a étudié la logique et les règles du raisonnement.
 
-## Les promesses et les hivers
+Les mathématiques ont rendu des opérations formalisables.
 
-**Toi :** Pourquoi n'a-t-on pas eu d'IA générale dès les années 1960 ?
+## 2. Une idée fondamentale
 
-**Moi :** Parce qu'une conversation, une image ou une décision pratique mobilise énormément de connaissances implicites. Les systèmes experts des années 1970 et 1980 réussissent certaines tâches spécialisées, mais exigent souvent des règles fragiles et coûteuses à maintenir. Les déceptions contribuent à des périodes de financement réduit, appelées « hivers de l'IA ».
+Alan Turing contribue aux fondations de l'informatique théorique.
 
-## L'apprentissage change la trajectoire
+En 1950, il publie un article sur les machines et l'intelligence.
 
-Avec plus de données, de calcul et de meilleures méthodes statistiques, les modèles apprennent davantage directement à partir des exemples.
+Il propose un jeu d'imitation au moyen d'une conversation écrite.
 
-En **1997**, Deep Blue bat Garry Kasparov aux échecs. En **2012**, AlexNet marque un tournant dans la reconnaissance d'images. En **2016**, AlphaGo bat Lee Sedol au go. En **2017**, l'article *Attention Is All You Need* présente le Transformer.
+Ce jeu ne mesure pas directement la conscience.
 
-Au début des années 2020, les interfaces conversationnelles mettent les modèles génératifs entre les mains du grand public.
+## 3. Un exemple à imaginer
 
-## Le véritable moteur du progrès
+En 1943, Warren McCulloch et Walter Pitts proposent un modèle mathématique de neurones.
 
-**Toi :** Alors, quelle a été la découverte miracle ?
+Ces unités simplifiées permettent de réaliser des opérations logiques.
 
-**Moi :** Il n'y en a pas eu qu'une. Les progrès viennent de la rencontre entre algorithmes, architectures, données, puissance de calcul, ingénierie et recherche.
+Leur proposition inspire une partie de l'histoire des réseaux artificiels.
 
-## À retenir
+Elle n'est pas une reproduction complète d'un cerveau.
 
-L'IA a connu des cycles d'enthousiasme et de déception. Elle ne suit pas une progression uniforme. Un système exceptionnel dans une tâche peut être incapable de résoudre un problème très simple dans une autre.
+## 4. Comment cela fonctionne
 
-**Question suivante :** qu'apprend exactement une machine ?
+Le terme intelligence artificielle apparaît dans une proposition de 1955.
+
+Un atelier se déroule à Dartmouth durant l'été 1956.
+
+Il est souvent considéré comme le lancement officiel du domaine.
+
+Les chercheurs veulent étudier l'apprentissage et le langage.
+
+## 5. Le contexte historique ou pratique
+
+John McCarthy joue un rôle central à Dartmouth.
+
+Marvin Minsky participe aux premières recherches sur l'intelligence.
+
+Claude Shannon a fondé la théorie de l'information.
+
+Nathaniel Rochester apporte une expérience de l'informatique industrielle.
+
+## 6. Les conséquences
+
+Les premières machines disposent de peu de mémoire.
+
+La résolution de problèmes logiques semble prometteuse.
+
+Le langage courant se révèle pourtant extrêmement difficile.
+
+Les succès limités provoquent parfois des espoirs excessifs.
+
+## 7. Les limites et précautions
+
+La psychologie, les mathématiques et la linguistique participent à cette histoire.
+
+Les chercheurs ne partagent pas tous la même vision.
+
+Certains privilégient les symboles, d'autres les méthodes apprenantes.
+
+L'IA est dès l'origine un ensemble de pistes différentes.
+
+## 8. Ce qu'il faut retenir
+
+La discipline ne possède pas d'inventeur unique.
+
+Les grandes découvertes viennent de travaux collectifs.
+
+Dartmouth est une étape historique et non l'apparition de ChatGPT.
+
+Connaître les pionniers aide à comprendre la suite.
+
+## Résumé
+
+- Les automates existent depuis bien avant les ordinateurs modernes.
+- Alan Turing contribue aux fondations de l'informatique théorique.
+- En 1943, Warren McCulloch et Walter Pitts proposent un modèle mathématique de neurones.
+- Le terme intelligence artificielle apparaît dans une proposition de 1955.
+- John McCarthy joue un rôle central à Dartmouth.
+- Les premières machines disposent de peu de mémoire.
+- La psychologie, les mathématiques et la linguistique participent à cette histoire.
+- La discipline ne possède pas d'inventeur unique.

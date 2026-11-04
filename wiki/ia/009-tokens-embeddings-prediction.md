@@ -1,37 +1,94 @@
-# Tokens, embeddings et prédiction
+# Claude, Gemini et les autres grandes familles d'IA
 
-**Toi :** Pourquoi ne pas simplement travailler sur des mots ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Parce que les langues comportent des mots rares, des terminaisons, des chiffres et des caractères très divers. Le **tokeniseur** découpe le texte en unités : parfois un mot, parfois une partie de mot ou un signe.
+## 1. Comprendre le principe
 
-## Les tokens
+ChatGPT a contribué à populariser les assistants génératifs.
 
-Une phrase courte peut correspondre à plusieurs tokens. Le découpage dépend du tokeniseur et de la langue ; il n'existe pas un nombre universel de caractères par token.
+D'autres laboratoires ont développé des produits comparables.
 
-Chaque token est associé à un identifiant numérique. Cet identifiant n'exprime pas à lui seul le sens.
+La concurrence porte sur les modèles et leurs outils.
 
-## Les embeddings
+Les capacités changent rapidement selon les versions.
 
-**Toi :** Comment passer d'un numéro à une idée ?
+## 2. Une idée fondamentale
 
-**Moi :** Le modèle transforme les identifiants en **vecteurs numériques**, appelés embeddings. Pendant le traitement, ces représentations sont enrichies par le contexte et les différentes couches.
+Anthropic est fondée en 2021.
 
-Imagine une carte où certaines représentations occupent des régions proches pour des raisons d'usage ou de signification. C'est une image intuitive, pas une carte stable de tous les concepts humains.
+L'organisation comprend notamment d'anciens membres d'OpenAI.
 
-## Pourquoi le contexte importe
+Claude est présenté publiquement en mars 2023.
 
-Le mot « avocat » peut désigner une profession ou un aliment. Sa représentation contextualisée peut différer fortement selon la phrase. Il ne suffit donc pas d'attribuer une définition fixe à chaque mot.
+Il s'agit d'une famille de modèles et d'assistants.
 
-## Prédire le token suivant
+## 3. Un exemple à imaginer
 
-Le modèle calcule des scores, puis des probabilités sur les tokens candidats. La stratégie de génération influence le choix : on peut privilégier les sorties les plus probables ou introduire une part de variation.
+Google possède une longue expérience de recherche en IA.
 
-**Toi :** Si le prochain token est prédit, pourquoi la réponse peut-elle développer un raisonnement ?
+Des équipes de Google ont participé à la création du Transformer.
 
-**Moi :** Parce que répéter cette opération produit des séquences complexes, qui peuvent contenir des étapes de résolution. Mais une explication générée après coup n'est pas nécessairement une description fiable de tous les mécanismes internes ayant produit la réponse.
+Gemini désigne une famille de modèles et des applications associées.
 
-## À retenir
+Le nom d'un produit peut cacher plusieurs versions techniques.
 
-Le token est une unité de traitement. L'embedding est une représentation numérique apprise. Le contexte transforme cette représentation. Le modèle prédit des suites probables sans disposer d'un contrôle automatique de vérité.
+## 4. Comment cela fonctionne
 
-**Question suivante :** comment adapte-t-on un modèle à une entreprise ou à un besoin précis ?
+Meta développe la famille Llama.
+
+Certaines versions possèdent des poids publiquement accessibles.
+
+Cela ne signifie pas que leur licence soit sans restrictions.
+
+Cette diffusion nourrit un écosystème de recherche et d'applications.
+
+## 5. Le contexte historique ou pratique
+
+Microsoft intègre des fonctions d'IA dans des services professionnels.
+
+Le fournisseur du produit n'est pas toujours le créateur du modèle.
+
+Les fonctionnalités dépendent de l'application et des connexions disponibles.
+
+Il faut distinguer interface, modèle et outils.
+
+## 6. Les conséquences
+
+Deux modèles peuvent être efficaces sur des tâches différentes.
+
+La taille du contexte peut compter pour de longs documents.
+
+La rapidité et le coût influencent aussi le choix.
+
+Les conditions de confidentialité sont importantes.
+
+## 7. Les limites et précautions
+
+Les classements évoluent lorsque de nouveaux modèles apparaissent.
+
+Un seul test ne représente pas toutes les capacités.
+
+Il faut examiner la méthodologie des comparaisons.
+
+Les réponses doivent être confrontées à des sources fiables.
+
+## 8. Ce qu'il faut retenir
+
+La pluralité des acteurs facilite l'innovation.
+
+Elle ne garantit pas une absence d'erreur.
+
+Les noms commerciaux ne suffisent pas à comprendre la technologie.
+
+L'utilisateur doit choisir selon son besoin réel.
+
+## Résumé
+
+- ChatGPT a contribué à populariser les assistants génératifs.
+- Anthropic est fondée en 2021.
+- Google possède une longue expérience de recherche en IA.
+- Meta développe la famille Llama.
+- Microsoft intègre des fonctions d'IA dans des services professionnels.
+- Deux modèles peuvent être efficaces sur des tâches différentes.
+- Les classements évoluent lorsque de nouveaux modèles apparaissent.
+- La pluralité des acteurs facilite l'innovation.

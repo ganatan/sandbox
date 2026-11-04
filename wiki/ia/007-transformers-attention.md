@@ -1,41 +1,94 @@
-# Transformers et mécanisme d'attention
+# Les neurones artificiels et le Transformer
 
-**Toi :** Pourquoi le mot « Transformer » revient-il partout ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Parce que cette architecture, publiée en 2017, a profondément influencé les modèles modernes de langage et de nombreux autres systèmes.
+## 1. Comprendre le principe
 
-## Le problème du contexte
+Un neurone artificiel réalise une opération mathématique.
 
-Prenons « Le réalisateur a téléphoné à l'acteur parce qu'il avait une question ». Pour interpréter « il », il faut tenir compte de plusieurs éléments. Une phrase n'est pas simplement une succession de mots indépendants.
+Il combine des nombres avec des poids ajustables.
 
-Les anciens modèles séquentiels traitaient souvent les éléments les uns après les autres. Les Transformers ont introduit une manière particulièrement efficace de faire interagir les représentations de différents éléments.
+Un réseau assemble de nombreuses opérations.
 
-## L'attention
+Cette organisation ne reproduit pas intégralement le cerveau humain.
 
-**Toi :** Est-ce que la machine se concentre comme nous ?
+## 2. Une idée fondamentale
 
-**Moi :** C'est une métaphore. L'**attention** calcule des poids qui déterminent dans quelle mesure les représentations de différents éléments contribuent au traitement d'un élément donné.
+Un réseau profond transforme les données à travers plusieurs couches.
 
-Pour le dire simplement : chaque élément peut rechercher des informations utiles dans les autres éléments accessibles. Les calculs utilisent des représentations appelées, en anglais, *queries*, *keys* et *values*.
+Certaines couches peuvent détecter des motifs élémentaires.
 
-## Pourquoi plusieurs têtes ?
+D'autres combinent ces motifs en représentations complexes.
 
-L'**attention multi-têtes** permet de réaliser plusieurs interactions en parallèle, avec des transformations différentes. On ne peut pas supposer que chaque tête correspond à une catégorie linguistique stable et clairement identifiable.
+La profondeur n'est pas synonyme de conscience.
 
-## L'ordre des mots
+## 3. Un exemple à imaginer
 
-**Toi :** Si tous les mots se regardent, comment connaître leur ordre ?
+Pendant l'entraînement, le réseau produit une prédiction.
 
-**Moi :** Le Transformer utilise des informations de position. Les mécanismes exacts varient selon les modèles.
+Une mesure indique l'erreur commise.
 
-Dans un modèle génératif autorégressif, un masque causal empêche un élément de consulter directement les éléments futurs pendant la prédiction.
+La rétropropagation aide à calculer l'influence des paramètres.
 
-## Le Transformer n'est pas toute l'IA
+Un optimiseur modifie progressivement les poids.
 
-Il possède aussi d'autres transformations, notamment des couches dites *feed-forward*, ainsi que des mécanismes de normalisation et de connexions résiduelles. Il existe différentes familles : encodeurs, décodeurs et encodeurs-décodeurs.
+## 4. Comment cela fonctionne
 
-## À retenir
+Les calculs des réseaux nécessitent souvent des opérations massives.
 
-Le Transformer repose sur des représentations numériques et des mécanismes d'attention qui font interagir les éléments d'une séquence. Il constitue une architecture ; ce n'est ni une base de connaissances infaillible ni une preuve de conscience.
+Les cartes graphiques peuvent les accélérer.
 
-**Question suivante :** comment cette architecture devient-elle un chatbot ?
+L'entraînement de grands modèles exige des ressources importantes.
+
+La qualité des données reste aussi importante que le matériel.
+
+## 5. Le contexte historique ou pratique
+
+Une phrase ne se comprend pas mot par mot indépendamment du contexte.
+
+Un pronom peut renvoyer à un élément éloigné.
+
+L'ordre des mots influence le sens.
+
+Les modèles doivent représenter ces relations.
+
+## 6. Les conséquences
+
+En 2017, des chercheurs présentent l'architecture Transformer.
+
+Elle repose notamment sur un mécanisme d'attention.
+
+Ce mécanisme fait interagir certaines représentations d'une séquence.
+
+Il constitue un tournant majeur du traitement du langage.
+
+## 7. Les limites et précautions
+
+L'attention calcule des poids entre des représentations.
+
+Elle ne signifie pas que le programme porte une attention consciente.
+
+Des variantes utilisent plusieurs têtes d'attention.
+
+Des informations de position permettent aussi de traiter l'ordre.
+
+## 8. Ce qu'il faut retenir
+
+Le Transformer a influencé de nombreux grands modèles de langage.
+
+Il est également adapté à d'autres types de données.
+
+Il présente des coûts et des limites techniques.
+
+Il faut distinguer cette architecture de ses applications commerciales.
+
+## Résumé
+
+- Un neurone artificiel réalise une opération mathématique.
+- Un réseau profond transforme les données à travers plusieurs couches.
+- Pendant l'entraînement, le réseau produit une prédiction.
+- Les calculs des réseaux nécessitent souvent des opérations massives.
+- Une phrase ne se comprend pas mot par mot indépendamment du contexte.
+- En 2017, des chercheurs présentent l'architecture Transformer.
+- L'attention calcule des poids entre des représentations.
+- Le Transformer a influencé de nombreux grands modèles de langage.

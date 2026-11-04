@@ -1,45 +1,94 @@
-# Comprendre la conception d'une application d'IA
+# L'avenir de l'IA : opportunités et risques
 
-**Toi :** Si je voulais créer un véritable service basé sur l'IA, qu'est-ce que je devrais comprendre ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** D'abord, l'IA n'est qu'une composante d'un système. Une application sérieuse a aussi besoin de données, de règles métier, d'interfaces, de sécurité et d'évaluation. Restons sur les principes, sans programmation.
+## 1. Comprendre le principe
 
-## Commencer par le problème, pas par le modèle
+L'IA influence déjà de nombreux domaines.
 
-Imaginons un assistant qui répond à des questions sur une collection de films. Quel est le besoin ? Retrouver une date ? Comparer des œuvres ? Expliquer un contexte historique ? Une recherche traditionnelle peut suffire pour une date exacte. Une génération de texte peut être utile pour une synthèse, à condition de la vérifier.
+Les progrès ne sont pas uniformes d'un secteur à l'autre.
 
-**Toi :** L'IA ne doit donc pas tout faire ?
+Certaines tâches deviennent plus rapides à accomplir.
 
-**Moi :** Exactement. Une bonne architecture confie les tâches déterministes à des mécanismes déterministes et réserve le modèle aux tâches où il apporte réellement une valeur.
+Il reste difficile de prévoir toutes les évolutions futures.
 
-## Les composants conceptuels
+## 2. Une idée fondamentale
 
-Une interface recueille la demande. Une couche applicative définit les permissions et l'objectif. Des sources de données fournissent les faits. Une recherche documentaire peut sélectionner des passages. Le modèle interprète et génère. Une couche de contrôle vérifie les sorties importantes et conserve, si nécessaire, une traçabilité.
+À l'école, un assistant peut reformuler un cours.
 
-## Choisir entre plusieurs stratégies
+Il peut proposer des exemples adaptés à un élève.
 
-Un modèle déjà disponible convient à de nombreux usages généraux. Le RAG aide à exploiter une documentation changeante. Le fine-tuning peut aider à adapter un comportement récurrent. Des agents peuvent effectuer des actions, mais doivent avoir des permissions limitées et des points d'approbation pour les opérations sensibles.
+Il peut aussi produire une explication inexacte.
 
-## Mesurer la qualité
+L'objectif doit rester la compréhension personnelle.
 
-**Toi :** Comment savoir si mon assistant est bon ?
+## 3. Un exemple à imaginer
 
-**Moi :** En le confrontant à un jeu de questions représentatif. On observe la justesse, la pertinence, la cohérence, la robustesse, les refus appropriés, la latence et le coût. On examine les erreurs, notamment celles qui semblent convaincantes.
+En médecine, des modèles assistent certaines analyses.
 
-Une démonstration réussie n'est pas une évaluation suffisante.
+La recherche scientifique utilise également des méthodes d'IA.
 
-## Responsabilité et protection
+Les outils doivent être évalués dans des conditions rigoureuses.
 
-Il faut protéger les données personnelles, respecter les droits d'accès, limiter la transmission d'informations confidentielles et définir qui est responsable des décisions. Les modèles et les fournisseurs évoluent ; une architecture doit anticiper ces changements.
+Ils ne remplacent pas la responsabilité médicale.
 
-## Notre conclusion
+## 4. Comment cela fonctionne
 
-**Toi :** Qu'est-ce que je dois retenir de tout ce parcours ?
+Dans la création, l'IA peut aider à explorer une idée.
 
-**Moi :** L'IA transforme des données en représentations et en décisions ou contenus grâce à des modèles entraînés. Les Transformers et les LLM sont des réalisations majeures de cette idée, pas une intelligence magique. La vraie compétence consiste à savoir ce qu'un système peut faire, ce qu'il ne sait pas garantir et comment le vérifier.
+Elle peut produire du texte, des images ou du son.
 
-## À retenir
+Les intentions et les choix humains restent essentiels.
 
-Définir un problème. Choisir l'approche adaptée. Fournir des données fiables. Mesurer les résultats. Prévoir la vérification humaine. Une IA utile est celle dont les capacités et les limites sont comprises.
+Les droits et la provenance des contenus soulèvent des questions.
 
-**Pour continuer à apprendre :** reprendre chacun de ces douze chapitres et se demander, à chaque étape, quels exemples et quelles preuves permettraient de tester ce qui est avancé.
+## 5. Le contexte historique ou pratique
+
+Certains métiers peuvent automatiser des tâches répétitives.
+
+D'autres activités apparaissent autour du contrôle des systèmes.
+
+Une tâche automatisée ne signifie pas la disparition automatique d'un métier.
+
+La formation et l'adaptation jouent un rôle important.
+
+## 6. Les conséquences
+
+Une hallucination est une information inventée ou fausse produite par un modèle.
+
+Une réponse assurée peut contenir une citation inexistante.
+
+Les biais peuvent défavoriser certaines personnes.
+
+Les décisions importantes exigent des contrôles adaptés.
+
+## 7. Les limites et précautions
+
+La confidentialité doit être prise au sérieux.
+
+Il faut éviter d'exposer des données sensibles sans nécessité.
+
+Les agents doivent utiliser des permissions limitées.
+
+Les personnes et organisations conservent leurs responsabilités.
+
+## 8. Ce qu'il faut retenir
+
+Il faut rester curieux sans croire toutes les annonces.
+
+La vérification des sources est une compétence fondamentale.
+
+Comprendre les limites protège des attentes irréalistes.
+
+L'IA est utile lorsqu'elle sert des objectifs humains bien définis.
+
+## Résumé
+
+- L'IA influence déjà de nombreux domaines.
+- À l'école, un assistant peut reformuler un cours.
+- En médecine, des modèles assistent certaines analyses.
+- Dans la création, l'IA peut aider à explorer une idée.
+- Certains métiers peuvent automatiser des tâches répétitives.
+- Une hallucination est une information inventée ou fausse produite par un modèle.
+- La confidentialité doit être prise au sérieux.
+- Il faut rester curieux sans croire toutes les annonces.

@@ -1,41 +1,94 @@
-# Entraînement, fine-tuning, RAG et agents
+# Comment fonctionne une IA conversationnelle
 
-**Toi :** Si je veux un assistant qui connaisse mes documents, dois-je réentraîner une IA ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Pas nécessairement. Plusieurs techniques répondent à des besoins différents. Il faut surtout comprendre ce que chacune change.
+## 1. Comprendre le principe
 
-## Préentraînement
+L'utilisateur envoie une demande à une application.
 
-C'est la phase très coûteuse pendant laquelle un grand modèle apprend des régularités générales. Elle mobilise d'importants volumes de données, de calcul et d'ingénierie.
+L'application rassemble le contexte disponible.
 
-## Fine-tuning
+Ce contexte peut contenir des consignes et des documents.
 
-Le **fine-tuning** poursuit l'entraînement d'un modèle préexistant sur des données adaptées à un objectif particulier. Il peut modifier le style, le comportement ou certaines compétences. Il n'est pas une méthode fiable pour maintenir à jour une grande base de faits changeants.
+Le modèle traite uniquement les informations qui lui sont accessibles.
 
-## RAG : rechercher avant de répondre
+## 2. Une idée fondamentale
 
-**Toi :** Et pour consulter mes documents internes ?
+Le texte est découpé en tokens.
 
-**Moi :** Le **RAG**, pour *Retrieval-Augmented Generation*, permet de rechercher des passages pertinents dans une source externe, puis de les transmettre au modèle dans le contexte de sa réponse.
+Un token peut correspondre à un mot ou une partie de mot.
 
-Imagine un bibliothécaire : avant de répondre, il cherche les pages pertinentes, les lit et prépare une synthèse. Le modèle peut citer les documents utilisés, si le système le permet.
+Chaque unité est convertie en représentation numérique.
 
-Le RAG ne garantit ni la pertinence des passages récupérés ni une réponse exacte. Les droits d'accès, la qualité de l'index et la vérification des citations sont essentiels.
+Le découpage dépend du modèle.
 
-## Les agents
+## 3. Un exemple à imaginer
 
-Un **agent** combine généralement un modèle avec des outils, un objectif et une boucle de décisions. Il peut planifier, effectuer une action, observer le résultat puis décider de la suite.
+Les embeddings sont des vecteurs de nombres.
 
-**Toi :** Est-ce la même chose qu'un chatbot ?
+Ils représentent des régularités apprises pendant l'entraînement.
 
-**Moi :** Non. Un chatbot échange des messages. Un agent peut aussi agir dans un environnement. Plus il possède d'autonomie, plus il faut encadrer les permissions, les erreurs, les coûts et les conséquences des actions.
+Les couches du modèle transforment ces représentations.
 
-## Comparaison simple
+Le sens dépend du contexte et des relations avec les autres éléments.
 
-Préentraînement : construire des capacités générales. Fine-tuning : adapter les paramètres. RAG : ajouter des informations externes au moment de la réponse. Agent : orchestrer des décisions et des outils.
+## 4. Comment cela fonctionne
 
-## À retenir
+Le Transformer fait interagir les éléments autorisés de la séquence.
 
-Ces techniques sont complémentaires, pas interchangeables. Pour des informations actualisées et vérifiables, la récupération documentaire est souvent plus adaptée qu'un réentraînement complet.
+L'attention est un mécanisme de calcul numérique.
 
-**Question suivante :** pourquoi un modèle peut-il affirmer des choses fausses ?
+Elle aide à exploiter le contexte d'une phrase.
+
+Elle ne correspond pas à une pensée consciente.
+
+## 5. Le contexte historique ou pratique
+
+Le modèle calcule une distribution de possibilités pour le prochain token.
+
+Une méthode de génération choisit une continuation.
+
+Le calcul se répète pour construire la réponse.
+
+Une formulation fluide n'est pas une vérification des faits.
+
+## 6. Les conséquences
+
+Le préentraînement construit des capacités générales.
+
+Le fine-tuning adapte les paramètres sur des données spécifiques.
+
+Il peut améliorer un comportement ou une tâche ciblée.
+
+Il n'est pas idéal pour maintenir une encyclopédie toujours actualisée.
+
+## 7. Les limites et précautions
+
+Le RAG recherche des informations dans des documents externes.
+
+Les passages pertinents sont ajoutés au contexte.
+
+Cela peut améliorer les réponses sur des sources spécialisées.
+
+Une mauvaise sélection documentaire peut pourtant créer des erreurs.
+
+## 8. Ce qu'il faut retenir
+
+Les outils de recherche ou de calcul sont distincts du modèle.
+
+Une mémoire de produit éventuelle n'est pas un entraînement automatique.
+
+Les sources et résultats doivent être vérifiés.
+
+La qualité dépend de l'ensemble du système, pas seulement du LLM.
+
+## Résumé
+
+- L'utilisateur envoie une demande à une application.
+- Le texte est découpé en tokens.
+- Les embeddings sont des vecteurs de nombres.
+- Le Transformer fait interagir les éléments autorisés de la séquence.
+- Le modèle calcule une distribution de possibilités pour le prochain token.
+- Le préentraînement construit des capacités générales.
+- Le RAG recherche des informations dans des documents externes.
+- Les outils de recherche ou de calcul sont distincts du modèle.

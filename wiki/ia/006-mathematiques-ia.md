@@ -1,41 +1,94 @@
-# Les mathématiques de l'IA expliquées simplement
+# Comment une intelligence artificielle apprend
 
-**Toi :** Est-il possible de comprendre la théorie sans se noyer dans les formules ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Oui. Il faut commencer par le sens des outils mathématiques.
+## 1. Comprendre le principe
 
-## Les vecteurs
+Un modèle comporte des paramètres ajustables.
 
-Un **vecteur** est une collection ordonnée de nombres. Pour un appartement, on pourrait représenter surface, nombre de pièces et distance au centre-ville. Pour les modèles de langage, ce sont des représentations numériques beaucoup plus longues.
+L'apprentissage utilise des exemples ou des expériences.
 
-Les distances et les angles entre vecteurs peuvent aider à comparer des représentations. Mais proximité numérique ne signifie pas automatiquement compréhension humaine.
+Le modèle effectue des prédictions pendant l'entraînement.
 
-## Les matrices
+Les paramètres sont modifiés pour améliorer un objectif.
 
-Une **matrice** est un tableau de nombres. Elle permet de combiner et transformer simultanément plusieurs valeurs. Les grands réseaux utilisent massivement ces opérations.
+## 2. Une idée fondamentale
 
-## Les probabilités
+Imaginons un classificateur de chats et de chiens.
 
-**Toi :** Pourquoi l'IA parle-t-elle en probabilités ?
+On lui présente de nombreuses photographies.
 
-**Moi :** Parce que beaucoup de tâches comportent de l'incertitude. Un modèle peut attribuer des scores ou des probabilités à plusieurs sorties. Ces valeurs doivent être interprétées avec prudence : une probabilité mal calibrée ne garantit pas la fréquence réelle d'un événement.
+Au début, il peut faire beaucoup d'erreurs.
 
-## Les dérivées et l'optimisation
+Les étapes d'entraînement améliorent ses résultats.
 
-Une **dérivée** indique comment une quantité varie lorsqu'on modifie légèrement une autre. Le **gradient** rassemble les variations par rapport à de nombreux paramètres.
+## 3. Un exemple à imaginer
 
-Imagine descendre une montagne dans le brouillard. La pente locale indique une direction de descente. La descente de gradient suit une idée comparable : modifier les paramètres pour diminuer l'erreur. Cela n'assure pas toujours de trouver la meilleure solution globale.
+L'apprentissage supervisé utilise des réponses attendues.
 
-## La fonction de perte
+Une photographie peut être associée à une étiquette.
 
-Elle définit ce que signifie « mieux réussir ». Selon la tâche, elle peut pénaliser une différence de valeur, une mauvaise classification ou une prédiction linguistique peu adaptée.
+Un logement peut être associé à son prix.
 
-**Toi :** Les mathématiques garantissent-elles que l'IA dit vrai ?
+Le modèle apprend à retrouver des relations utiles.
 
-**Moi :** Non. Elles garantissent certaines propriétés des calculs sous des hypothèses précises. Elles ne garantissent ni la qualité des données ni la vérité de chaque réponse.
+## 4. Comment cela fonctionne
 
-## À retenir
+L'apprentissage non supervisé examine des données sans étiquettes systématiques.
 
-Vecteurs : représenter. Matrices : transformer. Probabilités : exprimer l'incertitude. Dérivées : mesurer les variations. Optimisation : ajuster les paramètres.
+Il peut rechercher des groupes de ressemblances.
 
-**Question suivante :** comment un Transformer utilise-t-il ces idées ?
+Les groupes ne correspondent pas nécessairement à des catégories humaines.
+
+Leur interprétation demande une analyse.
+
+## 5. Le contexte historique ou pratique
+
+L'apprentissage par renforcement repose sur des actions et des récompenses.
+
+Un agent agit dans un environnement.
+
+Il cherche à améliorer ses décisions sur la durée.
+
+Une mauvaise définition de la récompense peut entraîner des comportements inattendus.
+
+## 6. Les conséquences
+
+La fonction de perte mesure une forme d'erreur.
+
+L'optimisation cherche à réduire cette mesure.
+
+Dans les réseaux de neurones, les gradients aident à modifier les poids.
+
+Une perte réduite n'implique pas toujours une bonne réponse.
+
+## 7. Les limites et précautions
+
+Les exemples d'entraînement servent à ajuster le modèle.
+
+Les exemples de validation aident à choisir des réglages.
+
+Un test indépendant évalue les performances nouvelles.
+
+Cette séparation limite des conclusions trop optimistes.
+
+## 8. Ce qu'il faut retenir
+
+Le surapprentissage apparaît quand le modèle mémorise trop les particularités.
+
+Le sous-apprentissage signifie qu'il n'apprend pas assez de relations utiles.
+
+Les données peuvent contenir des biais ou des erreurs.
+
+La généralisation à des cas inconnus est l'objectif fondamental.
+
+## Résumé
+
+- Un modèle comporte des paramètres ajustables.
+- Imaginons un classificateur de chats et de chiens.
+- L'apprentissage supervisé utilise des réponses attendues.
+- L'apprentissage non supervisé examine des données sans étiquettes systématiques.
+- L'apprentissage par renforcement repose sur des actions et des récompenses.
+- La fonction de perte mesure une forme d'erreur.
+- Les exemples d'entraînement servent à ajuster le modèle.
+- Le surapprentissage apparaît quand le modèle mémorise trop les particularités.

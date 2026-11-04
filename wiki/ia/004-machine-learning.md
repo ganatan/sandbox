@@ -1,37 +1,94 @@
-# Le machine learning : comment une machine apprend
+# Les chercheurs et les grandes entreprises de l'IA
 
-**Toi :** Quand on dit « apprendre », qu'est-ce que cela signifie techniquement ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Modifier des paramètres à partir d'expériences ou de données de manière à améliorer un objectif mesurable.
+## 1. Comprendre le principe
 
-## Trois manières d'apprendre
+Les progrès de l'IA sont collectifs.
 
-En **supervisé**, on dispose d'exemples avec la bonne réponse : identifier un objet sur une photo, estimer un prix.
+Les universités développent des théories et des expériences.
 
-En **non supervisé**, on recherche une structure sans réponse fournie pour chaque observation : regrouper des objets similaires ou réduire la dimension des données.
+Les entreprises apportent parfois une grande puissance de calcul.
 
-En **renforcement**, un agent agit dans un environnement, reçoit des récompenses et cherche à maximiser un résultat sur une série de décisions.
+Les ingénieurs transforment les découvertes en services.
 
-Il existe aussi l'**autosupervision** : les données servent à construire elles-mêmes le signal d'apprentissage. Prédire un élément manquant dans un texte en est un exemple.
+## 2. Une idée fondamentale
 
-## Corriger la trajectoire
+Alan Turing est un pionnier de l'informatique.
 
-**Toi :** Comment sait-on qu'une prédiction est mauvaise ?
+John McCarthy contribue à la naissance officielle de l'IA.
 
-**Moi :** On utilise une **fonction de perte** : une mesure numérique de l'écart avec l'objectif. Un algorithme d'optimisation tente de réduire cette perte, en modifiant progressivement les paramètres.
+Marvin Minsky étudie les systèmes intelligents.
 
-Imagine un archer qui ajuste son tir selon l'écart à la cible. L'analogie est imparfaite, mais elle aide à comprendre la répétition : prédire, mesurer, corriger.
+Claude Shannon marque la théorie de l'information.
 
-## Deux pièges opposés
+## 3. Un exemple à imaginer
 
-Le **sous-apprentissage** survient quand le modèle n'apprend pas les relations utiles. Le **surapprentissage** apparaît quand il colle trop aux exemples vus et fonctionne moins bien sur de nouveaux cas.
+Geoffrey Hinton est une figure majeure des réseaux neuronaux.
 
-**Toi :** Si la perte descend, tout va bien ?
+Yann LeCun contribue notamment à la vision artificielle.
 
-**Moi :** Pas forcément. Elle peut baisser pendant l'entraînement alors que la performance réelle se dégrade. D'où l'importance des données de validation et d'un test indépendant.
+Yoshua Bengio travaille sur l'apprentissage des représentations.
 
-## À retenir
+Ils participent à l'essor du deep learning.
 
-Le machine learning ne consiste pas à accumuler des règles écrites une par une. Il ajuste un modèle grâce à un objectif et des données, puis on mesure sa capacité à généraliser.
+## 4. Comment cela fonctionne
 
-**Question suivante :** comment les réseaux de neurones réalisent-ils cela ?
+Fei-Fei Li a joué un rôle important dans la vision artificielle.
+
+Les travaux autour d'ImageNet favorisent des comparaisons de modèles.
+
+Les jeux de données influencent fortement les résultats.
+
+Leur qualité et leurs biais doivent être étudiés.
+
+## 5. Le contexte historique ou pratique
+
+Google investit dans la recherche depuis longtemps.
+
+Des chercheurs de Google présentent le Transformer en 2017.
+
+DeepMind se fait notamment connaître grâce à AlphaGo.
+
+Les laboratoires de recherche et les applications commerciales ont des rôles distincts.
+
+## 6. Les conséquences
+
+OpenAI développe des modèles et des produits d'IA.
+
+ChatGPT est lancé publiquement le 30 novembre 2022.
+
+Anthropic est fondée en 2021.
+
+Claude est présenté publiquement en mars 2023.
+
+## 7. Les limites et précautions
+
+Meta développe la famille de modèles Llama.
+
+Microsoft intègre l'IA dans ses produits et infrastructures.
+
+Hugging Face participe au partage de modèles et de ressources.
+
+Les fabricants de processeurs jouent aussi un rôle fondamental.
+
+## 8. Ce qu'il faut retenir
+
+Une annonce marketing n'est pas une preuve scientifique.
+
+Les performances dépendent des versions et des tests.
+
+Un nom de service ne désigne pas toujours un modèle unique.
+
+Comparer exige de regarder les tâches, les limites et les sources.
+
+## Résumé
+
+- Les progrès de l'IA sont collectifs.
+- Alan Turing est un pionnier de l'informatique.
+- Geoffrey Hinton est une figure majeure des réseaux neuronaux.
+- Fei-Fei Li a joué un rôle important dans la vision artificielle.
+- Google investit dans la recherche depuis longtemps.
+- OpenAI développe des modèles et des produits d'IA.
+- Meta développe la famille de modèles Llama.
+- Une annonce marketing n'est pas une preuve scientifique.

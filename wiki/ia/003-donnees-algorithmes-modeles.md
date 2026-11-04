@@ -1,37 +1,94 @@
-# Données, algorithmes et modèles
+# L'histoire de l'IA de 1956 à 2017
 
-**Toi :** Comment une IA utilise-t-elle les données ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Elle y recherche des régularités qui lui permettent de produire des résultats utiles. Mais il faut séparer trois objets que l'on confond souvent.
+## 1. Comprendre le principe
 
-## Les trois éléments
+Les années 1950 et 1960 voient les premiers programmes de raisonnement.
 
-Les **données** sont les observations : des textes, des images, des mesures ou des exemples de réponses.
+Ils résolvent des problèmes dans des univers très limités.
 
-L'**algorithme d'apprentissage** désigne la méthode qui modifie les paramètres.
+Les chercheurs imaginent des progrès très rapides.
 
-Le **modèle** est le système ainsi obtenu : il reçoit une entrée et calcule une sortie.
+Le monde réel s'avère beaucoup plus complexe.
 
-Imagine une estimation immobilière. Les exemples contiennent surface, quartier, état du bien et prix. L'apprentissage cherche des relations statistiques. Le modèle utilise ensuite ces relations pour estimer le prix d'un logement inconnu.
+## 2. Une idée fondamentale
 
-## Apprendre n'est pas mémoriser
+L'approche symbolique représente des faits et des règles.
 
-**Toi :** Si le modèle a vu des milliers d'exemples, ne se contente-t-il pas de les retenir ?
+Elle facilite des déductions dans des situations bien définies.
 
-**Moi :** Il peut parfois mémoriser des éléments, ce qui présente des risques. Mais l'objectif est de **généraliser** : réussir sur de nouveaux cas. Un modèle qui connaît seulement les réponses de son entraînement est peu utile.
+Les exceptions sont difficiles à décrire complètement.
 
-On sépare donc idéalement les données d'entraînement, de validation et de test. Le test final doit rester indépendant des ajustements.
+Cette difficulté limite son ambition universelle.
 
-## Le problème des mauvaises données
+## 3. Un exemple à imaginer
 
-Une collection d'exemples peut être biaisée, trop petite, inexacte ou non représentative. Le modèle risque alors d'apprendre des raccourcis trompeurs.
+Dans les années 1960, Joseph Weizenbaum crée ELIZA.
 
-**Toi :** Une corrélation suffit-elle à expliquer une cause ?
+Le programme imite certaines conversations par des motifs textuels.
 
-**Moi :** Non. Deux phénomènes peuvent évoluer ensemble sans que l'un provoque l'autre. Un modèle peut prédire correctement tout en donnant une mauvaise explication causale.
+Les utilisateurs peuvent lui attribuer une compréhension qu'il ne possède pas.
 
-## À retenir
+Cette expérience annonce les débats sur les chatbots.
 
-Les données fournissent des exemples ; l'algorithme entraîne ; le modèle prédit. La qualité se juge surtout sur les situations nouvelles et non seulement sur les performances pendant l'entraînement.
+## 4. Comment cela fonctionne
 
-**Question suivante :** comment les paramètres changent-ils ?
+Les promesses non tenues entraînent des baisses de financement.
+
+Ces périodes sont appelées les hivers de l'IA.
+
+La recherche continue malgré la perte d'enthousiasme.
+
+La discipline progresse donc par cycles.
+
+## 5. Le contexte historique ou pratique
+
+Les systèmes experts connaissent un essor dans les années 1970 et 1980.
+
+Ils utilisent de nombreuses règles spécialisées.
+
+Ils peuvent aider dans des domaines professionnels précis.
+
+Leur maintenance devient coûteuse lorsque les règles se multiplient.
+
+## 6. Les conséquences
+
+En 1997, Deep Blue d'IBM bat Garry Kasparov aux échecs.
+
+Cette victoire impressionne le public.
+
+La machine utilise des techniques spécialisées de recherche.
+
+Elle ne possède pas une intelligence générale.
+
+## 7. Les limites et précautions
+
+En 2012, AlexNet marque un tournant en reconnaissance d'images.
+
+Les réseaux profonds bénéficient des données et des processeurs graphiques.
+
+En 2016, AlphaGo bat Lee Sedol au go.
+
+Ces succès reposent sur des méthodes puissantes mais spécialisées.
+
+## 8. Ce qu'il faut retenir
+
+En 2017, huit chercheurs publient Attention Is All You Need.
+
+Leur architecture s'appelle Transformer.
+
+Elle permet de mieux traiter les relations dans les séquences.
+
+Elle prépare les grands modèles de langage modernes.
+
+## Résumé
+
+- Les années 1950 et 1960 voient les premiers programmes de raisonnement.
+- L'approche symbolique représente des faits et des règles.
+- Dans les années 1960, Joseph Weizenbaum crée ELIZA.
+- Les promesses non tenues entraînent des baisses de financement.
+- Les systèmes experts connaissent un essor dans les années 1970 et 1980.
+- En 1997, Deep Blue d'IBM bat Garry Kasparov aux échecs.
+- En 2012, AlexNet marque un tournant en reconnaissance d'images.
+- En 2017, huit chercheurs publient Attention Is All You Need.

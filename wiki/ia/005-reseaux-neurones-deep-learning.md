@@ -1,37 +1,94 @@
-# Réseaux de neurones et deep learning
+# L'IA dans notre vie de tous les jours
 
-**Toi :** Un réseau de neurones, c'est un cerveau miniature ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Non. Le vocabulaire s'inspire historiquement du cerveau, mais les réseaux artificiels sont surtout des assemblages de calculs mathématiques.
+## 1. Comprendre le principe
 
-## Des nombres qui traversent des couches
+L'intelligence artificielle n'est pas limitée aux chatbots.
 
-Un neurone artificiel combine plusieurs valeurs, pondère leur importance puis applique une transformation. Des milliers ou millions de tels calculs forment un réseau.
+Elle intervient parfois discrètement dans des services ordinaires.
 
-Imagine analyser une photo. Les premières transformations peuvent détecter des motifs locaux ; d'autres combinent ces indices en représentations plus complexes. Le réseau ne suit pas nécessairement une liste de notions que nous pouvons nommer.
+Certaines applications existent depuis bien avant 2022.
 
-**Toi :** Et « profond », cela signifie intelligent ?
+Toutes les fonctions automatiques ne sont cependant pas de l'IA.
 
-**Moi :** Non. *Deep* signifie que plusieurs niveaux de transformations sont enchaînés. Cela permet d'apprendre des relations difficiles à écrire explicitement.
+## 2. Une idée fondamentale
 
-## Les poids et l'entraînement
+Les filtres antispam analysent des caractéristiques des messages.
 
-Les poids sont les nombres ajustables du réseau. Lors de l'entraînement, il effectue une prédiction, calcule une erreur et utilise la **rétropropagation** pour déterminer comment cette erreur varie avec les poids. Un optimiseur procède alors à de petites mises à jour.
+Ils tentent de repérer le courrier indésirable.
 
-La rétropropagation utilise notamment la règle mathématique de dérivation en chaîne.
+Ils peuvent aussi bloquer un message légitime.
 
-## Pourquoi des machines spécialisées ?
+L'utilisateur doit garder la possibilité de contrôler les erreurs.
 
-**Toi :** Pourquoi parle-t-on toujours de GPU ?
+## 3. Un exemple à imaginer
 
-**Moi :** Parce que l'entraînement demande énormément d'opérations numériques répétitives, notamment sur des matrices. Les processeurs graphiques peuvent exécuter beaucoup de ces opérations en parallèle.
+Un téléphone peut transcrire des paroles en texte.
 
-## Les limites
+Des modèles peuvent améliorer certaines photographies.
 
-Les réseaux profonds ont besoin de ressources, peuvent reproduire des biais et restent difficiles à expliquer précisément. Ils ne sont pas toujours supérieurs aux méthodes statistiques plus simples.
+La reconnaissance d'objets facilite divers usages.
 
-## À retenir
+Les traitements sont parfois locaux, parfois réalisés sur des serveurs.
 
-Un réseau de neurones transforme des nombres en plusieurs étapes et ajuste ses poids par optimisation. Le deep learning a transformé le traitement des images, de la parole et du langage, sans supprimer le besoin de vérification.
+## 4. Comment cela fonctionne
 
-**Question suivante :** quelles mathématiques faut-il comprendre ?
+Les applications de navigation exploitent des données routières.
+
+Des modèles peuvent anticiper des ralentissements.
+
+Les horaires proposés ne sont que des estimations.
+
+La signalisation et les conditions réelles restent prioritaires.
+
+## 5. Le contexte historique ou pratique
+
+Les plateformes de cinéma peuvent recommander des œuvres.
+
+Elles examinent des signaux liés aux consultations.
+
+Une recommandation n'est pas un jugement artistique définitif.
+
+L'exploration personnelle conserve toute son importance.
+
+## 6. Les conséquences
+
+Certains systèmes aident à analyser des images médicales.
+
+D'autres soutiennent des recherches scientifiques.
+
+Leurs résultats doivent être validés avec rigueur.
+
+Ils ne remplacent pas la responsabilité d'un professionnel.
+
+## 7. Les limites et précautions
+
+Les assistants peuvent expliquer une notion scolaire.
+
+Ils peuvent reformuler un texte ou organiser un travail.
+
+Ils peuvent également produire des erreurs crédibles.
+
+Un élève doit continuer à comprendre et vérifier.
+
+## 8. Ce qu'il faut retenir
+
+Les contenus artificiels peuvent favoriser la désinformation.
+
+Les biais de données peuvent avoir des effets injustes.
+
+La confidentialité mérite une attention constante.
+
+Les bénéfices réels doivent être évalués avec les risques.
+
+## Résumé
+
+- L'intelligence artificielle n'est pas limitée aux chatbots.
+- Les filtres antispam analysent des caractéristiques des messages.
+- Un téléphone peut transcrire des paroles en texte.
+- Les applications de navigation exploitent des données routières.
+- Les plateformes de cinéma peuvent recommander des œuvres.
+- Certains systèmes aident à analyser des images médicales.
+- Les assistants peuvent expliquer une notion scolaire.
+- Les contenus artificiels peuvent favoriser la désinformation.

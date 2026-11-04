@@ -1,35 +1,94 @@
-# LLM : comment fonctionne un assistant comme ChatGPT
+# ChatGPT : l'arrivée des assistants conversationnels
 
-**Toi :** Quand je pose une question à ChatGPT, que se passe-t-il ?
+Ce chapitre présente les notions essentielles dans un langage simple, sans dialogue ni programmation.
 
-**Moi :** Ton texte est d'abord converti en unités appelées tokens. Le modèle calcule ensuite une distribution de probabilités sur les tokens possibles pour la suite. Un mécanisme de génération choisit un token, puis recommence avec le contexte mis à jour.
+## 1. Comprendre le principe
 
-## Pourquoi la réponse a-t-elle du sens ?
+Un grand modèle de langage est souvent appelé LLM.
 
-Parce que l'entraînement sur de grandes quantités de données permet d'apprendre des régularités grammaticales, sémantiques et conceptuelles très élaborées. Un modèle peut ainsi expliquer, reformuler ou parfois résoudre un problème inédit.
+Il apprend des régularités à partir de grandes quantités de textes.
 
-**Toi :** Tu récupères donc une phrase existante dans un énorme catalogue ?
+Il peut rédiger, résumer ou traduire.
 
-**Moi :** Généralement non. La réponse est produite pendant la génération. Le modèle n'est pas un moteur de recherche qui retrouverait systématiquement un passage intact. Il peut néanmoins mémoriser certaines séquences ou reproduire des erreurs.
+Une réponse plausible n'est pas automatiquement vraie.
 
-## Les grandes étapes de préparation
+## 2. Une idée fondamentale
 
-Le **préentraînement** apprend des régularités générales à partir de données. Un **post-entraînement** peut ensuite orienter le système vers les instructions, la conversation, la sûreté et les préférences humaines, par différentes méthodes de supervision ou d'optimisation.
+Les modèles de langage existent avant ChatGPT.
 
-## Le contexte d'une conversation
+Le Transformer de 2017 favorise de nouvelles avancées.
 
-Le modèle traite une quantité limitée d'informations dans sa **fenêtre de contexte** : message, historique pertinent, consignes et éventuellement documents fournis.
+La famille GPT contribue à populariser les grands modèles génératifs.
 
-**Toi :** Une conversation longue devient-elle un apprentissage définitif ?
+Les méthodes d'entraînement progressent au fil des années.
 
-**Moi :** Pas automatiquement. Utiliser un contexte pendant une réponse est distinct de modifier les poids du modèle. Une mémoire externe ou un autre mécanisme du produit peut éventuellement réintroduire des informations ultérieurement.
+## 3. Un exemple à imaginer
 
-## Les outils ne sont pas le modèle
+OpenAI lance publiquement ChatGPT le 30 novembre 2022.
 
-Un assistant peut parfois appeler des outils : recherche web, calcul, exécution ou consultation de fichiers, selon les capacités disponibles. La réponse finale peut donc combiner génération et informations obtenues par ces outils.
+L'interface accepte des demandes en langage naturel.
 
-## À retenir
+L'utilisateur peut demander une explication puis la faire préciser.
 
-Un LLM génère une séquence de tokens conditionnée par son contexte. Sa fluidité vient de l'entraînement et de son architecture ; elle ne garantit pas la vérité. L'accès à des sources externes dépend des outils réellement disponibles.
+Cette facilité d'usage change la diffusion publique de l'IA.
 
-**Question suivante :** que représentent exactement les tokens et les embeddings ?
+## 4. Comment cela fonctionne
+
+La conversation donne une impression de proximité.
+
+L'assistant peut reformuler une réponse selon le niveau souhaité.
+
+Il peut aider à préparer un plan ou comprendre une notion.
+
+Il peut aussi se tromper sur des faits très simples.
+
+## 5. Le contexte historique ou pratique
+
+Le texte est découpé en unités appelées tokens.
+
+Le modèle estime des possibilités pour leur suite.
+
+Il génère progressivement la réponse.
+
+Ce procédé diffère d'une simple recherche dans une liste de phrases.
+
+## 6. Les conséquences
+
+Le préentraînement sert à apprendre des régularités générales.
+
+Des phases ultérieures peuvent orienter le modèle vers les instructions.
+
+L'application peut également ajouter des règles ou des outils.
+
+Il faut distinguer le modèle du produit ChatGPT.
+
+## 7. Les limites et précautions
+
+Certains assistants peuvent utiliser des outils de recherche ou de calcul.
+
+Ces outils ne sont pas présents dans tous les contextes.
+
+Une conversation ne modifie pas automatiquement les poids du modèle.
+
+Les limites de contexte et les données disponibles influencent le résultat.
+
+## 8. Ce qu'il faut retenir
+
+Un LLM peut inventer une source ou une citation.
+
+Il peut produire un raisonnement convaincant mais faux.
+
+Une question importante exige une vérification indépendante.
+
+L'utilisation responsable suppose de connaître ces limites.
+
+## Résumé
+
+- Un grand modèle de langage est souvent appelé LLM.
+- Les modèles de langage existent avant ChatGPT.
+- OpenAI lance publiquement ChatGPT le 30 novembre 2022.
+- La conversation donne une impression de proximité.
+- Le texte est découpé en unités appelées tokens.
+- Le préentraînement sert à apprendre des régularités générales.
+- Certains assistants peuvent utiliser des outils de recherche ou de calcul.
+- Un LLM peut inventer une source ou une citation.
