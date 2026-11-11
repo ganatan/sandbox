@@ -1,0 +1,226 @@
+{
+  "project": "xxx",
+  "company": "ganatan",
+  "snapshotDate": "2026-11-11",
+  "dataType": "simulation",
+  "purpose": "Modèle de données fictives pour tester la génération des rapports Open Source",
+  "workstations": {
+    "identical": true
+  },
+  "categories": [
+    {
+      "id": "systemes-postes",
+      "components": [
+        {
+          "name": "Linux",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Fedora",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Podman",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Distrobox",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        }
+      ]
+    },
+    {
+      "id": "developpement-outils",
+      "components": [
+        {
+          "name": "Git",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "GitLab Community Edition",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "OpenCode",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Node.js",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "npm",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "TypeScript",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "OpenJDK",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Apache Maven",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Rust",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Cargo",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        }
+      ]
+    },
+    {
+      "id": "applications-frameworks",
+      "components": [
+        {
+          "name": "Angular",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "React",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Quarkus",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Pact",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Webpack Module Federation",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        }
+      ]
+    },
+    {
+      "id": "infrastructure-deploiement",
+      "components": [
+        {
+          "name": "Kubernetes",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Helm",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Argo CD",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Apache Kafka",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Redis",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        }
+      ]
+    },
+    {
+      "id": "supervision",
+      "components": [
+        {
+          "name": "Grafana",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        },
+        {
+          "name": "Prometheus",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "a_verifier"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Inventaire supposé, non vérifié techniquement.",
+    "Les versions et licences doivent être déterminées à partir des dépôts et environnements.",
+    "Un composant gratuit n'est pas nécessairement Open Source.",
+    "Les éditions et conditions de licence de Redis, Grafana, GitLab et des modèles utilisés par OpenCode doivent être examinées.",
+    "Webpack Module Federation est une fonctionnalité de Webpack; la dépendance exacte devra être identifiée."
+  ]
+}
