@@ -2,68 +2,493 @@
   "project": "xxx",
   "company": "ganatan",
   "snapshotDate": "2026-11-11",
-  "scope": "Inventaire simulé de composants logiciels déclarés dans des dépôts techniques",
   "dataType": "simulation",
-  "repositoriesAnalyzed": 4,
-  "components": [
+  "scope": "Postes homogènes, applications, contrats et infrastructure déclarée",
+  "evidenceLevel": "hypotheses_non_verifiees",
+  "workstations": {
+    "identical": true,
+    "configuration": "supposee",
+    "categories": [
+      "postes"
+    ]
+  },
+  "categories": [
     {
-      "name": "Apache Kafka",
-      "version": "3.8.0",
-      "license": "Apache-2.0",
-      "repository": "xxx/messaging",
-      "evidence": "deploy/kafka/values.yaml",
-      "usage": "Échange de messages et diffusion d'événements",
-      "status": "declaré"
+      "name": "postes",
+      "components": [
+        {
+          "name": "Linux",
+          "version": null,
+          "license": "GPL-2.0-only",
+          "copyleft": "strong",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Fedora",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Podman",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Distrobox",
+          "version": null,
+          "license": "GPL-3.0-or-later",
+          "copyleft": "strong",
+          "verification": "non_verifie"
+        }
+      ]
     },
     {
-      "name": "Redis",
-      "version": "7.2.5",
-      "license": "à vérifier",
-      "repository": "xxx/cache",
-      "evidence": "docker-compose.yml",
-      "usage": "Cache et stockage clé-valeur",
-      "status": "declaré"
+      "name": "outils-developpement",
+      "components": [
+        {
+          "name": "Git",
+          "version": null,
+          "license": "GPL-2.0-only",
+          "copyleft": "strong",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "GitLab Community Edition",
+          "version": null,
+          "license": "MIT",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "OpenCode",
+          "version": null,
+          "license": "MIT",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Node.js",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "npm",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "TypeScript",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "OpenJDK",
+          "version": null,
+          "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+          "copyleft": "strong_with_exception",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Apache Maven",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Rust",
+          "version": null,
+          "license": "MIT OR Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Cargo",
+          "version": null,
+          "license": "MIT OR Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        }
+      ]
     },
     {
-      "name": "Kubernetes",
-      "version": "1.30.4",
-      "license": "Apache-2.0",
-      "repository": "xxx/platform",
-      "evidence": "clusters/dev/README.md",
-      "usage": "Orchestration des conteneurs",
-      "status": "declaré"
+      "name": "applications-frameworks",
+      "components": [
+        {
+          "name": "Angular",
+          "version": null,
+          "license": "MIT",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "React",
+          "version": null,
+          "license": "MIT",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Quarkus",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Pact",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Webpack Module Federation",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        }
+      ]
     },
     {
-      "name": "Prometheus",
-      "version": "2.54.1",
-      "license": "Apache-2.0",
-      "repository": "xxx/observability",
-      "evidence": "monitoring/prometheus.yaml",
-      "usage": "Collecte des métriques",
-      "status": "declaré"
+      "name": "infrastructure-deploiement",
+      "components": [
+        {
+          "name": "Kubernetes",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Helm",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Argo CD",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Apache Kafka",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Redis",
+          "version": null,
+          "license": null,
+          "copyleft": "unknown",
+          "verification": "non_verifie"
+        }
+      ]
     },
     {
-      "name": "Grafana",
-      "version": null,
-      "license": "AGPL-3.0-only (à confirmer)",
-      "repository": "xxx/observability",
-      "evidence": "monitoring/grafana/values.yaml",
-      "usage": "Visualisation des métriques",
-      "status": "declaré"
-    },
-    {
-      "name": "Helm",
-      "version": "3.16.1",
-      "license": "Apache-2.0",
-      "repository": "xxx/platform",
-      "evidence": "deploy/Chart.yaml",
-      "usage": "Gestion des déploiements Kubernetes",
-      "status": "declaré"
+      "name": "supervision",
+      "components": [
+        {
+          "name": "Grafana",
+          "version": null,
+          "license": "AGPL-3.0-only",
+          "copyleft": "network",
+          "verification": "non_verifie"
+        },
+        {
+          "name": "Prometheus",
+          "version": null,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "verification": "non_verifie"
+        }
+      ]
     }
   ],
-  "notes": [
-    "Toutes les données sont fictives et destinées au test.",
-    "Une référence dans un dépôt ne prouve pas un déploiement effectif.",
-    "Les licences déclarées doivent être vérifiées pour les versions et distributions concernées."
+  "repositories": [
+    {
+      "id": "xxx-web-shell",
+      "kind": "application",
+      "stack": [
+        "Angular",
+        "TypeScript",
+        "Webpack Module Federation"
+      ],
+      "manifests": [
+        "package.json",
+        "package-lock.json"
+      ],
+      "dependencies": [
+        {
+          "name": "@angular/core",
+          "version": "20.0.0",
+          "direct": true,
+          "license": "MIT",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "package-lock.json",
+          "licenseSource": "registre npm ou fichier LICENSE à contrôler"
+        },
+        {
+          "name": "rxjs",
+          "version": "7.8.2",
+          "direct": true,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "package-lock.json",
+          "licenseSource": "métadonnées du paquet à contrôler"
+        },
+        {
+          "name": "@angular-architects/module-federation",
+          "version": null,
+          "direct": true,
+          "license": null,
+          "copyleft": "unknown",
+          "licenseStatus": "a_verifier",
+          "source": "package.json",
+          "licenseSource": null
+        }
+      ]
+    },
+    {
+      "id": "xxx-web-admin",
+      "kind": "application",
+      "stack": [
+        "React",
+        "TypeScript"
+      ],
+      "manifests": [
+        "package.json",
+        "package-lock.json"
+      ],
+      "dependencies": [
+        {
+          "name": "react",
+          "version": "18.3.1",
+          "direct": true,
+          "license": "MIT",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "package-lock.json",
+          "licenseSource": "métadonnées du paquet à contrôler"
+        },
+        {
+          "name": "react-dom",
+          "version": "18.3.1",
+          "direct": true,
+          "license": "MIT",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "package-lock.json",
+          "licenseSource": "métadonnées du paquet à contrôler"
+        }
+      ]
+    },
+    {
+      "id": "xxx-api",
+      "kind": "application",
+      "stack": [
+        "Quarkus",
+        "OpenJDK",
+        "Apache Maven"
+      ],
+      "manifests": [
+        "pom.xml"
+      ],
+      "dependencies": [
+        {
+          "name": "io.quarkus:quarkus-rest",
+          "version": null,
+          "direct": true,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "pom.xml",
+          "licenseSource": "POM de la dépendance à contrôler"
+        },
+        {
+          "name": "io.quarkus:quarkus-hibernate-orm-panache",
+          "version": null,
+          "direct": true,
+          "license": "Apache-2.0",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "pom.xml",
+          "licenseSource": "POM de la dépendance à contrôler"
+        },
+        {
+          "name": "org.example:shared-contracts",
+          "version": null,
+          "direct": true,
+          "license": null,
+          "copyleft": "unknown",
+          "licenseStatus": "a_verifier",
+          "source": "pom.xml",
+          "licenseSource": null,
+          "fictional": true
+        }
+      ]
+    },
+    {
+      "id": "xxx-processing",
+      "kind": "application",
+      "stack": [
+        "Rust",
+        "Cargo"
+      ],
+      "manifests": [
+        "Cargo.toml",
+        "Cargo.lock"
+      ],
+      "dependencies": [
+        {
+          "name": "serde",
+          "version": "1.0.210",
+          "direct": true,
+          "license": "MIT OR Apache-2.0",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "Cargo.lock",
+          "licenseSource": "crates.io ou paquet publié à contrôler"
+        },
+        {
+          "name": "tokio",
+          "version": "1.40.0",
+          "direct": true,
+          "license": "MIT",
+          "copyleft": "none",
+          "licenseStatus": "presume",
+          "source": "Cargo.lock",
+          "licenseSource": "crates.io ou paquet publié à contrôler"
+        }
+      ]
+    },
+    {
+      "id": "xxx-contracts",
+      "kind": "contracts",
+      "stack": [
+        "Pact"
+      ],
+      "manifests": [
+        "pom.xml",
+        "README.md"
+      ],
+      "dependencies": [
+        {
+          "name": "au.com.dius.pact:consumer:junit5",
+          "version": null,
+          "direct": true,
+          "license": null,
+          "copyleft": "unknown",
+          "licenseStatus": "a_verifier",
+          "source": "pom.xml",
+          "licenseSource": null
+        }
+      ]
+    },
+    {
+      "id": "xxx-helm",
+      "kind": "infrastructure",
+      "stack": [
+        "Helm",
+        "Kubernetes",
+        "Argo CD"
+      ],
+      "manifests": [
+        "Chart.yaml",
+        "values.yaml",
+        "Application.yaml"
+      ],
+      "declaredServices": [
+        {
+          "name": "Apache Kafka",
+          "version": null,
+          "source": "charts/kafka/values.yaml",
+          "deployed": false
+        },
+        {
+          "name": "Redis",
+          "version": null,
+          "source": "charts/redis/values.yaml",
+          "deployed": false
+        },
+        {
+          "name": "Prometheus",
+          "version": null,
+          "source": "charts/monitoring/values.yaml",
+          "deployed": false
+        },
+        {
+          "name": "Grafana",
+          "version": null,
+          "source": "charts/monitoring/values.yaml",
+          "deployed": false
+        }
+      ]
+    }
+  ],
+  "licenseIllustrations": [
+    {
+      "license": "MIT",
+      "category": "permissive",
+      "copyleft": "none"
+    },
+    {
+      "license": "Apache-2.0",
+      "category": "permissive",
+      "copyleft": "none"
+    },
+    {
+      "license": "BSD-3-Clause",
+      "category": "permissive",
+      "copyleft": "none",
+      "exampleOnly": true
+    },
+    {
+      "license": "LGPL-3.0-only",
+      "category": "copyleft",
+      "copyleft": "weak",
+      "exampleOnly": true
+    },
+    {
+      "license": "GPL-3.0-only",
+      "category": "copyleft",
+      "copyleft": "strong",
+      "exampleOnly": true
+    },
+    {
+      "license": "AGPL-3.0-only",
+      "category": "copyleft",
+      "copyleft": "network",
+      "exampleOnly": true
+    }
+  ],
+  "rules": [
+    "Les 26 technologies correspondent au périmètre supposé, sans preuve de présence ni de version.",
+    "Les versions des dépendances sont des exemples plausibles, pas des observations réelles.",
+    "Les licences renseignées sont des hypothèses à confirmer pour les versions et éditions exactes.",
+    "Les licences illustratives ne doivent pas être comptées comme des composants présents.",
+    "La présence dans un manifeste ne démontre pas un déploiement.",
+    "Les dépendances transitives ne sont pas exhaustivement inventoriées dans cette simulation.",
+    "Les données non connues sont null; ne pas inventer de conformité.",
+    "Le rôle de Module Federation est une fonctionnalité d'assemblage, pas un paquet autonome.",
+    "Pour Redis, déterminer impérativement la version et la licence applicables."
   ]
 }
