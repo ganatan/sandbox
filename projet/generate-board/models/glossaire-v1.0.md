@@ -2,30 +2,45 @@
 
 **Société :** ganatan  
 **Projet :** xxx  
-**Version du modèle :** 1.0  
-**Document associé :** rapport-v1.0.md  
+**Version :** 1.0  
 **Statut :** Simulation
 
-| Terme | Définition simple |
+| Terme | Définition |
 |---|---|
-| **Open Source** | Logiciel dont la licence autorise l'accès au code source, sa modification et sa redistribution sous certaines conditions. |
-| **SBOM** (*Software Bill of Materials*) | Liste structurée des composants et dépendances d'un logiciel. |
-| **Copyleft** | Principe de licence imposant, dans certaines situations de redistribution, de préserver des libertés et obligations définies par la licence. |
-| **ISO** (*International Organization for Standardization*) | Organisation internationale qui publie des normes. |
-| **SPDX** (*Software Package Data Exchange*) | Standard pour représenter et échanger des informations sur les composants et licences logiciels. |
-| **ISO/IEC 5962** | Norme internationale relative au format SPDX. |
-| **OpenChain** | Projet proposant des normes pour organiser la conformité des licences et la sécurité Open Source. |
-| **ISO/IEC 5230** | Norme OpenChain relative à un programme de conformité des licences Open Source. |
-| **CycloneDX** | Standard permettant de représenter un inventaire de composants logiciels, notamment sous forme de SBOM. |
+| **AGPL** | Affero General Public License : licence à copyleft fort comprenant des obligations liées à certains accès par réseau. |
+| **Angular** | Framework de développement d'applications web. |
+| **Apache-2.0** | Licence Open Source permissive de l'Apache Software Foundation. |
+| **BSD** | Famille de licences Open Source permissives, notamment BSD-2-Clause et BSD-3-Clause. |
+| **Cargo** | Gestionnaire de dépendances et outil de compilation pour Rust. |
+| **Copyleft** | Principe de licence qui impose certaines obligations de partage ou de maintien de licence lors de redistributions concernées. |
+| **Distrobox** | Outil d'exécution d'environnements Linux intégrés au poste hôte. |
+| **Fedora** | Distribution du système d'exploitation Linux. |
+| **GPL** | GNU General Public License : famille de licences à copyleft fort. |
+| **Grafana** | Logiciel de tableaux de bord et de visualisation des données. |
+| **ISO** | International Organization for Standardization : organisation internationale de normalisation. |
+| **ISO/IEC 5230** | Norme OpenChain sur les programmes de conformité des licences Open Source. |
+| **ISO/IEC 5962** | Norme internationale de standardisation de SPDX. |
+| **Kafka** | Plateforme distribuée d'échange de flux d'événements. |
+| **Kubernetes** | Plateforme d'orchestration d'applications conteneurisées. |
+| **LGPL** | GNU Lesser General Public License : famille de licences à copyleft faible. |
+| **MIT** | Licence Open Source permissive associée au Massachusetts Institute of Technology. |
+| **Node.js** | Environnement d'exécution JavaScript. |
+| **OpenChain** | Initiative de normalisation de la conformité des licences Open Source. |
+| **Open Source** | Logiciel dont la licence permet l'accès au code source, la modification et la redistribution sous conditions. |
+| **Podman** | Outil de gestion et d'exécution de conteneurs. |
+| **Prometheus** | Système de collecte et de consultation de métriques. |
+| **Quarkus** | Framework Java orienté applications cloud-native. |
+| **Redis** | Système de stockage clé-valeur ; les licences applicables dépendent de sa version. |
+| **Rust** | Langage compilé visant notamment la sûreté mémoire. |
+| **SBOM** | Software Bill of Materials : inventaire structuré des composants et dépendances logiciels. |
+| **SPDX** | Software Package Data Exchange : standard d'échange d'informations sur les logiciels et leurs licences. |
 
 ## Références
 
-- Open Source : https://opensource.org/osd
-- SBOM : https://www.cisa.gov/sbom
-- Copyleft : https://www.gnu.org/licenses/copyleft.html
-- ISO : https://www.iso.org/
-- SPDX : https://spdx.dev/
-- OpenChain : https://openchainproject.org/
-- CycloneDX : https://cyclonedx.org/
+- https://opensource.org/licenses
+- https://www.gnu.org/licenses/
+- https://www.iso.org/
+- https://spdx.dev/
+- https://openchainproject.org/
 
-*Ce glossaire définit uniquement les notions présentes dans le modèle de rapport.*
+*Seuls les termes utilisés dans le rapport généré doivent être conservés dans son glossaire.*
