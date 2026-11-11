@@ -1,93 +1,99 @@
-# Generate Board
+# Generate Board — Project xxxx
 
-**Société :** ganatan  
-**Projet :** xxx
+**Organization:** ganatan  
+**Status:** simulated data and reports
 
-Générer automatiquement deux documents Markdown avec OpenCode à partir de données JSON fictives.
-
-## Architecture
+## Layout
 
 ```text
 generate-board/
 ├── README.md
 ├── models/
-│   ├── rapport-v1.0.md
-│   └── glossaire-v1.0.md
+│   ├── data-model.json
+│   ├── report-v1.0.md
+│   └── glossary-v1.0.md
 ├── code/
 │   ├── data.json
 │   └── prompt.md
-└── resultat/
-    ├── rapport.md
-    └── glossaire.md
+└── results/
+    ├── REV00/
+    │   ├── xxxx-data-001-rev00.json
+    │   ├── xxxx-sbom-001-rev00.md
+    │   ├── xxxx-sbom-001-rev00-fr.md
+    │   ├── xxxx-glossary-001-rev00.md
+    │   └── xxxx-glossary-001-rev00-fr.md
+    └── REV01/
+        ├── xxxx-data-001-rev01.json
+        ├── xxxx-sbom-001-rev01.md
+        ├── xxxx-sbom-001-rev01-fr.md
+        ├── xxxx-glossary-001-rev01.md
+        └── xxxx-glossary-001-rev01-fr.md
 ```
 
-- `models/` : modèles versionnés du rapport et du glossaire.
-- `code/` : données JSON et prompt de génération.
-- `resultat/` : documents générés et remplaçables.
+## Conventions
 
-## 1. Récupérer les modifications
+- **XXXX-SBOM-001** identifies the controlled report series.
+- **REV00, REV01, ...** are revisions of that series, independent of date.
+- File names carry the revision, so they remain identifiable outside their folders.
+- English is the authoritative language. Only French translations use `-fr`.
+- Each validated revision has five files, including the immutable JSON snapshot.
+- `models/*-v1.0.md` are template versions, **not** delivered report revisions.
+- ISO 9001 document control guidance supports identification and revision control but does **not** mandate this naming syntax.
 
-Depuis la racine du dépôt `sandbox` :
+## Test REV00 and REV01
+
+The two revisions are prepopulated with illustrative data and documents.
+
+REV01 demonstrates three **simulated** differences: an Angular package version update, a Kafka version declared in Helm, and a Grafana version appearing in the inventory. None is a verified finding.
+
+## Generate REV02 with OpenCode (PowerShell)
+
+From the sandbox repository:
 
 ```powershell
-git pull github master
+git pull
 cd projet/generate-board
 ```
 
-Si ton dépôt utilise le remote `origin`, adapte en `git pull origin master`.
-
-## 2. Vérifier les données et les modèles
+Copy the latest JSON into the working input and change only its delivery metadata / actual collected findings:
 
 ```powershell
-Get-Content code/data.json
-Get-Content models/rapport-v1.0.md
-Get-Content models/glossaire-v1.0.md
+Copy-Item results/REV01/xxxx-data-001-rev01.json code/data.json
 ```
 
-Le modèle de rapport utilise des chiffres fictifs de présentation indépendants de `code/data.json`.
-
-## 3. Lancer OpenCode
-
-Depuis `generate-board` :
+Edit `code/data.json`: set `delivery.revision` to `REV02`, update `snapshotDate`, `delivery.date` and real collected data. Preserve unknowns as `null`; never turn assumed licenses into verified licenses without evidence.
 
 ```powershell
 opencode
 ```
 
-Puis saisir :
+Then ask:
 
 ```text
-Lis code/prompt.md et applique toutes ses instructions.
+Read code/prompt.md and perform the requested delivery for code/data.json.
 ```
 
-Alternative :
+Alternative:
 
 ```powershell
-opencode run --agent build "Lis code/prompt.md et applique toutes ses instructions."
+opencode run --agent build "Read code/prompt.md and generate the next revision."
 ```
 
-OpenCode doit disposer des autorisations d'écriture nécessaires dans `resultat/`.
+OpenCode should create exactly five files under `results/REV02/`. If that folder already contains a revision, do not overwrite it.
 
-## 4. Vérifier les deux documents
+## Check and archive
 
 ```powershell
-Get-Content resultat/rapport.md
-Get-Content resultat/glossaire.md
-git diff -- resultat/
+Get-ChildItem results/REV02
+git diff -- results/
 ```
 
-Le rapport doit refléter les 6 composants du JSON, pas les 125 du modèle. Le glossaire définit seulement les termes utilisés dans le rapport, sans longs développements.
-
-## 5. Recommencer
-
-Modifie `code/data.json`, puis relance exactement la même consigne OpenCode. Les deux fichiers de `resultat/` doivent être régénérés sans modification des modèles.
-
-## 6. Versionner les résultats
-
-Depuis la racine du dépôt `sandbox` :
+From the repository root:
 
 ```powershell
 git add projet/generate-board
-git commit -m "docs: update generated OSS reports"
-git push github master
+git commit -m "docs: archive SBOM revision REV02"
+git push
 ```
+
+Check the English and French totals and the immutable data snapshot before accepting any revision.

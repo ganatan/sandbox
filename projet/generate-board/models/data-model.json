@@ -1,5 +1,5 @@
 {
-  "project": "xxx",
+  "project": "xxxx",
   "company": "ganatan",
   "snapshotDate": "2026-11-11",
   "dataType": "simulation",
@@ -490,5 +490,6 @@
     "Les données non connues sont null; ne pas inventer de conformité.",
     "Le rôle de Module Federation est une fonctionnalité d'assemblage, pas un paquet autonome.",
     "Pour Redis, déterminer impérativement la version et la licence applicables."
-  ]
+  ],
+  "purpose": "Illustrative catalog of 26 candidate OSS technologies; not an observed inventory"
 }

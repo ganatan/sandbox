@@ -1,10 +1,10 @@
 {
-  "project": "xxx",
+  "project": "xxxx",
   "company": "ganatan",
-  "snapshotDate": "2026-11-11",
+  "snapshotDate": "2026-11-25",
   "dataType": "simulation",
   "scope": "Postes homogènes, applications, contrats et infrastructure déclarée",
-  "evidenceLevel": "hypotheses_non_verifiees",
+  "evidenceLevel": "simulated_not_audited",
   "workstations": {
     "identical": true,
     "configuration": "supposee",
@@ -206,7 +206,7 @@
       "components": [
         {
           "name": "Grafana",
-          "version": null,
+          "version": "11.3.0",
           "license": "AGPL-3.0-only",
           "copyleft": "network",
           "verification": "non_verifie"
@@ -237,7 +237,7 @@
       "dependencies": [
         {
           "name": "@angular/core",
-          "version": "20.0.0",
+          "version": "20.1.0",
           "direct": true,
           "license": "MIT",
           "copyleft": "none",
@@ -419,7 +419,7 @@
       "declaredServices": [
         {
           "name": "Apache Kafka",
-          "version": null,
+          "version": "3.8.0",
           "source": "charts/kafka/values.yaml",
           "deployed": false
         },
@@ -489,6 +489,17 @@
     "Les dépendances transitives ne sont pas exhaustivement inventoriées dans cette simulation.",
     "Les données non connues sont null; ne pas inventer de conformité.",
     "Le rôle de Module Federation est une fonctionnalité d'assemblage, pas un paquet autonome.",
-    "Pour Redis, déterminer impérativement la version et la licence applicables."
-  ]
+    "Pour Redis, déterminer impérativement la version et la licence applicables.",
+    "No compliance assertion can be inferred from these examples.",
+    "The licence expressions and versions remain unverified hypotheses, including changed values in REV01."
+  ],
+  "delivery": {
+    "documentId": "XXXX-SBOM-001",
+    "revision": "REV02",
+    "modelVersion": "1.0",
+    "language": "en",
+    "status": "SIMULATION",
+    "date": "2026-11-25"
+  },
+  "simulatedChanges": []
 }

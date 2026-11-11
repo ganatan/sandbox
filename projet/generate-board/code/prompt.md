@@ -1,28 +1,26 @@
-# Mission OpenCode
+# OpenCode — SBOM report generator
 
-Travaille depuis le dossier `generate-board`.
+Work from `generate-board/`.
 
-## Entrée
+## Input and templates
 
-- Données : `code/data.json`
-- Modèle du rapport : `models/rapport-v1.0.md`
-- Modèle du glossaire : `models/glossaire-v1.0.md`
+- `code/data.json` is the current input snapshot.
+- `models/report-v1.0.md` is the English report template.
+- `models/glossary-v1.0.md` is the English glossary template.
 
-## Sortie
+## Delivery rules
 
-- `resultat/rapport.md`
-- `resultat/glossaire.md`
+1. Read `code/data.json` and its `delivery.revision`, e.g. `REV02`.
+2. Use uppercase folder `results/REV02/` and lowercase suffix `rev02`.
+3. Do not overwrite an existing archived revision. Stop and report the collision.
+4. First archive the JSON as `xxxx-data-001-rev02.json`, unchanged.
+5. Generate the English primary `xxxx-sbom-001-rev02.md` and `xxxx-glossary-001-rev02.md`.
+6. Translate those English documents faithfully into `xxxx-sbom-001-rev02-fr.md` and `xxxx-glossary-001-rev02-fr.md`.
+7. Keep all numbers, versions, SPDX license identifiers, tables, uncertainties and source paths identical between English and French.
+8. The glossary is alphabetical, factual, concise and restricted to terms used by the generated report.
+9. Clearly mark the documents as simulations. Do not claim any license is verified when the JSON says otherwise.
+10. Compare the new archived input with the preceding revision if available; mention only genuine, traceable changes.
+11. Do not create any other deliverables and do not edit existing archives.
+12. Verify that exactly five files are present for the revision and that the archived JSON matches the input.
 
-## Instructions
-
-1. Génère un rapport Markdown en reprenant la structure et la présentation de `models/rapport-v1.0.md`.
-2. Remplace exclusivement les résultats fictifs du modèle par les données réelles de `code/data.json` (qui sont elles-mêmes simulées pour ce test).
-3. Calcule les totaux uniquement à partir du JSON. N'utilise jamais les 125 composants du modèle comme résultat du JSON.
-4. Génère un glossaire en reprenant la présentation de `models/glossaire-v1.0.md`.
-5. Le glossaire doit être un tableau unique classé par ordre alphabétique, avec une définition factuelle et courte par terme. Aucun historique ni développement inutile.
-6. N'inclus dans le glossaire que les acronymes, licences, normes, concepts et technologies effectivement cités dans le rapport généré. Ignore les notions génériques de conteneurs et CycloneDX.
-7. Les références doivent être officielles et vérifiables. Ne crée pas de référence imaginaire. Le glossaire est un dictionnaire technique, pas un second rapport.
-8. Distingue les composants déclarés des composants déployés. Une licence identifiée n'établit pas la conformité juridique.
-9. Mentionne « Simulation », la société ganatan et le projet xxx dans les deux documents.
-10. Ne modifie aucun fichier de `code/` ou de `models/`.
-11. Produis uniquement les deux fichiers prévus dans `resultat/`, en français.
+English is authoritative. `-fr` is the translated version. The numbering is an internal controlled-document convention aligned with ISO document-control principles, not an ISO-mandated filename syntax.
