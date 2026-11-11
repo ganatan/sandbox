@@ -1,77 +1,41 @@
-# Generate Board — Project xxxx
+# Generate Board
 
-**Company:** ganatan  
-**Purpose:** Simulate an Open Source inventory and license analysis with OpenCode.
+Generate an Open Source inventory report and a glossary with OpenCode.
 
-## Structure
+## 1. Prepare the data
 
-```text
-generate-board/
-├── README.md
-├── README-fr.md
-├── models/
-│   ├── data-model.json
-│   ├── report-v1.0.md
-│   └── glossary-v1.0.md
-├── code/
-│   ├── data.json
-│   └── prompt.md
-└── results/
-    ├── REV001/
-    │   ├── xxxx-data-rev001.json
-    │   ├── xxxx-sbom-rev001.md
-    │   ├── xxxx-sbom-rev001-fr.md
-    │   ├── xxxx-glossary-rev001.md
-    │   └── xxxx-glossary-rev001-fr.md
-    └── REV002/
-        ├── xxxx-data-rev002.json
-        ├── xxxx-sbom-rev002.md
-        ├── xxxx-sbom-rev002-fr.md
-        ├── xxxx-glossary-rev002.md
-        └── xxxx-glossary-rev002-fr.md
-```
+Edit `code/data.json`.
 
-## Rules
+Set `delivery.revision` to the next revision, such as `REV003`, and update the date and inventory data.
 
-- One sequential number: `REV001`, `REV002`, `REV003`; no additional document serial number.
-- Version in **folder and every filename**.
-- English is authoritative; French translations use `-fr`.
-- Five files per release, including the immutable input JSON snapshot.
-- Template versions (`v1.0`) are independent of delivery revisions.
-- ISO 9001/10013 document control principles do **not** prescribe this exact naming syntax.
-- All data and sample reports are fictitious, not verified audit findings.
+## 2. Run OpenCode
 
-## Generate REV003 (PowerShell)
-
-From the sandbox repository root:
+From `generate-board/`:
 
 ```powershell
-git pull github master
-cd projet/generate-board
 opencode
 ```
 
-Then enter:
+Enter:
 
 ```text
-Read code/prompt.md and generate REV003 using code/data.json.
+Read code/prompt.md and generate the report.
 ```
 
-`code/data.json` is preconfigured with `delivery.revision: REV003`. Update actual collected data and snapshot dates before real releases. Do not overwrite an existing revision.
+## 3. Generated files
 
-## Validate and commit
+For `REV003`, OpenCode creates:
 
-```powershell
-Get-ChildItem results/REV003
-git diff -- results/
+```text
+results/
+└── REV003/
+    ├── xxxx-data-rev003.json
+    ├── xxxx-sbom-rev003.md
+    ├── xxxx-sbom-rev003-fr.md
+    ├── xxxx-glossary-rev003.md
+    └── xxxx-glossary-rev003-fr.md
 ```
 
-From the sandbox root:
+English is the reference version. Files ending in `-fr.md` are French translations.
 
-```powershell
-git add projet/generate-board
-git commit -m "docs: archive SBOM REV003"
-git push github master
-```
-
-Validate English/French consistency and the archived JSON before publishing.
+Previous revisions remain unchanged.
