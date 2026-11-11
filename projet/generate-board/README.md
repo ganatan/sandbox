@@ -1,12 +1,19 @@
 # Generate Board
 
-Generate an Open Source inventory report and a glossary with OpenCode.
+Generate an Open Source report and glossary with OpenCode.
 
-## 1. Prepare the data
+## 1. Prepare the next revision
 
-Edit `code/data.json`.
+The file `code/data.json` currently contains the latest completed revision: **REV002**.
 
-Set `delivery.revision` to the next revision, such as `REV003`, and update the date and inventory data.
+To prepare **REV003**:
+
+1. Open `code/data.json`.
+2. Replace `"revision": "REV002"` with `"revision": "REV003"` in `delivery`.
+3. Set `snapshotDate` and `delivery.date` to the new report date (`YYYY-MM-DD`).
+4. Update the inventory information you want to report. Keep all JSON values in English.
+
+Do not edit the archived `results/REV002/` files.
 
 ## 2. Run OpenCode
 
@@ -24,7 +31,7 @@ Read code/prompt.md and generate the report.
 
 ## 3. Generated files
 
-For `REV003`, OpenCode creates:
+OpenCode creates:
 
 ```text
 results/
@@ -36,6 +43,6 @@ results/
     └── xxxx-glossary-rev003-fr.md
 ```
 
-English is the reference version. Files ending in `-fr.md` are French translations.
+The English report and glossary are the originals. Files ending in `-fr.md` are French translations.
 
-Previous revisions remain unchanged.
+For the following delivery, repeat with **REV004**, then **REV005**, and so on.
