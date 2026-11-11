@@ -2,8 +2,8 @@
 
 **Société :** ganatan  
 **Projet :** xxxx  
-**Révision :** REV01  
-**Document associé :** xxxx-sbom-001-rev01-fr.md  
+**Révision :** REV002  
+**Document associé :** xxxx-sbom-rev002-fr.md  
 **Statut :** SIMULATION
 
 | Terme | Définition |

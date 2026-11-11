@@ -2,9 +2,9 @@
 
 **Organization:** ganatan  
 **Project:** xxxx  
-**Document ID:** XXXX-SBOM-001  
-**Revision:** REV00  
-**Snapshot date:** 2026-11-11  
+**Document ID:** XXXX-SBOM  
+**Revision:** REV002  
+**Snapshot date:** 2026-11-18  
 **Template version:** 1.0  
 **Status:** SIMULATION — not audited
 
@@ -31,7 +31,7 @@ Simulated inventory of standardized workstations, application repositories, cont
 
 | Dependency | Version | Assumed license | Copyleft | Verification |
 |---|---|---|---|---|
-| @angular/core | 20.0.0 | MIT | none | presume |
+| @angular/core | 20.1.0 | MIT | none | presume |
 | rxjs | 7.8.2 | Apache-2.0 | none | presume |
 | @angular-architects/module-federation | Not established | Not established | unknown | a_verifier |
 | react | 18.3.1 | MIT | none | presume |
@@ -47,7 +47,9 @@ Licenses and versions are copied from the simulation JSON; none was checked agai
 
 ## 4. Revision changes
 
-Initial fictional delivery; no previous revision.
+- Angular core: 20.0.0 → 20.1.0
+- Kafka Helm declaration: version unknown → 3.8.0
+- Grafana inventory: version unknown → 11.3.0
 
 ## 5. Items to verify
 

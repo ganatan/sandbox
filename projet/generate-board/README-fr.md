@@ -1,9 +1,9 @@
 # Generate Board — Projet xxxx
 
 **Société :** ganatan  
-**Statut :** données et rapports simulés
+**Objectif :** simuler l'inventaire Open Source et l'analyse des licences avec OpenCode.
 
-## Arborescence
+## Structure
 
 ```text
 generate-board/
@@ -17,79 +17,52 @@ generate-board/
 │   ├── data.json
 │   └── prompt.md
 └── results/
-    ├── REV00/
-    │   ├── xxxx-data-001-rev00.json
-    │   ├── xxxx-sbom-001-rev00.md
-    │   ├── xxxx-sbom-001-rev00-fr.md
-    │   ├── xxxx-glossary-001-rev00.md
-    │   └── xxxx-glossary-001-rev00-fr.md
-    └── REV01/
-        ├── xxxx-data-001-rev01.json
-        ├── xxxx-sbom-001-rev01.md
-        ├── xxxx-sbom-001-rev01-fr.md
-        ├── xxxx-glossary-001-rev01.md
-        └── xxxx-glossary-001-rev01-fr.md
+    ├── REV001/
+    │   ├── xxxx-data-rev001.json
+    │   ├── xxxx-sbom-rev001.md
+    │   ├── xxxx-sbom-rev001-fr.md
+    │   ├── xxxx-glossary-rev001.md
+    │   └── xxxx-glossary-rev001-fr.md
+    └── REV002/
+        ├── xxxx-data-rev002.json
+        ├── xxxx-sbom-rev002.md
+        ├── xxxx-sbom-rev002-fr.md
+        ├── xxxx-glossary-rev002.md
+        └── xxxx-glossary-rev002-fr.md
 ```
 
 ## Conventions
 
-- **XXXX-SBOM-001** identifie la série documentaire du rapport.
-- **REV00, REV01, ...** sont les révisions successives, indépendamment des dates.
-- Chaque fichier contient son numéro de révision pour rester identifiable hors de son répertoire.
-- L'anglais est la langue de référence. Seules les traductions françaises portent le suffixe `-fr`.
-- Chaque révision validée contient cinq fichiers, dont une copie figée des données JSON.
-- `models/*-v1.0.md` désigne la version des modèles, **pas** celle des rapports livrés.
-- Les principes de maîtrise documentaire d'ISO 9001 prévoient l'identification et le suivi des révisions, mais **n'imposent pas** cette convention de nommage.
+- **Une seule numérotation :** `REV001`, `REV002`, `REV003`.
+- Le numéro figure dans le dossier **et dans chaque nom de fichier**.
+- L'anglais est la référence ; les traductions françaises portent `-fr`.
+- Une révision validée contient cinq fichiers et conserve son JSON figé.
+- La version du modèle `v1.0` est indépendante de la révision documentaire.
+- Cette convention suit les principes généraux de maîtrise documentaire ISO, sans être un format imposé par l'ISO.
+- Les deux révisions présentes sont fictives et ne prouvent aucune conformité.
 
-## Tester REV00 et REV01
+## Générer REV003 (PowerShell)
 
-Les deux révisions contiennent des données et des documents d'exemple.
-
-REV01 illustre trois évolutions **fictives** : une mise à jour d'une dépendance Angular, une version Kafka déclarée dans Helm et une version Grafana ajoutée à l'inventaire. Aucune de ces informations n'est un constat vérifié.
-
-## Générer REV02 avec OpenCode (PowerShell)
-
-Depuis la racine du dépôt `sandbox` :
+À la racine du dépôt `sandbox` :
 
 ```powershell
 git pull github master
 cd projet/generate-board
-```
-
-Pour repartir de la dernière révision archivée, copier son JSON dans le fichier de travail :
-
-```powershell
-Copy-Item results/REV01/xxxx-data-001-rev01.json code/data.json
-```
-
-Dans `code/data.json`, définir `delivery.revision` à `REV02`, puis mettre à jour `snapshotDate`, `delivery.date` et les données collectées.
-
-Conserver `null` pour les valeurs inconnues. Ne jamais considérer une licence supposée comme vérifiée sans preuve.
-
-Lancer OpenCode :
-
-```powershell
 opencode
 ```
 
-Puis saisir :
+Dans OpenCode :
 
 ```text
-Read code/prompt.md and perform the requested delivery for code/data.json.
+Read code/prompt.md and generate REV003 using code/data.json.
 ```
 
-Ou directement :
-
-```powershell
-opencode run --agent build "Read code/prompt.md and generate the next revision."
-```
-
-OpenCode doit produire exactement cinq fichiers dans `results/REV02/`. Si cette révision existe déjà, ne pas l'écraser.
+Le fichier `code/data.json` contient déjà `delivery.revision: REV003`. Actualiser les données et dates avant une vraie livraison. Ne jamais écraser une révision existante.
 
 ## Vérifier et archiver
 
 ```powershell
-Get-ChildItem results/REV02
+Get-ChildItem results/REV003
 git diff -- results/
 ```
 
@@ -97,8 +70,8 @@ Depuis la racine de `sandbox` :
 
 ```powershell
 git add projet/generate-board
-git commit -m "docs: archive SBOM revision REV02"
+git commit -m "docs: archive SBOM REV003"
 git push github master
 ```
 
-Avant de valider, vérifier la cohérence des chiffres entre les documents anglais et français ainsi que la présence du JSON archivé.
+Avant publication, vérifier les données archivées, les chiffres et la cohérence entre anglais et français.

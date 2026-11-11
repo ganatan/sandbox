@@ -2,8 +2,8 @@
 
 **Company:** ganatan  
 **Project:** xxxx  
-**Revision:** REV00  
-**Related report:** xxxx-sbom-001-rev00.md  
+**Revision:** REV002  
+**Related report:** xxxx-sbom-rev002.md  
 **Status:** SIMULATION
 
 | Term | Definition |

@@ -2,9 +2,9 @@
 
 **Organisation :** ganatan  
 **Projet :** xxxx  
-**Référence :** XXXX-SBOM-001  
-**Révision :** REV00  
-**Date :** 2026-11-11  
+**Référence :** XXXX-SBOM  
+**Révision :** REV002  
+**Date :** 2026-11-18  
 **Modèle :** 1.0  
 **Statut :** SIMULATION — données non auditées
 
@@ -31,7 +31,7 @@ Inventaire simulé des postes homogènes, dépôts applicatifs, contrats et infr
 
 | Dépendance | Version | Licence présumée | Copyleft | Vérification |
 |---|---|---|---|---|
-| @angular/core | 20.0.0 | MIT | none | presume |
+| @angular/core | 20.1.0 | MIT | none | presume |
 | rxjs | 7.8.2 | Apache-2.0 | none | presume |
 | @angular-architects/module-federation | Not established | Not established | unknown | a_verifier |
 | react | 18.3.1 | MIT | none | presume |
@@ -47,7 +47,9 @@ Les licences et versions proviennent du JSON de simulation ; aucune n'a été co
 
 ## 4. Évolution de la révision
 
-Première livraison fictive ; aucune précédente à comparer.
+- Angular core: 20.0.0 → 20.1.0
+- Kafka Helm declaration: version unknown → 3.8.0
+- Grafana inventory: version unknown → 11.3.0
 
 ## 5. Points à vérifier
 

@@ -491,11 +491,11 @@
     "Module Federation is an application composition feature, not an independent package.",
     "For Redis, the applicable version and license must be determined.",
     "No compliance assertion can be inferred from these examples.",
-    "The licence expressions and versions remain unverified hypotheses, including changed values in REV01."
+    "The licence expressions and versions remain unverified hypotheses, including changed values in REV002."
   ],
   "delivery": {
-    "documentId": "XXXX-SBOM-001",
-    "revision": "REV02",
+    "documentId": "XXXX-SBOM",
+    "revision": "REV003",
     "modelVersion": "1.0",
     "language": "en",
     "status": "SIMULATION",

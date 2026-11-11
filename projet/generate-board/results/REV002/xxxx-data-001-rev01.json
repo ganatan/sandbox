@@ -491,11 +491,11 @@
     "Le rôle de Module Federation est une fonctionnalité d'assemblage, pas un paquet autonome.",
     "Pour Redis, déterminer impérativement la version et la licence applicables.",
     "No compliance assertion can be inferred from these examples.",
-    "The licence expressions and versions remain unverified hypotheses, including changed values in REV01."
+    "The licence expressions and versions remain unverified hypotheses, including changed values in REV002."
   ],
   "delivery": {
-    "documentId": "XXXX-SBOM-001",
-    "revision": "REV01",
+    "documentId": "XXXX-SBOM",
+    "revision": "REV002",
     "modelVersion": "1.0",
     "language": "en",
     "status": "SIMULATION",

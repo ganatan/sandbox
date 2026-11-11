@@ -2,25 +2,34 @@
 
 Work from `generate-board/`.
 
-## Input and templates
+## Input
 
-- `code/data.json` is the current input snapshot.
-- `models/report-v1.0.md` is the English report template.
-- `models/glossary-v1.0.md` is the English glossary template.
+- `code/data.json`: current JSON input (English).
+- `models/report-v1.0.md`: English report template.
+- `models/glossary-v1.0.md`: English glossary template.
 
-## Delivery rules
+## Output and revision naming
 
-1. Read `code/data.json` and its `delivery.revision`, e.g. `REV02`.
-2. Use uppercase folder `results/REV02/` and lowercase suffix `rev02`.
-3. Do not overwrite an existing archived revision. Stop and report the collision.
-4. First archive the JSON as `xxxx-data-001-rev02.json`, unchanged.
-5. Generate the English primary `xxxx-sbom-001-rev02.md` and `xxxx-glossary-001-rev02.md`.
-6. Translate those English documents faithfully into `xxxx-sbom-001-rev02-fr.md` and `xxxx-glossary-001-rev02-fr.md`.
-7. Keep all numbers, versions, SPDX license identifiers, tables, uncertainties and source paths identical between English and French.
-8. The glossary is alphabetical, factual, concise and restricted to terms used by the generated report.
-9. Clearly mark the documents as simulations. Do not claim any license is verified when the JSON says otherwise.
-10. Compare the new archived input with the preceding revision if available; mention only genuine, traceable changes.
-11. Do not create any other deliverables and do not edit existing archives.
-12. Verify that exactly five files are present for the revision and that the archived JSON matches the input.
+- First delivery: `results/REV001/`; next delivery: `results/REV002/`, then `results/REV003/`, etc.
+- `delivery.revision` in `code/data.json` determines the directory and file suffix.
+- For `REV003`, generate exactly:
+  - `xxxx-data-rev003.json`
+  - `xxxx-sbom-rev003.md`
+  - `xxxx-sbom-rev003-fr.md`
+  - `xxxx-glossary-rev003.md`
+  - `xxxx-glossary-rev003-fr.md`
 
-English is authoritative. `-fr` is the translated version. The numbering is an internal controlled-document convention aligned with ISO document-control principles, not an ISO-mandated filename syntax.
+## Requirements
+
+1. Do not overwrite an existing revision or modify validated archived files.
+2. Copy the JSON input without modification to the archive.
+3. Generate the authoritative English report and glossary using the versioned English templates.
+4. Translate both English documents into French; do not independently regenerate French from JSON.
+5. Check numerical totals, version numbers, SPDX identifiers, sources and uncertainties match in both languages.
+6. Compare with the previous archived snapshot; describe only differences supported by the two JSON files.
+7. Glossary: alphabetic, factual, concise, and only terms actually used in the report.
+8. Do not invent licenses, versions, deployment claims or compliance conclusions. Mark simulations explicitly.
+9. Keep templates and work input unchanged. Stop if there is a collision or validation failure.
+10. Report the paths of the five generated files.
+
+`REV001` is an internal sequential document revision convention consistent with general ISO document control principles; it is not a mandatory ISO format.

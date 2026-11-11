@@ -1,13 +1,14 @@
 # Generate Board — Project xxxx
 
-**Organization:** ganatan  
-**Status:** simulated data and reports
+**Company:** ganatan  
+**Purpose:** Simulate an Open Source inventory and license analysis with OpenCode.
 
-## Layout
+## Structure
 
 ```text
 generate-board/
 ├── README.md
+├── README-fr.md
 ├── models/
 │   ├── data-model.json
 │   ├── report-v1.0.md
@@ -16,84 +17,61 @@ generate-board/
 │   ├── data.json
 │   └── prompt.md
 └── results/
-    ├── REV00/
-    │   ├── xxxx-data-001-rev00.json
-    │   ├── xxxx-sbom-001-rev00.md
-    │   ├── xxxx-sbom-001-rev00-fr.md
-    │   ├── xxxx-glossary-001-rev00.md
-    │   └── xxxx-glossary-001-rev00-fr.md
-    └── REV01/
-        ├── xxxx-data-001-rev01.json
-        ├── xxxx-sbom-001-rev01.md
-        ├── xxxx-sbom-001-rev01-fr.md
-        ├── xxxx-glossary-001-rev01.md
-        └── xxxx-glossary-001-rev01-fr.md
+    ├── REV001/
+    │   ├── xxxx-data-rev001.json
+    │   ├── xxxx-sbom-rev001.md
+    │   ├── xxxx-sbom-rev001-fr.md
+    │   ├── xxxx-glossary-rev001.md
+    │   └── xxxx-glossary-rev001-fr.md
+    └── REV002/
+        ├── xxxx-data-rev002.json
+        ├── xxxx-sbom-rev002.md
+        ├── xxxx-sbom-rev002-fr.md
+        ├── xxxx-glossary-rev002.md
+        └── xxxx-glossary-rev002-fr.md
 ```
 
-## Conventions
+## Rules
 
-- **XXXX-SBOM-001** identifies the controlled report series.
-- **REV00, REV01, ...** are revisions of that series, independent of date.
-- File names carry the revision, so they remain identifiable outside their folders.
-- English is the authoritative language. Only French translations use `-fr`.
-- Each validated revision has five files, including the immutable JSON snapshot.
-- `models/*-v1.0.md` are template versions, **not** delivered report revisions.
-- ISO 9001 document control guidance supports identification and revision control but does **not** mandate this naming syntax.
+- One sequential number: `REV001`, `REV002`, `REV003`; no additional document serial number.
+- Version in **folder and every filename**.
+- English is authoritative; French translations use `-fr`.
+- Five files per release, including the immutable input JSON snapshot.
+- Template versions (`v1.0`) are independent of delivery revisions.
+- ISO 9001/10013 document control principles do **not** prescribe this exact naming syntax.
+- All data and sample reports are fictitious, not verified audit findings.
 
-## Test REV00 and REV01
+## Generate REV003 (PowerShell)
 
-The two revisions are prepopulated with illustrative data and documents.
-
-REV01 demonstrates three **simulated** differences: an Angular package version update, a Kafka version declared in Helm, and a Grafana version appearing in the inventory. None is a verified finding.
-
-## Generate REV02 with OpenCode (PowerShell)
-
-From the sandbox repository:
+From the sandbox repository root:
 
 ```powershell
-git pull
+git pull github master
 cd projet/generate-board
-```
-
-Copy the latest JSON into the working input and change only its delivery metadata / actual collected findings:
-
-```powershell
-Copy-Item results/REV01/xxxx-data-001-rev01.json code/data.json
-```
-
-Edit `code/data.json`: set `delivery.revision` to `REV02`, update `snapshotDate`, `delivery.date` and real collected data. Preserve unknowns as `null`; never turn assumed licenses into verified licenses without evidence.
-
-```powershell
 opencode
 ```
 
-Then ask:
+Then enter:
 
 ```text
-Read code/prompt.md and perform the requested delivery for code/data.json.
+Read code/prompt.md and generate REV003 using code/data.json.
 ```
 
-Alternative:
+`code/data.json` is preconfigured with `delivery.revision: REV003`. Update actual collected data and snapshot dates before real releases. Do not overwrite an existing revision.
+
+## Validate and commit
 
 ```powershell
-opencode run --agent build "Read code/prompt.md and generate the next revision."
-```
-
-OpenCode should create exactly five files under `results/REV02/`. If that folder already contains a revision, do not overwrite it.
-
-## Check and archive
-
-```powershell
-Get-ChildItem results/REV02
+Get-ChildItem results/REV003
 git diff -- results/
 ```
 
-From the repository root:
+From the sandbox root:
 
 ```powershell
 git add projet/generate-board
-git commit -m "docs: archive SBOM revision REV02"
-git push
+git commit -m "docs: archive SBOM REV003"
+git push github master
 ```
 
-Check the English and French totals and the immutable data snapshot before accepting any revision.
+Validate English/French consistency and the archived JSON before publishing.
