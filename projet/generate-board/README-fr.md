@@ -2,11 +2,18 @@
 
 Générer un rapport d'inventaire Open Source et un glossaire avec OpenCode.
 
-## 1. Préparer les données
+## 1. Préparer la prochaine révision
 
-Modifier `code/data.json`.
+Le fichier `code/data.json` contient actuellement la dernière révision : **REV002**.
 
-Renseigner la prochaine révision dans `delivery.revision`, par exemple `REV003`, puis actualiser la date et les données d'inventaire.
+Pour créer **REV003** :
+
+1. Ouvrir `code/data.json`.
+2. Dans `delivery`, remplacer `"revision": "REV002"` par `"revision": "REV003"`.
+3. Modifier `snapshotDate` et `delivery.date` avec la nouvelle date du rapport (format `YYYY-MM-DD`).
+4. Actualiser les données d'inventaire à analyser. Toutes les valeurs JSON restent en anglais.
+
+Ne pas modifier les fichiers déjà archivés dans `results/REV002/`.
 
 ## 2. Lancer OpenCode
 
@@ -24,7 +31,7 @@ Read code/prompt.md and generate the report.
 
 ## 3. Fichiers générés
 
-Pour `REV003`, OpenCode crée :
+OpenCode crée :
 
 ```text
 results/
@@ -36,6 +43,6 @@ results/
     └── xxxx-glossary-rev003-fr.md
 ```
 
-L'anglais est la version de référence. Les fichiers `-fr.md` sont les traductions françaises.
+Les rapports et glossaires anglais sont les originaux. Les fichiers `-fr.md` sont leurs traductions françaises.
 
-Les anciennes révisions restent inchangées.
+Pour la livraison suivante, utiliser **REV004**, puis **REV005**, etc.
