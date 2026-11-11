@@ -46,7 +46,7 @@ Les chiffres ci-dessus sont entièrement fictifs.
 | Catégorie | Exemples |
 |---|---|
 | Systèmes et outils | Fedora, Podman, Distrobox |
-| Développement | Node.js, Angular, Quarkus, Cargo |
+| Développement | Node.js, Angular, Quarkus, Rust, Cargo |
 | Infrastructure | Kubernetes, Kafka, Redis |
 | Supervision | Grafana, Prometheus |
 
@@ -58,9 +58,9 @@ Un **SBOM** (Software Bill of Materials) permet de structurer l'inventaire logic
 |---|---|
 | SPDX — ISO/IEC 5962 | Identification et échange des informations relatives aux composants et licences |
 | OpenChain — ISO/IEC 5230 | Gestion de la conformité des licences Open Source |
-| CycloneDX | Inventaire structuré des composants logiciels (SBOM) |
 
-Les licences **copyleft** peuvent imposer des obligations spécifiques selon les conditions d'utilisation et de redistribution.
+
+Les licences **MIT**, **BSD** et **Apache-2.0** sont permissives. Les licences **GPL**, **LGPL** et **AGPL** utilisent le principe du **copyleft** et peuvent imposer des obligations spécifiques selon les usages et la redistribution.
 
 **15 licences restent à examiner.** Leur vérification permettra de préciser les éventuelles obligations applicables.
 
