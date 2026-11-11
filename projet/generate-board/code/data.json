@@ -1,7 +1,7 @@
 {
   "project": "xxxx",
   "company": "ganatan",
-  "snapshotDate": "2026-11-25",
+  "snapshotDate": "2026-11-18",
   "dataType": "simulation",
   "scope": "Standardized workstations, applications, contracts, and declared infrastructure",
   "evidenceLevel": "simulated_not_audited",
@@ -495,11 +495,15 @@
   ],
   "delivery": {
     "documentId": "XXXX-SBOM",
-    "revision": "REV003",
+    "revision": "REV002",
     "modelVersion": "1.0",
     "language": "en",
     "status": "SIMULATION",
-    "date": "2026-11-25"
+    "date": "2026-11-18"
   },
-  "simulatedChanges": []
+  "simulatedChanges": [
+    "Angular core: 20.0.0 → 20.1.0",
+    "Kafka Helm declaration: version unknown → 3.8.0",
+    "Grafana inventory: version unknown → 11.3.0"
+  ]
 }
