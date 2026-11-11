@@ -1,46 +1,36 @@
-# Glossaire — Open Source
+# Open Source Glossary
 
-**Société :** ganatan  
-**Projet :** xxx  
-**Version :** 1.0  
-**Statut :** Simulation
+**Company:** ganatan  
+**Project:** xxxx  
+**Model version:** 1.0  
+**Language:** English
 
-| Terme | Définition |
+| Term | Definition |
 |---|---|
-| **AGPL** | Affero General Public License : licence à copyleft fort comprenant des obligations liées à certains accès par réseau. |
-| **Angular** | Framework de développement d'applications web. |
-| **Apache-2.0** | Licence Open Source permissive de l'Apache Software Foundation. |
-| **BSD** | Famille de licences Open Source permissives, notamment BSD-2-Clause et BSD-3-Clause. |
-| **Cargo** | Gestionnaire de dépendances et outil de compilation pour Rust. |
-| **Copyleft** | Principe de licence qui impose certaines obligations de partage ou de maintien de licence lors de redistributions concernées. |
-| **Distrobox** | Outil d'exécution d'environnements Linux intégrés au poste hôte. |
-| **Fedora** | Distribution du système d'exploitation Linux. |
-| **GPL** | GNU General Public License : famille de licences à copyleft fort. |
-| **Grafana** | Logiciel de tableaux de bord et de visualisation des données. |
-| **ISO** | International Organization for Standardization : organisation internationale de normalisation. |
-| **ISO/IEC 5230** | Norme OpenChain sur les programmes de conformité des licences Open Source. |
-| **ISO/IEC 5962** | Norme internationale de standardisation de SPDX. |
-| **Kafka** | Plateforme distribuée d'échange de flux d'événements. |
-| **Kubernetes** | Plateforme d'orchestration d'applications conteneurisées. |
-| **LGPL** | GNU Lesser General Public License : famille de licences à copyleft faible. |
-| **MIT** | Licence Open Source permissive associée au Massachusetts Institute of Technology. |
-| **Node.js** | Environnement d'exécution JavaScript. |
-| **OpenChain** | Initiative de normalisation de la conformité des licences Open Source. |
-| **Open Source** | Logiciel dont la licence permet l'accès au code source, la modification et la redistribution sous conditions. |
-| **Podman** | Outil de gestion et d'exécution de conteneurs. |
-| **Prometheus** | Système de collecte et de consultation de métriques. |
-| **Quarkus** | Framework Java orienté applications cloud-native. |
-| **Redis** | Système de stockage clé-valeur ; les licences applicables dépendent de sa version. |
-| **Rust** | Langage compilé visant notamment la sûreté mémoire. |
-| **SBOM** | Software Bill of Materials : inventaire structuré des composants et dépendances logiciels. |
-| **SPDX** | Software Package Data Exchange : standard d'échange d'informations sur les logiciels et leurs licences. |
+| **AGPL** | Affero General Public License. Strong copyleft license with additional obligations for certain network-based interactions. |
+| **API** | Application Programming Interface. Interface allowing software systems to communicate. |
+| **BSD** | Berkeley Software Distribution. Name associated with a family of permissive software licenses. |
+| **CI/CD** | Continuous Integration / Continuous Delivery or Deployment. Practices for automating integration, delivery and deployment. |
+| **Copyleft** | Licensing principle requiring certain freedoms and conditions to be preserved when covered software is redistributed. |
+| **GPL** | GNU General Public License. Family of strong copyleft software licenses. |
+| **IEC** | International Electrotechnical Commission. International standards organization. |
+| **ISO** | International Organization for Standardization. International standards organization. |
+| **ISO 9001** | International standard specifying requirements for a quality management system, including control of documented information. |
+| **ISO 10013** | International standard providing guidance on documented information for quality management systems. |
+| **ISO 8601** | International standard for representing dates and times. |
+| **ISO/IEC 5230** | OpenChain standard for open source license compliance programs. |
+| **ISO/IEC 5962** | International standard for SPDX. |
+| **JSON** | JavaScript Object Notation. Text format for structured data exchange. |
+| **LGPL** | GNU Lesser General Public License. Family of weak copyleft licenses, often used for libraries. |
+| **MIT** | Massachusetts Institute of Technology License. Permissive open source license. |
+| **MPL** | Mozilla Public License. File-level copyleft software license. |
+| **npm** | npm is the package manager for the Node.js ecosystem; the name is not officially an acronym. |
+| **OpenChain** | Initiative developing standards for open source license compliance and security assurance programs. |
+| **OSI** | Open Source Initiative. Organization promoting and defining open source licensing principles. |
+| **OSS** | Open Source Software. Software distributed under an open source license. |
+| **POM** | Project Object Model. Maven project model, typically described in a `pom.xml` file. |
+| **REV** | Revision. Identifier for a controlled document revision; the numbering convention is defined by the organization. |
+| **SBOM** | Software Bill of Materials. Structured inventory of software components and their dependencies. |
+| **SPDX** | Software Package Data Exchange. Standard for representing and exchanging software component and license information. |
 
-## Références
-
-- https://opensource.org/licenses
-- https://www.gnu.org/licenses/
-- https://www.iso.org/
-- https://spdx.dev/
-- https://openchainproject.org/
-
-*Seuls les termes utilisés dans le rapport généré doivent être conservés dans son glossaire.*
+*Only terms actually used in a generated report should appear in its corresponding glossary.*
