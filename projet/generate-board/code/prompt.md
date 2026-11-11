@@ -1,44 +1,28 @@
 # Mission OpenCode
 
-Tu travailles depuis le dossier `generate-board`.
+Travaille depuis le dossier `generate-board`.
 
 ## Entrée
 
-Lis `code/data.json`.
+- Données : `code/data.json`
+- Modèle du rapport : `models/rapport-v1.0.md`
+- Modèle du glossaire : `models/glossaire-v1.0.md`
 
-## Référence de présentation
-
-Consulte `exemples/rapport-exemple.md` pour le style et la structure souhaités, mais ne réutilise JAMAIS ses chiffres fictifs : ils sont indépendants des données de test.
-
-## Fichiers à générer
+## Sortie
 
 - `resultat/rapport.md`
 - `resultat/glossaire.md`
 
-## Rapport
+## Instructions
 
-Rédige un rapport synthétique, simple, lisible et professionnel (1 à 3 pages environ) avec :
-
-1. Titre, projet, société, date et périmètre.
-2. Synthèse chiffrée strictement calculée depuis `code/data.json`.
-3. Inventaire : composant, version, licence, dépôt et fichier source.
-4. Licences, SBOM et référentiels (SPDX, CycloneDX et ISO) lorsque pertinent, sans revendiquer une conformité non prouvée.
-5. Points à vérifier et conclusion.
-
-## Glossaire
-
-Rédige un document distinct expliquant les termes importants du rapport : définition accessible, origine, bref historique, usage, et références officielles vérifiables.
-
-## Règles
-
-- Tout est simulé : le préciser dans les deux fichiers.
-- Société : ganatan. Projet : xxx.
-- Utiliser `code/data.json` comme seule source des constats sur xxx.
-- Ne jamais inventer des mesures, versions, licences, installations ou déploiements.
-- Conserver les valeurs inconnues comme « À vérifier ».
-- Distinguer composant déclaré et composant réellement déployé.
-- Un identifiant de licence ne prouve pas sa conformité.
-- N'utiliser que des liens officiels connus et ne pas inventer de sources.
-- Rédiger en français.
-- Ne pas modifier les fichiers dans `code/` et `exemples/`.
-- Ne créer aucun fichier supplémentaire.
+1. Génère un rapport Markdown en reprenant la structure et la présentation de `models/rapport-v1.0.md`.
+2. Remplace exclusivement les résultats fictifs du modèle par les données réelles de `code/data.json` (qui sont elles-mêmes simulées pour ce test).
+3. Calcule les totaux uniquement à partir du JSON. N'utilise jamais les 125 composants du modèle comme résultat du JSON.
+4. Génère un glossaire en reprenant la présentation de `models/glossaire-v1.0.md`.
+5. Le glossaire doit être court : une définition simple par terme, éventuellement une expansion du sigle. Aucun historique ni développement inutile.
+6. N'inclus dans le glossaire que les notions effectivement citées dans le rapport généré.
+7. Les références doivent être officielles et vérifiables. Ne crée pas de référence imaginaire.
+8. Distingue les composants déclarés des composants déployés. Une licence identifiée n'établit pas la conformité juridique.
+9. Mentionne « Simulation », la société ganatan et le projet xxx dans les deux documents.
+10. Ne modifie aucun fichier de `code/` ou de `models/`.
+11. Produis uniquement les deux fichiers prévus dans `resultat/`, en français.
