@@ -26,7 +26,7 @@ Deux modèles sont disponibles dans `/models` : **Intelligence** et **Super Inte
 | 12 | Tester sur un ticket | Plan → validation → code → tests → review → MR | Premier flux maîtrisé |
 | 13 | Optimiser les tokens | Mesurer par modèle et par scénario | Choix fondés sur des mesures |
 
-Les étapes sont détaillées dans [002-installation-details.md](./002-installation-details.md).
+Les étapes sont détaillées dans [002-installation-details.md](./002-installation-details.md). Le fichier réel de configuration est **`~/.config/opencode/opencode.json`** : voir [003-configuration.md](./003-configuration.md). Ne pas recopier ni committer ce fichier interne.
 
 ## Premier jour : commandes à lancer
 
