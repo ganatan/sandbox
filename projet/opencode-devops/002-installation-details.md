@@ -1,6 +1,6 @@
 # 002 — Installation détaillée OpenCode DevOps
 
-Guide pas à pas associé à [001-demarrage.md](./001-demarrage.md).
+Guide pas à pas associé à [001-demarrage.md](./001-demarrage.md). Le fichier de configuration du poste client est **`~/.config/opencode/opencode.json`** ; son diagnostic et les règles de modification sont expliqués dans [003-configuration.md](./003-configuration.md).
 
 **Contexte :** Fedora hôte, Podman, Distrobox, GitLab interne (environ dix dépôts Angular, React, Rust, Quarkus, Helm, Ansible, ArgoCD), OpenCode et deux modèles internes **Intelligence** et **Super Intelligence**, sans Internet public.
 
@@ -95,6 +95,9 @@ git branch --show-current
 Ne pas confondre GitLab interne et GitHub personnel. Chaque dépôt conserve son propre `.git` et ses branches. Ne pas mettre à jour tous les dépôts aveuglément.
 
 ## 6. Diagnostiquer OpenCode
+
+La configuration globale réelle est `~/.config/opencode/opencode.json`. Ne pas la remplacer : examiner d'abord son contenu, masquer les secrets et vérifier les valeurs effectives. Voir [003-configuration.md](./003-configuration.md).
+
 
 ```bash
 cd ~/workspace
