@@ -89,3 +89,66 @@ Une seule Distrobox peut suffire pour Angular, React, Node.js et OpenCode. Plusi
 **Fedora héberge le poste, Podman exécute les conteneurs, Distrobox rend leur usage pratique, Node.js et Angular fournissent les outils, VS Code les utilise.**
 
 Le raccourci graphique permet d'ouvrir VS Code comme une application classique tout en conservant son exécution dans Distrobox, sous réserve de vérifier la configuration du lanceur.
+
+## 11. Utiliser VS Code en ligne de commande
+
+### Depuis Fedora : entrer dans le conteneur
+
+```bash
+distrobox list
+distrobox enter nom-de-ta-distrobox
+```
+
+Remplacer `nom-de-ta-distrobox` par le nom réel affiché par `distrobox list`.
+
+### Depuis la Distrobox : ouvrir VS Code
+
+```bash
+code
+code .
+code ~/workspace/repositories
+code package.json
+```
+
+- `code` ouvre VS Code.
+- `code .` ouvre le dossier courant.
+- `code ~/workspace/repositories` ouvre le dossier partagé des dépôts GitLab.
+- `code package.json` ouvre le fichier indiqué.
+
+### Options pratiques
+
+| Commande | Fonction |
+| --- | --- |
+| `code -n .` | Ouvrir une nouvelle fenêtre sur le dossier courant |
+| `code -r .` | Réutiliser la dernière fenêtre active |
+| `code --version` | Afficher la version |
+| `code --list-extensions` | Lister les extensions installées |
+| `command -v code` | Afficher le chemin de la commande |
+
+### Lancer directement depuis Fedora
+
+```bash
+distrobox enter nom-de-ta-distrobox -- code ~/workspace/repositories
+```
+
+Cette commande exécute VS Code dans le conteneur sans ouvrir préalablement un shell interactif. Le chemin doit être accessible dans le conteneur.
+
+### Terminal intégré VS Code
+
+Ouvrir le terminal avec `Ctrl + \`` ou via le menu Terminal. Si VS Code est réellement lancé dans Distrobox et si le profil de terminal n'a pas été redirigé, les commandes Node.js et Angular utilisent l'environnement du conteneur.
+
+```bash
+cat /etc/os-release
+command -v node
+node --version
+npm --version
+ng version
+```
+
+### Vérifier le raccourci graphique
+
+Le raccourci créé depuis Distrobox permet de lancer VS Code depuis le bureau Fedora. Son comportement exact dépend de la commande `Exec=` de son fichier `.desktop`. Il faut vérifier cette commande si VS Code démarre dans le mauvais environnement.
+
+### À retenir
+
+Pour travailler sur un dépôt, entrer dans la Distrobox, se placer dans le répertoire GitLab puis lancer `code .`. C'est la méthode la plus simple pour ouvrir directement le bon projet avec les outils du conteneur.
