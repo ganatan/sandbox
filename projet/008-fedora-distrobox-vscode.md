@@ -211,3 +211,56 @@ Ces commandes doivent être lancées depuis la racine du projet Rust, là où se
 ### Synthèse de l'architecture
 
 Fedora héberge Podman ; Distrobox exécute VS Code et Node.js ; `~/.cargo/bin` fournit potentiellement la même chaîne Rust à Fedora et à Distrobox ; rust-analyzer apporte les fonctions d'analyse Rust dans VS Code. Cette organisation est pratique, mais la reproductibilité des compilations dépend aussi des bibliothèques système et de la configuration des outils.
+
+## 13. Prise en main d'un dépôt Rust existant
+
+### Situation
+
+Le dépôt GitLab Rust est cloné en local et la commande `cargo build` a réussi. Cela prouve que les cibles construites compilent dans l'environnement et la configuration actuels. Cela ne garantit ni le succès des tests, ni le bon fonctionnement de l'application, ni la compilation avec toutes les fonctionnalités possibles.
+
+### Comprendre la chaîne de compilation
+
+1. `Cargo.toml` décrit le paquet ou le workspace, ses cibles et les dépendances déclarées.
+2. `Cargo.lock`, lorsqu'il existe, enregistre les versions résolues des dépendances.
+3. Cargo résout et prépare les dépendances nécessaires, puis invoque le compilateur `rustc`.
+4. Les artefacts sont généralement produits dans `target/debug/` pour une compilation standard, sauf configuration particulière du répertoire cible.
+
+### Les commandes essentielles
+
+| Commande | Rôle |
+| --- | --- |
+| `cargo build` | Compiler le projet |
+| `cargo check` | Vérifier le code sans générer le binaire final |
+| `cargo test` | Compiler et exécuter les tests |
+| `cargo run` | Construire et lancer une cible exécutable |
+| `cargo tree` | Afficher l'arbre des dépendances |
+| `cargo metadata --format-version 1` | Extraire les métadonnées structurées du projet |
+
+`cargo run` ne convient pas à un dépôt qui ne contient aucune cible exécutable.
+
+### Parcours recommandé pour découvrir un dépôt Rust
+
+1. Ouvrir le dépôt dans VS Code depuis le terminal de la Distrobox : `code .`.
+2. Lire le `README.md` pour comprendre la finalité et les prérequis du projet.
+3. Lire le `Cargo.toml` racine, notamment `[package]`, `[dependencies]` et éventuellement `[workspace]`.
+4. Examiner `src/main.rs` pour une application ou `src/lib.rs` pour une bibliothèque ; dans un workspace, explorer les membres et leurs manifestes.
+5. Explorer les modules sous `src/` avec rust-analyzer (navigation par Ctrl + clic, types, diagnostics).
+6. Lancer `cargo test` si l'environnement et les autorisations le permettent.
+7. Consulter `cargo tree` pour comprendre les dépendances directes et transitives.
+
+### Relation avec Fedora et Distrobox
+
+Rust et Cargo sont présents dans `~/.cargo/bin`, un chemin du répertoire personnel partagé. VS Code s'exécute dans Distrobox et rust-analyzer aide à lire le code. Si `cargo build` fonctionne depuis le terminal de VS Code, la chaîne de compilation est opérationnelle dans cet environnement pour ce dépôt. Les bibliothèques natives et les outils de compilation restent propres à l'environnement d'exécution.
+
+### Exploiter le dépôt pour l'inventaire open source
+
+- `Cargo.toml` : dépendances déclarées et contraintes de versions.
+- `Cargo.lock` : versions résolues.
+- `cargo metadata --format-version 1` : représentation JSON des paquets, cibles et dépendances.
+- `cargo tree` : représentation lisible des relations entre dépendances.
+
+Ces sources ne prouvent pas à elles seules quelles dépendances sont effectivement incluses dans un livrable. Pour un inventaire fiable, conserver la provenance des données, le contexte de compilation, les fonctionnalités activées et le niveau de vérification.
+
+### Résumé à mémoriser
+
+**Fedora héberge le poste ; Distrobox fournit l'environnement ; VS Code et rust-analyzer servent à comprendre le code ; Cargo et rustc servent à compiler. Un `cargo build` réussi est un premier contrôle technique, pas une validation fonctionnelle complète.**
