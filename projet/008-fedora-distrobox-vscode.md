@@ -152,3 +152,62 @@ Le raccourci créé depuis Distrobox permet de lancer VS Code depuis le bureau F
 ### À retenir
 
 Pour travailler sur un dépôt, entrer dans la Distrobox, se placer dans le répertoire GitLab puis lancer `code .`. C'est la méthode la plus simple pour ouvrir directement le bon projet avec les outils du conteneur.
+
+## 12. Cargo, Rust et rust-analyzer
+
+### Installation Rust dans le répertoire personnel
+
+Sur le poste Fedora, Cargo est présent dans `~/.cargo/bin/cargo`. Ce chemin correspond souvent à une installation utilisateur via rustup, sans modification des paquets système Fedora. Le répertoire personnel étant généralement partagé avec Distrobox, Cargo peut être accessible depuis les deux environnements.
+
+Cela ne garantit pas à lui seul une compilation identique : les bibliothèques natives et les outils de compilation peuvent différer entre Fedora et le conteneur.
+
+### Rôle des outils
+
+| Outil | Fonction |
+| --- | --- |
+| Rust | Langage de programmation |
+| rustc | Compilateur Rust |
+| Cargo | Gestion des projets, dépendances, compilation et tests |
+| rustup | Installation et sélection des chaînes d'outils Rust |
+| rust-analyzer | Serveur de langage pour l'analyse du code Rust dans VS Code |
+| VS Code | Éditeur de code |
+
+Cargo joue un rôle proche de npm dans l'écosystème Node.js : `Cargo.toml` décrit le projet et ses dépendances ; `Cargo.lock` enregistre les versions résolues.
+
+### Pourquoi l'extension rust-analyzer dans VS Code ?
+
+Elle apporte l'autocomplétion, les diagnostics, la navigation vers les définitions, les informations de types et des actions de refactoring. Elle s'appuie sur la structure du projet Rust et peut utiliser Cargo pour ses analyses et vérifications.
+
+Elle ne remplace ni Cargo ni le compilateur `rustc`. Elle peut également nécessiter l'accès à la chaîne Rust depuis l'environnement dans lequel tourne VS Code.
+
+### Vérifier depuis Fedora puis Distrobox
+
+```bash
+command -v cargo
+cargo --version
+rustc --version
+rustup show
+```
+
+Si les commandes fonctionnent dans les deux environnements, comparer leurs chemins et versions. Pour contrôler les conteneurs :
+
+```bash
+distrobox list
+podman ps
+```
+
+### Commandes Cargo courantes
+
+```bash
+cargo --version
+cargo metadata --format-version 1
+cargo check
+cargo build
+cargo test
+```
+
+Ces commandes doivent être lancées depuis la racine du projet Rust, là où se trouve `Cargo.toml`, sauf pour `cargo --version`. `cargo metadata` expose les métadonnées du projet et les dépendances résolues, utiles pour l'inventaire open source ; `Cargo.lock` est également une source importante. L'inventaire doit distinguer dépendances déclarées, résolues et réellement embarquées.
+
+### Synthèse de l'architecture
+
+Fedora héberge Podman ; Distrobox exécute VS Code et Node.js ; `~/.cargo/bin` fournit potentiellement la même chaîne Rust à Fedora et à Distrobox ; rust-analyzer apporte les fonctions d'analyse Rust dans VS Code. Cette organisation est pratique, mais la reproductibilité des compilations dépend aussi des bibliothèques système et de la configuration des outils.
