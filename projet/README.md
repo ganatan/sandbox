@@ -12,3 +12,4 @@
 - [Java 8 — Ant, JUnit et logging maison](java-ant-junit-logging/README.md)
 - [Java 8 — Ant, JUnit et génériques Java](java-ant-junit-generics/README.md)
 - [Java 8 — MessageReceiver et configurations par constructeur](message-receiver/README.md)
+- [009 — Fedora, Podman Compose : contrôler Redis et Kafka](009-fedora-podman-compose-redis-kafka.md)
