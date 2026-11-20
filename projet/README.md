@@ -14,3 +14,4 @@
 - [Java 8 — MessageReceiver et configurations par constructeur](message-receiver/README.md)
 - [009 — Fedora, Podman Compose : contrôler Redis et Kafka](009-fedora-podman-compose-redis-kafka.md)
 - [010 — Fedora, Podman : exploitation avancée Redis et Kafka](010-fedora-podman-exploitation-avancee.md)
+- [011 — Fedora, Podman : entrer, explorer et tester les conteneurs](011-fedora-podman-entrer-explorer-tester-conteneurs.md)
