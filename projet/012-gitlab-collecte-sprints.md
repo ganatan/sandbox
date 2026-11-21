@@ -1,12 +1,12 @@
-# 012 — GitLab : collecte, compréhension et préparation des tickets
+# 012 — GitLab : collecte et analyse progressive des tickets
 
 ## Objectif
 
-Exploiter un an de sprints GitLab pour comprendre les tickets en cours avant de toucher au code.
+Exploiter un an de sprints GitLab pour comprendre les tickets, identifier leurs relations et préparer le développement d'un ticket en cours.
 
-Méthode identique au SBOM : collecte déterministe, données structurées, puis analyse ciblée avec OpenCode. Les dépôts GitLab sont déjà clonés localement.
+La méthode reprend celle du SBOM : collecte déterministe, données structurées, analyse progressive avec OpenCode.
 
-## Arborescence du projet
+## Arborescence
 
 ```text
 gitlab-analysis/
@@ -17,111 +17,118 @@ gitlab-analysis/
 └── prompt.md
 ```
 
-- `audit/` : scripts Python existants ou nouveaux, et Rust si nécessaire. Aucun appel au LLM.
-- `models/` : modèles de documents utilisés pour les restitutions.
-- `results/` : rapports Markdown générés par OpenCode.
-- `data.json` : données GitLab collectées, à la racine.
-- `prompt.md` : consigne OpenCode active, à la racine ; son contenu change selon l'étape.
+- `audit/` : scripts de collecte.
+- `models/` : modèles documentaires.
+- `results/` : rapports générés.
+- `data.json` : données GitLab collectées.
+- `prompt.md` : prompt actif, à la racine.
 
-Les scripts existants de clonage et les dépôts locaux ne doivent pas être modifiés.
+Les dépôts GitLab sont déjà clonés localement.
 
-## Étape 1 — Collecter un an de sprints
+## Étape 1 — Collecte GitLab
 
-La collecte se fait en Python, sans intervention du LLM. OpenCode sert uniquement à développer le script, puis on exécute ce script de manière autonome.
+### Prompt 1
 
-### Prompt de développement du script
+```text
+À partir de mon script Python GitLab existant, crée dans audit/ un script générant data.json avec les sprints des 12 derniers mois.
 
-> En utilisant mon script Python GitLab existant, crée dans `audit/` un script autonome qui génère `data.json` à la racine.
->
-> Récupère les sprints des 12 derniers mois (environ 17 à 18 sprints de 3 semaines). Repère leur représentation réelle dans GitLab : boards, iterations ou milestones.
->
-> Pour chaque sprint, conserve son nom, ses dates et tous ses tickets ouverts ou fermés.
->
-> Pour chaque ticket, récupère :
-> - ID, titre, description complète, état et projet GitLab.
-> - Auteur, assignés, labels et dates.
-> - Tous les commentaires et discussions.
-> - Tickets liés et dépendances.
-> - Références aux Merge Requests et aux commits.
-> - Dépôts concernés lorsqu'ils sont identifiables et URLs GitLab.
->
-> Utilise la pagination complète, évite les doublons et signale les données inaccessibles.
->
-> Produit uniquement `data.json`, organisé par sprint. Aucun Markdown, aucun rapport ni appel LLM dans le script.
->
-> Ne modifie pas GitLab, le script de clonage ni les dépôts locaux. N'expose pas le token.
+Identifie les boards, iterations ou milestones correspondant aux sprints.
 
-### Résultat
+Récupère tous les tickets ouverts et fermés, descriptions, commentaires, discussions, projets, labels, dates, dépendances, références aux MR, commits et dépôts.
 
-`data.json` contient l'historique brut d'un an. Il constitue la source commune des analyses suivantes.
+Gère la pagination, les doublons et les erreurs.
 
-## Étape 2 — Comprendre les liens entre tickets
+Le script doit être autonome, sans LLM, sans modification de GitLab ni des dépôts locaux. Ne divulgue aucun token.
+```
 
-À cette étape, OpenCode ne doit **pas** inspecter les dépôts. On vérifie d'abord si les tickets et leurs échanges permettent de comprendre leurs relations.
+**Résultat :** `data.json`, à la racine.
 
-Placer le prompt suivant dans `prompt.md`, puis lancer OpenCode depuis la racine du projet.
+OpenCode sert uniquement à développer le script. La collecte elle-même est exécutée en Python, sans LLM.
 
-### Contenu de prompt.md — analyse des liens
+## Étape 2 — Compréhension des tickets
 
-> Analyse `data.json` contenant les tickets des sprints des 12 derniers mois.
->
-> Pour chaque ticket :
-> - Lis sa description et tous ses commentaires.
-> - Identifie les liens avec les autres tickets.
-> - Repère les références aux projets, Merge Requests et commits.
-> - Relève les dépendances et explique brièvement chaque lien.
->
-> Génère `results/tickets-analysis.md` avec les relations identifiées et leurs références.
->
-> Ne consulte ni les dépôts ni le code source. Ne réalise aucune analyse technique du code.
->
-> N'invente aucun lien et distingue les relations confirmées des hypothèses.
+### Prompt 2
 
-### Résultat
+```text
+Analyse data.json pour identifier les relations entre tickets, projets, dépôts, MR et commits.
 
-`results/tickets-analysis.md` documente les relations déduites des seules données GitLab.
+Exploite les descriptions et les commentaires pour comprendre les liens fonctionnels et techniques.
 
-## Étape 3 — Préparer un ticket en cours
+Justifie chaque relation par une référence et distingue les faits des hypothèses.
 
-On choisit un ticket précis. OpenCode exploite le JSON et le rapport de liens, puis **seulement à cette étape** examine les dépôts locaux pertinents, en lecture seule.
+Génère results/tickets-analysis.md.
 
-Remplacer `XXX` par la référence complète du ticket et placer cette consigne dans `prompt.md`.
+Ne consulte pas les dépôts ni le code source.
+```
 
-### Contenu de prompt.md — préparation d'un ticket
+**Résultat :** `results/tickets-analysis.md`.
 
-> Analyse le ticket GitLab `#XXX` à partir de `data.json` et de `results/tickets-analysis.md`.
->
-> - Comprends le besoin et ses commentaires.
-> - Retrouve les anciens tickets, décisions et travaux similaires.
-> - Identifie les projets et dépôts GitLab potentiellement concernés.
-> - Vérifie les liens utiles dans les dépôts locaux et leur historique Git.
-> - Examine uniquement le code nécessaire pour comprendre l'état actuel.
-> - Détermine ce qu'il faudrait modifier, les dépendances et les tests à prévoir.
-> - Signale les informations manquantes et distingue les faits des hypothèses.
->
-> Génère `results/ticket-XXX-analysis.md` contenant le contexte, les dépôts concernés, les preuves et le plan de réalisation.
->
-> Ne modifie aucun code, aucun dépôt ni aucun ticket. Aucun commit ni push.
+## Étape 3 — Préparation d'un ticket
 
-### Résultat
+### Prompt 3
 
-`results/ticket-XXX-analysis.md` sert de préparation technique à la prise en charge du ticket, **pas** d'autorisation à développer.
+```text
+Analyse le ticket PROJET#XXX à partir de data.json et results/tickets-analysis.md.
 
-## Principes de fonctionnement
+Comprends le besoin, retrouve les travaux antérieurs, identifie les dépôts concernés et vérifie leur pertinence dans le code local et l'historique Git.
 
-1. **Python collecte les faits** depuis GitLab dans `data.json`, sans LLM.
-2. **OpenCode comprend les liens** à partir du JSON, sans accéder au code.
-3. **OpenCode prépare un ticket choisi** en consultant uniquement les dépôts concernés.
-4. Les relations doivent rester traçables : référence de ticket, URL GitLab, IID de MR ou SHA de commit quand ils existent.
-5. Les dépôts locaux restent en lecture seule : aucun commit, push ou modification.
-6. Éviter de transmettre l'intégralité de l'année au modèle pour l'analyse d'un seul ticket : sélectionner d'abord les éléments pertinents.
-7. Les données GitLab d'entreprise restent locales ; ne pas publier `data.json` ni les rapports contenant des informations internes dans un dépôt public.
+Détermine ce qui existe déjà, ce qui reste à faire et les informations manquantes.
+
+Génère results/ticket-XXX-analysis.md.
+
+Ne modifie aucun code.
+```
+
+**Résultat :** `results/ticket-XXX-analysis.md`.
+
+Remplacer PROJET#XXX par la référence complète du ticket GitLab et XXX par son identifiant dans le nom du rapport. Si plusieurs projets partagent le même numéro de ticket, ajouter le nom du projet au nom du rapport.
+
+## Étape 4 — Analyse technique approfondie
+
+### Prompt 4
+
+```text
+À partir de results/ticket-XXX-analysis.md, approfondis l'analyse des dépôts concernés.
+
+Identifie les modules, fichiers, classes et fonctions impliqués. Analyse leur fonctionnement, leurs dépendances et les implémentations similaires.
+
+Détermine précisément les modifications nécessaires, leur ordre, leurs impacts, leurs risques et les tests à réaliser.
+
+Justifie chaque proposition par le code existant. Privilégie les solutions simples et respecte l'architecture actuelle.
+
+Génère results/ticket-XXX-technical.md avec un plan d'implémentation directement exploitable.
+
+Ne modifie aucun code et ne réalise aucun commit.
+```
+
+**Résultat :** `results/ticket-XXX-technical.md`.
 
 ## Ordre d'exécution
 
-1. Développer puis exécuter le script de `audit/` pour générer `data.json`.
-2. Mettre le prompt de l'étape 2 dans `prompt.md` et lancer OpenCode.
-3. Choisir un ticket en cours, remplacer le contenu de `prompt.md` par le prompt de l'étape 3 et lancer OpenCode.
-4. Examiner le plan proposé avant toute intervention sur les dépôts.
+1. Utiliser le prompt 1 pour créer le script Python, puis exécuter ce script afin de générer `data.json`.
+2. Placer le prompt 2 dans `prompt.md` et demander à OpenCode de l'exécuter.
+3. Choisir un ticket en cours, placer le prompt 3 dans `prompt.md` et demander à OpenCode de l'exécuter.
+4. Placer le prompt 4 dans `prompt.md` et demander à OpenCode de l'exécuter.
+5. Vérifier le plan technique avant de commencer le développement.
 
-**Collecter → relier les tickets → préparer un ticket → décider ensuite du développement.**
+## Principes communs
+
+- Chaque étape exploite les résultats de la précédente.
+- Utiliser les modèles de `models/` lorsqu'un modèle adapté existe.
+- Ne pas charger inutilement un an de tickets pour l'analyse d'un seul ticket : identifier d'abord le contexte pertinent.
+- Conserver les références complètes des tickets, MR, commits et chemins de fichiers.
+- Distinguer les faits vérifiés des hypothèses et signaler les informations manquantes.
+- Aucun MCP, aucune modification des dépôts analysés, aucun commit ni push pendant les analyses.
+- Utiliser uniquement un LLM autorisé à traiter les données internes. Ne pas publier les données collectées ni les rapports internes dans un dépôt public.
+
+## Chaîne de traitement
+
+```text
+01 - Collecter     -> data.json
+02 - Comprendre   -> results/tickets-analysis.md
+03 - Préparer     -> results/ticket-XXX-analysis.md
+04 - Approfondir  -> results/ticket-XXX-technical.md
+05 - Développer   -> après validation humaine
+```
+
+Le développement ne fait pas partie de cette procédure. Il commence uniquement lorsque le plan technique a été vérifié.
